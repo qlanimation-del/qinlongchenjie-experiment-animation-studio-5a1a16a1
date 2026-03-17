@@ -41,13 +41,16 @@ const Photographs = () => {
       <section className="pt-10 sm:pt-14 pb-20">
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col lg:flex-row gap-10 lg:gap-12">
           {/* Left sidebar */}
-          <aside className="lg:w-[200px] shrink-0 flex flex-col gap-10 lg:sticky lg:top-24 lg:self-start">
+          <aside className="lg:w-[200px] shrink-0 flex flex-col">
             <div>
+              <h3 className="text-xs font-bold text-neutral-800 mb-2 tracking-wide uppercase">
+                {locale === "zh" ? "摄影理念" : locale === "fr" ? "Philosophie" : "Philosophy"}
+              </h3>
               <p className="text-xs leading-relaxed text-neutral-500 max-w-[200px]">
                 {philosophy[locale]}
               </p>
             </div>
-            <nav className="mt-8 lg:mt-0">
+            <nav className="mt-40 lg:mt-56">
               <ul className="space-y-1.5">
                 {photographs.map((item) => {
                   const year = item.medium[locale].match(/\d{4}/)?.[0] ?? "";
