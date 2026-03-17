@@ -1,46 +1,38 @@
 
-# MegaComputeur Website Clone
 
-Recreating the MegaComputeur animation collective portfolio — a dark-themed, cinematic portfolio site with 4 pages.
+## Plan: Add Left Sidebar Text to Drawing and Photographs Pages
 
-## Pages & Features
+### Layout Change
 
-### 1. Home Page
-- **Full-screen hero** with a large background image and the MegaComputeur logo + tagline
-- **Scroll-down arrow indicator** at the bottom of the hero
-- **"Who We Are" section** — brief intro about the collective with a side image
-- **"What We Do" section** — description of their work style with a CTA button to the Work page, plus a side image
-- **Awards bar** showing laurels (Annie Awards, BAFTA, Vimeo Best of Year)
-- **Footer** with social links (Vimeo, YouTube, Facebook, Instagram) and copyright
+Convert both pages from a centered grid to a two-column layout: a narrow left text column + wider right image grid. Both columns scroll together normally. The outer container uses the same `max-w-7xl mx-auto px-4 md:px-6` as the Navbar to ensure the left text aligns with the logo.
 
-### 2. Work Page (Portfolio Grid)
-- **Masonry-style grid** of project thumbnails (3 columns)
-- Each card shows a **thumbnail image** with an overlay revealing the **project type** (Commercial, Short Film, etc.), **title**, and **year** on hover
-- Cards link to individual project detail pages
+### Left Column Content (within first viewport height)
 
-### 3. Team Page
-- **Three circular portrait photos** in a row with names and "Director" title underneath
-- **"Our Story" section** — a centered text block with the team's humorous backstory
-- Footer with social links
+**Upper section** — Artist statement / philosophy (small text, 2-3 sentences)
+**Lower section** — Mini catalog list with dates
 
-### 4. Contact Page
-- **Contact form** (Name, Email, Message fields + Submit button) in a card layout
-- **Office address info** on the right side (Passion Pictures, London)
-- **Email links** for direct contact and Passion Pictures business inquiries
-- Footer with social links
+#### Photographs Page:
+- **Upper**: Brief photography philosophy text (en/zh/fr)
+- **Lower**: Catalog entries like:
+  - *Mountain Pass* — 2023
+  - *Empty Road* — 2022
+  - etc.
 
-### Navigation & Layout
-- **Fixed top navbar** — logo on the left, WORK / TEAM / CONTACT links on the right
-- **Dark theme throughout** (dark background ~#1a1a1a, light text)
-- **Accent colors** matching the original: mint/cyan for logo highlights and active nav links
-- Smooth scroll behavior and subtle hover animations on project cards and links
+#### Drawing Page:
+- **Upper**: Brief drawing philosophy text (en/zh/fr)
+- **Lower**: Catalog entries like:
+  - *Untitled No.1* — 2023
+  - *Fragment Series I* — 2023
+  - etc.
 
-### Project Detail Page (Template)
-- Individual page for each project with embedded video, description, and credits
-- Back navigation to the Work page
+### Responsive Behavior
 
-### Design Details
-- Dark cinematic aesthetic with generous spacing
-- Clean, minimal typography (sans-serif)
-- Responsive layout for mobile and desktop
-- Smooth fade-in animations on scroll
+- **Desktop (lg+)**: Two-column layout — left sidebar ~200px, right grid takes remaining space
+- **Mobile/tablet**: Left text stacks above the grid (single column)
+
+### Files to Modify
+- `src/pages/Drawing.tsx` — add left sidebar with philosophy + catalog
+- `src/pages/Photographs.tsx` — same structure with photography content
+
+No new files needed. Catalog data is derived from the existing `drawings` and `photographs` arrays.
+
