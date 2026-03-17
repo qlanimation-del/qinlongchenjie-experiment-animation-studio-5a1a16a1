@@ -45,6 +45,13 @@ import b3 from "@/assets/gallery/beyond-3.webp";
 import b4 from "@/assets/gallery/beyond-4.webp";
 import b5 from "@/assets/gallery/beyond-5.webp";
 import b6 from "@/assets/gallery/beyond-6.webp";
+import project7 from "@/assets/project-7.webp";
+import bw1 from "@/assets/gallery/between-1.webp";
+import bw2 from "@/assets/gallery/between-2.webp";
+import bw3 from "@/assets/gallery/between-3.webp";
+import bw4 from "@/assets/gallery/between-4.webp";
+import bw5 from "@/assets/gallery/between-5.webp";
+import bw6 from "@/assets/gallery/between-6.webp";
 
 import type { Locale } from "@/i18n/translations";
 
