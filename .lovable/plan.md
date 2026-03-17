@@ -1,68 +1,46 @@
 
+# MegaComputeur Website Clone
 
-## Plan: Reorder Projects (New→Old) + Add Exhibitions/Awards Data
+Recreating the MegaComputeur animation collective portfolio — a dark-themed, cinematic portfolio site with 4 pages.
 
-### 1. Reverse project order in data (new → old)
+## Pages & Features
 
-Reorder the `projects` array in `src/data/projects.ts` to: 2026-2028 (DUST) → 2025 (Between Us) → 2023-2024 (IN-BETWEEN) → 2018 (Naturally Yours) → 2014 (Year of Fate) → 2013 (Introspection) → 2011 (Life's Track).
+### 1. Home Page
+- **Full-screen hero** with a large background image and the MegaComputeur logo + tagline
+- **Scroll-down arrow indicator** at the bottom of the hero
+- **"Who We Are" section** — brief intro about the collective with a side image
+- **"What We Do" section** — description of their work style with a CTA button to the Work page, plus a side image
+- **Awards bar** showing laurels (Annie Awards, BAFTA, Vimeo Best of Year)
+- **Footer** with social links (Vimeo, YouTube, Facebook, Instagram) and copyright
 
-### 2. Add `exhibitions` field to Project interface and data
+### 2. Work Page (Portfolio Grid)
+- **Masonry-style grid** of project thumbnails (3 columns)
+- Each card shows a **thumbnail image** with an overlay revealing the **project type** (Commercial, Short Film, etc.), **title**, and **year** on hover
+- Cards link to individual project detail pages
 
-Add a new field to the `Project` interface:
+### 3. Team Page
+- **Three circular portrait photos** in a row with names and "Director" title underneath
+- **"Our Story" section** — a centered text block with the team's humorous backstory
+- Footer with social links
 
-```typescript
-exhibitions?: Record<Locale, string[]>;
-```
+### 4. Contact Page
+- **Contact form** (Name, Email, Message fields + Submit button) in a card layout
+- **Office address info** on the right side (Passion Pictures, London)
+- **Email links** for direct contact and Passion Pictures business inquiries
+- Footer with social links
 
-Add exhibition/award entries to each project with placeholder content in en/zh/fr. Example:
+### Navigation & Layout
+- **Fixed top navbar** — logo on the left, WORK / TEAM / CONTACT links on the right
+- **Dark theme throughout** (dark background ~#1a1a1a, light text)
+- **Accent colors** matching the original: mint/cyan for logo highlights and active nav links
+- Smooth scroll behavior and subtle hover animations on project cards and links
 
-```typescript
-exhibitions: {
-  en: [
-    "Official Selection – Annecy International Animation Festival 2024",
-    "Best Short Film – Ottawa International Animation Festival 2024",
-    "Audience Award – Hiroshima International Animation Festival 2023"
-  ],
-  zh: [...],
-  fr: [...]
-}
-```
+### Project Detail Page (Template)
+- Individual page for each project with embedded video, description, and credits
+- Back navigation to the Work page
 
-Each project gets 2-4 unique festival/award entries with realistic-sounding names.
-
-### 3. Update `cardSpan` for new→old order
-
-Adjust the `cardSpan` values in `Work.tsx` to maintain the current Pinterest-style staggered heights (keeping IN-BETWEEN at span 6, etc.). No layout structure changes needed — just ensure the grid still looks good with the reversed order.
-
-### 4. Display exhibitions in ProjectDetail
-
-In `src/pages/ProjectDetail.tsx`, render the exhibitions list below the credits section:
-
-```tsx
-{project.exhibitions?.[locale]?.length > 0 && (
-  <div className="mb-16">
-    <h2 className="text-xl md:text-2xl font-semibold mb-6">
-      {t("projectDetail", "exhibitions")}
-    </h2>
-    <ul className="space-y-2 text-muted-foreground text-base">
-      {project.exhibitions[locale].map((item, i) => (
-        <li key={i}>{item}</li>
-      ))}
-    </ul>
-  </div>
-)}
-```
-
-### 5. Add translations
-
-Add `exhibitions` key to `src/i18n/translations.ts` under `projectDetail`:
-- en: "Exhibitions & Awards"
-- zh: "参展与获奖"
-- fr: "Expositions et Prix"
-
-### Files to modify
-- `src/data/projects.ts` — reorder array, add `exhibitions` field to interface and all projects
-- `src/pages/ProjectDetail.tsx` — render exhibitions section below credits
-- `src/i18n/translations.ts` — add translation key
-- `src/pages/Work.tsx` — no changes needed (layout stays the same)
-
+### Design Details
+- Dark cinematic aesthetic with generous spacing
+- Clean, minimal typography (sans-serif)
+- Responsive layout for mobile and desktop
+- Smooth fade-in animations on scroll
