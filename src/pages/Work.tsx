@@ -23,7 +23,7 @@ function ProjectCard({ project, index, locale }: {project: typeof projects[0]; i
   return (
     <div
       ref={ref}
-      className={`mb-4 md:mb-5 break-inside-avoid transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      className={`transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       style={{ transitionDelay: `${index * 80}ms` }}>
       
       <Link to={`/work/${project.id}`} className="group block relative overflow-hidden rounded-lg">
@@ -79,7 +79,7 @@ const Work = () => {
   return (
     <Layout>
        <section className="pt-14 sm:pt-16 pb-16 px-4 md:px-8">
-        <div className="max-w-[1200px] mx-auto columns-1 md:columns-2 lg:columns-3 gap-4 md:gap-5">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {projects.map((project, i) =>
             <ProjectCard key={project.id} project={project} index={i} locale={locale} />
           )}
