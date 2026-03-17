@@ -30,7 +30,7 @@ const Team = () => {
                     loading="lazy"
                   />
                   <h3 className="text-lg font-semibold">{d.name[locale]}</h3>
-                  <p className="text-sm text-muted-foreground tracking-wide">{t("team", "director")}</p>
+                  <p className="text-sm text-muted-foreground tracking-wide whitespace-pre-line">{d.role[locale]}</p>
                 </div>
               ))}
             </div>
