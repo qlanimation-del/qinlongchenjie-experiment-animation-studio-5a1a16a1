@@ -45,6 +45,13 @@ import b3 from "@/assets/gallery/beyond-3.webp";
 import b4 from "@/assets/gallery/beyond-4.webp";
 import b5 from "@/assets/gallery/beyond-5.webp";
 import b6 from "@/assets/gallery/beyond-6.webp";
+import project7 from "@/assets/project-7.webp";
+import bw1 from "@/assets/gallery/between-1.webp";
+import bw2 from "@/assets/gallery/between-2.webp";
+import bw3 from "@/assets/gallery/between-3.webp";
+import bw4 from "@/assets/gallery/between-4.webp";
+import bw5 from "@/assets/gallery/between-5.webp";
+import bw6 from "@/assets/gallery/between-6.webp";
 
 import type { Locale } from "@/i18n/translations";
 
@@ -277,6 +284,40 @@ export const projects: Project[] = [
       { src: b4, alt: "Dust gallery 4" },
       { src: b5, alt: "Dust gallery 5" },
       { src: b6, alt: "Dust gallery 6" },
+    ],
+  },
+  {
+    id: "between-us",
+    title: "Between Us and the World",
+    type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
+    year: "2025",
+    thumbnail: project7,
+    videoUrl: "https://player.vimeo.com/video/000006",
+    description: {
+      en: "An intimate animated short exploring the invisible threads that connect people across distance and time. A poetic meditation on human bonds.",
+      zh: "一部亲密的动画短片，探索跨越距离与时间将人们联系在一起的无形纽带。一首关于人类情感联结的诗意冥想。",
+      fr: "Un court métrage d'animation intime explorant les fils invisibles qui relient les gens à travers la distance et le temps. Une méditation poétique sur les liens humains.",
+    },
+    credits: {
+      en: ["Director: QinLong", "Animation: QinLong", "Music: TBD", "Sound Design: TBD"],
+      zh: ["导演：秦龙", "动画：秦龙", "音乐：待定", "声音设计：待定"],
+      fr: ["Réalisateur : QinLong", "Animation : QinLong", "Musique : À déterminer", "Conception sonore : À déterminer"],
+    },
+    glowColor: "#E8A87C",
+    client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
+    crew: { en: "QinLong", zh: "秦龙", fr: "QinLong" },
+    parallaxLayers: [
+      { src: project7, speed: 0.1 },
+      { src: project7, speed: 0.25 },
+      { src: project7, speed: 0.4 },
+    ],
+    galleryImages: [
+      { src: bw1, alt: "Between Us and the World gallery 1" },
+      { src: bw2, alt: "Between Us and the World gallery 2" },
+      { src: bw3, alt: "Between Us and the World gallery 3" },
+      { src: bw4, alt: "Between Us and the World gallery 4" },
+      { src: bw5, alt: "Between Us and the World gallery 5" },
+      { src: bw6, alt: "Between Us and the World gallery 6" },
     ],
   },
 ];
