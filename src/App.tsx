@@ -6,6 +6,8 @@ import { LanguageProvider } from "@/i18n/LanguageContext";
 import Index from "./pages/Index";
 
 const Work = lazy(() => import("./pages/Work"));
+const Drawing = lazy(() => import("./pages/Drawing"));
+const Photographs = lazy(() => import("./pages/Photographs"));
 const Team = lazy(() => import("./pages/Team"));
 const Contact = lazy(() => import("./pages/Contact"));
 const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
