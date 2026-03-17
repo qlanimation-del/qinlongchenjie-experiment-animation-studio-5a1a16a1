@@ -79,7 +79,7 @@ const Work = () => {
   return (
     <Layout>
        <section className="pt-14 sm:pt-16 pb-16 px-4 md:px-8">
-        <div className="max-w-[1200px] mx-auto columns-1 md:columns-2 lg:columns-3 gap-4 md:gap-5">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {projects.map((project, i) =>
             <ProjectCard key={project.id} project={project} index={i} locale={locale} />
           )}
