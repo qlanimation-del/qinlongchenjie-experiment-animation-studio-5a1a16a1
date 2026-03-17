@@ -5,9 +5,9 @@ import director1 from "@/assets/director-1.jpg";
 import director2 from "@/assets/director-2.jpg";
 import type { Locale } from "@/i18n/translations";
 
-const directors: { name: Record<Locale, string>; image: string }[] = [
-  { name: { en: "Qinlong", zh: "秦龙", fr: "Qinlong" }, image: director1 },
-  { name: { en: "Chenjie", zh: "陈洁", fr: "Chenjie" }, image: director2 },
+const directors: { name: Record<Locale, string>; role: Record<Locale, string>; image: string }[] = [
+  { name: { en: "Qinlong", zh: "秦龙", fr: "Qinlong" }, role: { en: "Director / Writer\nVideo Essay · Experimental Video", zh: "导演 / 编剧\n影像散文 · 实验影像", fr: "Réalisateur / Scénariste\nEssai Vidéo · Vidéo Expérimentale" }, image: director1 },
+  { name: { en: "Chenjie", zh: "陈洁", fr: "Chenjie" }, role: { en: "Director / Animator\nIndependent Animation", zh: "导演 / 动画师\n独立动画", fr: "Réalisateur / Animateur\nAnimation Indépendante" }, image: director2 },
 ];
 
 const Team = () => {
