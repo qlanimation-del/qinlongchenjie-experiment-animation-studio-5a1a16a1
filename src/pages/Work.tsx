@@ -1,3 +1,4 @@
+// Work page – grid masonry layout
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { projects } from "@/data/projects";
