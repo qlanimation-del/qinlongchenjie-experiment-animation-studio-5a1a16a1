@@ -15,6 +15,8 @@ const cardSpan: Record<string, number> = {
   "tiny-worlds":     6,   // tall
   "between-us":      5,   // medium-tall
   "beyond-orbit":    4,   // medium
+  "entering-cloud":  5,   // medium-tall
+  "gafa-logo":       5,   // medium-tall
 };
 
 function ProjectCard({ project, index, locale }: {project: typeof projects[0]; index: number; locale: Locale}) {

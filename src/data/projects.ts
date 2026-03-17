@@ -4,9 +4,46 @@ import project3 from "@/assets/project-3.webp";
 import project4 from "@/assets/project-4.webp";
 import project5 from "@/assets/project-5.webp";
 import project6 from "@/assets/project-6.jpg";
-import parallaxBg from "@/assets/parallax-bg.webp";
-import parallaxMid from "@/assets/parallax-mid.webp";
-import parallaxTop from "@/assets/parallax-top.webp";
+import project7 from "@/assets/project-7.webp";
+import projectCloud from "@/assets/project-cloud.webp";
+import projectGafa from "@/assets/project-gafa.webp";
+
+// Parallax layers — dedicated files per project for easy replacement
+import dustParallaxBg from "@/assets/dust-parallax-bg.webp";
+import dustParallaxMid from "@/assets/dust-parallax-mid.webp";
+import dustParallaxTop from "@/assets/dust-parallax-top.webp";
+
+import betweenParallaxBg from "@/assets/between-parallax-bg.webp";
+import betweenParallaxMid from "@/assets/between-parallax-mid.webp";
+import betweenParallaxTop from "@/assets/between-parallax-top.webp";
+
+import inbetweenParallaxBg from "@/assets/inbetween-parallax-bg.webp";
+import inbetweenParallaxMid from "@/assets/inbetween-parallax-mid.webp";
+import inbetweenParallaxTop from "@/assets/inbetween-parallax-top.webp";
+
+import resonanceParallaxBg from "@/assets/resonance-parallax-bg.webp";
+import resonanceParallaxMid from "@/assets/resonance-parallax-mid.webp";
+import resonanceParallaxTop from "@/assets/resonance-parallax-top.webp";
+
+import fizzyParallaxBg from "@/assets/fizzy-parallax-bg.webp";
+import fizzyParallaxMid from "@/assets/fizzy-parallax-mid.webp";
+import fizzyParallaxTop from "@/assets/fizzy-parallax-top.webp";
+
+import shadowsParallaxBg from "@/assets/shadows-parallax-bg.webp";
+import shadowsParallaxMid from "@/assets/shadows-parallax-mid.webp";
+import shadowsParallaxTop from "@/assets/shadows-parallax-top.webp";
+
+import dreamscapeParallaxBg from "@/assets/dreamscape-parallax-bg.webp";
+import dreamscapeParallaxMid from "@/assets/dreamscape-parallax-mid.webp";
+import dreamscapeParallaxTop from "@/assets/dreamscape-parallax-top.webp";
+
+import cloudParallaxBg from "@/assets/cloud-parallax-bg.webp";
+import cloudParallaxMid from "@/assets/cloud-parallax-mid.webp";
+import cloudParallaxTop from "@/assets/cloud-parallax-top.webp";
+
+import gafaParallaxBg from "@/assets/gafa-parallax-bg.webp";
+import gafaParallaxMid from "@/assets/gafa-parallax-mid.webp";
+import gafaParallaxTop from "@/assets/gafa-parallax-top.webp";
 
 // Gallery images
 import d1 from "@/assets/gallery/dreamscape-1.webp";
@@ -45,13 +82,24 @@ import b3 from "@/assets/gallery/beyond-3.webp";
 import b4 from "@/assets/gallery/beyond-4.webp";
 import b5 from "@/assets/gallery/beyond-5.webp";
 import b6 from "@/assets/gallery/beyond-6.webp";
-import project7 from "@/assets/project-7.webp";
 import bw1 from "@/assets/gallery/between-1.webp";
 import bw2 from "@/assets/gallery/between-2.webp";
 import bw3 from "@/assets/gallery/between-3.webp";
 import bw4 from "@/assets/gallery/between-4.webp";
 import bw5 from "@/assets/gallery/between-5.webp";
 import bw6 from "@/assets/gallery/between-6.webp";
+import cl1 from "@/assets/gallery/cloud-1.webp";
+import cl2 from "@/assets/gallery/cloud-2.webp";
+import cl3 from "@/assets/gallery/cloud-3.webp";
+import cl4 from "@/assets/gallery/cloud-4.webp";
+import cl5 from "@/assets/gallery/cloud-5.webp";
+import cl6 from "@/assets/gallery/cloud-6.webp";
+import g1 from "@/assets/gallery/gafa-1.webp";
+import g2 from "@/assets/gallery/gafa-2.webp";
+import g3 from "@/assets/gallery/gafa-3.webp";
+import g4 from "@/assets/gallery/gafa-4.webp";
+import g5 from "@/assets/gallery/gafa-5.webp";
+import g6 from "@/assets/gallery/gafa-6.webp";
 
 import type { Locale } from "@/i18n/translations";
 
@@ -90,7 +138,6 @@ export const projects: Project[] = [
     type: { en: "Independent Animation", zh: "独立动画", fr: "Indépendante Animation " },
     year: "2026-Present",
     thumbnail: project6,
-    videoUrl: "https://player.vimeo.com/video/000005",
     description: {
       en: "A sci-fi cinematic commercial for a tech company. High-end CGI animation with dramatic lighting and epic scale.",
       zh: "一部为科技公司制作的科幻电影级广告。高端CGI动画，配以戏剧性灯光和宏大规模。",
@@ -122,9 +169,9 @@ export const projects: Project[] = [
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
     crew: { en: "QinLong, ChenJie", zh: "秦龙、陈洁", fr: "QinLong, ChenJie" },
     parallaxLayers: [
-      { src: project6, speed: 0.1 },
-      { src: project6, speed: 0.25 },
-      { src: project6, speed: 0.4 },
+      { src: dustParallaxBg, speed: 0.1 },
+      { src: dustParallaxMid, speed: 0.25 },
+      { src: dustParallaxTop, speed: 0.4 },
     ],
     galleryImages: [
       { src: b1, alt: "Dust gallery 1" },
@@ -141,7 +188,6 @@ export const projects: Project[] = [
     type: { en: "Video essay", zh: "短片", fr: "Court métrage" },
     year: "2025",
     thumbnail: project7,
-    videoUrl: "https://player.vimeo.com/video/000006",
     description: {
       en: "An intimate animated short exploring the invisible threads that connect people across distance and time. A poetic meditation on human bonds.",
       zh: "一部亲密的动画短片，探索跨越距离与时间将人们联系在一起的无形纽带。一首关于人类情感联结的诗意冥想。",
@@ -170,9 +216,9 @@ export const projects: Project[] = [
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
     crew: { en: "QinLong", zh: "秦龙", fr: "QinLong" },
     parallaxLayers: [
-      { src: project7, speed: 0.1 },
-      { src: project7, speed: 0.25 },
-      { src: project7, speed: 0.4 },
+      { src: betweenParallaxBg, speed: 0.1 },
+      { src: betweenParallaxMid, speed: 0.25 },
+      { src: betweenParallaxTop, speed: 0.4 },
     ],
     galleryImages: [
       { src: bw1, alt: "Between Us and the World gallery 1" },
@@ -224,9 +270,9 @@ export const projects: Project[] = [
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
     crew: { en: "Qin Long, Chen Jie", zh: "秦龙、陈洁", fr: "Qin Long, Chen Jie" },
     parallaxLayers: [
-      { src: parallaxBg, speed: 0.1 },
-      { src: parallaxMid, speed: 0.25 },
-      { src: parallaxTop, speed: 0.4 },
+      { src: inbetweenParallaxBg, speed: 0.1 },
+      { src: inbetweenParallaxMid, speed: 0.25 },
+      { src: inbetweenParallaxTop, speed: 0.4 },
     ],
     galleryImages: [
       { src: t1, alt: "In-Between gallery 1" },
@@ -235,6 +281,84 @@ export const projects: Project[] = [
       { src: t4, alt: "In-Between gallery 4" },
       { src: t5, alt: "In-Between gallery 5" },
       { src: t6, alt: "In-Between gallery 6" },
+    ],
+  },
+  {
+    id: "gafa-logo",
+    title: "Logo for GAFA Animation Major",
+    type: { en: "COMMERCIAL", zh: "商业项目", fr: "COMMERCIAL" },
+    year: "2023",
+    thumbnail: projectGafa,
+    description: {
+      en: "A dynamic logo animation created for the GAFA (Gobelins, l'école de l'image) Animation Major. The design captures the spirit of animation education through fluid motion and bold typography.",
+      zh: "为GAFA（高布兰动画学院）动画专业创作的动态标志动画。设计通过流畅的运动和大胆的字体捕捉动画教育的精神。",
+      fr: "Une animation de logo dynamique créée pour la filière Animation de GAFA (Gobelins, l'école de l'image). Le design capture l'esprit de l'enseignement de l'animation à travers un mouvement fluide et une typographie audacieuse.",
+    },
+    credits: {
+      en: ["Director: QinLong", "Animation: QinLong", "Design: QinLong"],
+      zh: ["导演：秦龙", "动画：秦龙", "设计：秦龙"],
+      fr: ["Réalisateur : QinLong", "Animation : QinLong", "Design : QinLong"],
+    },
+    glowColor: "#4FC3F7",
+    client: { en: "GAFA Animation", zh: "GAFA 动画专业", fr: "GAFA Animation" },
+    crew: { en: "QinLong", zh: "秦龙", fr: "QinLong" },
+    parallaxLayers: [
+      { src: gafaParallaxBg, speed: 0.1 },
+      { src: gafaParallaxMid, speed: 0.25 },
+      { src: gafaParallaxTop, speed: 0.4 },
+    ],
+    galleryImages: [
+      { src: g1, alt: "GAFA Logo gallery 1" },
+      { src: g2, alt: "GAFA Logo gallery 2" },
+      { src: g3, alt: "GAFA Logo gallery 3" },
+      { src: g4, alt: "GAFA Logo gallery 4" },
+      { src: g5, alt: "GAFA Logo gallery 5" },
+      { src: g6, alt: "GAFA Logo gallery 6" },
+    ],
+  },
+  {
+    id: "entering-cloud",
+    title: "Entering the Cloud",
+    type: { en: "COMMERCIAL", zh: "商业项目", fr: "COMMERCIAL" },
+    year: "2022",
+    thumbnail: projectCloud,
+    videoUrl: "https://player.vimeo.com/video/000007",
+    description: {
+      en: "An experimental animated short exploring the liminal space between the physical and digital worlds. As our lives increasingly migrate to the cloud, what do we leave behind?",
+      zh: "一部实验性动画短片，探索物理世界与数字世界之间的过渡空间。当我们的生活越来越多地迁移到云端，我们留下了什么？",
+      fr: "Un court métrage d'animation expérimental explorant l'espace liminal entre les mondes physique et numérique. Alors que nos vies migrent de plus en plus vers le cloud, que laissons-nous derrière nous ?",
+    },
+    credits: {
+      en: ["Director: QinLong", "Animation: QinLong", "Music: TBD"],
+      zh: ["导演：秦龙", "动画：秦龙", "音乐：待定"],
+      fr: ["Réalisateur : QinLong", "Animation : QinLong", "Musique : À déterminer"],
+    },
+    exhibitions: {
+      en: [
+        "Official Selection – Annecy International Animation Festival 2022",
+      ],
+      zh: [
+        "入围 – 昂西国际动画电影节 2022",
+      ],
+      fr: [
+        "Sélection officielle – Festival d'Annecy 2022",
+      ],
+    },
+    glowColor: "#B388FF",
+    client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
+    crew: { en: "QinLong", zh: "秦龙", fr: "QinLong" },
+    parallaxLayers: [
+      { src: cloudParallaxBg, speed: 0.1 },
+      { src: cloudParallaxMid, speed: 0.25 },
+      { src: cloudParallaxTop, speed: 0.4 },
+    ],
+    galleryImages: [
+      { src: cl1, alt: "Entering the Cloud gallery 1" },
+      { src: cl2, alt: "Entering the Cloud gallery 2" },
+      { src: cl3, alt: "Entering the Cloud gallery 3" },
+      { src: cl4, alt: "Entering the Cloud gallery 4" },
+      { src: cl5, alt: "Entering the Cloud gallery 5" },
+      { src: cl6, alt: "Entering the Cloud gallery 6" },
     ],
   },
   {
@@ -272,9 +396,9 @@ export const projects: Project[] = [
     client: { en: "Beijing Forestry University-Admissions Office", zh: "北京林业大学", fr: "Université forestière de Pékin" },
     crew: { en: "QinLong", zh: "秦龙", fr: "QinLong" },
     parallaxLayers: [
-      { src: project4, speed: 0.1 },
-      { src: project4, speed: 0.25 },
-      { src: project4, speed: 0.4 },
+      { src: resonanceParallaxBg, speed: 0.1 },
+      { src: resonanceParallaxMid, speed: 0.25 },
+      { src: resonanceParallaxTop, speed: 0.4 },
     ],
     galleryImages: [
       { src: r1, alt: "Naturally Yours gallery 1" },
@@ -323,9 +447,9 @@ export const projects: Project[] = [
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
     crew: { en: "QinLong", zh: "秦龙", fr: "QinLong" },
     parallaxLayers: [
-      { src: project3, speed: 0.1 },
-      { src: project3, speed: 0.25 },
-      { src: project3, speed: 0.4 },
+      { src: fizzyParallaxBg, speed: 0.1 },
+      { src: fizzyParallaxMid, speed: 0.25 },
+      { src: fizzyParallaxTop, speed: 0.4 },
     ],
     galleryImages: [
       { src: f1, alt: "Year of Fate gallery 1" },
@@ -374,9 +498,9 @@ export const projects: Project[] = [
     client: { en: "Passion Pictures", zh: "Passion Pictures", fr: "Passion Pictures" },
     crew: { en: "QinLong, MegaComputeur", zh: "秦龙、MegaComputeur", fr: "QinLong, MegaComputeur" },
     parallaxLayers: [
-      { src: project2, speed: 0.1 },
-      { src: project2, speed: 0.25 },
-      { src: project2, speed: 0.4 },
+      { src: shadowsParallaxBg, speed: 0.1 },
+      { src: shadowsParallaxMid, speed: 0.25 },
+      { src: shadowsParallaxTop, speed: 0.4 },
     ],
     galleryImages: [
       { src: s1, alt: "Introspection gallery 1" },
@@ -422,9 +546,9 @@ export const projects: Project[] = [
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
     crew: { en: "Alex Mercer, MegaComputeur", zh: "Alex Mercer、MegaComputeur", fr: "Alex Mercer, MegaComputeur" },
     parallaxLayers: [
-      { src: project1, speed: 0.1 },
-      { src: project1, speed: 0.25 },
-      { src: project1, speed: 0.4 },
+      { src: dreamscapeParallaxBg, speed: 0.1 },
+      { src: dreamscapeParallaxMid, speed: 0.25 },
+      { src: dreamscapeParallaxTop, speed: 0.4 },
     ],
     galleryImages: [
       { src: d1, alt: "Life's Track gallery 1" },
