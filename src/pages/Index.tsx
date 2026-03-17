@@ -6,7 +6,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 import whoWeAreImg from "@/assets/who-we-are.webp";
-import whatWeDoImg from "@/assets/what-we-do.jpg";
+import whatWeDoImg from "@/assets/what-we-do.webp";
 import annieAward from "@/assets/awards/annie-award.png";
 import baftaAward from "@/assets/awards/bafta-award.png";
 import vimeoAward from "@/assets/awards/vimeo-award.png";
