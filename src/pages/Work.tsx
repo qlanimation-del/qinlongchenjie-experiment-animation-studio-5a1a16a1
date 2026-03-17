@@ -18,19 +18,19 @@ const cardSpan: Record<string, number> = {
 
 function ProjectCard({ project, index, locale }: {project: typeof projects[0]; index: number; locale: Locale}) {
   const { ref, isVisible } = useScrollAnimation(0.1);
-  const aspect = cardAspect[project.id] || "aspect-square";
+  const span = cardSpan[project.id] || 3;
 
   return (
     <div
       ref={ref}
-      className={`transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-      style={{ transitionDelay: `${index * 80}ms` }}>
+      style={{ gridRow: `span ${span}`, transitionDelay: `${index * 80}ms` }}
+      className={`transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
       
-      <Link to={`/work/${project.id}`} className="group block relative overflow-hidden rounded-lg">
+      <Link to={`/work/${project.id}`} className="group block relative overflow-hidden rounded-lg h-full">
         <img
           src={project.thumbnail}
           alt={project.title}
-          className={`w-full ${aspect} object-cover transition-transform duration-400 group-hover:scale-105`} />
+          className="w-full h-full object-cover transition-transform duration-400 group-hover:scale-105" />
         
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-250 flex items-center justify-center">
           <div className="text-center px-4">
