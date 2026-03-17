@@ -5,6 +5,12 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import type { Locale } from "@/i18n/translations";
 import type { ArtworkItem } from "@/data/drawings";
 
+const philosophy = {
+  en: "Photography is an act of attention — a way of holding still long enough to see what is already there. We are drawn to the quiet, the in-between, the light that reveals as much as it conceals.",
+  zh: "摄影是一种专注的行为——一种足够安静地停下来，去看见已经存在之物的方式。我们被宁静、过渡与那些既揭示又隐藏的光所吸引。",
+  fr: "La photographie est un acte d'attention — une façon de rester immobile assez longtemps pour voir ce qui est déjà là. Nous sommes attirés par le calme, l'entre-deux, la lumière qui révèle autant qu'elle dissimule.",
+};
+
 function PhotoCard({ item, index, locale }: { item: ArtworkItem; index: number; locale: Locale }) {
   const { ref, isVisible } = useScrollAnimation(0.1);
   return (
@@ -32,11 +38,36 @@ const Photographs = () => {
 
   return (
     <Layout navVariant="light" className="bg-white">
-      <section className="pt-10 sm:pt-14 pb-20 px-6 md:px-12 lg:px-20">
-        <div className="max-w-[1100px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-          {photographs.map((item, i) => (
-            <PhotoCard key={item.id} item={item} index={i} locale={locale} />
-          ))}
+      <section className="pt-10 sm:pt-14 pb-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col lg:flex-row gap-10 lg:gap-12">
+          {/* Left sidebar */}
+          <aside className="lg:w-[200px] shrink-0 flex flex-col justify-between lg:min-h-[calc(100vh-120px)]">
+            <div>
+              <p className="text-xs leading-relaxed text-neutral-500 max-w-[200px]">
+                {philosophy[locale]}
+              </p>
+            </div>
+            <nav className="mt-8 lg:mt-0">
+              <ul className="space-y-1.5">
+                {photographs.map((item) => {
+                  const year = item.medium[locale].match(/\d{4}/)?.[0] ?? "";
+                  return (
+                    <li key={item.id} className="text-[11px] text-neutral-400 leading-snug">
+                      <span className="text-neutral-600 italic">{item.title[locale]}</span>
+                      {year && <span> — {year}</span>}
+                    </li>
+                  );
+                })}
+              </ul>
+            </nav>
+          </aside>
+
+          {/* Right image grid */}
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+            {photographs.map((item, i) => (
+              <PhotoCard key={item.id} item={item} index={i} locale={locale} />
+            ))}
+          </div>
         </div>
       </section>
     </Layout>
