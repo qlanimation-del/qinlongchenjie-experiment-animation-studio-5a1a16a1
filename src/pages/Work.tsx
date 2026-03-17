@@ -13,6 +13,7 @@ const cardAspect: Record<string, string> = {
   "resonance":       "aspect-[4/3]",    // short
   "tiny-worlds":     "aspect-[2/3]",    // tall
   "beyond-orbit":    "aspect-[1/1]",    // square
+  "between-us":      "aspect-[3/4]",    // medium-tall
 };
 
 function ProjectCard({ project, index, locale }: {project: typeof projects[0]; index: number; locale: Locale}) {
