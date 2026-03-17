@@ -1,46 +1,104 @@
 
-# MegaComputeur Website Clone
 
-Recreating the MegaComputeur animation collective portfolio — a dark-themed, cinematic portfolio site with 4 pages.
+## Plan: Add Drawing and Photographs Pages with Light Theme Navbar
 
-## Pages & Features
+### Overview
 
-### 1. Home Page
-- **Full-screen hero** with a large background image and the MegaComputeur logo + tagline
-- **Scroll-down arrow indicator** at the bottom of the hero
-- **"Who We Are" section** — brief intro about the collective with a side image
-- **"What We Do" section** — description of their work style with a CTA button to the Work page, plus a side image
-- **Awards bar** showing laurels (Annie Awards, BAFTA, Vimeo Best of Year)
-- **Footer** with social links (Vimeo, YouTube, Facebook, Instagram) and copyright
+Add two new pages (Drawing, Photographs) with white backgrounds, a Stephen Shore-style grid layout (3-column matrix of images with captions), and a navbar that switches to dark text on these light-background pages.
 
-### 2. Work Page (Portfolio Grid)
-- **Masonry-style grid** of project thumbnails (3 columns)
-- Each card shows a **thumbnail image** with an overlay revealing the **project type** (Commercial, Short Film, etc.), **title**, and **year** on hover
-- Cards link to individual project detail pages
+### 1. Update Navbar to support light/dark mode
 
-### 3. Team Page
-- **Three circular portrait photos** in a row with names and "Director" title underneath
-- **"Our Story" section** — a centered text block with the team's humorous backstory
-- Footer with social links
+**File: `src/components/Navbar.tsx`**
 
-### 4. Contact Page
-- **Contact form** (Name, Email, Message fields + Submit button) in a card layout
-- **Office address info** on the right side (Passion Pictures, London)
-- **Email links** for direct contact and Passion Pictures business inquiries
-- Footer with social links
+- Accept a `variant` prop: `"dark"` (default, current behavior) or `"light"` (for white-bg pages)
+- When `variant="light"`:
+  - Logo text: `text-black` instead of `text-white`
+  - Subtitle: `text-black/70` instead of `text-white/70`
+  - Nav links: `text-black/70` / `text-black` instead of white variants
+  - Hamburger icon: `text-black`
+  - Globe icon in LanguageSwitcher: needs variant prop too
 
-### Navigation & Layout
-- **Fixed top navbar** — logo on the left, WORK / TEAM / CONTACT links on the right
-- **Dark theme throughout** (dark background ~#1a1a1a, light text)
-- **Accent colors** matching the original: mint/cyan for logo highlights and active nav links
-- Smooth scroll behavior and subtle hover animations on project cards and links
+**File: `src/components/LanguageSwitcher.tsx`**
 
-### Project Detail Page (Template)
-- Individual page for each project with embedded video, description, and credits
-- Back navigation to the Work page
+- Accept a `variant` prop to switch text colors (white vs black)
 
-### Design Details
-- Dark cinematic aesthetic with generous spacing
-- Clean, minimal typography (sans-serif)
-- Responsive layout for mobile and desktop
-- Smooth fade-in animations on scroll
+**File: `src/components/Layout.tsx`**
+
+- Accept a `navVariant` prop, pass it through to `<Navbar variant={navVariant} />`
+- Accept optional `className` for the outer wrapper (to set `bg-white` on light pages)
+
+### 2. Add translation keys
+
+**File: `src/i18n/translations.ts`**
+
+Add nav entries:
+```
+drawing: { en: "DRAWING", zh: "绘画", fr: "DESSIN" }
+photographs: { en: "PHOTOGRAPHS", zh: "摄影", fr: "PHOTOGRAPHIES" }
+```
+
+### 3. Update nav links order
+
+**File: `src/components/Navbar.tsx`**
+
+Add two links after WORK:
+```
+WORK → DRAWING → PHOTOGRAPHS → TEAM → CONTACT
+```
+
+### 4. Create placeholder image data files
+
+**File: `src/data/drawings.ts`**
+
+Array of ~9-12 items, each with:
+- `src`: free placeholder image URL (e.g. from picsum.photos or unsplash with specific dimensions to vary aspect ratios)
+- `title`: en/zh/fr caption
+- `medium`: en/zh/fr (e.g. "Oil on canvas, 2023")
+
+**File: `src/data/photographs.ts`**
+
+Same structure, ~9-12 items with photography-themed placeholders.
+
+### 5. Create the two new pages
+
+**File: `src/pages/Drawing.tsx`**
+**File: `src/pages/Photographs.tsx`**
+
+Both follow the same layout pattern inspired by stephenshore.net:
+- `<Layout navVariant="light" className="bg-white">`
+- 3-column CSS grid (`grid-cols-1 sm:grid-cols-2 lg:grid-cols-3`)
+- Each cell: image at natural aspect ratio + caption text below (title + medium/description)
+- Text in dark/gray tones on white background
+- Generous spacing between items
+- Images use `object-contain` or natural sizing to respect original proportions
+
+### 6. Register routes
+
+**File: `src/App.tsx`**
+
+Add lazy imports and routes:
+```tsx
+const Drawing = lazy(() => import("./pages/Drawing"));
+const Photographs = lazy(() => import("./pages/Photographs"));
+
+<Route path="/drawing" element={<Drawing />} />
+<Route path="/photographs" element={<Photographs />} />
+```
+
+### 7. Footer adaptation
+
+The Footer currently has dark background. On light pages, it should also adapt. Add a `variant` prop to Footer or keep it dark as a design contrast element — keeping it dark provides a natural visual anchor.
+
+### Files to create
+- `src/pages/Drawing.tsx`
+- `src/pages/Photographs.tsx`
+- `src/data/drawings.ts`
+- `src/data/photographs.ts`
+
+### Files to modify
+- `src/components/Navbar.tsx` — add `variant` prop for light/dark
+- `src/components/LanguageSwitcher.tsx` — add `variant` prop
+- `src/components/Layout.tsx` — pass variant + bg class
+- `src/App.tsx` — add routes
+- `src/i18n/translations.ts` — add translation keys
+
