@@ -319,7 +319,7 @@ export const projects: Project[] = [
   {
     id: "entering-cloud",
     title: "Entering the Cloud",
-    type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
+    type: { en: "COMMERCIAL", zh: "商业项目", fr: "COMMERCIAL" },
     year: "2022",
     thumbnail: projectCloud,
     videoUrl: "https://player.vimeo.com/video/000007",
