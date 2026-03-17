@@ -79,7 +79,7 @@ const ProjectDetail = () => {
               {project.description[locale]}
             </p>
 
-            {/* Video Embed — srcdoc lazy load */}
+            {/* Video Embed */}
             {project.videoUrl && (
               <div className="mb-12">
                 <div className="aspect-video w-full rounded-lg overflow-hidden bg-black/20">
@@ -92,23 +92,24 @@ const ProjectDetail = () => {
                     loading="lazy"
                   />
                 </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-6 bg-white/5 rounded-lg p-4 sm:p-6">
-                  <div className="text-left">
-                    <span className="block text-xs sm:text-xs uppercase tracking-widest text-muted-foreground/60 mb-1">{t("projectDetail", "year")}</span>
-                    <span className="text-sm sm:text-sm font-medium text-foreground">{project.year}</span>
-                  </div>
-                  <div className="text-left sm:text-center border-t sm:border-t-0 border-white/10 pt-3 sm:pt-0">
-                    <span className="block text-xs sm:text-xs uppercase tracking-widest text-muted-foreground/60 mb-1">{t("projectDetail", "crew")}</span>
-                    <span className="text-sm sm:text-sm font-medium text-foreground">{project.crew?.[locale] || "—"}</span>
-                  </div>
-                  <div className="text-left sm:text-right border-t sm:border-t-0 border-white/10 pt-3 sm:pt-0">
-                    <span className="block text-xs sm:text-xs uppercase tracking-widest text-muted-foreground/60 mb-1">{t("projectDetail", "client")}</span>
-                    <span className="text-sm sm:text-sm font-medium text-foreground">{project.client?.[locale] || "—"}</span>
-                  </div>
-                </div>
               </div>
             )}
+
+            {/* Metadata Grid — always visible */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12 bg-white/5 rounded-lg p-4 sm:p-6">
+              <div className="text-left">
+                <span className="block text-xs uppercase tracking-widest text-muted-foreground/60 mb-1">{t("projectDetail", "year")}</span>
+                <span className="text-sm font-medium text-foreground">{project.year}</span>
+              </div>
+              <div className="text-left sm:text-center border-t sm:border-t-0 border-white/10 pt-3 sm:pt-0">
+                <span className="block text-xs uppercase tracking-widest text-muted-foreground/60 mb-1">{t("projectDetail", "crew")}</span>
+                <span className="text-sm font-medium text-foreground">{project.crew?.[locale] || "—"}</span>
+              </div>
+              <div className="text-left sm:text-right border-t sm:border-t-0 border-white/10 pt-3 sm:pt-0">
+                <span className="block text-xs uppercase tracking-widest text-muted-foreground/60 mb-1">{t("projectDetail", "client")}</span>
+                <span className="text-sm font-medium text-foreground">{project.client?.[locale] || "—"}</span>
+              </div>
+            </div>
 
             {project.credits[locale].length > 0 && (
               <div className="mb-16">
