@@ -6,13 +6,16 @@ import { useLanguage } from "@/i18n/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 import logo from "@/assets/logo.webp";
 
+export type NavVariant = "dark" | "light";
+
 interface NavbarProps {
   className?: string;
+  variant?: NavVariant;
 }
 
 const SHOW_NAV_THRESHOLD = 400;
 
-const Navbar = ({ className = "" }: NavbarProps) => {
+const Navbar = ({ className = "", variant = "dark" }: NavbarProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const { t } = useLanguage();
@@ -21,8 +24,12 @@ const Navbar = ({ className = "" }: NavbarProps) => {
   const hideProgress = useRef(0);
   const [, forceRender] = useState(0);
 
+  const isLight = variant === "light";
+
   const navLinks = [
     { label: t("nav", "work"), to: "/work" },
+    { label: t("nav", "drawing"), to: "/drawing" },
+    { label: t("nav", "photographs"), to: "/photographs" },
     { label: t("nav", "team"), to: "/team" },
     { label: t("nav", "contact"), to: "/contact" },
   ];
@@ -50,12 +57,10 @@ const Navbar = ({ className = "" }: NavbarProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [handleScroll]);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
   }, [location.pathname]);
 
-  // Prevent body scroll when menu is open
   useEffect(() => {
     if (mobileOpen) {
       document.body.style.overflow = "hidden";
@@ -64,6 +69,11 @@ const Navbar = ({ className = "" }: NavbarProps) => {
     }
     return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
+
+  const textColor = isLight ? "text-black" : "text-white";
+  const textMuted = isLight ? "text-black/70" : "text-white/70";
+  const textActive = isLight ? "text-black" : "text-white";
+  const hoverText = isLight ? "hover:text-black" : "hover:text-white";
 
   return (
     <>
@@ -79,11 +89,11 @@ const Navbar = ({ className = "" }: NavbarProps) => {
           <Link to="/" className="flex items-center gap-2 md:gap-3 group">
             <img src={logo} alt="Logo" className="h-11 sm:h-14 md:h-16 w-auto rounded object-contain" />
             <div className="flex flex-col gap-0.5" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-              <span className="text-sm sm:text-base md:text-lg font-extrabold tracking-[0.02em] text-white leading-none">
-                QinLong<span className="font-normal text-white/80">&</span>ChenJie
+              <span className={cn("text-sm sm:text-base md:text-lg font-extrabold tracking-[0.02em] leading-none", textColor)}>
+                QinLong<span className={cn("font-normal", isLight ? "text-black/80" : "text-white/80")}>&</span>ChenJie
               </span>
               <span
-                className="text-white/70 text-[8px] sm:text-[9px] md:text-[10px] uppercase leading-none block w-full font-medium mt-0.5"
+                className={cn("text-[8px] sm:text-[9px] md:text-[10px] uppercase leading-none block w-full font-medium mt-0.5", textMuted)}
                 style={{ textAlign: "justify", textAlignLast: "justify", letterSpacing: "0.12em" }}
               >
                 experiment animation studio
@@ -91,28 +101,29 @@ const Navbar = ({ className = "" }: NavbarProps) => {
             </div>
           </Link>
 
-          {/* Desktop nav — hidden below lg (1024px), so tablet gets mobile menu */}
+          {/* Desktop nav */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
                 key={link.to}
                 to={link.to}
                 className={cn(
-                  "text-sm font-medium tracking-widest transition-colors hover:text-white",
-                  location.pathname === link.to ? "text-white" : "text-white/70"
+                  "text-sm font-medium tracking-widest transition-colors",
+                  hoverText,
+                  location.pathname === link.to ? textActive : textMuted
                 )}
               >
                 {link.label}
               </Link>
             ))}
-            <LanguageSwitcher />
+            <LanguageSwitcher variant={variant} />
           </div>
 
-          {/* Mobile/tablet hamburger — visible below lg */}
+          {/* Mobile/tablet hamburger */}
           <div className="lg:hidden flex items-center gap-3">
-            <LanguageSwitcher />
+            <LanguageSwitcher variant={variant} />
             <button
-              className="text-white p-1 relative z-[10001]"
+              className={cn("p-1 relative z-[10001]", textColor)}
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
@@ -122,14 +133,12 @@ const Navbar = ({ className = "" }: NavbarProps) => {
         </div>
       </nav>
 
-      {/* Mobile/tablet fullscreen overlay with glassmorphism */}
+      {/* Mobile/tablet fullscreen overlay */}
       <div
         className={cn(
           "fixed inset-0 z-[10000] flex flex-col items-center justify-center transition-all duration-300",
           "bg-black/50 backdrop-blur-xl",
-          mobileOpen
-            ? "opacity-100 visible"
-            : "opacity-0 invisible pointer-events-none"
+          mobileOpen ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"
         )}
       >
         <button
