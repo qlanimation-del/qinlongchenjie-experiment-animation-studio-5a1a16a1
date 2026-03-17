@@ -5,10 +5,10 @@ import director1 from "@/assets/director-1.jpg";
 import director2 from "@/assets/director-2.jpg";
 import type { Locale } from "@/i18n/translations";
 
-const directors: { name: Record<Locale, string>; role: Record<Locale, string>; image: string }[] = [
-  { name: { en: "Qinlong", zh: "秦龙", fr: "Qinlong" }, role: { en: "Director / Writer\nVideo Essay · Experimental Video", zh: "导演 / 编剧\n影像散文 · 实验影像", fr: "Réalisateur / Scénariste\nEssai Vidéo · Vidéo Expérimentale" }, image: director1 },
-  { name: { en: "Chenjie", zh: "陈洁", fr: "Chenjie" }, role: { en: "Director / Animator\nIndependent Animation", zh: "导演 / 动画师\n独立动画", fr: "Réalisateur / Animateur\nAnimation Indépendante" }, image: director2 },
-];
+const directors: {name: Record<Locale, string>;role: Record<Locale, string>;image: string;}[] = [
+{ name: { en: "Qinlong", zh: "秦龙", fr: "Qinlong" }, role: { en: "Director / Writer\nVideo Essay · Experimental Video", zh: "导演 / 编剧\n影像散文 · 实验影像", fr: "Réalisateur / Scénariste\nEssai Vidéo · Vidéo Expérimentale" }, image: director1 },
+{ name: { en: "Chenjie", zh: "陈洁", fr: "Chenjie" }, role: { en: "Director / Animator\nIndependent Animation", zh: "导演 / 动画师\n独立动画", fr: "Réalisateur / Animateur\nAnimation Indépendante" }, image: director2 }];
+
 
 const Team = () => {
   const { t, locale } = useLanguage();
@@ -21,18 +21,18 @@ const Team = () => {
 
           <AnimatedSection>
             <div className="flex flex-wrap justify-center gap-10 sm:gap-16 mb-16 sm:mb-24">
-              {directors.map((d) => (
-                <div key={d.name.en} className="text-center">
+              {directors.map((d) =>
+              <div key={d.name.en} className="text-center">
                   <img
-                    src={d.image}
-                    alt={d.name[locale]}
-                    className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover mx-auto mb-4 border-2 border-border"
-                    loading="lazy"
-                  />
+                  src={d.image}
+                  alt={d.name[locale]}
+                  className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover mx-auto mb-4 border-2 border-border"
+                  loading="lazy" />
+                
                   <h3 className="text-lg font-semibold">{d.name[locale]}</h3>
-                  <p className="text-sm text-muted-foreground tracking-wide whitespace-pre-line">{d.role[locale]}</p>
+                  <p className="text-muted-foreground tracking-wide whitespace-pre-line text-base">{d.role[locale]}</p>
                 </div>
-              ))}
+              )}
             </div>
           </AnimatedSection>
 
@@ -49,8 +49,8 @@ const Team = () => {
           </AnimatedSection>
         </div>
       </section>
-    </Layout>
-  );
+    </Layout>);
+
 };
 
 export default Team;
