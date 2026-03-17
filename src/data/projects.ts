@@ -1,5 +1,5 @@
 import project1 from "@/assets/project-1.webp";
-import project2 from "@/assets/project-2.jpg";
+import project2 from "@/assets/project-2.webp";
 import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
 import project5 from "@/assets/project-5.webp";
