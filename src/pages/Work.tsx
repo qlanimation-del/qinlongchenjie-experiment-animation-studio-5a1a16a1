@@ -8,13 +8,13 @@ import type { Locale } from "@/i18n/translations";
 
 // Pinterest-style staggered heights via grid row spans
 const cardSpan: Record<string, number> = {
-  "dreamscape":      3,   // medium
-  "shadows-within":  5,   // very tall
-  "fizzy-pop":       3,   // medium
-  "resonance":       3,   // medium
-  "tiny-worlds":     4,   // tall
-  "between-us":      4,   // tall
-  "beyond-orbit":    3,   // medium
+  "dreamscape":      4,   // medium
+  "shadows-within":  7,   // very tall
+  "fizzy-pop":       5,   // medium-tall
+  "resonance":       4,   // medium
+  "tiny-worlds":     6,   // tall
+  "between-us":      5,   // medium-tall
+  "beyond-orbit":    4,   // medium
 };
 
 function ProjectCard({ project, index, locale }: {project: typeof projects[0]; index: number; locale: Locale}) {
