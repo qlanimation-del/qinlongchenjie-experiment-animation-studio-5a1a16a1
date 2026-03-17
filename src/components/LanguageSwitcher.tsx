@@ -2,6 +2,8 @@ import { Globe } from "lucide-react";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Locale } from "@/i18n/translations";
 import { useState, useRef, useEffect } from "react";
+import { cn } from "@/lib/utils";
+import type { NavVariant } from "./Navbar";
 
 const languages: { code: Locale; label: string }[] = [
   { code: "en", label: "EN" },
@@ -9,10 +11,15 @@ const languages: { code: Locale; label: string }[] = [
   { code: "fr", label: "FR" },
 ];
 
-const LanguageSwitcher = () => {
+interface LanguageSwitcherProps {
+  variant?: NavVariant;
+}
+
+const LanguageSwitcher = ({ variant = "dark" }: LanguageSwitcherProps) => {
   const { locale, setLocale } = useLanguage();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const isLight = variant === "light";
 
   useEffect(() => {
     const handler = (e: MouseEvent) => {
@@ -26,11 +33,16 @@ const LanguageSwitcher = () => {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1 text-white/70 hover:text-white transition-colors"
+        className={cn(
+          "flex items-center gap-1 transition-colors",
+          isLight ? "text-black/70 hover:text-black" : "text-white/70 hover:text-white"
+        )}
         aria-label="Switch language"
       >
         <Globe size={16} />
-        <span className="text-xs font-medium tracking-wide uppercase">{languages.find(l => l.code === locale)?.label}</span>
+        <span className="text-xs font-medium tracking-wide uppercase">
+          {languages.find(l => l.code === locale)?.label}
+        </span>
       </button>
       {open && (
         <div className="absolute right-0 top-8 bg-background/90 backdrop-blur-md border border-border rounded-lg shadow-lg overflow-hidden min-w-[80px] z-50">

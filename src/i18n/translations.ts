@@ -4,6 +4,8 @@ export const translations = {
   // Navbar
   nav: {
     work: { en: "WORK", zh: "作品", fr: "TRAVAUX" },
+    drawing: { en: "DRAWING", zh: "绘画", fr: "DESSIN" },
+    photographs: { en: "PHOTOGRAPHS", zh: "摄影", fr: "PHOTOGRAPHIES" },
     team: { en: "TEAM", zh: "团队", fr: "ÉQUIPE" },
     contact: { en: "CONTACT", zh: "联系", fr: "CONTACT" },
     studioSubtitle: { en: "experiment animation studio", zh: "实验动画工作室", fr: "studio d'animation expérimentale" },
