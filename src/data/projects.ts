@@ -87,8 +87,8 @@ export const projects: Project[] = [
   {
     id: "beyond-orbit",
     title: "DUST",
-    type: { en: "VIDEO ESSAY", zh: "影像散文", fr: "ESSAI VIDÉO" },
-    year: "2026-2028",
+    type: { en: "Independent Animation", zh: "影像散文", fr: "ESSAI VIDÉO" },
+    year: "2026-Present",
     thumbnail: project6,
     videoUrl: "https://player.vimeo.com/video/000005",
     description: {
@@ -138,7 +138,7 @@ export const projects: Project[] = [
   {
     id: "between-us",
     title: "Between Us and the World",
-    type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
+    type: { en: "Video essay", zh: "短片", fr: "Court métrage" },
     year: "2025",
     thumbnail: project7,
     videoUrl: "https://player.vimeo.com/video/000006",
