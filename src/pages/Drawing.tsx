@@ -41,7 +41,7 @@ const Drawing = () => {
       <section className="pt-10 sm:pt-14 pb-20">
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col lg:flex-row gap-10 lg:gap-12">
           {/* Left sidebar */}
-          <aside className="lg:w-[200px] shrink-0 flex flex-col justify-between lg:min-h-[calc(100vh-120px)]">
+          <aside className="lg:w-[200px] shrink-0 flex flex-col gap-10 lg:sticky lg:top-24 lg:self-start">
             <div>
               <p className="text-xs leading-relaxed text-neutral-500 max-w-[200px]">
                 {philosophy[locale]}
