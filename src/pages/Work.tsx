@@ -5,15 +5,15 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Locale } from "@/i18n/translations";
 
-// Pinterest-style: every card a unique height, staggered tall cards across rows
-const cardAspect: Record<string, string> = {
-  "dreamscape":      "aspect-[6/5]",    // slightly short
-  "shadows-within":  "aspect-[3/5]",    // very tall
-  "fizzy-pop":       "aspect-[5/4]",    // near-square short
-  "resonance":       "aspect-[4/3]",    // short
-  "tiny-worlds":     "aspect-[2/3]",    // tall
-  "beyond-orbit":    "aspect-[1/1]",    // square
-  "between-us":      "aspect-[3/4]",    // medium-tall
+// Pinterest-style staggered heights via grid row spans
+const cardSpan: Record<string, number> = {
+  "dreamscape":      3,   // medium
+  "shadows-within":  5,   // very tall
+  "fizzy-pop":       3,   // medium
+  "resonance":       3,   // medium
+  "tiny-worlds":     4,   // tall
+  "between-us":      4,   // tall
+  "beyond-orbit":    3,   // medium
 };
 
 function ProjectCard({ project, index, locale }: {project: typeof projects[0]; index: number; locale: Locale}) {
