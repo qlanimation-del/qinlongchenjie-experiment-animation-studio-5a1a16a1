@@ -23,7 +23,7 @@ function ProjectCard({ project, index, locale }: {project: typeof projects[0]; i
   return (
     <div
       ref={ref}
-      className={`mb-4 md:mb-5 break-inside-avoid transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+      className={`transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       style={{ transitionDelay: `${index * 80}ms` }}>
       
       <Link to={`/work/${project.id}`} className="group block relative overflow-hidden rounded-lg">
