@@ -121,6 +121,17 @@ const ProjectDetail = () => {
               </div>
             )}
 
+            {project.exhibitions?.[locale]?.length ? (
+              <div className="mb-16">
+                <h2 className="text-xl md:text-2xl font-semibold mb-6">{t("projectDetail", "exhibitions")}</h2>
+                <ul className="space-y-2 text-muted-foreground text-base sm:text-base">
+                  {project.exhibitions[locale].map((item, i) => (
+                    <li key={i}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
             <ProjectGallery
               projectId={project.id}
               thumbnail={project.thumbnail}

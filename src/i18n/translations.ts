@@ -85,6 +85,7 @@ export const translations = {
     crew: { en: "Crew", zh: "团队", fr: "Équipe" },
     client: { en: "Client", zh: "客户", fr: "Client" },
     credits: { en: "Credits", zh: "制作团队", fr: "Crédits" },
+    exhibitions: { en: "Exhibitions & Awards", zh: "参展与获奖", fr: "Expositions et Prix" },
     gallery: { en: "Project Gallery", zh: "项目图集", fr: "Galerie du Projet" },
   },
 
