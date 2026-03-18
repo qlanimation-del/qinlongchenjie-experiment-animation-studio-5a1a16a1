@@ -53,10 +53,10 @@ function ProjectCard({ project, index, locale }: {project: typeof projects[0]; i
             </h3>
             <div
               className="w-20 h-px mx-auto my-3 bg-white origin-left
-                scale-x-0 group-hover:[animation:cardLineReveal_0.2s_ease-out_0.12s_forwards]" />
+                scale-x-0 group-hover:[animation:cardLineReveal_0.3s_ease-out_0.2s_forwards]" />
             <span
               className="text-lg block text-white
-                opacity-0 group-hover:[animation:cardSlideFromRight_0.3s_cubic-bezier(0.22,1,0.36,1)_0.08s_forwards]">
+                opacity-0 group-hover:[animation:cardSlideFromRight_0.55s_cubic-bezier(0.16,1,0.3,1)_0.1s_forwards]">
               {project.year}
             </span>
           </div>
