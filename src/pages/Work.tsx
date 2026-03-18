@@ -35,32 +35,36 @@ function ProjectCard({ project, index, locale }: {project: typeof projects[0]; i
           alt={project.title}
           className="w-full h-full object-cover transition-transform duration-400 group-hover:scale-105" />
         
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-colors duration-150 flex items-center justify-center">
-          <div className="text-center px-4">
-            <span
-              className="tracking-[0.2em] uppercase block mb-2 text-base text-white
-                opacity-0 group-hover:[animation:cardSlideFromRight_0.5s_cubic-bezier(0.16,1,0.3,1)_forwards]">
-              {project.type[locale]}
-            </span>
-            <h3
-              className="font-bold mb-1 text-2xl lg:text-3xl
-                opacity-0 group-hover:[animation:cardTitleGlow_0.7s_cubic-bezier(0.16,1,0.3,1)_0.04s_forwards]"
-              style={{
-                color: project.glowColor,
-                '--glow-color': project.glowColor,
-              } as React.CSSProperties}>
-              {project.title}
-            </h3>
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/55 transition-colors duration-200 flex items-center justify-center">
+          <div className="text-center px-4 pointer-events-none">
+            <div className="overflow-hidden">
+              <span
+                className="tracking-[0.2em] uppercase block mb-2 text-base text-white will-change-transform
+                  opacity-0 group-hover:[animation:cardSlideFromRight_0.62s_cubic-bezier(0.19,1,0.22,1)_forwards]">
+                {project.type[locale]}
+              </span>
+            </div>
+            <div className="overflow-hidden py-1">
+              <h3
+                className="font-bold mb-1 text-2xl lg:text-3xl will-change-transform
+                  opacity-0 group-hover:[animation:cardTitleGlow_0.88s_cubic-bezier(0.19,1,0.22,1)_0.02s_forwards]"
+                style={{
+                  color: project.glowColor,
+                  '--glow-color': project.glowColor,
+                } as React.CSSProperties}>
+                {project.title}
+              </h3>
+            </div>
             <div
-              className="w-20 h-px mx-auto my-3 bg-white origin-left
-                scale-x-0 group-hover:[animation:cardLineReveal_0.3s_ease-out_0.2s_forwards]" />
-            <span
-              className="text-lg block text-white
-                opacity-0 group-hover:[animation:cardSlideFromRight_0.55s_cubic-bezier(0.16,1,0.3,1)_0.1s_forwards]">
-              {project.year}
-            </span>
-          </div>
-        </div>
+              className="w-20 h-px mx-auto my-3 bg-white origin-center opacity-0
+                group-hover:[animation:cardLineReveal_0.28s_ease-out_0.18s_forwards]" />
+            <div className="overflow-hidden">
+              <span
+                className="text-lg block text-white will-change-transform
+                  opacity-0 group-hover:[animation:cardSlideFromRight_0.72s_cubic-bezier(0.19,1,0.22,1)_0.08s_forwards]">
+                {project.year}
+              </span>
+            </div>
       </Link>
     </div>);
 }
