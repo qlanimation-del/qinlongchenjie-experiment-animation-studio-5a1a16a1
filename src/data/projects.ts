@@ -415,7 +415,7 @@ export const projects: Project[] = [
     type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
     year: "2014",
     thumbnail: project3,
-    videoUrl: "https://vimeo.com/153659679?fl=ip&fe=ec",
+    videoUrl: "https://player.vimeo.com/video/153659679",
     description: {
       en: "A vibrant and playful animated commercial for a fizzy drink brand. Character animation brings the product to life with energy and charm.",
       zh: "一部充满活力和趣味的动画广告。角色动画以能量和魅力赋予产品生命力。",
