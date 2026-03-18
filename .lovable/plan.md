@@ -1,46 +1,39 @@
 
-# MegaComputeur Website Clone
 
-Recreating the MegaComputeur animation collective portfolio — a dark-themed, cinematic portfolio site with 4 pages.
+## Plan: Optimize Exhibitions & Credits Display
 
-## Pages & Features
+### Problem
+1. Year entries (e.g. "2024", "2025") in exhibitions lists are not visually distinguished — they should be **bold**.
+2. On mobile (390px), the text in credits and exhibitions sections is too large and not compact enough.
 
-### 1. Home Page
-- **Full-screen hero** with a large background image and the MegaComputeur logo + tagline
-- **Scroll-down arrow indicator** at the bottom of the hero
-- **"Who We Are" section** — brief intro about the collective with a side image
-- **"What We Do" section** — description of their work style with a CTA button to the Work page, plus a side image
-- **Awards bar** showing laurels (Annie Awards, BAFTA, Vimeo Best of Year)
-- **Footer** with social links (Vimeo, YouTube, Facebook, Instagram) and copyright
+### Changes
 
-### 2. Work Page (Portfolio Grid)
-- **Masonry-style grid** of project thumbnails (3 columns)
-- Each card shows a **thumbnail image** with an overlay revealing the **project type** (Commercial, Short Film, etc.), **title**, and **year** on hover
-- Cards link to individual project detail pages
+**File: `src/pages/ProjectDetail.tsx`** (lines 117-137)
 
-### 3. Team Page
-- **Three circular portrait photos** in a row with names and "Director" title underneath
-- **"Our Story" section** — a centered text block with the team's humorous backstory
-- Footer with social links
+1. **Bold year detection**: Add logic to detect year-only lines (regex `/^\d{4}$/`) and render them with `font-bold text-white` styling, making them stand out as section headers.
 
-### 4. Contact Page
-- **Contact form** (Name, Email, Message fields + Submit button) in a card layout
-- **Office address info** on the right side (Passion Pictures, London)
-- **Email links** for direct contact and Passion Pictures business inquiries
-- Footer with social links
+2. **Mobile-responsive text sizing for both Credits and Exhibitions**:
+   - Change list text from `text-base` to `text-sm sm:text-base`
+   - Reduce list spacing from `space-y-2` to `space-y-1 sm:space-y-2`
+   - Reduce section heading from `text-xl md:text-2xl` to `text-lg sm:text-xl md:text-2xl`
+   - Reduce section bottom margin from `mb-16` to `mb-10 sm:mb-16`
+   - Reduce heading bottom margin from `mb-6` to `mb-4 sm:mb-6`
 
-### Navigation & Layout
-- **Fixed top navbar** — logo on the left, WORK / TEAM / CONTACT links on the right
-- **Dark theme throughout** (dark background ~#1a1a1a, light text)
-- **Accent colors** matching the original: mint/cyan for logo highlights and active nav links
-- Smooth scroll behavior and subtle hover animations on project cards and links
+3. **Year items get extra top margin** (`mt-4 first:mt-0`) to create visual grouping under each year.
 
-### Project Detail Page (Template)
-- Individual page for each project with embedded video, description, and credits
-- Back navigation to the Work page
+### Rendering logic for exhibition items
+```tsx
+{project.exhibitions[locale].map((item, i) => {
+  const isYear = /^\d{4}$/.test(item.trim());
+  return (
+    <li key={i} className={isYear 
+      ? "font-bold text-white text-sm sm:text-base mt-4 first:mt-0" 
+      : "text-sm sm:text-base"}>
+      {item}
+    </li>
+  );
+})}
+```
 
-### Design Details
-- Dark cinematic aesthetic with generous spacing
-- Clean, minimal typography (sans-serif)
-- Responsive layout for mobile and desktop
-- Smooth fade-in animations on scroll
+Same compact sizing applied to the Credits `<ul>` for consistency.
+
