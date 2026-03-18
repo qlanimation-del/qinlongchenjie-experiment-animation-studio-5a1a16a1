@@ -323,7 +323,7 @@ export const projects: Project[] = [
   },
   {
     id: "gafa-logo",
-    title: "Logo for GAFA Animation Major",
+    title: "GAFA Animation Major",
     type: { en: "COMMERCIAL", zh: "商业项目", fr: "COMMERCIAL" },
     year: "2023",
     thumbnail: projectGafa,
