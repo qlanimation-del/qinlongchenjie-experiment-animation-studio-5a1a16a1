@@ -206,16 +206,19 @@ export const projects: Project[] = [
     },
     exhibitions: {
       en: [
-        "Official Selection – Ottawa International Animation Festival 2025",
-        "Audience Award – Holland Animation Film Festival 2025",
+        "2025",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Official Selection – Ottawa International Animation Festival, Ottawa, Canada",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Audience Award – Holland Animation Film Festival, Utrecht, Netherlands",
       ],
       zh: [
-        "入围 – 渥太华国际动画电影节 2025",
-        "观众奖 – 荷兰动画电影节 2025",
+        "2025",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0入围 – 渥太华国际动画电影节，加拿大渥太华",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0观众奖 – 荷兰动画电影节，荷兰乌得勒支",
       ],
       fr: [
-        "Sélection officielle – Festival international d'animation d'Ottawa 2025",
-        "Prix du public – Holland Animation Film Festival 2025",
+        "2025",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Sélection officielle – Festival international d'animation d'Ottawa, Ottawa, Canada",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Prix du public – Holland Animation Film Festival, Utrecht, Pays-Bas",
       ],
     },
     glowColor: "#E8A87C",
