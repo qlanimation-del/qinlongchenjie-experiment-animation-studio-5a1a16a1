@@ -90,9 +90,6 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
                 decoding={i === 0 ? "auto" : "async"}
               />
             )}
-            {(layer as any).overlay === "bg-black/30" && (
-              <div className="absolute inset-0 bg-black/30" />
-            )}
           </div>
         );
       })}
