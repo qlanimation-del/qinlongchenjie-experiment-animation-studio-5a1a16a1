@@ -289,6 +289,7 @@ export const projects: Project[] = [
     type: { en: "COMMERCIAL", zh: "商业项目", fr: "COMMERCIAL" },
     year: "2023",
     thumbnail: projectGafa,
+    videoUrl: "https://player.vimeo.com/video/860598489?h=bcb862d10f",
     description: {
       en: "A dynamic logo animation created for the GAFA (Gobelins, l'école de l'image) Animation Major. The design captures the spirit of animation education through fluid motion and bold typography.",
       zh: "为GAFA（高布兰动画学院）动画专业创作的动态标志动画。设计通过流畅的运动和大胆的字体捕捉动画教育的精神。",
@@ -415,7 +416,7 @@ export const projects: Project[] = [
     type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
     year: "2014",
     thumbnail: project3,
-    videoUrl: "https://player.vimeo.com/video/153659679",
+    videoUrl: "https://player.vimeo.com/video/153659679?h=363f9693d5",
     description: {
       en: "A vibrant and playful animated commercial for a fizzy drink brand. Character animation brings the product to life with energy and charm.",
       zh: "一部充满活力和趣味的动画广告。角色动画以能量和魅力赋予产品生命力。",
@@ -466,7 +467,7 @@ export const projects: Project[] = [
     type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
     year: "2013",
     thumbnail: project2,
-    videoUrl: "https://player.vimeo.com/video/72798344",
+    videoUrl: "https://player.vimeo.com/video/72798344?h=1f250d5e92",
     description: {
       en: "A dark and atmospheric short film about confronting inner demons. Hand-drawn animation meets digital compositing in this deeply personal story.",
       zh: "一部关于面对内心恶魔的黑暗氛围短片。手绘动画与数字合成在这个极具个人色彩的故事中交汇。",
