@@ -39,7 +39,7 @@ function ProjectCard({ project, index, locale }: {project: typeof projects[0]; i
           <div className="text-center px-4">
             <span
               className="tracking-[0.2em] uppercase block mb-2 text-base text-white
-                opacity-0 group-hover:[animation:cardSlideFromRight_0.28s_cubic-bezier(0.22,1,0.36,1)_forwards]">
+                opacity-0 group-hover:[animation:cardSlideFromRight_0.5s_cubic-bezier(0.16,1,0.3,1)_forwards]">
               {project.type[locale]}
             </span>
             <h3
