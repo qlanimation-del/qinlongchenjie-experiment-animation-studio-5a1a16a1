@@ -581,16 +581,22 @@ export const projects: Project[] = [
     },
     exhibitions: {
       en: [
-        "Winner – Royal Television Society Student Awards 2011",
-        "Official Selection – Anima Mundi Festival 2012",
+        "2011",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Winner – Royal Television Society Student Awards, London, UK",
+        "2012",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Official Selection – Anima Mundi Festival, Rio de Janeiro, Brazil",
       ],
       zh: [
-        "获奖 – 英国皇家电视学会学生奖 2011",
-        "入围 – Anima Mundi 动画节 2012",
+        "2011",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0获奖 – 英国皇家电视学会学生奖，英国伦敦",
+        "2012",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0入围 – Anima Mundi 动画节，巴西里约热内卢",
       ],
       fr: [
-        "Lauréat – Royal Television Society Student Awards 2011",
-        "Sélection officielle – Festival Anima Mundi 2012",
+        "2011",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Lauréat – Royal Television Society Student Awards, Londres, Royaume-Uni",
+        "2012",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Sélection officielle – Festival Anima Mundi, Rio de Janeiro, Brésil",
       ],
     },
     glowColor: "#00D9FF",
