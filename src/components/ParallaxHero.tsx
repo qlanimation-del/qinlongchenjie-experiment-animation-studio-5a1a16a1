@@ -96,7 +96,7 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
 
       {/* Type label */}
       <div
-        className="absolute bottom-24 left-1/2 -translate-x-1/2 z-[7] pointer-events-none"
+        className="absolute bottom-44 left-1/2 -translate-x-1/2 z-[7] pointer-events-none"
         style={{
           opacity: titleOpacity,
           transform: `translateX(-50%) translateY(${titleTranslateY}px)`,
