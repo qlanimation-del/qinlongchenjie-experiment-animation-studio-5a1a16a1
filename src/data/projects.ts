@@ -422,16 +422,19 @@ export const projects: Project[] = [
     },
     exhibitions: {
       en: [
-        "Official Selection – China Independent Animation Film Forum 2018",
-        "Best Motion Design – Beijing Design Week 2018",
+        "2018",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Official Selection – China Independent Animation Film Forum, China",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Best Motion Design – Beijing Design Week, Beijing, China",
       ],
       zh: [
-        "入围 – 中国独立动画电影论坛 2018",
-        "最佳动态设计 – 北京设计周 2018",
+        "2018",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0入围 – 中国独立动画电影论坛，中国",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0最佳动态设计 – 北京设计周，中国北京",
       ],
       fr: [
-        "Sélection officielle – Forum du film d'animation indépendant de Chine 2018",
-        "Meilleur motion design – Beijing Design Week 2018",
+        "2018",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Sélection officielle – Forum du film d'animation indépendant de Chine, Chine",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Meilleur motion design – Beijing Design Week, Pékin, Chine",
       ],
     },
     glowColor: "#00FF88",
