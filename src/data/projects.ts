@@ -289,6 +289,7 @@ export const projects: Project[] = [
     type: { en: "COMMERCIAL", zh: "商业项目", fr: "COMMERCIAL" },
     year: "2023",
     thumbnail: projectGafa,
+    videoUrl: "https://player.vimeo.com/video/860598489?h=bcb862d10f",
     description: {
       en: "A dynamic logo animation created for the GAFA (Gobelins, l'école de l'image) Animation Major. The design captures the spirit of animation education through fluid motion and bold typography.",
       zh: "为GAFA（高布兰动画学院）动画专业创作的动态标志动画。设计通过流畅的运动和大胆的字体捕捉动画教育的精神。",
