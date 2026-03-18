@@ -39,35 +39,24 @@ function ProjectCard({ project, index, locale }: {project: typeof projects[0]; i
           <div className="text-center px-4">
             <span
               className="tracking-[0.2em] uppercase block mb-2 text-base text-white
-                opacity-0 blur-md translate-y-3
-                group-hover:opacity-100 group-hover:blur-0 group-hover:translate-y-0
-                transition-all duration-300"
-              style={{ transitionDelay: '0.03s' }}>
+                opacity-0 group-hover:[animation:cardSlideFromRight_0.45s_ease-out_0.03s_forwards]">
               {project.type[locale]}
             </span>
             <h3
               className="font-bold mb-1 text-2xl lg:text-3xl
-                opacity-0 blur-lg scale-95
-                group-hover:opacity-100 group-hover:blur-0 group-hover:scale-100
-                transition-all duration-300"
+                opacity-0 group-hover:[animation:cardTitleGlow_0.7s_ease-out_0.06s_forwards]"
               style={{
                 color: project.glowColor,
-                textShadow: `0 0 10px ${project.glowColor}, 0 0 20px ${project.glowColor}, 0 0 40px ${project.glowColor}`,
-                transitionDelay: '0.08s'
-              }}>
+                '--glow-color': project.glowColor,
+              } as React.CSSProperties}>
               {project.title}
             </h3>
             <div
-              className="w-20 h-px mx-auto my-3 bg-white
-                scale-x-0 group-hover:scale-x-100
-                transition-transform duration-300"
-              style={{ transitionDelay: '0.13s' }} />
+              className="w-20 h-px mx-auto my-3 bg-white origin-left
+                scale-x-0 group-hover:[animation:cardLineReveal_0.35s_ease-out_0.25s_forwards]" />
             <span
               className="text-lg block text-white
-                opacity-0 blur-md translate-y-2
-                group-hover:opacity-100 group-hover:blur-0 group-hover:translate-y-0
-                transition-all duration-300"
-              style={{ transitionDelay: '0.16s' }}>
+                opacity-0 group-hover:[animation:cardSlideFromRight_0.5s_ease-out_0.2s_forwards]">
               {project.year}
             </span>
           </div>

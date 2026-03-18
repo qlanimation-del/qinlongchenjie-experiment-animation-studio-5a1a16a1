@@ -91,4 +91,56 @@
       transform: translateY(0);
     }
   }
+
+  /* Card hover: white text slides from right */
+  @keyframes cardSlideFromRight {
+    0% {
+      opacity: 0;
+      filter: blur(6px);
+      transform: translateX(30px);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateX(0);
+    }
+  }
+
+  /* Card hover: title slides from left with glow-to-clear */
+  @keyframes cardTitleGlow {
+    0% {
+      opacity: 0;
+      filter: blur(10px);
+      transform: translateX(-30px);
+      text-shadow:
+        0 0 20px var(--glow-color),
+        0 0 40px var(--glow-color),
+        0 0 80px var(--glow-color);
+    }
+    50% {
+      opacity: 1;
+      filter: blur(2px);
+      transform: translateX(0);
+      text-shadow:
+        0 0 15px var(--glow-color),
+        0 0 30px var(--glow-color),
+        0 0 60px var(--glow-color);
+    }
+    100% {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateX(0);
+      text-shadow: none;
+    }
+  }
+
+  /* Card hover: divider line */
+  @keyframes cardLineReveal {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
 }
