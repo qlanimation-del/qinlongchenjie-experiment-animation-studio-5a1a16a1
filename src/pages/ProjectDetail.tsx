@@ -115,9 +115,9 @@ const ProjectDetail = () => {
             </div>
 
             {project.credits[locale].length > 0 && (
-              <div className="mb-16">
-                <h2 className="text-xl md:text-2xl font-semibold mb-6">{t("projectDetail", "credits")}</h2>
-                <ul className="space-y-2 text-muted-foreground text-base sm:text-base">
+              <div className="mb-10 sm:mb-16">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("projectDetail", "credits")}</h2>
+                <ul className="space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
                   {project.credits[locale].map((credit, i) => (
                     <li key={i}>{credit}</li>
                   ))}
@@ -126,12 +126,17 @@ const ProjectDetail = () => {
             )}
 
             {project.exhibitions?.[locale]?.length ? (
-              <div className="mb-16">
-                <h2 className="text-xl md:text-2xl font-semibold mb-6">{t("projectDetail", "exhibitions")}</h2>
-                <ul className="space-y-2 text-muted-foreground text-base sm:text-base">
-                  {project.exhibitions[locale].map((item, i) => (
-                    <li key={i}>{item}</li>
-                  ))}
+              <div className="mb-10 sm:mb-16">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("projectDetail", "exhibitions")}</h2>
+                <ul className="space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
+                  {project.exhibitions[locale].map((item, i) => {
+                    const isYear = /^\d{4}$/.test(item.trim());
+                    return (
+                      <li key={i} className={isYear ? "font-bold text-foreground text-sm sm:text-base mt-4 first:mt-0" : ""}>
+                        {item}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ) : null}
