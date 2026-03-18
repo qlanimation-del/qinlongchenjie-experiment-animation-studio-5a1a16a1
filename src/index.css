@@ -92,58 +92,44 @@
     }
   }
 
-  /* Card hover: white text enters from right with strong blur and slight overshoot */
+  /* Card hover: white text slides from right */
   @keyframes cardSlideFromRight {
     0% {
       opacity: 0;
-      filter: blur(16px);
-      transform: translate3d(72px, 0, 0);
-    }
-    58% {
-      opacity: 1;
-      filter: blur(4px);
-      transform: translate3d(-6px, 0, 0);
+      filter: blur(6px);
+      transform: translateX(30px);
     }
     100% {
       opacity: 1;
       filter: blur(0);
-      transform: translate3d(0, 0, 0);
+      transform: translateX(0);
     }
   }
 
-  /* Card hover: title enters from left as a glowing blur, then resolves sharply */
+  /* Card hover: title slides from left with glow-to-clear */
   @keyframes cardTitleGlow {
     0% {
       opacity: 0;
-      filter: blur(24px);
-      transform: translate3d(-84px, 0, 0);
+      filter: blur(10px);
+      transform: translateX(-30px);
       text-shadow:
         0 0 20px var(--glow-color),
         0 0 40px var(--glow-color),
-        0 0 80px var(--glow-color),
-        0 0 120px var(--glow-color);
+        0 0 80px var(--glow-color);
     }
-    42% {
-      opacity: 1;
-      filter: blur(10px);
-      transform: translate3d(8px, 0, 0);
-      text-shadow:
-        0 0 18px var(--glow-color),
-        0 0 36px var(--glow-color),
-        0 0 72px var(--glow-color);
-    }
-    72% {
+    50% {
       opacity: 1;
       filter: blur(2px);
-      transform: translate3d(0, 0, 0);
+      transform: translateX(0);
       text-shadow:
-        0 0 8px var(--glow-color),
-        0 0 18px var(--glow-color);
+        0 0 15px var(--glow-color),
+        0 0 30px var(--glow-color),
+        0 0 60px var(--glow-color);
     }
     100% {
       opacity: 1;
       filter: blur(0);
-      transform: translate3d(0, 0, 0);
+      transform: translateX(0);
       text-shadow: none;
     }
   }
@@ -151,11 +137,9 @@
   /* Card hover: divider line */
   @keyframes cardLineReveal {
     0% {
-      opacity: 0;
-      transform: scaleX(0.2);
+      transform: scaleX(0);
     }
     100% {
-      opacity: 1;
       transform: scaleX(1);
     }
   }
