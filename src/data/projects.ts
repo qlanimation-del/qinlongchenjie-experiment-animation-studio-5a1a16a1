@@ -374,13 +374,16 @@ export const projects: Project[] = [
     },
     exhibitions: {
       en: [
-        "Official Selection – Annecy International Animation Festival 2022",
+        "2022",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Official Selection – Annecy International Animation Festival, Annecy, France",
       ],
       zh: [
-        "入围 – 昂西国际动画电影节 2022",
+        "2022",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0入围 – 昂西国际动画电影节，法国昂西",
       ],
       fr: [
-        "Sélection officielle – Festival d'Annecy 2022",
+        "2022",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Sélection officielle – Festival d'Annecy, Annecy, France",
       ],
     },
     glowColor: "#B388FF",
