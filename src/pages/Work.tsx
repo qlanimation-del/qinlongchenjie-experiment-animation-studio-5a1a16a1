@@ -44,7 +44,7 @@ function ProjectCard({ project, index, locale }: {project: typeof projects[0]; i
             </span>
             <h3
               className="font-bold mb-1 text-2xl lg:text-3xl
-                opacity-0 group-hover:[animation:cardTitleGlow_0.45s_cubic-bezier(0.22,1,0.36,1)_0.02s_forwards]"
+                opacity-0 group-hover:[animation:cardTitleGlow_0.7s_cubic-bezier(0.16,1,0.3,1)_0.04s_forwards]"
               style={{
                 color: project.glowColor,
                 '--glow-color': project.glowColor,
