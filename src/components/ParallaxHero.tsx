@@ -90,36 +90,20 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
                 decoding={i === 0 ? "auto" : "async"}
               />
             )}
-            {(layer as any).overlay === "bg-black/30" && (
-              <div className="absolute inset-0 bg-black/30" />
-            )}
           </div>
         );
       })}
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-black/40 z-[5]" />
-
-      {/* Title */}
+      {/* Type label */}
       <div
-        className="absolute inset-0 z-[7] flex flex-col items-center justify-center pb-16 sm:pb-20 pointer-events-none px-4"
+        className="absolute bottom-24 left-1/2 -translate-x-1/2 z-[7] pointer-events-none"
         style={{
           opacity: titleOpacity,
-          transform: `translateY(${titleTranslateY}px)`,
+          transform: `translateX(-50%) translateY(${titleTranslateY}px)`,
           willChange: "transform, opacity",
         }}
       >
-        <span className="tracking-[0.3em] uppercase text-xs sm:text-sm text-white/70 mb-3">{type}</span>
-        <h1
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center"
-          style={{
-            color: glowColor,
-            textShadow: `0 0 20px ${glowColor}80, 0 0 60px ${glowColor}40`,
-          }}
-        >
-          {title}
-        </h1>
-        <span className="mt-3 text-white/60 text-xs sm:text-sm tracking-widest">{year}</span>
+        <span className="tracking-[0.35em] uppercase text-base sm:text-lg md:text-xl text-white font-medium drop-shadow-lg">{type}</span>
       </div>
 
       <button
