@@ -96,8 +96,8 @@
   @keyframes cardSlideFromRight {
     0% {
       opacity: 0;
-      filter: blur(6px);
-      transform: translateX(30px);
+      filter: blur(4px);
+      transform: translateX(18px);
     }
     100% {
       opacity: 1;
@@ -110,21 +110,20 @@
   @keyframes cardTitleGlow {
     0% {
       opacity: 0;
-      filter: blur(10px);
-      transform: translateX(-30px);
+      filter: blur(8px);
+      transform: translateX(-18px);
       text-shadow:
-        0 0 20px var(--glow-color),
-        0 0 40px var(--glow-color),
-        0 0 80px var(--glow-color);
+        0 0 16px var(--glow-color),
+        0 0 32px var(--glow-color),
+        0 0 60px var(--glow-color);
     }
-    50% {
+    55% {
       opacity: 1;
-      filter: blur(2px);
+      filter: blur(1px);
       transform: translateX(0);
       text-shadow:
-        0 0 15px var(--glow-color),
-        0 0 30px var(--glow-color),
-        0 0 60px var(--glow-color);
+        0 0 10px var(--glow-color),
+        0 0 20px var(--glow-color);
     }
     100% {
       opacity: 1;
@@ -136,11 +135,7 @@
 
   /* Card hover: divider line */
   @keyframes cardLineReveal {
-    0% {
-      transform: scaleX(0);
-    }
-    100% {
-      transform: scaleX(1);
-    }
+    0% { transform: scaleX(0); }
+    100% { transform: scaleX(1); }
   }
 }
