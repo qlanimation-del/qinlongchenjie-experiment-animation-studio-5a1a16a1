@@ -467,7 +467,7 @@ export const projects: Project[] = [
     type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
     year: "2013",
     thumbnail: project2,
-    videoUrl: "https://player.vimeo.com/video/72798344",
+    videoUrl: "https://player.vimeo.com/video/72798344?h=1f250d5e92",
     description: {
       en: "A dark and atmospheric short film about confronting inner demons. Hand-drawn animation meets digital compositing in this deeply personal story.",
       zh: "一部关于面对内心恶魔的黑暗氛围短片。手绘动画与数字合成在这个极具个人色彩的故事中交汇。",
