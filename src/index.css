@@ -96,8 +96,13 @@
   @keyframes cardSlideFromRight {
     0% {
       opacity: 0;
-      filter: blur(4px);
-      transform: translateX(18px);
+      filter: blur(12px);
+      transform: translateX(50px);
+    }
+    60% {
+      opacity: 1;
+      filter: blur(3px);
+      transform: translateX(-2px);
     }
     100% {
       opacity: 1;
@@ -110,20 +115,27 @@
   @keyframes cardTitleGlow {
     0% {
       opacity: 0;
-      filter: blur(8px);
-      transform: translateX(-18px);
+      filter: blur(18px);
+      transform: translateX(-50px);
       text-shadow:
-        0 0 16px var(--glow-color),
-        0 0 32px var(--glow-color),
-        0 0 60px var(--glow-color);
+        0 0 30px var(--glow-color),
+        0 0 60px var(--glow-color),
+        0 0 100px var(--glow-color);
     }
-    55% {
+    40% {
       opacity: 1;
-      filter: blur(1px);
+      filter: blur(6px);
       transform: translateX(0);
       text-shadow:
-        0 0 10px var(--glow-color),
-        0 0 20px var(--glow-color);
+        0 0 20px var(--glow-color),
+        0 0 40px var(--glow-color),
+        0 0 70px var(--glow-color);
+    }
+    70% {
+      filter: blur(1px);
+      text-shadow:
+        0 0 6px var(--glow-color),
+        0 0 12px var(--glow-color);
     }
     100% {
       opacity: 1;

@@ -39,12 +39,12 @@ function ProjectCard({ project, index, locale }: {project: typeof projects[0]; i
           <div className="text-center px-4">
             <span
               className="tracking-[0.2em] uppercase block mb-2 text-base text-white
-                opacity-0 group-hover:[animation:cardSlideFromRight_0.28s_cubic-bezier(0.22,1,0.36,1)_forwards]">
+                opacity-0 group-hover:[animation:cardSlideFromRight_0.5s_cubic-bezier(0.16,1,0.3,1)_forwards]">
               {project.type[locale]}
             </span>
             <h3
               className="font-bold mb-1 text-2xl lg:text-3xl
-                opacity-0 group-hover:[animation:cardTitleGlow_0.45s_cubic-bezier(0.22,1,0.36,1)_0.02s_forwards]"
+                opacity-0 group-hover:[animation:cardTitleGlow_0.7s_cubic-bezier(0.16,1,0.3,1)_0.04s_forwards]"
               style={{
                 color: project.glowColor,
                 '--glow-color': project.glowColor,
@@ -53,10 +53,10 @@ function ProjectCard({ project, index, locale }: {project: typeof projects[0]; i
             </h3>
             <div
               className="w-20 h-px mx-auto my-3 bg-white origin-left
-                scale-x-0 group-hover:[animation:cardLineReveal_0.2s_ease-out_0.12s_forwards]" />
+                scale-x-0 group-hover:[animation:cardLineReveal_0.3s_ease-out_0.2s_forwards]" />
             <span
               className="text-lg block text-white
-                opacity-0 group-hover:[animation:cardSlideFromRight_0.3s_cubic-bezier(0.22,1,0.36,1)_0.08s_forwards]">
+                opacity-0 group-hover:[animation:cardSlideFromRight_0.55s_cubic-bezier(0.16,1,0.3,1)_0.1s_forwards]">
               {project.year}
             </span>
           </div>
