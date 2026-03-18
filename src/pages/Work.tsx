@@ -39,12 +39,12 @@ function ProjectCard({ project, index, locale }: {project: typeof projects[0]; i
           <div className="text-center px-4">
             <span
               className="tracking-[0.2em] uppercase block mb-2 text-base text-white
-                opacity-0 group-hover:[animation:cardSlideFromRight_0.45s_ease-out_0.03s_forwards]">
+                opacity-0 group-hover:[animation:cardSlideFromRight_0.15s_ease-out_0.03s_forwards]">
               {project.type[locale]}
             </span>
             <h3
               className="font-bold mb-1 text-2xl lg:text-3xl
-                opacity-0 group-hover:[animation:cardTitleGlow_0.7s_ease-out_0.06s_forwards]"
+                opacity-0 group-hover:[animation:cardTitleGlow_0.6s_ease-out_0.2s_forwards]"
               style={{
                 color: project.glowColor,
                 '--glow-color': project.glowColor,
@@ -53,10 +53,10 @@ function ProjectCard({ project, index, locale }: {project: typeof projects[0]; i
             </h3>
             <div
               className="w-20 h-px mx-auto my-3 bg-white origin-left
-                scale-x-0 group-hover:[animation:cardLineReveal_0.35s_ease-out_0.25s_forwards]" />
+                scale-x-0 group-hover:[animation:cardLineReveal_0.1s_ease-out_0.25s_forwards]" />
             <span
               className="text-lg block text-white
-                opacity-0 group-hover:[animation:cardSlideFromRight_0.5s_ease-out_0.2s_forwards]">
+                opacity-0 group-hover:[animation:cardSlideFromRight_0.3s_ease-out_0.2s_forwards]">
               {project.year}
             </span>
           </div>

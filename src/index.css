@@ -77,7 +77,7 @@
 
 @layer utilities {
   .fade-in-up {
-    animation: fadeInUp 0.6s ease-out forwards;
+    animation: fadeInUp 0.01s ease-out forwards;
     opacity: 0;
   }
 
