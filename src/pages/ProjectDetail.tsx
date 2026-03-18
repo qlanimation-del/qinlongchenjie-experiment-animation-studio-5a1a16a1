@@ -84,11 +84,14 @@ const ProjectDetail = () => {
               <div className="mb-12">
                 <div className="aspect-video w-full rounded-lg overflow-hidden bg-black/20">
                   <iframe
-                    src={project.videoUrl}
-                    className="w-full h-full"
-                    allow="autoplay; fullscreen; picture-in-picture"
-                    allowFullScreen
                     title={project.title}
+                    src={project.videoUrl}
+                    width="100%"
+                    height="100%"
+                    frameBorder="0"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                    allowFullScreen
                     loading="lazy"
                   />
                 </div>
