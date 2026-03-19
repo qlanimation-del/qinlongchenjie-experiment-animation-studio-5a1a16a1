@@ -363,6 +363,7 @@ export const projects: Project[] = [
     year: "2022",
     thumbnail: projectCloud,
     videoUrl: "https://player.vimeo.com/video/860598575?h=e277ea2e24",
+    videoAspect: "9/16",
     description: {
       en: "An experimental animated short exploring the liminal space between the physical and digital worlds. As our lives increasingly migrate to the cloud, what do we leave behind?",
       zh: "一部实验性动画短片，探索物理世界与数字世界之间的过渡空间。当我们的生活越来越多地迁移到云端，我们留下了什么？",
