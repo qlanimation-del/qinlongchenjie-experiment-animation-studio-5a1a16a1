@@ -8,21 +8,21 @@ export interface ArtworkItem {
 export const drawings: ArtworkItem[] = [
   {
     id: "d1",
-    src: "https://picsum.photos/seed/charcoal/600/800",
-    title: { en: "Untitled No.1", zh: "无题 一", fr: "Sans titre N°1" },
-    medium: { en: "Charcoal on paper, 2023", zh: "纸上炭笔, 2023", fr: "Fusain sur papier, 2023" },
+    src: "/images/chunriyuzhen001.webp",
+    title: { en: "After Shock 01", zh: "春日余震 01", fr: "Réplique printanière 01" },
+    medium: { en: "Acrylic on paper, 2023", zh: "纸上丙烯, 2023", fr: "Peinture acrylique sur papier, 2023" },
   },
   {
     id: "d2",
-    src: "https://picsum.photos/seed/ink/600/600",
-    title: { en: "Fragment Series I", zh: "片段系列 一", fr: "Série Fragments I" },
-    medium: { en: "Ink on rice paper, 2023", zh: "宣纸水墨, 2023", fr: "Encre sur papier de riz, 2023" },
+    src: "/images/chunriyuzhen002.webp",
+    title: { en: "After Shock 02", zh: "春日余震 02", fr: "Réplique printanière 02" },
+    medium: { en: "Digital art, 2023", zh: "宣纸水墨, 2023", fr: "Encre sur papier de riz, 2023" },
   },
   {
     id: "d3",
-    src: "https://picsum.photos/seed/light/600/450",
-    title: { en: "Study of Light", zh: "光的研究", fr: "Étude de lumière" },
-    medium: { en: "Graphite on paper, 2022", zh: "纸上石墨, 2022", fr: "Graphite sur papier, 2022" },
+    src: "/images/chunriyuzhen003.webp",
+    title: { en: "After Shock 03", zh: "春日余震 03", fr: "Réplique printanière 03" },
+    medium: { en: "Digital art, 2023", zh: "纸上石墨, 2022", fr: "Graphite sur papier, 2022" },
   },
   {
     id: "d4",
