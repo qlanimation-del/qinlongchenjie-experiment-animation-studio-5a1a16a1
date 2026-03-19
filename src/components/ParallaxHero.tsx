@@ -106,14 +106,18 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
         <span className="tracking-[0.35em] uppercase text-base sm:text-lg md:text-xl text-white font-medium drop-shadow-lg">{type}</span>
       </div>
 
-      <button
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-[8] animate-bounce"
-        onClick={onScrollDown}
-        aria-label="Scroll to content"
+      <div
+        className="absolute bottom-8 left-0 right-0 z-[8] flex justify-center"
         style={{ opacity: titleOpacity }}
       >
-        <ChevronDown className="text-white/50" size={48} />
-      </button>
+        <button
+          className="animate-bounce"
+          onClick={onScrollDown}
+          aria-label="Scroll to content"
+        >
+          <ChevronDown className="text-white/50" size={48} />
+        </button>
+      </div>
     </div>
   );
 };
