@@ -33,7 +33,7 @@ import shadowsParallaxBg from "@/assets/shadows-parallax-bg.webp";
 import shadowsParallaxMid from "@/assets/shadows-parallax-mid.webp";
 import shadowsParallaxTop from "@/assets/shadows-parallax-top.webp";
 
-import dreamscapeParallaxBg from "@/assets/dreamscape-parallax-bg.webp";
+import dreamscapeParallaxBg from "@/assets/dreamscape-parallax-bg.png";
 import dreamscapeParallaxMid from "@/assets/dreamscape-parallax-mid.webp";
 import dreamscapeParallaxTop from "@/assets/dreamscape-parallax-top.webp";
 
