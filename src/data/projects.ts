@@ -527,7 +527,7 @@ export const projects: Project[] = [
     },
     credits: {
       en: ["Director: QinLong", "Animation: Qin Long，Zhang Yin，Zhang Ran，Hu Guofeng ",  "Music: Ólafur Arnalds"],
-      zh: ["导演：秦龙", "动画：秦龙、张 Yin、张 Ran、胡国峰", "音乐：Ólafur Arnalds"],
+      zh: ["导演：秦龙", "动画：秦龙、张引、张然、胡国峰", "音乐：Ólafur Arnalds"],
       fr: ["Réalisateur : QinLong", "Animation : Qin Long，Zhang Yin，Zhang Ran，Hu Guofeng", "Musique : Ólafur Arnalds"],
     },
     exhibitions: {
