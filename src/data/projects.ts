@@ -411,7 +411,7 @@ export const projects: Project[] = [
     type: { en: "Commercial", zh: "商业广告", fr: "Publicité" },
     year: "2018",
     thumbnail: project4,
-    videoUrl: "https://player.vimeo.com/video/000003",
+    videoUrl: "https://player.vimeo.com/video/1175336696?h=e67e868106",
     description: {
       en: "An abstract motion graphics journey through sound and color. Each beat triggers a visual explosion of geometric forms and flowing particles.",
       zh: "一场抽象的动态图形之旅，穿越声音与色彩。每一个节拍都触发几何形态和流动粒子的视觉爆发。",
