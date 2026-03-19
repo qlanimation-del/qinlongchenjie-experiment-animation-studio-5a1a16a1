@@ -521,14 +521,14 @@ export const projects: Project[] = [
     thumbnail: project2,
     videoUrl: "https://player.vimeo.com/video/72798344?h=1f250d5e92",
     description: {
-      en: "A dark and atmospheric short film about confronting inner demons. Hand-drawn animation meets digital compositing in this deeply personal story.",
-      zh: "一部关于面对内心恶魔的黑暗氛围短片。手绘动画与数字合成在这个极具个人色彩的故事中交汇。",
-      fr: "Un court métrage sombre et atmosphérique sur la confrontation avec ses démons intérieurs. L'animation dessinée à la main rencontre le compositing numérique dans cette histoire profondément personnelle.",
+      en: "This story has drawn its materials from real life. A little girl was run over by two vehicles in Guangzhou and ignored by numerous passers-by. This animation is to awaken the conscience that has been sunk in sleep.",
+      zh: "这个故事取材于现实生活。在广州，一名小女孩先后被两辆车碾压，众多路人却视而不见。这部动画旨在唤醒沉睡的良知。",
+      fr: "Cette histoire s’inspire de la vie réelle. Une petite fille a été renversée par deux véhicules à Canton et ignorée par de nombreux passants. Ce dessin animé vise à réveiller la conscience endormie.",
     },
     credits: {
-      en: ["Director: QinLong", "Animation: MegaComputeur", "Producer: Passion Pictures", "Music: Ólafur Arnalds"],
-      zh: ["导演：秦龙", "动画：MegaComputeur", "制片：Passion Pictures", "音乐：Ólafur Arnalds"],
-      fr: ["Réalisateur : QinLong", "Animation : MegaComputeur", "Producteur : Passion Pictures", "Musique : Ólafur Arnalds"],
+      en: ["Director: QinLong", "Animation: Qin Long，Zhang Yin，Zhang Ran，Hu Guofeng ",  "Music: Ólafur Arnalds"],
+      zh: ["导演：秦龙", "动画：秦龙、张 Yin、张 Ran、胡国峰", "音乐：Ólafur Arnalds"],
+      fr: ["Réalisateur : QinLong", "Animation : Qin Long，Zhang Yin，Zhang Ran，Hu Guofeng", "Musique : Ólafur Arnalds"],
     },
     exhibitions: {
       en: [
@@ -575,9 +575,9 @@ export const projects: Project[] = [
     thumbnail: project1,
     videoUrl: "https://player.vimeo.com/video/000000",
     description: {
-      en: "An award-winning animated short exploring the boundaries between dreams and reality. A journey through surreal landscapes where nothing is quite what it seems.",
-      zh: "一部获奖动画短片，探索梦境与现实之间的边界。穿越超现实景观的旅程，在这里一切都并非表面所见。",
-      fr: "Un court métrage d'animation primé explorant les frontières entre rêves et réalité. Un voyage à travers des paysages surréalistes où rien n'est tout à fait ce qu'il semble être.",
+      en: "An ing is quite what it seems.",
+      zh: "一部",
+      fr: "Un re rêvle être.",
     },
     credits: {
       en: ["Director: Alex Mercer", "Animation: MegaComputeur", "Music: Nils Frahm", "Sound Design: Studio Echo"],
