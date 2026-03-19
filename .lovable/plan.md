@@ -1,46 +1,38 @@
 
-# MegaComputeur Website Clone
 
-Recreating the MegaComputeur animation collective portfolio — a dark-themed, cinematic portfolio site with 4 pages.
+## Plan: Optimize Video Display for Entering the Cloud
 
-## Pages & Features
+### Problem
+The "Entering the Cloud" project has a **vertical/portrait video**, but the current embed uses `aspect-video` (16:9), causing black bars on both sides and an ugly dark background.
 
-### 1. Home Page
-- **Full-screen hero** with a large background image and the MegaComputeur logo + tagline
-- **Scroll-down arrow indicator** at the bottom of the hero
-- **"Who We Are" section** — brief intro about the collective with a side image
-- **"What We Do" section** — description of their work style with a CTA button to the Work page, plus a side image
-- **Awards bar** showing laurels (Annie Awards, BAFTA, Vimeo Best of Year)
-- **Footer** with social links (Vimeo, YouTube, Facebook, Instagram) and copyright
+### Solution
+Add a `videoAspect` property to the project data, and use it in `ProjectDetail.tsx` to dynamically set the video container's aspect ratio. For this project, use a portrait ratio (e.g. `9/16`), remove the dark background, and let the video fill naturally.
 
-### 2. Work Page (Portfolio Grid)
-- **Masonry-style grid** of project thumbnails (3 columns)
-- Each card shows a **thumbnail image** with an overlay revealing the **project type** (Commercial, Short Film, etc.), **title**, and **year** on hover
-- Cards link to individual project detail pages
+### Changes
 
-### 3. Team Page
-- **Three circular portrait photos** in a row with names and "Director" title underneath
-- **"Our Story" section** — a centered text block with the team's humorous backstory
-- Footer with social links
+**File: `src/data/projects.ts`**
+- Add `videoAspect: "9/16"` to the `entering-cloud` project object.
 
-### 4. Contact Page
-- **Contact form** (Name, Email, Message fields + Submit button) in a card layout
-- **Office address info** on the right side (Passion Pictures, London)
-- **Email links** for direct contact and Passion Pictures business inquiries
-- Footer with social links
+**File: `src/pages/ProjectDetail.tsx`**
+- Read `project.videoAspect` and apply it as a dynamic aspect ratio style.
+- When `videoAspect` is set (portrait video), constrain the container width (e.g. `max-w-sm` / ~60% width) and center it, so it doesn't take the full width.
+- Remove `bg-black/20` when a custom aspect is provided, keeping the background clean.
 
-### Navigation & Layout
-- **Fixed top navbar** — logo on the left, WORK / TEAM / CONTACT links on the right
-- **Dark theme throughout** (dark background ~#1a1a1a, light text)
-- **Accent colors** matching the original: mint/cyan for logo highlights and active nav links
-- Smooth scroll behavior and subtle hover animations on project cards and links
+```tsx
+{project.videoUrl && (
+  <div className="mb-12">
+    <div
+      className={`mx-auto rounded-lg overflow-hidden ${
+        project.videoAspect ? 'max-w-[65%] sm:max-w-[50%]' : 'w-full aspect-video bg-black/20'
+      }`}
+      style={project.videoAspect ? { aspectRatio: project.videoAspect } : undefined}
+    >
+      <iframe ... />
+    </div>
+  </div>
+)}
+```
 
-### Project Detail Page (Template)
-- Individual page for each project with embedded video, description, and credits
-- Back navigation to the Work page
+### Type Update
+Add `videoAspect?: string` to the project type definition (if explicitly typed), or just add the property directly to the data.
 
-### Design Details
-- Dark cinematic aesthetic with generous spacing
-- Clean, minimal typography (sans-serif)
-- Responsive layout for mobile and desktop
-- Smooth fade-in animations on scroll
