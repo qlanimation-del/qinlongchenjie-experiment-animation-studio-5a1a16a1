@@ -120,6 +120,7 @@ export interface Project {
   year: string;
   thumbnail: string;
   videoUrl?: string;
+  videoAspect?: string;
   description: Record<Locale, string>;
   credits: Record<Locale, string[]>;
   exhibitions?: Record<Locale, string[]>;
