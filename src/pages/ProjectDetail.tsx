@@ -82,7 +82,12 @@ const ProjectDetail = () => {
             {/* Video Embed */}
             {project.videoUrl && (
               <div className="mb-12">
-                <div className="aspect-video w-full rounded-lg overflow-hidden bg-black/20">
+                <div
+                  className={`mx-auto rounded-lg overflow-hidden ${
+                    project.videoAspect ? 'max-w-[65%] sm:max-w-[50%]' : 'w-full aspect-video bg-black/20'
+                  }`}
+                  style={project.videoAspect ? { aspectRatio: project.videoAspect } : undefined}
+                >
                   <iframe
                     title={project.title}
                     src={project.videoUrl}
