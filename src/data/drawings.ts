@@ -38,7 +38,7 @@ export const drawings: ArtworkItem[] = [
   },
   {
     id: "d6",
-    src: "/images/chunriyuzhen006.jpg",
+    src: "/images/chunriyuzhen006.webp",
     title: { en: "After Shock 06", zh: "春日余震 06", fr: "Réplique printanière 06" },
     medium: { en: "Colored pencil on paper, 2023", zh: "纸上彩铅, 2023", fr: "Crayon de couleur sur papier, 2023" },
   },
@@ -50,7 +50,7 @@ export const drawings: ArtworkItem[] = [
   },
   {
     id: "d8",
-    src: "/images/chunriyuzhen008.jpg",
+    src: "/images/chunriyuzhen008.webp",
     title: { en: "After Shock 08", zh: "春日余震 08", fr: "Réplique printanière 08" },
     medium: { en: "Watercolor on paper-Storyboard, 2023", zh: "钢笔水墨, 2024", fr: "Aquarelle sur papier, 2023" },
   },
