@@ -3,7 +3,7 @@ import project2 from "@/assets/project-2.webp";
 import project3 from "@/assets/project-3.webp";
 import project4 from "@/assets/project-4.webp";
 import project5 from "@/assets/project-5.webp";
-import project6 from "@/assets/project-6.jpg";
+import project6 from "@/assets/project-6.webp";
 import project7 from "@/assets/project-7.webp";
 import projectCloud from "@/assets/project-cloud.webp";
 import projectGafa from "@/assets/project-gafa.webp";
@@ -120,7 +120,6 @@ export interface Project {
   year: string;
   thumbnail: string;
   videoUrl?: string;
-  videoAspect?: string;
   description: Record<Locale, string>;
   credits: Record<Locale, string[]>;
   exhibitions?: Record<Locale, string[]>;
@@ -363,9 +362,8 @@ export const projects: Project[] = [
     year: "2022",
     thumbnail: projectCloud,
     videoUrl: "https://player.vimeo.com/video/860598575?h=e277ea2e24",
-    videoAspect: "9/16",
     description: {
-      en: "Inspired by previous customers and projects, \"Entering in the cloud\", as a concept naked eye 3d project, I envisioned what would happen to the new hybrid interface if China's ancient heritage culture were translated into data and combined with Digital art?\nEspecially in the face of today's artificial intelligence, cities, and digital life, how can our cultural heritage of tomorrow be integrated into life and linked and displayed?",
+      en: "An experimental animated short exploring the liminal space between the physical and digital worlds. As our lives increasingly migrate to the cloud, what do we leave behind?",
       zh: "一部实验性动画短片，探索物理世界与数字世界之间的过渡空间。当我们的生活越来越多地迁移到云端，我们留下了什么？",
       fr: "Un court métrage d'animation expérimental explorant l'espace liminal entre les mondes physique et numérique. Alors que nos vies migrent de plus en plus vers le cloud, que laissons-nous derrière nous ?",
     },
@@ -385,7 +383,7 @@ export const projects: Project[] = [
       ],
       fr: [
         "2022",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0A obtenu le 2ᵉ prix et le 3ᵉ prix au Concours 2022 de conception de marques chinoises",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0ce",
       ],
     },
     glowColor: "#B388FF",

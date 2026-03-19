@@ -56,7 +56,7 @@ function ProjectCard({ project, index, locale }: {project: typeof projects[0]; i
                 scale-x-0 group-hover:[animation:cardLineReveal_0.1s_ease-out_0.25s_forwards]" />
             <span
               className="text-lg block text-white
-                opacity-0 group-hover:[animation:cardSlideFromRight_0.3s_ease-out_0.2s_forwards]">
+                opacity-0 group-hover:[animation:cardSlideFromRight_0.4s_ease-out_0.2s_forwards]">
               {project.year}
             </span>
           </div>
