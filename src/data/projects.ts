@@ -339,7 +339,7 @@ export const projects: Project[] = [
       fr: ["Réalisateur : QinLong", "Animation : QinLong", "Design : QinLong"],
     },
     glowColor: "#4FC3F7",
-    client: { en: "GAFA Animation", zh: "GAFA 动画专业", fr: "GAFA Animation" },
+    client: { en: "GAFA Animation Major", zh: "GAFA 动画专业", fr: "GAFA Animation Major" },
     crew: { en: "QinLong", zh: "秦龙", fr: "QinLong" },
     parallaxLayers: [
       { src: gafaParallaxBg, speed: 0.1 },
@@ -375,15 +375,15 @@ export const projects: Project[] = [
     exhibitions: {
       en: [
         "2022",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Official Selection – Annecy International Animation Festival, Annecy, France",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Won the Second Prize and Third Prize in the 2022 China Brand Innovation Design Competition",
       ],
       zh: [
         "2022",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0入围 – 昂西国际动画电影节，法国昂西",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0荣获 2022 年中国品牌创新设计大赛二等奖、三等奖",
       ],
       fr: [
         "2022",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Sélection officielle – Festival d'Annecy, Annecy, France",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0A obtenu le 2ᵉ prix et le 3ᵉ prix au Concours 2022 de conception de marques chinoises",
       ],
     },
     glowColor: "#B388FF",
