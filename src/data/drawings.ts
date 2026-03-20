@@ -60,4 +60,47 @@ export const drawings: ArtworkItem[] = [
     title: { en: "Quiet Moment", zh: "静谧时刻", fr: "Moment de calme" },
     medium: { en: "Colored pencil on paper, 2023", zh: "纸上彩铅, 2023", fr: "Crayon de couleur sur papier, 2023" },
   },
+  {
+    id: "d10",
+    src: "https://picsum.photos/seed/quiet/600/700",
+    title: { en: "Quiet Moment", zh: "静谧时刻", fr: "Moment de calme" },
+    medium: { en: "Colored pencil on paper, 2023", zh: "纸上彩铅, 2023", fr: "Crayon de couleur sur papier, 2023" },
+  },
+  {
+    id: "d10",
+    src: "https://picsum.photos/seed/quiet/600/700",
+    title: { en: "Quiet Moment", zh: "静谧时刻", fr: "Moment de calme" },
+    medium: { en: "Colored pencil on paper, 2023", zh: "纸上彩铅, 2023", fr: "Crayon de couleur sur papier, 2023" },
+  },
+  {
+    id: "d10",
+    src: "https://picsum.photos/seed/quiet/600/700",
+    title: { en: "Quiet Moment", zh: "静谧时刻", fr: "Moment de calme" },
+    medium: { en: "Colored pencil on paper, 2023", zh: "纸上彩铅, 2023", fr: "Crayon de couleur sur papier, 2023" },
+  },
+  {
+    id: "d11",
+    src: "https://picsum.photos/seed/quiet/600/700",
+    title: { en: "Quiet Moment", zh: "静谧时刻", fr: "Moment de calme" },
+    medium: { en: "Colored pencil on paper, 2023", zh: "纸上彩铅, 2023", fr: "Crayon de couleur sur papier, 2023" },
+  },
+  {
+    id: "d12",
+    src: "https://picsum.photos/seed/quiet/600/700",
+    title: { en: "Quiet Moment", zh: "静谧时刻", fr: "Moment de calme" },
+    medium: { en: "Colored pencil on paper, 2023", zh: "纸上彩铅, 2023", fr: "Crayon de couleur sur papier, 2023" },
+  },
+  {
+    id: "d13",
+    src: "https://picsum.photos/seed/quiet/600/700",
+    title: { en: "Quiet Moment", zh: "静谧时刻", fr: "Moment de calme" },
+    medium: { en: "Colored pencil on paper, 2023", zh: "纸上彩铅, 2023", fr: "Crayon de couleur sur papier, 2023" },
+  },
+  {
+    id: "d14",
+    src: "https://picsum.photos/seed/quiet/600/700",
+    title: { en: "Quiet Moment", zh: "静谧时刻", fr: "Moment de calme" },
+    medium: { en: "Colored pencil on paper, 2023", zh: "纸上彩铅, 2023", fr: "Crayon de couleur sur papier, 2023" },
+  },
+  
 ];
