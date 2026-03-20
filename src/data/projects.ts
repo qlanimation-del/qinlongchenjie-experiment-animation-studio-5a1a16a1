@@ -119,8 +119,8 @@ export interface Project {
   type: Record<Locale, string>;
   year: string;
   thumbnail: string;
-  videoUrl?: string;
-  videoAspect?: string;
+  videoUrl?: string | string[];
+  videoAspect?: string | string[];
   description: Record<Locale, string>;
   credits: Record<Locale, string[]>;
   exhibitions?: Record<Locale, string[]>;
