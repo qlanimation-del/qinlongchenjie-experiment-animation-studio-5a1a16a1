@@ -47,7 +47,7 @@ const ProjectDetail = () => {
 
   return (
     <Layout fullBleed>
-      <div className="relative w-full h-screen overflow-hidden z-0" style={{ marginBottom: '-4rem' }}>
+      <div className="relative w-full h-screen overflow-hidden" style={{ marginBottom: '-4rem' }}>
         <ParallaxHero
           layers={project.parallaxLayers}
           singleImage={!project.parallaxLayers?.length ? project.thumbnail : undefined}
