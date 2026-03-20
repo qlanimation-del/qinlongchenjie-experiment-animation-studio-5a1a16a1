@@ -418,9 +418,10 @@ export const projects: Project[] = [
       fr: "Un voyage abstrait en motion design à travers le son et la couleur. Chaque battement déclenche une explosion visuelle de formes géométriques et de particules fluides.",
     },
     credits: {
-      en: ["Director: QinLong", "Beijing Forestry University-Admissions Office", "Artist: QinLong", "Animation: QinLong"],
-      zh: ["导演：秦龙", "客户：北京林业大学", "艺术家：秦龙", "动画：秦龙"],
-      fr: ["Réalisateur : QinLong", "Client : Université forestière de Pékin", "Artiste : QinLong", "Animation : QinLong"],
+
+      en: ["Director: QinLong", "Story board: QinLong", "Animation: Beijing Yudubai Culture Media Co. Ltd.","Character Design: QinLong", "Scene Art：Chongqing Shifu Qianfang Animation Design Co., Ltd.","Music & Voice Acting: TrioPen Studio"],
+      zh: ["导演：秦龙", "故事版：秦龙", "动画：北京鱼肚白文化传媒有限公司", "角色设计：秦龙", "场景美术：重庆市师傅前方动画设计有限公司", "音乐与配音：TrioPen Studio"],
+      fr: ["Réalisateur : QinLong", "Story board : QinLong", "Animation : Beijing Yudubai Culture Media Co. Ltd.","Personnage conçu par : QinLong", "Art de scène : Chongqing Shifu Qianfang Animation Design Co., Ltd.","Musique et voix : TrioPen Studio"],
     },
     exhibitions: {
       en: [
