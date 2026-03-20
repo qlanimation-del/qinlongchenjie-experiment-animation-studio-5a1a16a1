@@ -582,16 +582,18 @@ export const projects: Project[] = [
       fr: "Un re rêvle être.",
     },
     credits: {
-      en: ["Director: Alex Mercer", "Animation: MegaComputeur", "Music: Nils Frahm", "Sound Design: Studio Echo"],
-      zh: ["导演：Alex Mercer", "动画：MegaComputeur", "音乐：Nils Frahm", "声音设计：Studio Echo"],
-      fr: ["Réalisateur : Alex Mercer", "Animation : MegaComputeur", "Musique : Nils Frahm", "Conception sonore : Studio Echo"],
+      en: ["Director: QinLong", "Animation: QinLong", ],
+      zh: ["导演：秦龙", "动画：秦龙", "音乐：Nils Frahm", ],
+      fr: ["Réalisateur : QinLong", "Animation : QinLong", ],
     },
     exhibitions: {
       en: [
-        "2011",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Winner – Royal Television Society Student Awards, London, UK",
         "2012",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Official Selection – Anima Mundi Festival, Rio de Janeiro, Brazil",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Youku Young Director Support Program, Signed Director, Beijing, China",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Finalist, SICAF Animation Festival, Seoul, South Korea",
+        "2011",
+        
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Finalist Award, Fukuoka Asian Digital Art Exhibition, Fukuoka, Japan",
       ],
       zh: [
         "2011",
