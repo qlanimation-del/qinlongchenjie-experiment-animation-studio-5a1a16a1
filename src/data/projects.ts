@@ -533,22 +533,19 @@ export const projects: Project[] = [
     },
     exhibitions: {
       en: [
-        "2013",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Best Student Film – British Animation Awards, London, UK",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Official Selection – London International Animation Festival, London, UK",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Honorable Mention – Encounters Film Festival, Bristol, UK",
+        "2012",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Audience Choice Award, Hamburg Animation Festival, Hamburg, Germany",
+
       ],
       zh: [
-        "2013",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0最佳学生电影 – 英国动画大奖，英国伦敦",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0入围 – 伦敦国际动画电影节，英国伦敦",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0荣誉提名 – Encounters 电影节，英国布里斯托尔",
+        "2012",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0德国汉堡动画节 最受关注奖，汉堡，德国",
+
       ],
       fr: [
-        "2013",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Meilleur film étudiant – British Animation Awards, Londres, Royaume-Uni",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Sélection officielle – London International Animation Festival, Londres, Royaume-Uni",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Mention honorable – Encounters Film Festival, Bristol, Royaume-Uni",
+        "2012",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Prix du public – Festival d'animation de Hambourg, Hambourg, Allemagne",
+
       ],
     },
     glowColor: "#FF3366",
