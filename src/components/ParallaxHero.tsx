@@ -59,7 +59,7 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
           return (
             <div
               key={i}
-              className="absolute inset-0 w-full h-full"
+              className="absolute inset-0 w-full h-full pointer-events-none"
               style={{
                 transform: `translateY(${parallaxOffset}px)`,
                 zIndex: i + 1,
@@ -74,7 +74,7 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
         return (
           <div
             key={i}
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full pointer-events-none"
             style={{
               transform: `translateY(${parallaxOffset}px) scale(${scale})`,
               zIndex: i,

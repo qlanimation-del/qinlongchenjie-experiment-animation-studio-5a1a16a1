@@ -79,29 +79,35 @@ const ProjectDetail = () => {
               {project.description[locale]}
             </p>
 
-            {/* Video Embed */}
-            {project.videoUrl && (
-              <div className="mb-12">
-                <div
-                  className={`mx-auto rounded-lg overflow-hidden ${
-                    project.videoAspect ? 'max-w-[65%] sm:max-w-[50%]' : 'w-full aspect-video bg-black/20'
-                  }`}
-                  style={project.videoAspect ? { aspectRatio: project.videoAspect } : undefined}
-                >
-                  <iframe
-                    title={project.title}
-                    src={project.videoUrl}
-                    width="100%"
-                    height="100%"
-                    frameBorder="0"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                    allowFullScreen
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            )}
+            {/* Video Embed(s) */}
+            {(() => {
+              const videoUrls = Array.isArray(project.videoUrl) ? project.videoUrl : project.videoUrl ? [project.videoUrl] : [];
+              const videoAspects = Array.isArray(project.videoAspect) ? project.videoAspect : project.videoAspect ? [project.videoAspect] : [];
+              return videoUrls.map((url, i) => {
+                const aspect = videoAspects[i];
+                const isVertical = aspect === "9/16";
+                return (
+                  <div key={i} className="mb-12">
+                    <div
+                      className={`mx-auto rounded-lg overflow-hidden ${isVertical ? 'max-w-[65%] sm:max-w-[50%]' : 'w-full bg-black/20'}`}
+                      style={{ aspectRatio: aspect || "16/9" }}
+                    >
+                      <iframe
+                        title={`${project.title} ${i + 1}`}
+                        src={url}
+                        width="100%"
+                        height="100%"
+                        frameBorder="0"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                        allowFullScreen
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+                );
+              });
+            })()}
 
             {/* Metadata Grid — always visible */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12 bg-white/5 rounded-lg p-4 sm:p-6">
