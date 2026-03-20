@@ -583,7 +583,7 @@ export const projects: Project[] = [
     },
     credits: {
       en: ["Director: QinLong", "Animation: QinLong", ],
-      zh: ["导演：秦龙", "动画：秦龙", "音乐：Nils Frahm", ],
+      zh: ["导演：秦龙", "动画：秦龙", ],
       fr: ["Réalisateur : QinLong", "Animation : QinLong", ],
     },
     exhibitions: {
@@ -610,7 +610,7 @@ export const projects: Project[] = [
     },
     glowColor: "#00D9FF",
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
-    crew: { en: "Alex Mercer, MegaComputeur", zh: "Alex Mercer、MegaComputeur", fr: "Alex Mercer, MegaComputeur" },
+    crew: { en: "QinLong", zh: "秦龙", fr: "QinLong" },
     parallaxLayers: [
       { src: dreamscapeParallaxBg, speed: 0.1 },
       { src: dreamscapeParallaxMid, speed: 0.25 },
