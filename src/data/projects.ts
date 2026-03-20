@@ -577,9 +577,9 @@ export const projects: Project[] = [
     thumbnail: project1,
     videoUrl: "https://player.vimeo.com/video/000000",
     description: {
-      en: "An ing is quite what it seems.",
-      zh: "一部",
-      fr: "Un re rêvle être.",
+      en: "This is a 2D hand-drawn animated short film that depicts a day in the life of modern young people.It portrays their confusion and anguish in making life choices, as they navigate a repetitive, passive existence filled with decisions, standing at a crossroads in life.The creator believes that everyone has their own path in life. Sticking to one’s ideals and following their own journey steadfastly until the end may be the best way forward.",
+      zh: "这是一部描绘了现代年轻人的一天的二维手绘动画短片。描写年轻人们在不断重复、被动、充满选择的生活中，表达处于十字路口时，择路过程中的困惑和痛苦……作者认为，每个人都有自己的一条轨，坚持自己心存的理想一条路走到亮，可能是最好的方式。",
+      fr: "Il s’agit d’un court métrage d’animation dessinée à la main en 2D qui dépeint une journée de jeunes gens modernes.Il décrit la confusion et la souffrance des jeunes gens au cours du processus de choix de leur chemin, alors qu’ils se trouvent à la croisée des chemins, dans une vie répétitive, passive et pleine de choix…L’auteur estime que chacun possède sa propre voie ; persévérer dans son idéal et suivre son propre chemin jusqu’au bout est peut-être la meilleure manière de faire.",
     },
     credits: {
       en: ["Director: QinLong", "Animation: QinLong", ],
