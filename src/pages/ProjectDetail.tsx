@@ -39,9 +39,12 @@ const ProjectDetail = () => {
     );
   }
 
-  const scrollToContent = () => {
-    contentRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+ const scrollToContent = () => {
+  window.scrollBy({ 
+    top: 900, // 改这个数：500=少滚，1000=多滚
+    behavior: "smooth" 
+  });
+};
 
   const galleryImages = project.galleryImages;
 
