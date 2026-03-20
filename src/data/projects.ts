@@ -426,19 +426,17 @@ export const projects: Project[] = [
     },
     exhibitions: {
       en: [
-        "2018",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Official Selection – China Independent Animation Film Forum, China",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Best Motion Design – Beijing Design Week, Beijing, China",
+        "2020",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Eligibility for Membership, 2nd National Animation & Comic Art Exhibition, Beijing, China",
       ],
       zh: [
-        "2018",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0入围 – 中国独立动画电影论坛，中国",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0最佳动态设计 – 北京设计周，中国北京",
+        "2020",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0入选 – 第二届全国动画与漫画艺术展览，中国北京",
       ],
       fr: [
-        "2018",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Sélection officielle – Forum du film d'animation indépendant de Chine, Chine",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Meilleur motion design – Beijing Design Week, Pékin, Chine",
+        "2020",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Sélection officielle – 2ème exposition nationale d'animation et d'art de bande dessinée, Beijing, Chine",
+
       ],
     },
     glowColor: "#00FF88",
