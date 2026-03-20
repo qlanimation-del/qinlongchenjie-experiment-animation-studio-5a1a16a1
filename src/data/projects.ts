@@ -464,7 +464,6 @@ export const projects: Project[] = [
     type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
     year: "2014",
     thumbnail: project3,
-    videoUrl: "https://player.vimeo.com/video/153659679?h=363f9693d5",
     description: {
       en: "A vibrant and playful animated commercial for a fizzy drink brand. Character animation brings the product to life with energy and charm.",
       zh: "一部充满活力和趣味的动画广告。角色动画以能量和魅力赋予产品生命力。",
@@ -521,16 +520,16 @@ export const projects: Project[] = [
     type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
     year: "2013",
     thumbnail: project2,
-    videoUrl: "https://player.vimeo.com/video/72798344?h=1f250d5e92",
+    videoUrl: "",
     description: {
       en: "This story has drawn its materials from real life. A little girl was run over by two vehicles in Guangzhou and ignored by numerous passers-by. This animation is to awaken the conscience that has been sunk in sleep.",
       zh: "这个故事取材于现实生活。在广州，一名小女孩先后被两辆车碾压，众多路人却视而不见。这部动画旨在唤醒沉睡的良知。",
       fr: "Cette histoire s’inspire de la vie réelle. Une petite fille a été renversée par deux véhicules à Canton et ignorée par de nombreux passants. Ce dessin animé vise à réveiller la conscience endormie.",
     },
     credits: {
-      en: ["Director: QinLong", "Animation: Qin Long，Zhang Yin，Zhang Ran，Hu Guofeng ",  "Music: Ólafur Arnalds"],
-      zh: ["导演：秦龙", "动画：秦龙、张引、张然、胡国峰", "音乐：Ólafur Arnalds"],
-      fr: ["Réalisateur : QinLong", "Animation : Qin Long，Zhang Yin，Zhang Ran，Hu Guofeng", "Musique : Ólafur Arnalds"],
+      en: ["Director: Qin Long", "Animation: Qin Long，Zhang Yin，Zhang Ran，Hu Guofeng "],
+      zh: ["导演：秦龙", "动画：秦龙、张引、张然、胡国峰"],
+      fr: ["Réalisateur : QinLong", "Animation : Qin Long，Zhang Yin，Zhang Ran，Hu Guofeng"],
     },
     exhibitions: {
       en: [
@@ -553,8 +552,8 @@ export const projects: Project[] = [
       ],
     },
     glowColor: "#FF3366",
-    client: { en: "Passion Pictures", zh: "Passion Pictures", fr: "Passion Pictures" },
-    crew: { en: "QinLong, MegaComputeur", zh: "秦龙、MegaComputeur", fr: "QinLong, MegaComputeur" },
+    client: { en: "Independent animation", zh: "独立动画", fr: "Animation indépendante" },
+    crew: { en: "QinLong", zh: "秦龙", fr: "QinLong" },
     parallaxLayers: [
       { src: shadowsParallaxBg, speed: 0.1 },
       { src: shadowsParallaxMid, speed: 0.25 },
@@ -575,7 +574,7 @@ export const projects: Project[] = [
     type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
     year: "2011",
     thumbnail: project1,
-    videoUrl: "https://player.vimeo.com/video/000000",
+    
     description: {
       en: "This is a 2D hand-drawn animated short film that depicts a day in the life of modern young people.It portrays their confusion and anguish in making life choices, as they navigate a repetitive, passive existence filled with decisions, standing at a crossroads in life.The creator believes that everyone has their own path in life. Sticking to one’s ideals and following their own journey steadfastly until the end may be the best way forward.",
       zh: "这是一部描绘了现代年轻人的一天的二维手绘动画短片。描写年轻人们在不断重复、被动、充满选择的生活中，表达处于十字路口时，择路过程中的困惑和痛苦……作者认为，每个人都有自己的一条轨，坚持自己心存的理想一条路走到亮，可能是最好的方式。",
