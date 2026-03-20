@@ -107,13 +107,14 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
       </div>
 
       <div
-        className="absolute bottom-8 left-0 right-0 z-[8] flex justify-center"
+        className="absolute bottom-14 sm:bottom-8 left-0 right-0 z-[8] flex justify-center"
         style={{ opacity: titleOpacity }}
       >
         <button
-          className="animate-bounce"
+          className="animate-bounce touch-manipulation"
           onClick={onScrollDown}
           aria-label="Scroll to content"
+          type="button"
         >
           <ChevronDown className="text-white/50" size={48} />
         </button>

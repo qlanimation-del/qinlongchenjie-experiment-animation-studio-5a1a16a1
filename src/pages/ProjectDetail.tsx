@@ -60,7 +60,7 @@ const ProjectDetail = () => {
       </div>
 
       <div ref={contentRef} className="relative z-10">
-        <div className="h-40 sm:h-52 bg-gradient-to-b from-transparent via-background/60 to-background -mt-32 sm:-mt-40 relative z-10 rounded-t-3xl" />
+        <div className="pointer-events-none h-32 sm:h-52 bg-gradient-to-b from-transparent via-background/60 to-background -mt-20 sm:-mt-40 relative z-10 rounded-t-3xl" />
 
         <div className="bg-background py-12 sm:py-16 md:py-24 px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="mx-auto w-full max-w-3xl">
