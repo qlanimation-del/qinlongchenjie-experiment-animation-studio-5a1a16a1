@@ -12,7 +12,7 @@ interface ProjectGalleryProps {
 const ProjectGallery = ({ projectId, thumbnail, customImages }: ProjectGalleryProps) => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const { t } = useLanguage();
-  const images = customImages ?? generatePlaceholderImages(projectId, thumbnail || "/placeholder.svg");
+  const images = customImages ?? [];
 
   return (
     <>
