@@ -152,24 +152,24 @@ export const projects: Project[] = [
     exhibitions: {
       en: [
         "2027",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Best Experimental Film – Zagreb World Festival of Animated Films, Zagreb, Croatia",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Jury Prize – Fantoche International Animation Festival, Baden, Switzerland",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
         "2028",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Official Selection – Annecy International Animation Festival, Annecy, France",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
       ],
       zh: [
         "2027",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0最佳实验电影 – 萨格勒布世界动画电影节，克罗地亚萨格勒布",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0评审团奖 – Fantoche 国际动画电影节，瑞士巴登",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
         "2028",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0入围 – 昂西国际动画电影节，法国昂西",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
       ],
       fr: [
         "2027",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Meilleur film expérimental – Festival mondial du film d'animation de Zagreb, Zagreb, Croatie",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Prix du jury – Fantoche Festival international du film d'animation, Baden, Suisse",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
         "2028",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Sélection officielle – Festival international du film d'animation d'Annecy, Annecy, France",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
       ],
     },
     glowColor: "#AA88FF",
@@ -182,11 +182,7 @@ export const projects: Project[] = [
     ],
     galleryImages: [
       { src: b1, alt: "Dust gallery 1" },
-      { src: b2, alt: "Dust gallery 2" },
-      { src: b3, alt: "Dust gallery 3" },
-      { src: b4, alt: "Dust gallery 4" },
-      { src: b5, alt: "Dust gallery 5" },
-      { src: b6, alt: "Dust gallery 6" },
+    
     ],
   },
   {
