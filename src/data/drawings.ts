@@ -93,7 +93,7 @@ export const drawings: ArtworkItem[] = [
   },
   {
     id: "d10b",
-    src: "/images/Scence Design012.webp",
+    src: "/images/Scence-Design012.webp",
     title: { en: "Character Design © 2017 Beijing HUTOON Animation Co.Ltd.", zh: "角色设计-降妖高校", fr: "Conception de personnage – Lycée des Chasseurs de Démons" },
     medium: { en: "Digital art, 2017", zh: "数字艺术, 2017", fr: "Art numérique, 2017" },
     year: 2017,
