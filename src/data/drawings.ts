@@ -8,7 +8,25 @@ export interface ArtworkItem {
 }
 
 export const drawings: ArtworkItem[] = [
-  // === After Shock / 春日余震 (newest first) ===
+  // === Dust / 尘 (newest first) ===
+  {
+    id: "d11",
+    src: "/images/Dust-Poster01.webp",
+    title: { en: "Dust 01", zh: "尘 01", fr: " Poussière" },
+    medium: { en: "Acrylic on canvas, 2024", zh: "布面丙烯, 2024", fr: "Acrylique sur toile, 2024" },
+    year: 2025,
+    category: { en: "Dust", zh: "尘", fr: "Poussière" },
+  },
+  {
+    id: "d12",
+    src: "/images/Dust-Poster02.webp",
+    title: { en: "Dust 02", zh: "尘 02", fr: " Poussière" },
+    medium: { en: "Acrylic on canvas, 2024", zh: "布面丙烯, 2024", fr: "Acrylique sur toile, 2024" },
+    year: 2025,
+    category: { en: "Dust", zh: "尘", fr: "Poussière" },
+  },
+
+  // === After Shock / 春日余震  ===
   {
     id: "d5",
     src: "/images/chunriyuzhen005.webp",
