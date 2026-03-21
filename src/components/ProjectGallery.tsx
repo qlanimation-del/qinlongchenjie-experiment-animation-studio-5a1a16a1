@@ -2,11 +2,6 @@ import { useState } from "react";
 import ImageLightbox from "./ImageLightbox";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-const generatePlaceholderImages = (projectId: string, thumbnail: string, count = 6) =>
-  Array.from({ length: count }, (_, i) => ({
-    src: `/placeholder.svg`,
-    alt: `${projectId} gallery image ${i + 1}`,
-  }));
 
 interface ProjectGalleryProps {
   projectId: string;
@@ -17,7 +12,7 @@ interface ProjectGalleryProps {
 const ProjectGallery = ({ projectId, thumbnail, customImages }: ProjectGalleryProps) => {
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   const { t } = useLanguage();
-  const images = customImages ?? generatePlaceholderImages(projectId, thumbnail || "/placeholder.svg");
+  const images = customImages ?? [];
 
   return (
     <>

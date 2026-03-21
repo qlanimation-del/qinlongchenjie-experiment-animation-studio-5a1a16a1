@@ -1,4 +1,6 @@
+import { useState, useMemo } from "react";
 import Layout from "@/components/Layout";
+import ImageLightbox from "@/components/ImageLightbox";
 import { drawings } from "@/data/drawings";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
@@ -11,18 +13,19 @@ const philosophy = {
   fr: "Le dessin est la conversation la plus directe entre la pensée et la surface. Chaque trait porte le poids de l'intention et la liberté de l'accident — une tension à laquelle nous revenons sans cesse.",
 };
 
-function ArtCard({ item, index, locale }: { item: ArtworkItem; index: number; locale: Locale }) {
+function ArtCard({ item, index, locale, onClick }: { item: ArtworkItem; index: number; locale: Locale; onClick: () => void }) {
   const { ref, isVisible } = useScrollAnimation(0.1);
   return (
     <div
       ref={ref}
-      className={`transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+      className={`cursor-pointer group transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
       style={{ transitionDelay: `${index * 60}ms` }}
+      onClick={onClick}
     >
       <img
         src={item.src}
         alt={item.title[locale]}
-        className="w-full h-auto block"
+        className="w-full h-auto block rounded transition-transform duration-300 group-hover:scale-[1.02]"
         loading="lazy"
       />
       <div className="mt-3 mb-1">
@@ -35,6 +38,35 @@ function ArtCard({ item, index, locale }: { item: ArtworkItem; index: number; lo
 
 const Drawing = () => {
   const { locale } = useLanguage();
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  // Group by category, sorted newest first within each group
+  const grouped = useMemo(() => {
+    const sorted = [...drawings].sort((a, b) => b.year - a.year);
+    const map = new Map<string, { category: typeof drawings[0]["category"]; yearRange: string; items: ArtworkItem[] }>();
+    for (const item of sorted) {
+      const key = item.category.en;
+      if (!map.has(key)) {
+        map.set(key, { category: item.category, yearRange: "", items: [] });
+      }
+      map.get(key)!.items.push(item);
+    }
+    // Compute year ranges
+    for (const group of map.values()) {
+      const years = group.items.map((i) => i.year);
+      const min = Math.min(...years);
+      const max = Math.max(...years);
+      group.yearRange = min === max ? `${min}` : `${min}–${max}`;
+    }
+    return Array.from(map.values());
+  }, []);
+
+  // Flat list for lightbox navigation
+  const flatItems = useMemo(() => grouped.flatMap((g) => g.items), [grouped]);
+  const lightboxImages = useMemo(() => flatItems.map((i) => ({ src: i.src, alt: i.title[locale] })), [flatItems, locale]);
+
+  // Map from (groupIdx, itemIdx) to flat index
+  let flatOffset = 0;
 
   return (
     <Layout navVariant="light" className="bg-white">
@@ -50,29 +82,62 @@ const Drawing = () => {
                 {philosophy[locale]}
               </p>
             </div>
-            <nav className="mt-40 lg:mt-56">
-              <ul className="space-y-1.5">
-                {drawings.map((item) => {
-                  const year = item.medium[locale].match(/\d{4}/)?.[0] ?? "";
-                  return (
-                    <li key={item.id} className="text-[11px] text-neutral-400 leading-snug">
-                      <span className="text-neutral-600 italic">{item.title[locale]}</span>
-                      {year && <span> — {year}</span>}
-                    </li>
-                  );
-                })}
-              </ul>
+            <nav className="mt-16 lg:mt-24">
+              {grouped.map((group) => (
+                <div key={group.category.en} className="mb-6">
+                  <h4 className="text-[11px] font-semibold text-neutral-700 uppercase tracking-wide mb-1.5">
+                    {group.category[locale]} <span className="text-neutral-400 font-normal">({group.yearRange})</span>
+                  </h4>
+                  <ul className="space-y-1">
+                    {group.items.map((item) => (
+                      <li key={item.id} className="text-[11px] text-neutral-400 leading-snug">
+                        <span className="text-neutral-600 italic">{item.title[locale]}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </nav>
           </aside>
 
-          {/* Right image grid */}
-          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-            {drawings.map((item, i) => (
-              <ArtCard key={item.id} item={item} index={i} locale={locale} />
-            ))}
+          {/* Right content — grouped */}
+          <div className="flex-1">
+            {grouped.map((group) => {
+              const startOffset = flatOffset;
+              flatOffset += group.items.length;
+              return (
+                <div key={group.category.en} className="mb-16 last:mb-0">
+                  <h2 className="text-lg font-semibold text-neutral-800 mb-1">
+                    {group.category[locale]}
+                  </h2>
+                  <p className="text-xs text-neutral-400 mb-6">{group.yearRange}</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+                    {group.items.map((item, i) => (
+                      <ArtCard
+                        key={item.id}
+                        item={item}
+                        index={i}
+                        locale={locale}
+                        onClick={() => setLightboxIndex(startOffset + i)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
+
+      {lightboxIndex !== null && (
+        <ImageLightbox
+          images={lightboxImages}
+          currentIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+          onPrev={() => setLightboxIndex((lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length)}
+          onNext={() => setLightboxIndex((lightboxIndex + 1) % lightboxImages.length)}
+        />
+      )}
     </Layout>
   );
 };
