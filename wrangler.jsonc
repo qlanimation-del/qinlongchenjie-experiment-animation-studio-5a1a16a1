@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "qinlongchenjie-experiment-animation-studio-5a1a16a1",
+  "name": "qinlongchenjie-experiment-animation-studio",
   "compatibility_date": "2025-09-27",
   "observability": {
     "enabled": true
