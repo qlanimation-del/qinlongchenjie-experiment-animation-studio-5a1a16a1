@@ -1,45 +1,58 @@
 
 
-## Plan: Add Video to Resonance + Fix Arrow Click + Adjust Video Aspect
+## Plan: Sort by Time + Categorize + Add Lightbox Click + Clean Up Garbage Data
+
+### Current Problems Identified
+
+1. **No time-based sorting** — drawings and photographs are in arbitrary order
+2. **No category grouping** — all items are displayed in a flat grid
+3. **No click-to-view lightbox** — Drawing and Photographs pages have no image click interaction (ImageLightbox exists but is only used in ProjectGallery)
+4. **Duplicate IDs in drawings.ts** — three items share `id: "d10"`
+5. **Photographs data is all placeholder** — all 9 photos use `picsum.photos` URLs (fake data)
+6. **ProjectGallery generates placeholder.svg fallbacks** — not real content
 
 ### Changes
 
-#### 1. Fix scroll arrow click (`src/components/ParallaxHero.tsx`)
-- Add `pointer-events-none` to the vignette layer div (line 63) and the image layer div (line 76) so clicks pass through to the button.
+#### 1. Update `ArtworkItem` interface (`src/data/drawings.ts`)
+- Add `year: number` field for reliable sorting
+- Add `category` field with trilingual labels: `{ en: string; zh: string; fr: string }`
 
-#### 2. Support multiple videos (`src/data/projects.ts`)
-- Change `videoUrl?: string` to `videoUrl?: string | string[]` in the `Project` interface.
-- Change `videoAspect?: string` to `videoAspect?: string | string[]`.
-- Update the resonance project entry:
-  - `videoUrl: ["https://player.vimeo.com/video/72798344?h=1f250d5e92", "https://player.vimeo.com/video/1175336696?h=e67e868106"]`
-  - `videoAspect: ["16/9", "2.39/1"]` — the new video is 16:9, the existing video appears to be ultra-wide cinematic (~2.39:1).
+#### 2. Fix and sort `drawings.ts` data
+- Fix duplicate IDs (d10 appears 3 times -> d10, d10b, d10c)
+- Add `year` and `category` to each item
+- Categories for drawings: "After Shock / 春日余震" (2022-2024) and "HUTOON Animation / 降妖高校" (2017)
+- Sort descending by year (newest first)
 
-#### 3. Render multiple videos (`src/pages/ProjectDetail.tsx`)
-- Update the video section to normalize `videoUrl` into an array and loop over it.
-- Each video gets its own container with the corresponding aspect ratio from the `videoAspect` array (or defaults to 16:9).
-- For non-standard aspects (like the existing wide video), the container will use the correct `aspectRatio` style and remove `aspect-video` so the frame matches the content shape.
+#### 3. Clean up `photographs.ts`
+- Remove all 9 picsum placeholder entries (garbage data)
+- Leave the array empty or with a comment indicating real data should be added
+- The page will show an empty state message instead of fake images
 
-### Technical Detail
+#### 4. Refactor Drawing.tsx and Photographs.tsx pages
+- Group items by category, render category headers (year range + category name)
+- Within each category, sort newest first
+- Add click handler to each image card to open `ImageLightbox`
+- Manage lightbox state (open/close, prev/next navigation within the full flat list)
+- Sidebar index also groups by category
+- Show empty state when no items exist (for Photographs)
 
-```tsx
-// Normalize to arrays
-const videoUrls = Array.isArray(project.videoUrl) ? project.videoUrl : project.videoUrl ? [project.videoUrl] : [];
-const videoAspects = Array.isArray(project.videoAspect) ? project.videoAspect : project.videoAspect ? [project.videoAspect] : [];
+#### 5. Responsive and UX details
+- Lightbox reuses existing `ImageLightbox` component with keyboard nav + swipe
+- On mobile: grid becomes 1-2 columns, category headers stack naturally
+- Image cards get `cursor-pointer` and subtle hover scale effect
 
-// Render each video
-{videoUrls.map((url, i) => {
-  const aspect = videoAspects[i];
-  const isVertical = aspect === "9/16";
-  return (
-    <div key={i} className="mb-6">
-      <div className={`mx-auto rounded-lg overflow-hidden ${isVertical ? 'max-w-[65%] sm:max-w-[50%]' : 'w-full bg-black/20'}`}
-           style={{ aspectRatio: aspect || "16/9" }}>
-        <iframe ... src={url} />
-      </div>
-    </div>
-  );
-})}
-```
+#### 6. Clean up unused code
+- Remove `generatePlaceholderImages` fallback in `ProjectGallery.tsx` (replace with empty array default)
+- Remove `public/placeholder.svg` if not used elsewhere
 
-Files modified: `ParallaxHero.tsx`, `projects.ts`, `ProjectDetail.tsx`
+### File Changes Summary
+
+| File | Action |
+|---|---|
+| `src/data/drawings.ts` | Add `year`, `category` fields; fix duplicate IDs; sort by year desc |
+| `src/data/photographs.ts` | Clear placeholder data, keep empty array |
+| `src/pages/Drawing.tsx` | Add category grouping, lightbox click, sort by time |
+| `src/pages/Photographs.tsx` | Add category grouping, lightbox click, empty state |
+| `src/components/ProjectGallery.tsx` | Remove placeholder fallback |
+| `public/placeholder.svg` | Delete if unused elsewhere |
 
