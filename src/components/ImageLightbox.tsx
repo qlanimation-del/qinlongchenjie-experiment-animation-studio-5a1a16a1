@@ -36,8 +36,8 @@ const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext }: ImageL
       onClick={onClose}
     >
       <button
-        onClick={onClose}
-        className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/70 hover:text-white z-10 transition-colors p-2"
+        onClick={(e) => { e.stopPropagation(); onClose(); }}
+        className="absolute top-20 right-4 sm:top-24 sm:right-6 text-white/70 hover:text-white z-10 transition-colors p-2"
         aria-label="Close"
       >
         <X size={28} />
