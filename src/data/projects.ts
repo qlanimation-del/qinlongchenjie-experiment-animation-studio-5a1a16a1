@@ -197,9 +197,9 @@ export const projects: Project[] = [
       fr: "Ce court documentaire contemplatif tisse ensemble des lieux éloignés à travers le monde à travers une seule pensée personnelle, une méditation lyrique sur l'exploration, la croyance et les espaces entre la solitude et la connexion. À travers une série de vignettes interconnectées - d'un marin manchot contemplant les anciens navigateurs, à des loups dans la légende buvant de l'eau de mer, à un arbre solitaire en Nouvelle-Zélande qui devient une attraction bondée - le film tisse une tapisserie de voyages humains et naturels. Se déplaçant à travers des lieux comme le lac Erhai en Chine, les foules du week-end à Huizhou, les eaux autrefois sans poissons du Xinjiang et le Cabo da Roca balayé par les vents au Portugal, le film réfléchit à la façon dont nous naviguons dans l'inconnu : parfois seuls, parfois en vagues, poussés par une foi silencieuse qui nous propulse vers l'avant même lorsque les destinations sont invisibles. Visuellement poétique et philosophiquement résonnant, c'est un court métrage sur le courage de commencer, la solitude de l'être et les courants partagés qui connectent tous les chercheurs au bord du connu.",
     },
     credits: {
-      en: ["Director: Chen Jie", "Cinematographer:  Chen Jie",],
-      zh: ["导演：陈洁", "视频拍摄：陈洁",  ],
-      fr: ["Réalisateur : Chen Jie", "Vidéo : Chen Jie",],
+      en: ["Director: Chen Jie", "Cinematographer:  Chen Jie", "Duration:  7 minutes",],
+      zh: ["导演：陈洁", "视频拍摄：陈洁",  "时长：7分钟", ],
+      fr: ["Réalisateur : Chen Jie", "Vidéo : Chen Jie", "Durée : 7 minutes",],
     },
     exhibitions: {
       en: [
@@ -228,11 +228,7 @@ export const projects: Project[] = [
     ],
     galleryImages: [
       { src: bw1, alt: "Between Us and the World gallery 1" },
-      { src: bw2, alt: "Between Us and the World gallery 2" },
-      { src: bw3, alt: "Between Us and the World gallery 3" },
-      { src: bw4, alt: "Between Us and the World gallery 4" },
-      { src: bw5, alt: "Between Us and the World gallery 5" },
-      { src: bw6, alt: "Between Us and the World gallery 6" },
+     
     ],
   },
   {
