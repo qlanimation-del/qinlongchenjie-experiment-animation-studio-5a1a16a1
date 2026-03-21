@@ -69,7 +69,7 @@ export const drawings: ArtworkItem[] = [
   },
   {
     id: "d7",
-    src: "/images/Scence Design009.webp",
+    src: "/images/Scence-Design009.webp",
     title: { en: "Scene Design © 2017 Beijing HUTOON Animation Co.Ltd.", zh: "场景设计-降妖高校", fr: "Conception de scène – Lycée des Chasseurs de Démons" },
     medium: { en: "Digital art, 2017", zh: "数字艺术, 2017", fr: "Art numérique, 2017" },
     year: 2017,
@@ -77,7 +77,7 @@ export const drawings: ArtworkItem[] = [
   },
   {
     id: "d9",
-    src: "/images/Scence Design010.webp",
+    src: "/images/Scence-Design010.webp",
     title: { en: "Scene Design © 2017 Beijing HUTOON Animation Co.Ltd.", zh: "场景设计-降妖高校", fr: "Conception de scène – Lycée des Chasseurs de Démons" },
     medium: { en: "Digital art, 2017", zh: "数字艺术, 2017", fr: "Art numérique, 2017" },
     year: 2017,
@@ -85,7 +85,7 @@ export const drawings: ArtworkItem[] = [
   },
   {
     id: "d10",
-    src: "/images/Scence Design011.webp",
+    src: "/images/Scence-Design011.webp",
     title: { en: "Character Design © 2017 Beijing HUTOON Animation Co.Ltd.", zh: "角色设计-降妖高校", fr: "Conception de personnage – Lycée des Chasseurs de Démons" },
     medium: { en: "Digital art, 2017", zh: "数字艺术, 2017", fr: "Art numérique, 2017" },
     year: 2017,
@@ -93,7 +93,7 @@ export const drawings: ArtworkItem[] = [
   },
   {
     id: "d10b",
-    src: "/images/Scence Design012.webp",
+    src: "/images/Scence-Design012.webp",
     title: { en: "Character Design © 2017 Beijing HUTOON Animation Co.Ltd.", zh: "角色设计-降妖高校", fr: "Conception de personnage – Lycée des Chasseurs de Démons" },
     medium: { en: "Digital art, 2017", zh: "数字艺术, 2017", fr: "Art numérique, 2017" },
     year: 2017,
@@ -101,7 +101,7 @@ export const drawings: ArtworkItem[] = [
   },
   {
     id: "d10c",
-    src: "/images/Scence Design013.webp",
+    src: "/images/Scence-Design013.webp",
     title: { en: "Character Design © 2017 Beijing HUTOON Animation Co.Ltd.", zh: "角色设计-降妖高校", fr: "Conception de personnage – Lycée des Chasseurs de Démons" },
     medium: { en: "Digital art, 2017", zh: "数字艺术, 2017", fr: "Art numérique, 2017" },
     year: 2017,
@@ -109,7 +109,7 @@ export const drawings: ArtworkItem[] = [
   },
   {
     id: "d11",
-    src: "/images/Scence Design014.webp",
+    src: "/images/Scence-Design014.webp",
     title: { en: "Scene Design © 2017 Beijing HUTOON Animation Co.Ltd.", zh: "场景设计-降妖高校", fr: "Conception de scène – Lycée des Chasseurs de Démons" },
     medium: { en: "Digital art, 2017", zh: "数字艺术, 2017", fr: "Art numérique, 2017" },
     year: 2017,
@@ -117,7 +117,7 @@ export const drawings: ArtworkItem[] = [
   },
   {
     id: "d12",
-    src: "/images/Scence Design015.webp",
+    src: "/images/Scence-Design015.webp",
     title: { en: "Character Design © 2017 Beijing HUTOON Animation Co.Ltd.", zh: "角色设计-降妖高校", fr: "Conception de personnage – Lycée des Chasseurs de Démons" },
     medium: { en: "Digital art, 2017", zh: "数字艺术, 2017", fr: "Art numérique, 2017" },
     year: 2017,
@@ -125,7 +125,7 @@ export const drawings: ArtworkItem[] = [
   },
   {
     id: "d13",
-    src: "/images/Scence Design016.webp",
+    src: "/images/Scence-Design016.webp",
     title: { en: "Character Design © 2017 Beijing HUTOON Animation Co.Ltd.", zh: "角色设计-降妖高校", fr: "Conception de personnage – Lycée des Chasseurs de Démons" },
     medium: { en: "Digital art, 2017", zh: "数字艺术, 2017", fr: "Art numérique, 2017" },
     year: 2017,
@@ -133,7 +133,7 @@ export const drawings: ArtworkItem[] = [
   },
   {
     id: "d14",
-    src: "/images/Scence Design017.webp",
+    src: "/images/Scence-Design017.webp",
     title: { en: "Character Design © 2017 Beijing HUTOON Animation Co.Ltd.", zh: "角色设计-降妖高校", fr: "Conception de personnage – Lycée des Chasseurs de Démons" },
     medium: { en: "Digital art, 2017", zh: "数字艺术, 2017", fr: "Art numérique, 2017" },
     year: 2017,
