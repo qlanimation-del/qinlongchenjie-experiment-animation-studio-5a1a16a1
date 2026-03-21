@@ -140,9 +140,9 @@ export const projects: Project[] = [
     year: "2026-Present",
     thumbnail: project6,
     description: {
-      en: "A sci-fi cinematic commercial for a tech company. High-end CGI animation with dramatic lighting and epic scale.",
-      zh: "一部为科技公司制作的科幻电影级广告。高端CGI动画，配以戏剧性灯光和宏大规模。",
-      fr: "Une publicité cinématographique de science-fiction pour une entreprise technologique. Animation CGI haut de gamme avec un éclairage dramatique et une échelle épique.",
+      en: "A....",
+      zh: "A....",
+      fr: "A....",
     },
     credits: {
       en: ["Director: QinLong & ChenJie", "Animation: QinLong", "VFX: QinLong"],
