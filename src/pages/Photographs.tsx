@@ -85,6 +85,32 @@ const Photographs = () => {
                 {philosophy[locale]}
               </p>
             </div>
+
+            {/* Book Section */}
+            <div className="mt-10">
+              <h3 className="text-xs font-bold text-neutral-800 mb-3 tracking-wide uppercase">
+                {locale === "zh" ? "出版物" : locale === "fr" ? "Publication" : "Publication"}
+              </h3>
+              <a href={photographyBook.purchaseUrl} target="_blank" rel="noopener noreferrer" className="block group">
+                <img
+                  src={photographyBook.coverSrc}
+                  alt={photographyBook.title[locale]}
+                  className="w-full max-w-[180px] h-auto rounded shadow-sm transition-transform duration-300 group-hover:scale-[1.03]"
+                  loading="lazy"
+                />
+              </a>
+              <p className="text-xs font-semibold text-neutral-800 mt-3">{photographyBook.title[locale]}</p>
+              <p className="text-[11px] leading-relaxed text-neutral-500 mt-1 max-w-[200px]">{photographyBook.description[locale]}</p>
+              <a
+                href={photographyBook.purchaseUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block text-[11px] text-neutral-700 font-medium mt-2 hover:text-neutral-900 transition-colors"
+              >
+                {locale === "zh" ? "购买 →" : locale === "fr" ? "Acheter →" : "Purchase →"}
+              </a>
+            </div>
+
             {grouped.length > 0 && (
               <nav className="mt-16 lg:mt-24">
                 {grouped.map((group) => (
