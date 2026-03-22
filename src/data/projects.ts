@@ -228,6 +228,12 @@ export const projects: Project[] = [
     ],
     galleryImages: [
       { src: bw1, alt: "Between Us and the World gallery 1" },
+      { src: bw2, alt: "Between Us and the World gallery 2" },
+      { src: bw3, alt: "Between Us and the World gallery 3" },
+      { src: bw4, alt: "Between Us and the World gallery 4" },
+      { src: bw5, alt: "Between Us and the World gallery 5" },
+      { src: bw6, alt: "Between Us and the World gallery 6" },
+      
      
     ],
   },
