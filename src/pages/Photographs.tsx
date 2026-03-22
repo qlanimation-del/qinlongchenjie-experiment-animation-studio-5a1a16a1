@@ -9,9 +9,9 @@ import type { Locale } from "@/i18n/translations";
 import type { ArtworkItem } from "@/data/drawings";
 
 const philosophy = {
-  en: "The spectacle society that Debord feared and the emancipation of the spectator that Rancière envisioned are simultaneously realized in the present era. The massive production of images provides an endless supply of nourishment for the formation of the spectacle society, drawing people into a vast apparatus of images. Fortunately, people are no longer passive spectators; they both become part of the apparatus through their activities and, drawing on their own power, shape, transform, and extend it.",
-  zh: "德波所恐惧的景观社会以及朗西埃所期盼的对于观众的解放在当下这个时代被同时实现。图像的大量生成为景观社会的形成提供了源源不断的养料，人们被吸纳进一个巨型的影像装置当中。幸好人们已不再是被动的观众，人们一边成为装置的一部分进行活动，一边以自身的力量对这个装置进行塑造、改变和延展。",
-  fr: "La société du spectacle que Debord craignait et l'émancipation du spectateur que Rancière envisageait sont simultanément réalisées à l'ère actuelle. La production massive d'images fournit un approvisionnement sans fin pour la formation de la société du spectacle, attirant les gens dans un vaste appareil d'images. Heureusement, les gens ne sont plus des spectateurs passifs; ils deviennent à la fois partie de l'appareil à travers leurs activités et, s'appuyant sur leur propre pouvoir, le façonnent, le transforment et l'étendent.",
+  en: "The spectacle society that Debord feared and the emancipation of the spectator that Rancière envisioned are simultaneously realized in the present era. The massive production of images provides an endless supply of nourishment for the formation of the spectacle society, drawing people into a vast apparatus of images. Fortunately, people are no longer passive spectators; they both become part of the apparatus through their activities and, drawing on their own power, shape, transform, and extend it.<br />——Research on the Formation and Viewing Behavior of Crowdsourced Images",
+  zh: "德波所恐惧的景观社会以及朗西埃所期盼的对于观众的解放在当下这个时代被同时实现。图像的大量生成为景观社会的形成提供了源源不断的养料，人们被吸纳进一个巨型的影像装置当中。幸好人们已不再是被动的观众，人们一边成为装置的一部分进行活动，一边以自身的力量对这个装置进行塑造、改变和延展。<br />——《众包影像的形成与观看行为研究》",
+  fr: "La société du spectacle que Debord craignait et l'émancipation du spectateur que Rancière envisageait sont simultanément réalisées à l'ère actuelle. La production massive d'images fournit un approvisionnement sans fin pour la formation de la société du spectacle, attirant les gens dans un vaste appareil d'images. Heureusement, les gens ne sont plus des spectateurs passifs; ils deviennent à la fois partie de l'appareil à travers leurs activités et, s'appuyant sur leur propre pouvoir, le façonnent, le transforment et l'étendent.<br />——Recherche sur la Formation et le Comportement de Visualisation des Images Collectives",
 };
 
 const emptyMessage = {
@@ -74,16 +74,19 @@ const Photographs = () => {
   return (
     <Layout navVariant="light" className="bg-white">
       <section className="pt-10 sm:pt-14 pb-20">
+        {/* 还原你误删的外层布局容器 */}
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col lg:flex-row gap-10 lg:gap-12">
-          {/* Left sidebar */}
+          {/* Left sidebar - 还原aside标签 */}
           <aside className="lg:w-[200px] shrink-0 flex flex-col">
             <div>
               <h3 className="text-xs font-bold text-neutral-800 mb-2 tracking-wide uppercase">
                 {locale === "zh" ? "摄影理念" : locale === "fr" ? "Philosophie" : "Philosophy"}
               </h3>
-              <p className="text-xs leading-relaxed text-neutral-500 max-w-[200px]">
-                {philosophy[locale]}
-              </p>
+              {/* ✅ 这一行是正确的修复，保留即可 */}
+              <p 
+                className="text-xs leading-relaxed text-neutral-500 max-w-[200px]"
+                dangerouslySetInnerHTML={{ __html: philosophy[locale] }}
+              />
             </div>
 
             {/* Book Section */}
