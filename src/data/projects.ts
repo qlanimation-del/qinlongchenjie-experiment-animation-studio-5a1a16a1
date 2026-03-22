@@ -170,7 +170,7 @@ export const projects: Project[] = [
     year: "2025",
     thumbnail: project7,
     description: {
-      en: `This cinematic video essay, is a contemplative short documentary that weaves together distant locales around the world through a single, personal train of thought, a lyrical meditation on exploration, belief, and the spaces between solitude and connection. Through a series of interconnected vignettes—from a one-armed sailor contemplating ancient navigators, to wolves in legend drinking seawater, to a lonely tree in New Zealand that becomes a crowded attraction—the film weaves a tapestry of human and natural journeys. Moving across locations like China’s Erhai Lake, Huizhou’s weekend crowds, Xinjiang’s once-fishless waters, and Portugal’s wind-swept Cabo da Roca, the film reflects on how we navigate the unknown: sometimes alone, sometimes in waves, driven by a quiet faith that propels us forward even when destinations are unseen. Visually poetic and philosophically resonant, it is a short film about the courage to begin, the loneliness of being, and the shared currents that connect all seekers at the edge of the known.
+en: `This cinematic video essay, is a contemplative short documentary that weaves together distant locales around the world through a single, personal train of thought, a lyrical meditation on exploration, belief, and the spaces between solitude and connection. Through a series of interconnected vignettes—from a one-armed sailor contemplating ancient navigators, to wolves in legend drinking seawater, to a lonely tree in New Zealand that becomes a crowded attraction—the film weaves a tapestry of human and natural journeys. Moving across locations like China’s Erhai Lake, Huizhou’s weekend crowds, Xinjiang’s once-fishless waters, and Portugal’s wind-swept Cabo da Roca, the film reflects on how we navigate the unknown: sometimes alone, sometimes in waves, driven by a quiet faith that propels us forward even when destinations are unseen. Visually poetic and philosophically resonant, it is a short film about the courage to begin, the loneliness of being, and the shared currents that connect all seekers at the edge of the known.
 
 
 <strong>BETWEEN US AND THE WORLD</strong>
@@ -244,7 +244,7 @@ and also disrupt tranquility and peace.
 Between us and the world lies the unknown,
 yet it is always filled with belief.`,
 
-      zh: `这部影像散文是一部引人沉思的纪录短片，它以一段私人化的思绪为线索，串联起世界各地遥相分隔的地点，是一场关于探索、信仰，以及孤独与连接之间的诗意沉思。影片通过一系列相互交织的片段——从一位独臂水手追忆古代航海家，到传说中饮海水的狼群，再到新西兰一棵成为热门景点的孤独之树——编织出一幅人类与自然的旅程画卷。
+zh: `这部影像散文是一部引人沉思的纪录短片，它以一段私人化的思绪为线索，串联起世界各地遥相分隔的地点，是一场关于探索、信仰，以及孤独与连接之间的诗意沉思。影片通过一系列相互交织的片段——从一位独臂水手追忆古代航海家，到传说中饮海水的狼群，再到新西兰一棵成为热门景点的孤独之树——编织出一幅人类与自然的旅程画卷。
 
 镜头穿梭于中国云南洱海、惠州周末的人潮、新疆曾经无鱼的水域，以及葡萄牙狂风呼啸的罗卡角，影片探讨着我们该如何面对未知：有时独自前行，有时结伴而行，被一种无声的信念推动着，即便看不见目的地，也依然向前。影片兼具视觉诗意与哲学深度，讲述着开始的勇气、存在的孤独，以及在已知世界边缘，所有探索者之间共通的羁绊。
 
@@ -319,8 +319,9 @@ yet it is always filled with belief.`,
 我们和世界之间充满了未知，
 却总蕴含着相信。`,
 
-      fr: "Ce court documentaire contemplatif tisse ensemble des lieux éloignés à travers le monde à travers une seule pensée personnelle, une méditation lyrique sur l'exploration, la croyance et les espaces entre la solitude et la connexion. À travers une série de vignettes interconnectées - d'un marin manchot contemplant les anciens navigateurs, à des loups dans la légende buvant de l'eau de mer, à un arbre solitaire en Nouvelle-Zélande qui devient une attraction bondée - le film tisse une tapisserie de voyages humains et naturels. Se déplaçant à travers des lieux comme le lac Erhai en Chine, les foules du week-end à Huizhou, les eaux autrefois sans poissons du Xinjiang et le Cabo da Roca balayé par les vents au Portugal, le film réfléchit à la façon dont nous naviguons dans l'inconnu : parfois seuls, parfois en vagues, poussés par une foi silencieuse qui nous propulse vers l'avant même lorsque les destinations sont invisibles. Visuellement poétique et philosophiquement résonnant, c'est un court métrage sur le courage de commencer, la solitude de l'être et les courants partagés qui connectent tous les chercheurs au bord du connu.",
-    },
+fr: "Ce court documentaire contemplatif tisse ensemble des lieux éloignés à travers le monde à travers une seule pensée personnelle, une méditation lyrique sur l'exploration, la croyance et les espaces entre la solitude et la connexion. À travers une série de vignettes interconnectées - d'un marin manchot contemplant les anciens navigateurs, à des loups dans la légende buvant de l'eau de mer, à un arbre solitaire en Nouvelle-Zélande qui devient une attraction bondée - le film tisse une tapisserie de voyages humains et naturels. Se déplaçant à travers des lieux comme le lac Erhai en Chine, les foules du week-end à Huizhou, les eaux autrefois sans poissons du Xinjiang et le Cabo da Roca balayé par les vents au Portugal, le film réfléchit à la façon dont nous naviguons dans l'inconnu : parfois seuls, parfois en vagues, poussés par une foi silencieuse qui nous propulse vers l'avant même lorsque les destinations sont invisibles. Visuellement poétique et philosophiquement résonnant, c'est un court métrage sur le courage de commencer, la solitude de l'être et les courants partagés qui connectent tous les chercheurs au bord du connu.",
+    
+},
     credits: {
       en: ["Director: Chen Jie", "Cinematographer: Chen Jie", "Essay Writer: Chen Jie", "Duration: 7 minutes"],
       zh: ["导演：陈洁", "视频拍摄：陈洁", "散文诗作者：陈洁", "时长：7分钟"],
