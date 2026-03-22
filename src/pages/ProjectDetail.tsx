@@ -35,16 +35,16 @@ const ProjectDetail = () => {
             </Button>
           </div>
         </div>
-      </Layout>
-    );
+      </Layout>);
+
   }
 
- const scrollToContent = () => {
-  window.scrollBy({ 
-    top: 900, // 改这个数：500=少滚，1000=多滚
-    behavior: "smooth" 
-  });
-};
+  const scrollToContent = () => {
+    window.scrollBy({
+      top: 900, // 改这个数：500=少滚，1000=多滚
+      behavior: "smooth"
+    });
+  };
 
   const galleryImages = project.galleryImages;
 
@@ -58,8 +58,8 @@ const ProjectDetail = () => {
           type={project.type[locale]}
           year={project.year}
           glowColor={project.glowColor}
-          onScrollDown={scrollToContent}
-        />
+          onScrollDown={scrollToContent} />
+        
       </div>
 
       <div ref={contentRef} className="relative z-10">
@@ -69,16 +69,16 @@ const ProjectDetail = () => {
           <div className="mx-auto w-full max-w-3xl">
             <Link
               to="/work"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-all duration-200 mb-8 text-sm tracking-wider backdrop-blur-md bg-white/5 px-4 py-2 rounded-full border border-white/10 hover:bg-white/10"
-            >
+              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-all duration-200 mb-8 text-sm tracking-wider backdrop-blur-md bg-white/5 px-4 py-2 rounded-full border border-white/10 hover:bg-white/10">
+              
               <ArrowLeft size={18} />
               <span>{t("projectDetail", "backToWork")}</span>
             </Link>
 
             <p
               className="mb-12 text-muted-foreground leading-relaxed text-base sm:text-lg text-justify"
-              style={{ textIndent: "2em", lineHeight: 1.85 }}
-            >
+              style={{ textIndent: "2em", lineHeight: 1.85 }}>
+              
               {project.description[locale]}
             </p>
 
@@ -93,8 +93,8 @@ const ProjectDetail = () => {
                   <div key={i} className="mb-12">
                     <div
                       className={`mx-auto rounded-lg overflow-hidden ${isVertical ? 'max-w-[65%] sm:max-w-[50%]' : 'w-full bg-black/20'}`}
-                      style={{ aspectRatio: aspect || "16/9" }}
-                    >
+                      style={{ aspectRatio: aspect || "16/9" }}>
+                      
                       <iframe
                         title={`${project.title} ${i + 1}`}
                         src={url}
@@ -104,11 +104,11 @@ const ProjectDetail = () => {
                         referrerPolicy="strict-origin-when-cross-origin"
                         allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
                         allowFullScreen
-                        loading="lazy"
-                      />
+                        loading="lazy" />
+                      
                     </div>
-                  </div>
-                );
+                  </div>);
+
               });
             })()}
 
@@ -128,38 +128,38 @@ const ProjectDetail = () => {
               </div>
             </div>
 
-            {project.credits[locale].length > 0 && (
-              <div className="mb-10 sm:mb-16">
+            {project.credits[locale].length > 0 &&
+            <div className="mb-10 sm:mb-16">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("projectDetail", "credits")}</h2>
                 <ul className="space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
-                  {project.credits[locale].map((credit, i) => (
-                    <li key={i}>{credit}</li>
-                  ))}
+                  {project.credits[locale].map((credit, i) =>
+                <li key={i}>{credit}</li>
+                )}
                 </ul>
               </div>
-            )}
+            }
 
-            {project.exhibitions?.[locale]?.length ? (
-              <div className="mb-10 sm:mb-16">
+            {project.exhibitions?.[locale]?.length ?
+            <div className="mb-10 sm:mb-16">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("projectDetail", "exhibitions")}</h2>
                 <ul className="space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
                   {project.exhibitions[locale].map((item, i) => {
-                    const isYear = /^\d{4}$/.test(item.trim());
-                    return (
-                      <li key={i} className={isYear ? "font-bold text-foreground text-sm sm:text-base mt-4 first:mt-0" : ""}>
+                  const isYear = /^\d{4}$/.test(item.trim());
+                  return (
+                    <li key={i} className={isYear ? "font-bold text-foreground text-sm sm:text-base mt-4 first:mt-0" : ""}>
                         {item}
-                      </li>
-                    );
-                  })}
+                      </li>);
+
+                })}
                 </ul>
-              </div>
-            ) : null}
+              </div> :
+            null}
 
             <ProjectGallery
               projectId={project.id}
               thumbnail={project.thumbnail}
-              customImages={galleryImages}
-            />
+              customImages={galleryImages} />
+            
           </div>
         </div>
       </div>
@@ -168,12 +168,12 @@ const ProjectDetail = () => {
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
         className={`fixed right-5 bottom-8 z-[9999] bg-muted/50 hover:bg-muted backdrop-blur-md p-3 rounded-full text-foreground transition-all duration-300
           ${showBackToTop ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
-        aria-label="Back to top"
-      >
+        aria-label="Back to top">
+        
         <ChevronUp size={22} />
       </button>
-    </Layout>
-  );
+    </Layout>);
+
 };
 
 export default ProjectDetail;
