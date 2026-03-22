@@ -1,38 +1,50 @@
 
 
-## Plan: Add Placeholder Photographs + Organize File Structure
+## Plan: Add Book Section to Sidebar on Drawing & Photographs Pages
 
 ### Overview
-Add ~10 placeholder photograph entries with free network images (Unsplash), organized by category and sorted newest-to-oldest. Create a dedicated `public/photographs/` directory (parallel to `public/images/` for drawings) so photo assets are cleanly separated and easy to swap later.
+In the left sidebar of both `/drawing` and `/photographs`, add a book promotion section below the Philosophy text and above the category index. The section includes: book cover image, title, short description, and a purchase link. A placeholder image will be used for easy replacement.
+
+### Sidebar Layout (top to bottom)
+```text
+┌─────────────────────┐
+│ Philosophy (header)  │
+│ philosophy text...   │
+│                      │
+│ ── Book Section ──   │  ← NEW
+│ [book cover image]   │
+│ Book Title           │
+│ Short description    │
+│ [Purchase Link →]    │
+│                      │
+│ ── Category Index ── │  ← moved down
+│ Artifacts,Nature...  │
+│ Conceptual Photo...  │
+└─────────────────────┘
+```
 
 ### Changes
 
-#### 1. Create `public/photographs/` directory
-- Add a `README.md` inside explaining the naming convention and how to replace images
-- This keeps photo assets separate from drawing assets in `public/images/`
+#### 1. Create shared book data (`src/data/books.ts`)
+- Trilingual book info for both pages (drawing book + photography book, or same book)
+- Fields: `coverSrc`, `title`, `description`, `purchaseUrl` — all with `{ en, zh, fr }` where appropriate
+- Placeholder cover image from Unsplash, stored concept: real images go to `public/photographs/` or `public/images/`
 
-#### 2. Populate `src/data/photographs.ts` with ~10 entries
-- Use free Unsplash image URLs (direct links, no API needed)
-- 3 categories with trilingual labels:
-  - **Urban Fragments / 城市碎片** (2024-2025) — 4 photos
-  - **Still Life / 静物** (2023-2024) — 3 photos  
-  - **Nature / 自然** (2022-2023) — 3 photos
-- Each entry follows the existing `ArtworkItem` interface with `id`, `src`, `title`, `medium`, `year`, `category`
-- IDs use `p1`, `p2`, ... prefix (distinct from drawing `d` prefix)
-- Sorted by year descending within each category
-- Comments in the file clearly mark each category section for easy editing
+#### 2. Update `src/pages/Photographs.tsx`
+- Import book data
+- Insert book section between philosophy `<div>` and the category `<nav>`
+- Book cover image (clickable, links to purchase), title, description, purchase link
+- Category nav gets more top margin to sit lower on the page
 
-#### 3. Add `public/photographs/README.md`
-- Document naming convention: `{category}-{number}.webp`
-- Explain how to replace: drop real files here, update `src` paths in `photographs.ts`
-
-#### 4. No page code changes needed
-- `Photographs.tsx` already has the grouping, sorting, lightbox, and empty-state logic identical to Drawing.tsx — it will automatically render once data is added
+#### 3. Update `src/pages/Drawing.tsx`
+- Same structure as Photographs — book section between philosophy and category nav
+- Can use a different book or same book depending on content
 
 ### File Changes
 
 | File | Action |
 |---|---|
-| `src/data/photographs.ts` | Add ~10 entries with Unsplash URLs, categorized & sorted |
-| `public/photographs/README.md` | Create with asset management instructions |
+| `src/data/books.ts` | Create — shared book data with placeholder image |
+| `src/pages/Photographs.tsx` | Add book section in sidebar |
+| `src/pages/Drawing.tsx` | Add book section in sidebar |
 
