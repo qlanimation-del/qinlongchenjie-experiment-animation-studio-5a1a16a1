@@ -8,7 +8,7 @@ import project7 from "@/assets/project-7.webp";
 import projectCloud from "@/assets/project-cloud.webp";
 import projectGafa from "@/assets/project-gafa.webp";
 
-// Parallax layers — dedicated files per project for easy replacement
+// Parallax layers
 import dustParallaxBg from "@/assets/dust-parallax-bg.webp";
 import dustParallaxMid from "@/assets/dust-parallax-mid.webp";
 import dustParallaxTop from "@/assets/dust-parallax-top.webp";
@@ -131,12 +131,11 @@ export interface Project {
   galleryImages?: GalleryImage[];
 }
 
-// Ordered new → old
 export const projects: Project[] = [
   {
     id: "beyond-orbit",
     title: "DUST",
-    type: { en: "Independent Animation", zh: "独立动画", fr: "Indépendante Animation " },
+    type: { en: "Independent Animation", zh: "独立动画", fr: "Animation indépendante" },
     year: "2026-Present",
     thumbnail: project6,
     description: {
@@ -150,27 +149,9 @@ export const projects: Project[] = [
       fr: ["Réalisateur : QinLong & ChenJie", "Animation : QinLong", "VFX : QinLong"],
     },
     exhibitions: {
-      en: [
-        "2027",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-        "2028",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-      ],
-      zh: [
-        "2027",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-        "2028",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-      ],
-      fr: [
-        "2027",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-        "2028",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-      ],
+      en: ["2027", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0", "2028", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0"],
+      zh: ["2027", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0", "2028", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0"],
+      fr: ["2027", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0", "2028", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0"],
     },
     glowColor: "#AA88FF",
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
@@ -180,10 +161,7 @@ export const projects: Project[] = [
       { src: dustParallaxMid, speed: 0.25 },
       { src: dustParallaxTop, speed: 0.4 },
     ],
-    galleryImages: [
-      { src: b1, alt: "Dust gallery 1" },
-    
-    ],
+    galleryImages: [{ src: b1, alt: "Dust gallery 1" }],
   },
   {
     id: "between-us",
@@ -192,11 +170,10 @@ export const projects: Project[] = [
     year: "2025",
     thumbnail: project7,
     description: {
-      en: `This cinematic video essay, is a contemplative short documentary that weaves together distant locales around the world through a single, personal train of thought, a lyrical meditation on exploration, belief, and the spaces between solitude and connection. Through a series of interconnected vignettes—from a one-armed sailor contemplating ancient navigators, to wolves in legend drinking seawater, to a lonely tree in New Zealand that becomes a crowded attraction—the film weaves a tapestry of human and natural journeys.Moving across locations like China’s Erhai Lake, Huizhou’s weekend crowds, Xinjiang’s once-fishless waters, and Portugal’s wind-swept Cabo da Roca, the film reflects on how we navigate the unknown: sometimes alone, sometimes in waves, driven by a quiet faith that propels us forward even when destinations are unseen. Visually poetic and philosophically resonant, it is a short film about the courage to begin, the loneliness of being, and the shared currents that connect all seekers at the edge of the known.
+      en: `This cinematic video essay, is a contemplative short documentary that weaves together distant locales around the world through a single, personal train of thought, a lyrical meditation on exploration, belief, and the spaces between solitude and connection. Through a series of interconnected vignettes—from a one-armed sailor contemplating ancient navigators, to wolves in legend drinking seawater, to a lonely tree in New Zealand that becomes a crowded attraction—the film weaves a tapestry of human and natural journeys. Moving across locations like China’s Erhai Lake, Huizhou’s weekend crowds, Xinjiang’s once-fishless waters, and Portugal’s wind-swept Cabo da Roca, the film reflects on how we navigate the unknown: sometimes alone, sometimes in waves, driven by a quiet faith that propels us forward even when destinations are unseen. Visually poetic and philosophically resonant, it is a short film about the courage to begin, the loneliness of being, and the shared currents that connect all seekers at the edge of the known.
 
 
 Between Us and the World
-
 
 Xu Jingkun is a sailor.
 He had only one arm,
@@ -208,13 +185,11 @@ and had no mechanical assistance.
 Yet they still paddled their canoes toward the depths of the ocean.
 He wondered, how did they believe there was land ahead?
 
-
 In Dongdaihe, Liaoning, there is a 26-kilometer coastline.
 Legend has it that in autumn, wolves travel long distances from afar to reach this shore,
 drink seawater, and grow new fur.
 What the legend doesn’t mention is,
 how did the first wolf know that seawater was drinkable?
-
 
 Erhai Lake in Yunnan is actually a freshwater lake on a plateau.
 When inland people first saw such a vast expanse of water,
@@ -223,7 +198,6 @@ If ancient sailors had set sail from Erhai Lake,
 would they have found land earlier than expected?
 If wolves drank water from Erhai Lake,
 could they also successfully grow new fur?
-
 
 Along the coast of Huizhou, Guangdong, there are many exquisite hotels.
 Every weekend,
@@ -234,7 +208,6 @@ will set up temporary stalls around their self-built houses to sell clay-roasted
 The clay-roasted chickens gather in Huizhou on weekends,
 just to welcome the city dwellers.
 
-
 In Lake Wanaka, New Zealand, there is a tree known as "the loneliest tree in the world."
 It began growing in 1939
 and became a famous attraction in 2014.
@@ -242,7 +215,6 @@ It remained lonely for 75 years,
 yet after being recognized as the icon of "lonely,"
 it became the center of bustling attention.
 It can no longer enjoy its loneliness.
-
 
 Isolated from any rivers, lakes, or seas,
 Xinjiang’s Lake Sayram was once China’s only fishless lake.
@@ -252,7 +224,6 @@ The cold-tolerant fish from Russia, like the clay-roasted chickens,
 gather where tourists appear.
 Perhaps Lake Sayram, without fish,
 was originally the loneliest lake in the world.
-
 
 Cabo da Roca in Portugal is known as the end of land
 and the beginning of the sea.
@@ -270,33 +241,95 @@ sometimes in swarms.
 We chase away loneliness and silence,
 and also disrupt tranquility and peace.
 
-
 Between us and the world lies the unknown,
 yet it is always filled with belief.`,
-      zh: "这篇散文影像《我们与世界之间》是一部将不同国家的不同地点通过思绪联系起来的纪录短片，一场对探索、信仰、孤独和连接的抒情沉思。通过一系列相互关联的片段——从独臂水手缅怀古代航海家，到传说中的狼饮海水，再到新西兰一棵孤独的树成为拥挤的景点——这部短片编织了一幅人类与自然之旅的画卷。影片穿越中国洱海、惠州周末的人群、新疆曾经无鱼的水域以及葡萄牙风大浪急的罗卡角等地，反思我们如何探索未知：有时独自前行，有时成群结队，即便目的地未知，也因内心那份坚定的信念而勇往直前。这部短片不仅在视觉上富有诗意，而且在哲学上引人深思，它探讨了启程的勇气、存在的孤独以及探索者之间的惺惺相惜与紧密联系。",
+
+      zh: `这部影像散文是一部引人沉思的纪录短片，它以一段私人化的思绪为线索，串联起世界各地遥相分隔的地点，是一场关于探索、信仰，以及孤独与连接之间的诗意沉思。影片通过一系列相互交织的片段——从一位独臂水手追忆古代航海家，到传说中饮海水的狼群，再到新西兰一棵成为热门景点的孤独之树——编织出一幅人类与自然的旅程画卷。
+
+镜头穿梭于中国云南洱海、惠州周末的人潮、新疆曾经无鱼的水域，以及葡萄牙狂风呼啸的罗卡角，影片探讨着我们该如何面对未知：有时独自前行，有时结伴而行，被一种无声的信念推动着，即便看不见目的地，也依然向前。影片兼具视觉诗意与哲学深度，讲述着开始的勇气、存在的孤独，以及在已知世界边缘，所有探索者之间共通的羁绊。
+
+我们与世界之间
+
+许京坤是一个航海家。
+他左手臂只有半截，
+却一人环游了整个中国海。
+他说以前的航海家更厉害——
+他们不知道地球是圆的，
+不知道前方有什么，
+没有机械的帮助。
+却依然划起独木舟向大海深处前进。
+他说，他们是怎么相信前方有陆地的呢？
+
+辽宁的东戴河有一条长达26公里的海岸线。
+传说中狼会在秋天从远方长途跋涉来到海边，
+喝下海水，换上新毛。
+传说没有说的是，
+第一只狼是怎么知道可以喝下海水的呢？
+
+云南的洱海其实是一个高原淡水湖。
+处于内陆的人们第一次看到如此浩瀚的水体，
+起名时便将其与文字概念中的“海”联系起来。
+如果以前的航海家在洱海出发，
+会发现前方的陆地比想象中来得早吗？
+如果狼喝了洱海里的水，
+也可以成功换毛吗？
+
+广东惠州的海边有很多精致的酒店。
+每到周末，
+周边城市的游客就会成群地出现在酒店里，
+一到工作日又会成群地消散。
+惠州小岛上的居民会在周末在自家自建房的附近
+搭起一个临时的小摊，卖窑鸡。
+窑鸡为了迎接上班族，
+于周末在惠州集结。
+
+新西兰的瓦纳卡湖里有一棵“全世界最孤独的树”。
+它始于1939年，
+在2014年成为著名景点。
+它孤独了75年，
+却在被承认“孤独”以后，
+成为热闹中的焦点。
+再也无法享受孤独。
+
+新疆的赛里木湖曾经是中国唯一没有鱼的湖泊，
+因为它是不与外界任何江河湖海相连的。
+后来新疆从俄罗斯引进了冷水鱼，
+这种鱼肉质丰厚，口感肥美。
+来自俄罗斯的冷水鱼和窑鸡一样，
+往游客出现的地方集结。
+也许没有鱼的赛里木湖，
+才是原本全世界最孤独的湖。
+
+葡萄牙的罗卡角被称为陆地的终点，
+海洋的起点。
+罗卡角的风特别大，
+吹得人倒来倒去，摇摇欲坠。
+也许就是需要这么大的风，
+才能吹起独木舟的帆，
+才能吹散人面对无知的惆怅，
+才能推着人类向前探访。
+哪怕我们并不知道前方哪里有陆地，
+哪怕我们不知道第一次的尝试是失败还是壮举。
+我们一步一步地向前，
+有时候孤单一人，
+有时候一窝蜂簇拥前行。
+我们消磨了冷清寂寞，
+我们也喧扰了平稳静谧。
+
+我们和世界之间充满了未知，
+却总蕴含着相信。`,
+
       fr: "Ce court documentaire contemplatif tisse ensemble des lieux éloignés à travers le monde à travers une seule pensée personnelle, une méditation lyrique sur l'exploration, la croyance et les espaces entre la solitude et la connexion. À travers une série de vignettes interconnectées - d'un marin manchot contemplant les anciens navigateurs, à des loups dans la légende buvant de l'eau de mer, à un arbre solitaire en Nouvelle-Zélande qui devient une attraction bondée - le film tisse une tapisserie de voyages humains et naturels. Se déplaçant à travers des lieux comme le lac Erhai en Chine, les foules du week-end à Huizhou, les eaux autrefois sans poissons du Xinjiang et le Cabo da Roca balayé par les vents au Portugal, le film réfléchit à la façon dont nous naviguons dans l'inconnu : parfois seuls, parfois en vagues, poussés par une foi silencieuse qui nous propulse vers l'avant même lorsque les destinations sont invisibles. Visuellement poétique et philosophiquement résonnant, c'est un court métrage sur le courage de commencer, la solitude de l'être et les courants partagés qui connectent tous les chercheurs au bord du connu.",
     },
     credits: {
-      en: ["Director: Chen Jie", "Cinematographer:  Chen Jie", "Essay Wirter: Chen Jie", "Duration:  7 minutes",],
-      zh: ["导演：陈洁", "视频拍摄：陈洁",  "时长：7分钟", ],
-      fr: ["Réalisateur : Chen Jie", "Vidéo : Chen Jie", "Durée : 7 minutes",],
+      en: ["Director: Chen Jie", "Cinematographer: Chen Jie", "Essay Writer: Chen Jie", "Duration: 7 minutes"],
+      zh: ["导演：陈洁", "视频拍摄：陈洁", "散文诗作者：陈洁", "时长：7分钟"],
+      fr: ["Réalisateur : Chen Jie", "Vidéo : Chen Jie", "Auteur de l'essai : Chen Jie", "Durée : 7 minutes"],
     },
     exhibitions: {
-      en: [
-        "2025",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-      ],
-      zh: [
-        "2025",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-      ],
-      fr: [
-        "2025",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0",
-      ],
+      en: ["2025", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0"],
+      zh: ["2025", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0"],
+      fr: ["2025", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0"],
     },
     glowColor: "#E8A87C",
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
@@ -313,8 +346,6 @@ yet it is always filled with belief.`,
       { src: bw4, alt: "Between Us and the World gallery 4" },
       { src: bw5, alt: "Between Us and the World gallery 5" },
       { src: bw6, alt: "Between Us and the World gallery 6" },
-      
-     
     ],
   },
   {
@@ -326,17 +357,17 @@ yet it is always filled with belief.`,
     videoUrl: "https://player.vimeo.com/video/1162742319?h=f695b2b474",
     description: {
       en: "Inspired by the correspondence between Zhong Shuhe and Zhou Zuoren, this film uses the metaphor of 'a torch in the darkness' to pay tribute to the ordinary people who have quietly illuminated the course of civilization throughout history. Through portraying a group of athletes who never won medals in sports competitions, the film highlights those essential yet often overlooked 'carriers' — those who run in the darkness, passing on the light as a vital middle link. Their value deserves to be remembered. Born ordinary, with lives both long and fleeting, it is precisely these predecessors who transformed the ordinary into the extraordinary. Through quiet perseverance and passing on the torch, they gave future generations 'the courage to dare to face danger.",
-      zh: "本片受钟叔河与周作人通信的启发，以\u201C黑暗中的火炬\u201D为隐喻，向历史上那些默默照亮文明进程的普通人致敬。通过刻画一群在体育竞技中从未获得奖牌的运动员，影片聚焦于那些不可或缺却常被忽视的\u201C传递者\u201D\u2014\u2014他们在黑暗中奔跑，作为至关重要的中间环节传递着光明。他们的价值值得被铭记。生而平凡，生命或长或短，正是这些前行者将平凡化为非凡。通过默默坚守与薪火相传，他们赋予后人\u201C敢于直面危险的勇气\u201D。",
+      zh: "本片受钟叔河与周作人通信的启发，以“黑暗中的火炬”为隐喻，向历史上那些默默照亮文明进程的普通人致敬。通过刻画一群在体育竞技中从未获得奖牌的运动员，影片聚焦于那些不可或缺却常被忽视的“传递者”——他们在黑暗中奔跑，作为至关重要的中间环节传递着光明。他们的价值值得被铭记。生而平凡，生命或长或短，正是这些前行者将平凡化为非凡。通过默默坚守与薪火相传，他们赋予后人“敢于直面危险的勇气”。",
       fr: "Inspiré par la correspondance entre Zhong Shuhe et Zhou Zuoren, ce film utilise la métaphore d'« une torche dans l'obscurité » pour rendre hommage aux gens ordinaires qui ont silencieusement illuminé le cours de la civilisation à travers l'histoire. En dépeignant un groupe d'athlètes n'ayant jamais remporté de médailles, le film met en lumière ces « porteurs » essentiels mais souvent négligés — ceux qui courent dans l'obscurité, transmettant la lumière comme un maillon vital. Leur valeur mérite d'être rappelée.",
     },
     credits: {
-      en: ["Director: Qin Long", "Animation: Qin Long", "Script writer: Chen Jie", "Music: Ferenc Hegedus (Magyarország)", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Lynne Publishing (PRS)"],
-      zh: ["导演：秦龙", "动画：秦龙", "编剧：陈洁", "音乐：Ferenc Hegedus (匈牙利)", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Lynne Publishing (PRS)"],
-      fr: ["Réalisateur : Qin Long", "Animation : Qin Long", "Scénariste : Chen Jie", "Musique : Ferenc Hegedus (Hongrie)", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0Lynne Publishing (PRS)"],
+      en: ["Director: Qin Long", "Animation: Qin Long", "Script writer: Chen Jie", "Music: Ferenc Hegedus (Magyarország)", "Lynne Publishing (PRS)"],
+      zh: ["导演：秦龙", "动画：秦龙", "编剧：陈洁", "音乐：Ferenc Hegedus (匈牙利)", "Lynne Publishing (PRS)"],
+      fr: ["Réalisateur : Qin Long", "Animation : Qin Long", "Scénariste : Chen Jie", "Musique : Ferenc Hegedus (Hongrie)", "Lynne Publishing (PRS)"],
     },
     exhibitions: {
       en: [
-         "2024",
+        "2024",
         "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A016th Golden Dolphin International Animation Festival – Gold Award, Xiamen, China",
         "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A011th Chengdu Jinsha Short Film Competition Week – Best Director Award, Chengdu, China",
         "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Barcelona International Sports Film Festival – Silver Award, Barcelona, Spain",
@@ -349,8 +380,6 @@ yet it is always filled with belief.`,
         "2025",
         "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0First Film Festival, Bamboo Dragonfly Section – Official Selection, Beijing, China",
         "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A06th Dongbuzhou Animation Week – Official Selection, Nantong, China",
-        
-
       ],
       zh: [
         "2024",
@@ -368,19 +397,19 @@ yet it is always filled with belief.`,
         "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0第六届东布洲动画周 – 入选，中国南通"
       ],
       fr: [
-      "2024",
-      "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A016ème Festival International d'Animation Golden Dolphin – Prix d'Or, Xiamen, Chine",
-      "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A011ème Semaine du Concours de Courts Métrages Jinsha de Chengdu – Prix du Meilleur Réalisateur, Chengdu, Chine",
-      "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Festival International du Film Sportif de Barcelone – Prix d'Argent, Barcelone, Espagne",
-      "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A011ème Festival International du Film d'Animation de Montréal – Sélection Officielle, Montréal, Canada",
-      "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Animation Nights New York – Sélection Officielle, New York, États-Unis",
-      "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Festival International du Film Sportif de Liberec – Sélection Officielle, Liberec, République Tchèque",
-      "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A014ème Festival International du Film d'Animation de Metz – Sélection Officielle, Metz, France",
-      "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Festival International d'Animation ICONA – Sélection Officielle, Salerne, Italie",
-      "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A036ème Festival de Cinéma de Gérone – Sélection Officielle, Gérone, Espagne",
-      "2025",
-      "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0First Film Festival, Section Libellule de Bambou – Sélection Annuelle, Pékin, Chine",
-      "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A06ème Semaine d'Animation de Dongbuzhou – Sélection Officielle, Nantong, Chine",
+        "2024",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A016ème Festival International d'Animation Golden Dolphin – Prix d'Or, Xiamen, Chine",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A011ème Semaine du Concours de Courts Métrages Jinsha de Chengdu – Prix du Meilleur Réalisateur, Chengdu, Chine",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Festival International du Film Sportif de Barcelone – Prix d'Argent, Barcelone, Espagne",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A011ème Festival International du Film d'Animation de Montréal – Sélection Officielle, Montréal, Canada",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Animation Nights New York – Sélection Officielle, New York, États-Unis",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Festival International du Film Sportif de Liberec – Sélection Officielle, Liberec, République Tchèque",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A014ème Festival International du Film d'Animation de Metz – Sélection Officielle, Metz, France",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Festival International d'Animation ICONA – Sélection Officielle, Salerne, Italie",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A036ème Festival de Cinéma de Gérone – Sélection Officielle, Gérone, Espagne",
+        "2025",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0First Film Festival, Section Libellule de Bambou – Sélection Annuelle, Pékin, Chine",
+        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A06ème Semaine d'Animation de Dongbuzhou – Sélection Officielle, Nantong, Chine",
       ],
     },
     glowColor: "#FF8800",
@@ -453,18 +482,9 @@ yet it is always filled with belief.`,
       fr: ["Réalisateur : QinLong", "Animation : QinLong", "Musique : À déterminer"],
     },
     exhibitions: {
-      en: [
-        "2022",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Won the Second Prize and Third Prize in the 2022 China Brand Innovation Design Competition",
-      ],
-      zh: [
-        "2022",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0荣获 2022 年中国品牌创新设计大赛二等奖、三等奖",
-      ],
-      fr: [
-        "2022",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0ce",
-      ],
+      en: ["2022", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Won the Second Prize and Third Prize in the 2022 China Brand Innovation Design Competition"],
+      zh: ["2022", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0荣获 2022 年中国品牌创新设计大赛二等奖、三等奖"],
+      fr: ["2022", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Prix second et troisième, Concours de Design d'Innovation de Marque Chine 2022"],
     },
     glowColor: "#B388FF",
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
@@ -497,25 +517,14 @@ yet it is always filled with belief.`,
       fr: "Un voyage abstrait en motion design à travers le son et la couleur. Chaque battement déclenche une explosion visuelle de formes géométriques et de particules fluides.",
     },
     credits: {
-
-      en: ["Director: QinLong", "Story board: QinLong", "Animation: Beijing Yudubai Culture Media Co. Ltd.","Character Design: QinLong", "Scene Art：Chongqing Shifu Qianfang Animation Design Co., Ltd.","Music & Voice Acting: TrioPen Studio"],
+      en: ["Director: QinLong", "Story board: QinLong", "Animation: Beijing Yudubai Culture Media Co. Ltd.", "Character Design: QinLong", "Scene Art：Chongqing Shifu Qianfang Animation Design Co., Ltd.", "Music & Voice Acting: TrioPen Studio"],
       zh: ["导演：秦龙", "故事版：秦龙", "动画：北京鱼肚白文化传媒有限公司", "角色设计：秦龙", "场景美术：重庆市师傅前方动画设计有限公司", "音乐与配音：TrioPen Studio"],
-      fr: ["Réalisateur : QinLong", "Story board : QinLong", "Animation : Beijing Yudubai Culture Media Co. Ltd.","Personnage conçu par : QinLong", "Art de scène : Chongqing Shifu Qianfang Animation Design Co., Ltd.","Musique et voix : TrioPen Studio"],
+      fr: ["Réalisateur : QinLong", "Story board : QinLong", "Animation : Beijing Yudubai Culture Media Co. Ltd.", "Personnage conçu par : QinLong", "Art de scène : Chongqing Shifu Qianfang Animation Design Co., Ltd.", "Musique et voix : TrioPen Studio"],
     },
     exhibitions: {
-      en: [
-        "2020",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Eligibility for Membership, 2nd National Animation & Comic Art Exhibition, Beijing, China",
-      ],
-      zh: [
-        "2020",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0入选 – 第二届全国动画与漫画艺术展览，中国北京",
-      ],
-      fr: [
-        "2020",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Sélection officielle – 2ème exposition nationale d'animation et d'art de bande dessinée, Beijing, Chine",
-
-      ],
+      en: ["2020", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Eligibility for Membership, 2nd National Animation & Comic Art Exhibition, Beijing, China"],
+      zh: ["2020", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0入选 – 第二届全国动画与漫画艺术展览，中国北京"],
+      fr: ["2020", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Sélection officielle – 2ème exposition nationale d'animation et d'art de bande dessinée, Beijing, Chine"],
     },
     glowColor: "#00FF88",
     client: { en: "Beijing Forestry University-Admissions Office", zh: "北京林业大学", fr: "Université forestière de Pékin" },
@@ -551,24 +560,9 @@ yet it is always filled with belief.`,
       fr: ["Réalisateur : QinLong", "Animation : QinLong"],
     },
     exhibitions: {
-      en: [
-        "2020",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Eligibility for Membership, 1st National Exhibition of Animation & Comic Art, Guangzhou, China",
-        "2016",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Gold Award, 21st Fukuoka Asian Digital Art Festival, Fukuoka, Japan",
-      ],
-      zh: [
-        "2020",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0入选 – 第一届全国动画与漫画艺术展览，中国广州",
-        "2016",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0金奖 – 第21届福冈亚洲数字艺术节，日本福冈",
-      ],
-      fr: [
-        "2020",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Sélection officielle – 1ère exposition nationale d'animation et d'art de bande dessinée, Guangzhou, Chine",
-        "2016",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Prix d'Or – 21ème Festival d'art numérique asiatique de Fukuoka, Fukuoka, Japon",
-      ],
+      en: ["2020", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Eligibility for Membership, 1st National Exhibition of Animation & Comic Art, Guangzhou, China", "2016", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Gold Award, 21st Fukuoka Asian Digital Art Festival, Fukuoka, Japan"],
+      zh: ["2020", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0入选 – 第一届全国动画与漫画艺术展览，中国广州", "2016", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0金奖 – 第21届福冈亚洲数字艺术节，日本福冈"],
+      fr: ["2020", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Sélection officielle – 1ère exposition nationale d'animation et d'art de bande dessinée, Guangzhou, Chine", "2016", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Prix d'Or – 21ème Festival d'art numérique asiatique de Fukuoka, Fukuoka, Japon"],
     },
     glowColor: "#FFD700",
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
@@ -600,26 +594,14 @@ yet it is always filled with belief.`,
       fr: "Cette histoire s’inspire de la vie réelle. Une petite fille a été renversée par deux véhicules à Canton et ignorée par de nombreux passants. Ce dessin animé vise à réveiller la conscience endormie.",
     },
     credits: {
-      en: ["Director: Qin Long", "Animation: Qin Long，Zhang Yin，Zhang Ran，Hu Guofeng "],
+      en: ["Director: Qin Long", "Animation: Qin Long, Zhang Yin, Zhang Ran, Hu Guofeng"],
       zh: ["导演：秦龙", "动画：秦龙、张引、张然、胡国峰"],
-      fr: ["Réalisateur : QinLong", "Animation : Qin Long，Zhang Yin，Zhang Ran，Hu Guofeng"],
+      fr: ["Réalisateur : Qin Long", "Animation : Qin Long, Zhang Yin, Zhang Ran, Hu Guofeng"],
     },
     exhibitions: {
-      en: [
-        "2012",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Audience Choice Award, Hamburg Animation Festival, Hamburg, Germany",
-
-      ],
-      zh: [
-        "2012",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0德国汉堡动画节 最受关注奖，汉堡，德国",
-
-      ],
-      fr: [
-        "2012",
-        "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Prix du public – Festival d'animation de Hambourg, Hambourg, Allemagne",
-
-      ],
+      en: ["2012", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Audience Choice Award, Hamburg Animation Festival, Hamburg, Germany"],
+      zh: ["2012", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0德国汉堡动画节 最受关注奖，汉堡，德国"],
+      fr: ["2012", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Prix du public – Festival d'animation de Hambourg, Hambourg, Allemagne"],
     },
     glowColor: "#FF3366",
     client: { en: "Independent animation", zh: "独立动画", fr: "Animation indépendante" },
@@ -644,16 +626,15 @@ yet it is always filled with belief.`,
     type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
     year: "2011",
     thumbnail: project1,
-    
     description: {
-      en: "This is a 2D hand-drawn animated short film that depicts a day in the life of modern young people.It portrays their confusion and anguish in making life choices, as they navigate a repetitive, passive existence filled with decisions, standing at a crossroads in life.The creator believes that everyone has their own path in life. Sticking to one’s ideals and following their own journey steadfastly until the end may be the best way forward.",
+      en: "This is a 2D hand-drawn animated short film that depicts a day in the life of modern young people. It portrays their confusion and anguish in making life choices, as they navigate a repetitive, passive existence filled with decisions, standing at a crossroads in life. The creator believes that everyone has their own path in life. Sticking to one’s ideals and following their own journey steadfastly until the end may be the best way forward.",
       zh: "这是一部描绘了现代年轻人的一天的二维手绘动画短片。描写年轻人们在不断重复、被动、充满选择的生活中，表达处于十字路口时，择路过程中的困惑和痛苦……作者认为，每个人都有自己的一条轨，坚持自己心存的理想一条路走到亮，可能是最好的方式。",
-      fr: "Il s’agit d’un court métrage d’animation dessinée à la main en 2D qui dépeint une journée de jeunes gens modernes.Il décrit la confusion et la souffrance des jeunes gens au cours du processus de choix de leur chemin, alors qu’ils se trouvent à la croisée des chemins, dans une vie répétitive, passive et pleine de choix…L’auteur estime que chacun possède sa propre voie ; persévérer dans son idéal et suivre son propre chemin jusqu’au bout est peut-être la meilleure manière de faire.",
+      fr: "Il s’agit d’un court métrage d’animation dessinée à la main en 2D qui dépeint une journée de jeunes gens modernes. Il décrit la confusion et la souffrance des jeunes gens au cours du processus de choix de leur chemin, alors qu’ils se trouvent à la croisée des chemins, dans une vie répétitive, passive et pleine de choix… L’auteur estime que chacun possède sa propre voie ; persévérer dans son idéal et suivre son propre chemin jusqu’au bout est peut-être la meilleure manière de faire.",
     },
     credits: {
-      en: ["Director: QinLong", "Animation: QinLong", ],
-      zh: ["导演：秦龙", "动画：秦龙", ],
-      fr: ["Réalisateur : QinLong", "Animation : QinLong", ],
+      en: ["Director: QinLong", "Animation: QinLong"],
+      zh: ["导演：秦龙", "动画：秦龙"],
+      fr: ["Réalisateur : QinLong", "Animation : QinLong"],
     },
     exhibitions: {
       en: [
@@ -661,7 +642,6 @@ yet it is always filled with belief.`,
         "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Youku Young Director Support Program, Signed Director, Beijing, China",
         "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Finalist, SICAF Animation Festival, Seoul, South Korea",
         "2011",
-        
         "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Finalist Award, Fukuoka Asian Digital Art Exhibition, Fukuoka, Japan",
       ],
       zh: [
