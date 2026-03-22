@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import Layout from "@/components/Layout";
 import ImageLightbox from "@/components/ImageLightbox";
 import { photographs } from "@/data/photographs";
+import { photographyBook } from "@/data/books";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import type { Locale } from "@/i18n/translations";
