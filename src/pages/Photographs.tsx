@@ -8,9 +8,9 @@ import type { Locale } from "@/i18n/translations";
 import type { ArtworkItem } from "@/data/drawings";
 
 const philosophy = {
-  en: "Photography is an act of attention — a way of holding still long enough to see what is already there. We are drawn to the quiet, the in-between, the light that reveals as much as it conceals.",
-  zh: "摄影是一种专注的行为——一种足够安静地停下来，去看见已经存在之物的方式。我们被宁静、过渡与那些既揭示又隐藏的光所吸引。",
-  fr: "La photographie est un acte d'attention — une façon de rester immobile assez longtemps pour voir ce qui est déjà là. Nous sommes attirés par le calme, l'entre-deux, la lumière qui révèle autant qu'elle dissimule.",
+  en: "The spectacle society that Debord feared and the emancipation of the spectator that Rancière envisioned are simultaneously realized in the present era. The massive production of images provides an endless supply of nourishment for the formation of the spectacle society, drawing people into a vast apparatus of images. Fortunately, people are no longer passive spectators; they both become part of the apparatus through their activities and, drawing on their own power, shape, transform, and extend it.",
+  zh: "德波所恐惧的景观社会以及朗西埃所期盼的对于观众的解放在当下这个时代被同时实现。图像的大量生成为景观社会的形成提供了源源不断的养料，人们被吸纳进一个巨型的影像装置当中。幸好人们已不再是被动的观众，人们一边成为装置的一部分进行活动，一边以自身的力量对这个装置进行塑造、改变和延展。",
+  fr: "La société du spectacle que Debord craignait et l'émancipation du spectateur que Rancière envisageait sont simultanément réalisées à l'ère actuelle. La production massive d'images fournit un approvisionnement sans fin pour la formation de la société du spectacle, attirant les gens dans un vaste appareil d'images. Heureusement, les gens ne sont plus des spectateurs passifs; ils deviennent à la fois partie de l'appareil à travers leurs activités et, s'appuyant sur leur propre pouvoir, le façonnent, le transforment et l'étendent.",
 };
 
 const emptyMessage = {
