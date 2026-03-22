@@ -173,7 +173,7 @@ export const projects: Project[] = [
       en: `This cinematic video essay, is a contemplative short documentary that weaves together distant locales around the world through a single, personal train of thought, a lyrical meditation on exploration, belief, and the spaces between solitude and connection. Through a series of interconnected vignettes—from a one-armed sailor contemplating ancient navigators, to wolves in legend drinking seawater, to a lonely tree in New Zealand that becomes a crowded attraction—the film weaves a tapestry of human and natural journeys. Moving across locations like China’s Erhai Lake, Huizhou’s weekend crowds, Xinjiang’s once-fishless waters, and Portugal’s wind-swept Cabo da Roca, the film reflects on how we navigate the unknown: sometimes alone, sometimes in waves, driven by a quiet faith that propels us forward even when destinations are unseen. Visually poetic and philosophically resonant, it is a short film about the courage to begin, the loneliness of being, and the shared currents that connect all seekers at the edge of the known.
 
 
-Between Us and the World
+<strong>BETWEEN US AND THE WORLD</strong>
 
 Xu Jingkun is a sailor.
 He had only one arm,
@@ -248,7 +248,7 @@ yet it is always filled with belief.`,
 
 镜头穿梭于中国云南洱海、惠州周末的人潮、新疆曾经无鱼的水域，以及葡萄牙狂风呼啸的罗卡角，影片探讨着我们该如何面对未知：有时独自前行，有时结伴而行，被一种无声的信念推动着，即便看不见目的地，也依然向前。影片兼具视觉诗意与哲学深度，讲述着开始的勇气、存在的孤独，以及在已知世界边缘，所有探索者之间共通的羁绊。
 
-我们与世界之间
+<strong>我们与世界之间</strong>
 
 许京坤是一个航海家。
 他左手臂只有半截，

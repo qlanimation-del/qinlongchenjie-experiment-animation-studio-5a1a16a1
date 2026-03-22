@@ -79,8 +79,8 @@ const ProjectDetail = () => {
               className="mb-12 text-muted-foreground leading-relaxed text-base sm:text-lg text-justify whitespace-pre-line"
               style={{ textIndent: "2em", lineHeight: 1.85 }}>
               
-              {project.description[locale]}
-            </p>
+               <div dangerouslySetInnerHTML={{ __html: project.description[locale] }} />
+</p>
 
             {/* Video Embed(s) */}
             {(() => {
