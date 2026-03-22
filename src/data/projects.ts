@@ -220,19 +220,14 @@ export const projects: Project[] = [
     },
     glowColor: "#E8A87C",
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
-    crew: { en: "Chen Jie", zh: "陈洁", fr: "Chen Jie" },
+    crew: { en: "Chen Jie", zh: "秦龙", fr: "Chen Jie" },
     parallaxLayers: [
       { src: betweenParallaxBg, speed: 0.1 },
       { src: betweenParallaxMid, speed: 0.25 },
       { src: betweenParallaxTop, speed: 0.4 },
     ],
     galleryImages: [
-     { src: bw1, alt: "Between Us and the World gallery 1" },
-     { src: bw2, alt: "Between Us and the World gallery 2" },
-     { src: bw3, alt: "Between Us and the World gallery 3" },
-     { src: bw4, alt: "Between Us and the World gallery 4" },
-     { src: bw5, alt: "Between Us and the World gallery 5" },
-     
+      { src: bw1, alt: "Between Us and the World gallery 1" },
      
     ],
   },
