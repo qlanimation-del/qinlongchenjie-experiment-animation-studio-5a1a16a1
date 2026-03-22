@@ -18,7 +18,7 @@ export const photographs: ArtworkItem[] = [
   {
     id: "p1",
     src: "/photographs/Artifacts,Nature,and People01.webp",
-    title: { en: "Artifacts,Nature,and People01", zh: "人造物与自然与人01", fr: "Artefacts, nature et hommes 01" },
+    title: { en: "Artifacts,Nature,and People01——Chen Jie", zh: "人造物与自然与人01——陈洁", fr: "Artefacts, nature et hommes 01——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
     category: { en: "Artifacts,Nature,and People", zh: "人造物与自然与人", fr: "Artefacts, nature et hommes" },
@@ -26,7 +26,7 @@ export const photographs: ArtworkItem[] = [
   {
     id: "p2",
     src: "/photographs/Artifacts,Nature,and People02.webp",
-    title: { en: "Artifacts,Nature,and People02", zh: "人造物与自然与人02", fr: "Artefacts, nature et hommes 02" },
+    title: { en: "Artifacts,Nature,and People02——Chen Jie", zh: "人造物与自然与人02——陈洁", fr: "Artefacts, nature et hommes 02——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
     category: { en: "Artifacts,Nature,and People", zh: "人造物与自然与人", fr: "Artefacts, nature et hommes" },
@@ -34,7 +34,7 @@ export const photographs: ArtworkItem[] = [
   {
     id: "p3",
     src: "/photographs/Artifacts,Nature,and People03.webp",
-    title: { en: "Artifacts,Nature,and People03", zh: "人造物与自然与人03", fr: "Artefacts, nature et hommes 03" },
+    title: { en: "Artifacts,Nature,and People03——Chen Jie", zh: "人造物与自然与人03——陈洁", fr: "Artefacts, nature et hommes 03——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
     category: { en: "Artifacts,Nature,and People", zh: "人造物与自然与人", fr: "Artefacts, nature et hommes" },
@@ -42,7 +42,7 @@ export const photographs: ArtworkItem[] = [
   {
     id: "p4",
     src: "/photographs/Artifacts,Nature,and People04.webp",
-    title: { en: "Artifacts,Nature,and People04", zh: "人造物与自然与人04", fr: "Artefacts, nature et hommes 04" },
+    title: { en: "Artifacts,Nature,and People04——Chen Jie", zh: "人造物与自然与人04——陈洁", fr: "Artefacts, nature et hommes 04——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
     category: { en: "Artifacts,Nature,and People", zh: "人造物与自然与人", fr: "Artefacts, nature et hommes" },
@@ -50,7 +50,7 @@ export const photographs: ArtworkItem[] = [
   {
     id: "p5",
     src: "/photographs/Artifacts,Nature,and People05.webp",
-    title: { en: "Artifacts,Nature,and People05", zh: "人造物与自然与人05", fr: "Artefacts, nature et hommes 05" },
+    title: { en: "Artifacts,Nature,and People05——Chen Jie", zh: "人造物与自然与人05——陈洁", fr: "Artefacts, nature et hommes 05——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
     category: { en: "Artifacts,Nature,and People", zh: "人造物与自然与人", fr: "Artefacts, nature et hommes" },
@@ -58,7 +58,7 @@ export const photographs: ArtworkItem[] = [
   {
     id: "p6",
     src: "/photographs/Artifacts,Nature,and People06.webp",
-    title: { en: "Artifacts,Nature,and People06", zh: "人造物与自然与人06", fr: "Artefacts, nature et hommes 06" },
+    title: { en: "Artifacts,Nature,and People06——Chen Jie", zh: "人造物与自然与人06——陈洁", fr: "Artefacts, nature et hommes 06——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
     category: { en: "Artifacts,Nature,and People", zh: "人造物与自然与人", fr: "Artefacts, nature et hommes" },
@@ -66,7 +66,7 @@ export const photographs: ArtworkItem[] = [
   {
     id: "p7",
     src: "/photographs/Artifacts,Nature,and People07.webp",
-    title: { en: "Artifacts,Nature,and People07", zh: "人造物与自然与人07", fr: "Artefacts, nature et hommes 07" },
+    title: { en: "Artifacts,Nature,and People07——Chen Jie", zh: "人造物与自然与人07——陈洁", fr: "Artefacts, nature et hommes 07——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
     category: { en: "Artifacts,Nature,and People", zh: "人造物与自然与人", fr: "Artefacts, nature et hommes" },
@@ -74,7 +74,7 @@ export const photographs: ArtworkItem[] = [
   {
     id: "p8",
     src: "/photographs/Artifacts,Nature,and People08.webp",
-    title: { en: "Artifacts,Nature,and People08", zh: "人造物与自然与人08", fr: "Artefacts, nature et hommes 08" },
+    title: { en: "Artifacts,Nature,and People08——Chen Jie", zh: "人造物与自然与人08——陈洁", fr: "Artefacts, nature et hommes 08——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
     category: { en: "Artifacts,Nature,and People", zh: "人造物与自然与人", fr: "Artefacts, nature et hommes" },
@@ -82,7 +82,7 @@ export const photographs: ArtworkItem[] = [
   {
     id: "p9",
     src: "/photographs/Artifacts,Nature,and People09.webp",
-    title: { en: "Artifacts,Nature,and People09", zh: "人造物与自然与人09", fr: "Artefacts, nature et hommes 09 " },
+    title: { en: "Artifacts,Nature,and People09——Chen Jie", zh: "人造物与自然与人09——陈洁", fr: "Artefacts, nature et hommes 09——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
     category: { en: "Artifacts,Nature,and People", zh: "人造物与自然与人", fr: "Artefacts, nature et hommes" },
@@ -94,7 +94,7 @@ export const photographs: ArtworkItem[] = [
   {
     id: "p10",
     src: "/photographs/枯枝影 2021 艺术微喷，60x60.webp",
-    title: { en: "Silhouette of Withered Boughs", zh: "枯枝影", fr: "Silhouette de Branches Flétries" },
+    title: { en: "Silhouette of Withered Boughs——Chen Jie", zh: "枯枝影——陈洁", fr: "Silhouette de Branches Flétries——Chen Jie" },
     medium: { en: "Digital Photography, 2021", zh: "数码摄影, 2021", fr: "Photographie numérique, 2021" },
     year: 2021,
     category: { en: "Conceptual Photography", zh: "观念摄影", fr: "Photographie Conceptuelle" },
