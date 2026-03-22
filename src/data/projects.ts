@@ -192,7 +192,87 @@ export const projects: Project[] = [
     year: "2025",
     thumbnail: project7,
     description: {
-      en: "This cinematic video essay, is a contemplative short documentary that weaves together distant locales around the world through a single, personal train of thought, a lyrical meditation on exploration, belief, and the spaces between solitude and connection. Through a series of interconnected vignettes—from a one-armed sailor contemplating ancient navigators, to wolves in legend drinking seawater, to a lonely tree in New Zealand that becomes a crowded attraction—the film weaves a tapestry of human and natural journeys.Moving across locations like China’s Erhai Lake, Huizhou’s weekend crowds, Xinjiang’s once-fishless waters, and Portugal’s wind-swept Cabo da Roca, the film reflects on how we navigate the unknown: sometimes alone, sometimes in waves, driven by a quiet faith that propels us forward even when destinations are unseen. Visually poetic and philosophically resonant, it is a short film about the courage to begin, the loneliness of being, and the shared currents that connect all seekers at the edge of the known.",
+      en: `This cinematic video essay, is a contemplative short documentary that weaves together distant locales around the world through a single, personal train of thought, a lyrical meditation on exploration, belief, and the spaces between solitude and connection. Through a series of interconnected vignettes—from a one-armed sailor contemplating ancient navigators, to wolves in legend drinking seawater, to a lonely tree in New Zealand that becomes a crowded attraction—the film weaves a tapestry of human and natural journeys.Moving across locations like China’s Erhai Lake, Huizhou’s weekend crowds, Xinjiang’s once-fishless waters, and Portugal’s wind-swept Cabo da Roca, the film reflects on how we navigate the unknown: sometimes alone, sometimes in waves, driven by a quiet faith that propels us forward even when destinations are unseen. Visually poetic and philosophically resonant, it is a short film about the courage to begin, the loneliness of being, and the shared currents that connect all seekers at the edge of the known.
+
+
+Between Us and the World
+
+
+Xu Jingkun is a sailor.
+He had only one arm,
+yet he sailed alone around the entire China Sea.
+He said that sailors of the past were even more remarkable—
+they didn’t know the Earth was round,
+didn’t know what lay ahead,
+and had no mechanical assistance.
+Yet they still paddled their canoes toward the depths of the ocean.
+He wondered, how did they believe there was land ahead?
+
+
+In Dongdaihe, Liaoning, there is a 26-kilometer coastline.
+Legend has it that in autumn, wolves travel long distances from afar to reach this shore,
+drink seawater, and grow new fur.
+What the legend doesn’t mention is,
+how did the first wolf know that seawater was drinkable?
+
+
+Erhai Lake in Yunnan is actually a freshwater lake on a plateau.
+When inland people first saw such a vast expanse of water,
+they named it by associating it with the concept of "sea" in their language.
+If ancient sailors had set sail from Erhai Lake,
+would they have found land earlier than expected?
+If wolves drank water from Erhai Lake,
+could they also successfully grow new fur?
+
+
+Along the coast of Huizhou, Guangdong, there are many exquisite hotels.
+Every weekend,
+tourists from nearby cities flock to these hotels,
+only to disperse in crowds when the workweek begins.
+On weekends, residents of Huizhou’s small islands
+will set up temporary stalls around their self-built houses to sell clay-roasted chicken.
+The clay-roasted chickens gather in Huizhou on weekends,
+just to welcome the city dwellers.
+
+
+In Lake Wanaka, New Zealand, there is a tree known as "the loneliest tree in the world."
+It began growing in 1939
+and became a famous attraction in 2014.
+It remained lonely for 75 years,
+yet after being recognized as the icon of "lonely,"
+it became the center of bustling attention.
+It can no longer enjoy its loneliness.
+
+
+Isolated from any rivers, lakes, or seas,
+Xinjiang’s Lake Sayram was once China’s only fishless lake.
+Eventually, Xinjiang introduced cold-tolerant fish from Russia,
+which have rich, firm flesh.
+The cold-tolerant fish from Russia, like the clay-roasted chickens,
+gather where tourists appear.
+Perhaps Lake Sayram, without fish,
+was originally the loneliest lake in the world.
+
+
+Cabo da Roca in Portugal is known as the end of land
+and the beginning of the sea.
+The wind at Cabo da Roca is exceptionally strong,
+making people sway and stumble.
+Perhaps such strong wind is necessary
+to lift the sails of canoes,
+to blow away the melancholy of facing the unknown,
+to propel humanity forward in exploration.
+Even if we don’t know where land lies ahead,
+even if we don’t know whether the first attempt will end in failure or triumph.
+We move forward step by step,
+sometimes alone,
+sometimes in swarms.
+We chase away loneliness and silence,
+and also disrupt tranquility and peace.
+
+
+Between us and the world lies the unknown,
+yet it is always filled with belief.`,
       zh: "这篇散文影像《我们与世界之间》是一部将不同国家的不同地点通过思绪联系起来的纪录短片，一场对探索、信仰、孤独和连接的抒情沉思。通过一系列相互关联的片段——从独臂水手缅怀古代航海家，到传说中的狼饮海水，再到新西兰一棵孤独的树成为拥挤的景点——这部短片编织了一幅人类与自然之旅的画卷。影片穿越中国洱海、惠州周末的人群、新疆曾经无鱼的水域以及葡萄牙风大浪急的罗卡角等地，反思我们如何探索未知：有时独自前行，有时成群结队，即便目的地未知，也因内心那份坚定的信念而勇往直前。这部短片不仅在视觉上富有诗意，而且在哲学上引人深思，它探讨了启程的勇气、存在的孤独以及探索者之间的惺惺相惜与紧密联系。",
       fr: "Ce court documentaire contemplatif tisse ensemble des lieux éloignés à travers le monde à travers une seule pensée personnelle, une méditation lyrique sur l'exploration, la croyance et les espaces entre la solitude et la connexion. À travers une série de vignettes interconnectées - d'un marin manchot contemplant les anciens navigateurs, à des loups dans la légende buvant de l'eau de mer, à un arbre solitaire en Nouvelle-Zélande qui devient une attraction bondée - le film tisse une tapisserie de voyages humains et naturels. Se déplaçant à travers des lieux comme le lac Erhai en Chine, les foules du week-end à Huizhou, les eaux autrefois sans poissons du Xinjiang et le Cabo da Roca balayé par les vents au Portugal, le film réfléchit à la façon dont nous naviguons dans l'inconnu : parfois seuls, parfois en vagues, poussés par une foi silencieuse qui nous propulse vers l'avant même lorsque les destinations sont invisibles. Visuellement poétique et philosophiquement résonnant, c'est un court métrage sur le courage de commencer, la solitude de l'être et les courants partagés qui connectent tous les chercheurs au bord du connu.",
     },
