@@ -220,7 +220,7 @@ export const projects: Project[] = [
     },
     glowColor: "#E8A87C",
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
-    crew: { en: "Chen Jie", zh: "秦龙", fr: "Chen Jie" },
+    crew: { en: "Chen Jie", zh: "陈洁", fr: "Chen Jie" },
     parallaxLayers: [
       { src: betweenParallaxBg, speed: 0.1 },
       { src: betweenParallaxMid, speed: 0.25 },
