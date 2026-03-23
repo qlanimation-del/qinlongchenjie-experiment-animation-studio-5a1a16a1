@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useCallback, useMemo } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronDown } from "lucide-react";
 import { ParallaxLayer } from "@/data/projects";
 
@@ -58,16 +58,17 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
       {effectiveLayers.map((layer, i) => {
-        // Each layer scrolls at (1 - speed) of normal scroll speed
-        // speed=0.1 → moves at 0.9 of scroll → lags behind by 10% (slowest, background)
-        // speed=0.4 → moves at 0.6 of scroll → lags behind by 40% (fastest parallax offset)
-        // The negative translateY makes layers appear to move up slower than the page scroll
-        // Background: moves down; Mid: static; Foreground: moves up
+        // 1. 降低手机端视差位移幅度（避免图片快速出界）
         const parallaxOffset = isMobile
-          ? (i === 0 ? scrollY * 0.05 : i === 1 ? 0 : -scrollY * 0.1)
-          : (i === 0 ? scrollY * 0.15 : i === 1 ? 0 : -scrollY * 0.3);
-        const baseScale = isMobile ? 1.15 : 1.35;
-        const scale = (layer as any).scaleBase ? ((layer as any).scaleBase + (isMobile ? -0.2 : 0)) : (baseScale - i * 0.05);
+          ? (i === 0 ? scrollY * 0.2 : i === 1 ? 0 : -scrollY * 0.2)
+          : (i === 0 ? scrollY * 0.5 : i === 1 ? 0 : -scrollY * 0.8);
+        
+        // 2. 优化手机端缩放（仅轻微缩小，避免图片过小）
+        const baseScale = isMobile ? 1.1 : 1.35; // 手机端基础缩放从1→1.1（轻微放大）
+        const scale = (layer as any).scaleBase 
+          ? ((layer as any).scaleBase + (isMobile ? -0.15 : 0)) // 缩小幅度从-0.5→-0.15
+          : (baseScale - i * 0.03); // 图层间缩放差异减小
+        
         const isVignette = (layer as any).overlay === "vignette";
 
         if (isVignette) {
@@ -94,13 +95,22 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
               transform: `translateY(${parallaxOffset}px) scale(${scale})`,
               zIndex: i,
               willChange: "transform",
+              // 可选：手机端加轻微内边距，保护核心内容不被裁
+              padding: isMobile ? '2% 0' : 0,
+              boxSizing: 'border-box'
             }}
           >
             {layer.src && (
               <img
                 src={layer.src}
                 alt={`Layer ${i + 1}`}
+                // 3. 保留object-cover保证占比，仅调整objectPosition控制裁剪区域
                 className="absolute inset-0 w-full h-full object-cover"
+                style={{ 
+                  // 关键：控制裁剪锚点，优先显示图片上部/中心
+                  objectPosition: isMobile ? 'center 15%' : 'center center',
+                  // 移除img的transform，避免和外层冲突
+                }}
                 loading={i === 0 ? "eager" : "lazy"}
                 decoding={i === 0 ? "auto" : "async"}
               />
