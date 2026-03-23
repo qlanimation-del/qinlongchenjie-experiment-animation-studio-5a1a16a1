@@ -1,50 +1,38 @@
 
 
-## Plan: Add Book Section to Sidebar on Drawing & Photographs Pages
+## Plan: Fix Translations, Parallax Black Edges, Photo Loading, and Sidebar Width
 
-### Overview
-In the left sidebar of both `/drawing` and `/photographs`, add a book promotion section below the Philosophy text and above the category index. The section includes: book cover image, title, short description, and a purchase link. A placeholder image will be used for easy replacement.
+### Issues Found
 
-### Sidebar Layout (top to bottom)
-```text
-┌─────────────────────┐
-│ Philosophy (header)  │
-│ philosophy text...   │
-│                      │
-│ ── Book Section ──   │  ← NEW
-│ [book cover image]   │
-│ Book Title           │
-│ Short description    │
-│ [Purchase Link →]    │
-│                      │
-│ ── Category Index ── │  ← moved down
-│ Artifacts,Nature...  │
-│ Conceptual Photo...  │
-└─────────────────────┘
-```
+1. **Missing French essay poem** — `/work/between-us` French description (line 322 in projects.ts) only has the intro paragraph; the full essay poem present in EN and ZH is missing from FR.
+
+2. **Parallax black edges on large screens** — `ParallaxHero.tsx` uses `scale(1.15)` base which is insufficient on large monitors. When `scrollY` increases and `translateY` shifts layers, the image edges become visible against the black background. Need to increase scale to ~1.3 and ensure the container clips properly.
+
+3. **Photographs images not loading** — Files exist in `public/photographs/` but filenames contain commas (e.g., `Artifacts,Nature,and People01.webp`) and Chinese characters with spaces (`枯枝影 2021 艺术微喷，60x60.webp`). The `src` paths in `photographs.ts` need URL-encoding to load correctly in browsers.
+
+4. **Publication description width mismatch** — Both `Drawing.tsx` (line 101) and `Photographs.tsx` (line 106) have `max-w-[200px]` on the book description, making it narrower than the philosophy text above (which also has `max-w-[200px]` but renders differently due to `dangerouslySetInnerHTML` in Photographs). Remove `max-w-[200px]` from the description `<p>` tags so they naturally fill the sidebar width (`lg:w-[200px]`), matching the philosophy text.
 
 ### Changes
 
-#### 1. Create shared book data (`src/data/books.ts`)
-- Trilingual book info for both pages (drawing book + photography book, or same book)
-- Fields: `coverSrc`, `title`, `description`, `purchaseUrl` — all with `{ en, zh, fr }` where appropriate
-- Placeholder cover image from Unsplash, stored concept: real images go to `public/photographs/` or `public/images/`
-
-#### 2. Update `src/pages/Photographs.tsx`
-- Import book data
-- Insert book section between philosophy `<div>` and the category `<nav>`
-- Book cover image (clickable, links to purchase), title, description, purchase link
-- Category nav gets more top margin to sit lower on the page
-
-#### 3. Update `src/pages/Drawing.tsx`
-- Same structure as Photographs — book section between philosophy and category nav
-- Can use a different book or same book depending on content
-
-### File Changes
-
-| File | Action |
+| File | Change |
 |---|---|
-| `src/data/books.ts` | Create — shared book data with placeholder image |
-| `src/pages/Photographs.tsx` | Add book section in sidebar |
-| `src/pages/Drawing.tsx` | Add book section in sidebar |
+| `src/data/projects.ts` | Add full French translation of the essay poem to the between-us `fr` description field |
+| `src/components/ParallaxHero.tsx` | Increase base scale from 1.15 to ~1.3, adjust per-layer scales accordingly to prevent black edge exposure on large screens |
+| `src/data/photographs.ts` | URL-encode the `src` paths: commas → `%2C`, spaces → `%20`, Chinese comma → `%EF%BC%8C` |
+| `src/pages/Drawing.tsx` | Remove `max-w-[200px]` from book description (line 101) |
+| `src/pages/Photographs.tsx` | Remove `max-w-[200px]` from book description (line 106) |
+
+### French Essay Translation (between-us)
+
+The full poem will be translated to French, preserving the same structure and line breaks as the EN/ZH versions, starting with the intro paragraph already present, followed by:
+
+- `<strong>ENTRE NOUS ET LE MONDE</strong>`
+- All stanzas translated (sailor, wolves, Erhai Lake, Huizhou, lonely tree, Lake Sayram, Cabo da Roca, closing)
+
+### Parallax Scale Fix
+
+Current scale values: `1.15 - i * 0.05` (layer 0: 1.15, layer 1: 1.10, layer 2: 1.05)
+New scale values: `1.35 - i * 0.05` (layer 0: 1.35, layer 1: 1.30, layer 2: 1.25)
+
+This provides enough image overflow to cover the viewport even at maximum scroll offset on ultrawide/large displays.
 
