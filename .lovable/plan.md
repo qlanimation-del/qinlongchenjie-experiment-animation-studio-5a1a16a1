@@ -8,7 +8,7 @@
 
 2. **Parallax black edges on large screens** — `ParallaxHero.tsx` uses `scale(1.15)` base which is insufficient on large monitors. When `scrollY` increases and `translateY` shifts layers, the image edges become visible against the black background. Need to increase scale to ~1.3 and ensure the container clips properly.
 
-3. **Photographs images not loading** — Files exist in `public/photographs/` but filenames contain commas (e.g., `Artifacts,Nature,and People01.webp`) and Chinese characters with spaces (`枯枝影 2021 艺术微喷，60x60.webp`). The `src` paths in `photographs.ts` need URL-encoding to load correctly in browsers.
+3. **Photographs images not loading** — Files exist in `public/photographs/` but filenames contain commas (e.g., `Artifacts,Nature,and People01.png`) and Chinese characters with spaces (`枯枝影 2021 艺术微喷，60x60.webp`). The `src` paths in `photographs.ts` need URL-encoding to load correctly in browsers.
 
 4. **Publication description width mismatch** — Both `Drawing.tsx` (line 101) and `Photographs.tsx` (line 106) have `max-w-[200px]` on the book description, making it narrower than the philosophy text above (which also has `max-w-[200px]` but renders differently due to `dangerouslySetInnerHTML` in Photographs). Remove `max-w-[200px]` from the description `<p>` tags so they naturally fill the sidebar width (`lg:w-[200px]`), matching the philosophy text.
 
