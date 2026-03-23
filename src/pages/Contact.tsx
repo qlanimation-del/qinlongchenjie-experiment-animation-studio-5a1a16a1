@@ -7,10 +7,30 @@ import { toast } from "sonner";
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const { t } = useLanguage();
+  // 定义收件人邮箱
+  const recipientEmail = "ql.animation@gmail.com";
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success(t("contact", "sent"));
+
+    // 基础验证：确保必填项都已填写
+    if (!formData.name || !formData.email || !formData.message) {
+      toast.error(t("contact", "requiredFields") || "Please fill in all required fields");
+      return;
+    }
+
+    // 构建mailto链接，自动填充收件人、主题、正文
+    const emailSubject = encodeURIComponent(`Message from ${formData.name}`); // 邮件主题（含用户名）
+    const emailBody = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+    ); // 邮件正文（拼接用户信息）
+    const mailtoLink = `mailto:${recipientEmail}?subject=${emailSubject}&body=${emailBody}`;
+
+    // 唤起默认邮箱客户端
+    window.location.href = mailtoLink;
+
+    // 提示用户并清空表单
+    toast.success(t("contact", "emailOpened") || "Email client opened successfully!");
     setFormData({ name: "", email: "", message: "" });
   };
 
@@ -70,7 +90,7 @@ const Contact = () => {
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-muted hover:bg-muted/80 text-foreground font-semibold tracking-[0.1em] uppercase text-xs py-3 rounded transition-colors"
+                    className="w-full bg-muted hover:bg-muted/80 text-foreground font-semibold tracking-[0.15em] uppercase text-xs py-3 rounded transition-colors"
                   >
                     {t("contact", "send")}
                   </button>
@@ -92,8 +112,9 @@ const Contact = () => {
                   <h3 className="text-xs font-semibold tracking-[0.15em] uppercase text-foreground/80 mb-4">
                     {t("contact", "contactLabel")}
                   </h3>
+                  {/* 优化：静态邮箱地址也添加mailto链接 */}
                   <a
-                    href="mailto:ql.animation@gmail.com"
+                    href={`mailto:${recipientEmail}`}
                     className="text-foreground hover:underline text-sm"
                   >
                     ql.animation@gmail.com
