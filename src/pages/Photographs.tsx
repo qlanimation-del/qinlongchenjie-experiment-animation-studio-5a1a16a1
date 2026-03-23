@@ -90,7 +90,7 @@ const Photographs = () => {
             </div>
 
             {/* Book Section */}
-            <div className="mt-10">
+            <div className="mt-10 max-w-[180px]">
               <h3 className="text-xs font-bold text-neutral-800 mb-3 tracking-wide uppercase">
                 {locale === "zh" ? "出版物" : locale === "fr" ? "Publication" : "Publication"}
               </h3>
