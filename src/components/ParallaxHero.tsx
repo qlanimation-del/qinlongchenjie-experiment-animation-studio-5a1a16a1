@@ -24,6 +24,7 @@ interface ParallaxHeroProps {
 }
 
 const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScrollDown }: ParallaxHeroProps) => {
+  const isMobile = useIsMobile();
   const [scrollY, setScrollY] = useState(0);
   const rafRef = useRef<number>(0);
 
