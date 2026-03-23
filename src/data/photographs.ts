@@ -17,7 +17,7 @@ export const photographs: ArtworkItem[] = [
   // ═══════════════════════════════════════
   {
     id: "p1",
-    src: "/photographs/Artifacts,Nature,and People 01.png",
+    src: "/photographs/Artifacts,Nature,and People 01.webp",
     title: { en: "Artifacts,Nature,and People 01——Chen Jie", zh: "人造物与自然与人01——陈洁", fr: "Artefacts, nature et hommes 01——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
@@ -25,7 +25,7 @@ export const photographs: ArtworkItem[] = [
   },
   {
     id: "p2",
-    src: "/photographs/Artifacts,Nature,and People 02.png",
+    src: "/photographs/Artifacts,Nature,and People 02.webp",
     title: { en: "Artifacts,Nature,and People 02——Chen Jie", zh: "人造物与自然与人02——陈洁", fr: "Artefacts, nature et hommes 02——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
@@ -33,7 +33,7 @@ export const photographs: ArtworkItem[] = [
   },
   {
     id: "p3",
-    src: "/photographs/Artifacts,Nature,and People 03.png",
+    src: "/photographs/Artifacts,Nature,and People 03.webp",
     title: { en: "Artifacts,Nature,and People 03——Chen Jie", zh: "人造物与自然与人03——陈洁", fr: "Artefacts, nature et hommes 03——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
@@ -41,7 +41,7 @@ export const photographs: ArtworkItem[] = [
   },
   {
     id: "p4",
-    src: "/photographs/Artifacts,Nature,and People 04.png",
+    src: "/photographs/Artifacts,Nature,and People 04.webp",
     title: { en: "Artifacts,Nature,and People 04——Chen Jie", zh: "人造物与自然与人04——陈洁", fr: "Artefacts, nature et hommes 04——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
@@ -49,7 +49,7 @@ export const photographs: ArtworkItem[] = [
   },
   {
     id: "p5",
-    src: "/photographs/Artifacts,Nature,and People 05.png",
+    src: "/photographs/Artifacts,Nature,and People 05.webp",
     title: { en: "Artifacts,Nature,and People 05——Chen Jie", zh: "人造物与自然与人05——陈洁", fr: "Artefacts, nature et hommes 05——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
@@ -57,7 +57,7 @@ export const photographs: ArtworkItem[] = [
   },
   {
     id: "p6",
-    src: "/photographs/Artifacts,Nature,and People 06.png",
+    src: "/photographs/Artifacts,Nature,and People 06.webp",
     title: { en: "Artifacts,Nature,and People 06——Chen Jie", zh: "人造物与自然与人06——陈洁", fr: "Artefacts, nature et hommes 06——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
@@ -65,7 +65,7 @@ export const photographs: ArtworkItem[] = [
   },
   {
     id: "p7",
-    src: "/photographs/Artifacts,Nature,and People 07.png",
+    src: "/photographs/Artifacts,Nature,and People 07.webp",
     title: { en: "Artifacts,Nature,and People 07——Chen Jie", zh: "人造物与自然与人07——陈洁", fr: "Artefacts, nature et hommes 07——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
@@ -73,7 +73,7 @@ export const photographs: ArtworkItem[] = [
   },
   {
     id: "p8",
-    src: "/photographs/Artifacts,Nature,and People 08.png",
+    src: "/photographs/Artifacts,Nature,and People 08.webp",
     title: { en: "Artifacts,Nature,and People 08——Chen Jie", zh: "人造物与自然与人08——陈洁", fr: "Artefacts, nature et hommes 08——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
@@ -81,7 +81,7 @@ export const photographs: ArtworkItem[] = [
   },
   {
     id: "p9",
-    src: "/photographs/Artifacts,Nature,and People 09.png",
+    src: "/photographs/Artifacts,Nature,and People 09.webp",
     title: { en: "Artifacts,Nature,and People 09——Chen Jie", zh: "人造物与自然与人09——陈洁", fr: "Artefacts, nature et hommes 09——Chen Jie" },
     medium: { en: "Digital Photography, 2023", zh: "数码摄影, 2023", fr: "Photographie numérique, 2023" },
     year: 2023,
