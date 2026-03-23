@@ -34,9 +34,9 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
     ? layers
     : singleImage
       ? [
-          { src: singleImage, speed: 0.1, scaleBase: 1.15 },
-          { src: singleImage, speed: 0.25, overlay: "bg-black/30", scaleBase: 1.1 },
-          { src: "", speed: 0.4, overlay: "vignette", scaleBase: 1.05 },
+          { src: singleImage, speed: 0.1, scaleBase: 1.35 },
+          { src: singleImage, speed: 0.25, overlay: "bg-black/30", scaleBase: 1.3 },
+          { src: "", speed: 0.4, overlay: "vignette", scaleBase: 1.25 },
         ]
       : [];
 
@@ -52,7 +52,7 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
         // The negative translateY makes layers appear to move up slower than the page scroll
         // Background: moves down; Mid: static; Foreground: moves up
         const parallaxOffset = i === 0 ? scrollY * 0.15 : i === 1 ? 0 : -scrollY * 0.3;
-        const scale = (layer as any).scaleBase || (1.15 - i * 0.05);
+        const scale = (layer as any).scaleBase || (1.35 - i * 0.05);
         const isVignette = (layer as any).overlay === "vignette";
 
         if (isVignette) {

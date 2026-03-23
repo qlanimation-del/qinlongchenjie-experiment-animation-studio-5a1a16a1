@@ -98,7 +98,7 @@ const Drawing = () => {
                 />
               </a>
               <p className="text-xs font-semibold text-neutral-800 mt-3">{drawingBook.title[locale]}</p>
-              <p className="text-[11px] leading-relaxed text-neutral-500 mt-1 max-w-[200px]">{drawingBook.description[locale]}</p>
+              <p className="text-[11px] leading-relaxed text-neutral-500 mt-1">{drawingBook.description[locale]}</p>
               <a
                 href={drawingBook.purchaseUrl}
                 target="_blank"
