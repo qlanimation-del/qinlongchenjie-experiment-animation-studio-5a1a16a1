@@ -103,7 +103,7 @@ const Photographs = () => {
                 />
               </a>
               <p className="text-xs font-semibold text-neutral-800 mt-3">{photographyBook.title[locale]}</p>
-              <p className="text-[11px] leading-relaxed text-neutral-500 mt-1 max-w-[200px]">{photographyBook.description[locale]}</p>
+              <p className="text-[11px] leading-relaxed text-neutral-500 mt-1">{photographyBook.description[locale]}</p>
               <a
                 href={photographyBook.purchaseUrl}
                 target="_blank"

@@ -319,7 +319,87 @@ zh: `这部影像散文是一部引人沉思的纪录短片，它以一段私人
 我们和世界之间充满了未知，
 却总蕴含着相信。`,
 
-fr: "Ce court documentaire contemplatif tisse ensemble des lieux éloignés à travers le monde à travers une seule pensée personnelle, une méditation lyrique sur l'exploration, la croyance et les espaces entre la solitude et la connexion. À travers une série de vignettes interconnectées - d'un marin manchot contemplant les anciens navigateurs, à des loups dans la légende buvant de l'eau de mer, à un arbre solitaire en Nouvelle-Zélande qui devient une attraction bondée - le film tisse une tapisserie de voyages humains et naturels. Se déplaçant à travers des lieux comme le lac Erhai en Chine, les foules du week-end à Huizhou, les eaux autrefois sans poissons du Xinjiang et le Cabo da Roca balayé par les vents au Portugal, le film réfléchit à la façon dont nous naviguons dans l'inconnu : parfois seuls, parfois en vagues, poussés par une foi silencieuse qui nous propulse vers l'avant même lorsque les destinations sont invisibles. Visuellement poétique et philosophiquement résonnant, c'est un court métrage sur le courage de commencer, la solitude de l'être et les courants partagés qui connectent tous les chercheurs au bord du connu.",
+fr: `Ce court documentaire contemplatif tisse ensemble des lieux éloignés à travers le monde à travers une seule pensée personnelle, une méditation lyrique sur l'exploration, la croyance et les espaces entre la solitude et la connexion. À travers une série de vignettes interconnectées - d'un marin manchot contemplant les anciens navigateurs, à des loups dans la légende buvant de l'eau de mer, à un arbre solitaire en Nouvelle-Zélande qui devient une attraction bondée - le film tisse une tapisserie de voyages humains et naturels. Se déplaçant à travers des lieux comme le lac Erhai en Chine, les foules du week-end à Huizhou, les eaux autrefois sans poissons du Xinjiang et le Cabo da Roca balayé par les vents au Portugal, le film réfléchit à la façon dont nous naviguons dans l'inconnu : parfois seuls, parfois en vagues, poussés par une foi silencieuse qui nous propulse vers l'avant même lorsque les destinations sont invisibles. Visuellement poétique et philosophiquement résonnant, c'est un court métrage sur le courage de commencer, la solitude de l'être et les courants partagés qui connectent tous les chercheurs au bord du connu.
+
+
+Entre nous et le monde
+
+
+Xu Jingkun est un marin.
+Il n'avait qu'un seul bras,
+pourtant il a navigué seul autour de toute la mer de Chine.
+Il disait que les marins d'autrefois étaient encore plus remarquables —
+ils ne savaient pas que la Terre était ronde,
+ne savaient pas ce qui les attendait,
+et n'avaient aucune assistance mécanique.
+Pourtant, ils pagayaient leurs pirogues vers les profondeurs de l'océan.
+Il se demandait : comment croyaient-ils qu'il y avait une terre devant eux ?
+
+
+À Dongdaihe, dans le Liaoning, il y a un littoral de 26 kilomètres.
+La légende raconte qu'en automne, les loups parcourent de longues distances pour atteindre ce rivage,
+boire l'eau de mer et faire pousser une nouvelle fourrure.
+Ce que la légende ne mentionne pas, c'est :
+comment le premier loup a-t-il su que l'eau de mer était potable ?
+
+
+Le lac Erhai au Yunnan est en réalité un lac d'eau douce sur un plateau.
+Lorsque les habitants de l'intérieur virent pour la première fois une si vaste étendue d'eau,
+ils la nommèrent en l'associant au concept de « mer » dans leur langue.
+Si les anciens marins avaient pris la mer depuis le lac Erhai,
+auraient-ils trouvé la terre plus tôt que prévu ?
+Si les loups avaient bu l'eau du lac Erhai,
+auraient-ils aussi réussi à faire pousser une nouvelle fourrure ?
+
+
+Le long de la côte de Huizhou, dans le Guangdong, il y a de nombreux hôtels raffinés.
+Chaque week-end,
+les touristes des villes voisines affluent vers ces hôtels,
+pour se disperser en foule lorsque la semaine de travail commence.
+Les week-ends, les habitants des petites îles de Huizhou
+installent des étals temporaires autour de leurs maisons pour vendre du poulet rôti à l'argile.
+Les poulets rôtis à l'argile se rassemblent à Huizhou le week-end,
+juste pour accueillir les citadins.
+
+
+Au lac Wanaka, en Nouvelle-Zélande, il y a un arbre connu comme « l'arbre le plus solitaire du monde ».
+Il a commencé à pousser en 1939
+et est devenu une attraction célèbre en 2014.
+Il est resté solitaire pendant 75 ans,
+mais après avoir été reconnu comme l'icône de la « solitude »,
+il est devenu le centre d'une attention animée.
+Il ne peut plus profiter de sa solitude.
+
+
+Isolé de toute rivière, lac ou mer,
+le lac Sayram au Xinjiang était autrefois le seul lac sans poissons de Chine.
+Finalement, le Xinjiang a introduit des poissons résistants au froid de Russie,
+dont la chair est riche et ferme.
+Les poissons résistants au froid de Russie, comme les poulets rôtis à l'argile,
+se rassemblent là où les touristes apparaissent.
+Peut-être que le lac Sayram, sans poissons,
+était à l'origine le lac le plus solitaire du monde.
+
+
+Le Cabo da Roca au Portugal est connu comme la fin de la terre
+et le début de la mer.
+Le vent au Cabo da Roca est exceptionnellement fort,
+faisant tituber et chanceler les gens.
+Peut-être qu'un vent si fort est nécessaire
+pour gonfler les voiles des pirogues,
+pour chasser la mélancolie face à l'inconnu,
+pour propulser l'humanité dans son exploration.
+Même si nous ne savons pas où se trouve la terre devant nous,
+même si nous ne savons pas si la première tentative se terminera par un échec ou un exploit.
+Nous avançons pas à pas,
+parfois seuls,
+parfois en essaims.
+Nous chassons la solitude et le silence,
+et nous perturbons aussi la tranquillité et la paix.
+
+
+Entre nous et le monde se trouve l'inconnu,
+pourtant il est toujours empli de croyance.`,
     
 },
     credits: {
