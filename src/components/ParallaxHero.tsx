@@ -63,8 +63,11 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
         // speed=0.4 → moves at 0.6 of scroll → lags behind by 40% (fastest parallax offset)
         // The negative translateY makes layers appear to move up slower than the page scroll
         // Background: moves down; Mid: static; Foreground: moves up
-        const parallaxOffset = i === 0 ? scrollY * 0.15 : i === 1 ? 0 : -scrollY * 0.3;
-        const scale = (layer as any).scaleBase || (1.35 - i * 0.05);
+        const parallaxOffset = isMobile
+          ? (i === 0 ? scrollY * 0.05 : i === 1 ? 0 : -scrollY * 0.1)
+          : (i === 0 ? scrollY * 0.15 : i === 1 ? 0 : -scrollY * 0.3);
+        const baseScale = isMobile ? 1.15 : 1.35;
+        const scale = (layer as any).scaleBase ? ((layer as any).scaleBase + (isMobile ? -0.2 : 0)) : (baseScale - i * 0.05);
         const isVignette = (layer as any).overlay === "vignette";
 
         if (isVignette) {
