@@ -142,14 +142,14 @@ const Index = () => {
                 ))}
               </div>
               {/* Mascot / animated character */}
-              <div className="shrink-0">
-                <img
-                  src={mascotImg}
-                  alt="Studio mascot"
-                  className="w-20 h-20 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain animate-bounce"
-                  loading="lazy"
-                />
-              </div>
+<div className="shrink-0 relative w-[300px] h-[220px]">
+  <img
+    src={mascotImg}
+    alt="Studio mascot"
+    className="absolute inset-1 w-[800px] h-auto object-contain -translate-x-1/1 -translate-y-1/1 left-1/1 top-1/1"
+    loading="lazy"
+  />
+</div>
             </div>
           </AnimatedSection>
         </div>
