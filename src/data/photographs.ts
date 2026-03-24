@@ -93,7 +93,7 @@ export const photographs: ArtworkItem[] = [
   // ═══════════════════════════════════════
   {
     id: "p10",
-    src: "/photographs/枯枝影2021.webp",
+    src: "/photographs/kuzhiying.webp",
     title: { en: "Silhouette of Withered Boughs——Chen Jie", zh: "枯枝影——陈洁", fr: "Silhouette de Branches Flétries——Chen Jie" },
     medium: { en: "Digital Photography, 2021", zh: "数码摄影, 2021", fr: "Photographie numérique, 2021" },
     year: 2021,
