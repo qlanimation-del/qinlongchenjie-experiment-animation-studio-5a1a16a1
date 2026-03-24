@@ -34,7 +34,7 @@ const Footer = () => {
               className="text-white hover:text-blue-400 active:text-blue-300 hover:scale-110 active:scale-95 transition-all duration-200"
               aria-label={link.label}
             >
-              <link.icon className={link.label === "小红书" ? "w-9 h-9" : "w-7 h-7"} />
+              <link.icon className={link.label === "小红书" ? "w-14 h-14" : "w-7 h-7"} />
             </a>
           ))}
         </div>
