@@ -120,27 +120,33 @@ const Index = () => {
             <div className="flex flex-col md:flex-row items-center justify-between gap-8">
               {/* Award badges */}
               <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-14 flex-1">
-                {[
-                  { label: "Annie Awards Nominee", icon: annieAward },
-                  { label: "BAFTA Nominee", icon: baftaAward },
-                  { label: "Vimeo Best of Year", icon: vimeoAward },
-                ].map((award) => (
-                  <div
-                    key={award.label}
-                    className="flex flex-col items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
-                  >
-                    <img
-                      src={award.icon}
-                      alt={award.label}
-                      className="w-12 h-12 sm:w-16 sm:h-16 object-contain"
-                      loading="lazy"
-                    />
-                    <span className="text-[10px] sm:text-xs font-medium tracking-wider text-black uppercase text-center max-w-[100px] sm:max-w-none">
-                      {award.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
+  {[
+    { label: "Silver Award", icon: annieAward },
+     { label: "Canadian Screen Award Qualifying", icon: vimeoAward },
+    { label: "BAFTA Nominee", icon: baftaAward },
+   
+  ].map((award) => (
+    <div
+      key={award.label}
+      className="flex flex-col items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
+    >
+      <img
+  src={award.icon}
+  alt={award.label}
+  className={`
+${award.label === "Silver Award" ? "w-[150px] h-[150px] sm:w-[180px] sm:h-[180px]" : ""}
+${award.label === "BAFTA Nominee" ? "w-[150px] h-[150px] sm:w-[180px] sm:h-[180px]" : ""}
+${award.label === "Canadian Screen Award Qualifying" ? "w-[150px] h-[150px] sm:w-[180px] sm:h-[180px]" : ""}
+    object-contain
+  `}
+  loading="lazy"
+/>
+      <span className="text-[10px] sm:text-xs font-medium tracking-wider text-black uppercase text-center max-w-[100px] sm:max-w-none">
+        {award.label}
+      </span>
+    </div>
+  ))}
+</div>
               {/* Mascot / animated character */}
 <div className="shrink-0 relative w-[300px] h-[220px]">
   <img
