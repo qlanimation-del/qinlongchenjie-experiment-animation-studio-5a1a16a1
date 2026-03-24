@@ -113,53 +113,48 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Awards */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          <AnimatedSection>
-            <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-              {/* Award badges */}
-              <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-14 flex-1">
-  {[
-    { label: "Silver Award", icon: annieAward },
-     { label: "Canadian Screen Award Qualifying", icon: vimeoAward },
-    { label: "BAFTA Nominee", icon: baftaAward },
-   
-  ].map((award) => (
-    <div
-      key={award.label}
-      className="flex flex-col items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
-    >
-      <img
-  src={award.icon}
-  alt={award.label}
-  className={`
-${award.label === "Silver Award" ? "w-[150px] h-[150px] sm:w-[180px] sm:h-[180px]" : ""}
-${award.label === "BAFTA Nominee" ? "w-[150px] h-[150px] sm:w-[180px] sm:h-[180px]" : ""}
-${award.label === "Canadian Screen Award Qualifying" ? "w-[150px] h-[150px] sm:w-[180px] sm:h-[180px]" : ""}
-    object-contain
-  `}
-  loading="lazy"
-/>
-      <span className="text-[10px] sm:text-xs font-medium tracking-wider text-black uppercase text-center max-w-[100px] sm:max-w-none">
-        {award.label}
-      </span>
-    </div>
-  ))}
-</div>
-              {/* Mascot / animated character */}
-<div className="shrink-0 relative w-[300px] h-[220px]">
-  <img
-    src={mascotImg}
-    alt="Studio mascot"
-    className="absolute inset-1 w-[800px] h-auto object-contain -translate-x-1/1 -translate-y-1/1 left-1/1 top-1/1"
-    loading="lazy"
-  />
-</div>
+     {/* Awards */}
+<section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
+  <div className="max-w-6xl mx-auto">
+    <AnimatedSection>
+      <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+        {/* Award badges */}
+        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-14 flex-1">
+          {[
+            { label: "Silver Award", icon: annieAward },
+            { label: "Canadian Screen Award Qualifying", icon: vimeoAward },
+            { label: "BAFTA Nominee", icon: baftaAward },
+          ].map((award) => (
+            <div
+              key={award.label}
+              className="flex flex-col items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
+            >
+              <img
+                src={award.icon}
+                alt={award.label}
+                className="w-[130px] h-[130px] sm:w-[150px] sm:h-[150px] md:w-[180px] md:h-[180px] object-contain"
+                loading="lazy"
+              />
+              <span className="text-[10px] sm:text-xs font-medium tracking-wider text-black uppercase text-center max-w-[100px] sm:max-w-none">
+                {award.label}
+              </span>
             </div>
-          </AnimatedSection>
+          ))}
         </div>
-      </section>
+
+        {/* Mascot / animated character */}
+        <div className="shrink-0 w-full max-w-[220px] sm:max-w-[280px] md:max-w-[300px] h-[180px] sm:h-[220px] relative">
+          <img
+            src={mascotImg}
+            alt="Studio mascot"
+            className="w-full h-full object-contain"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </AnimatedSection>
+  </div>
+</section>
     </Layout>
   );
 };
