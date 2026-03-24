@@ -51,14 +51,14 @@ export const translations = {
     director: { en: "Director", zh: "导演", fr: "Réalisateur" },
     ourStory: { en: "Our Story", zh: "我们的故事", fr: "Notre Histoire" },
     storyP1: {
-      en: "QINLONG&CHENJIE experiment animation was born from a shared passion for pushing the boundaries of animated storytelling.",
-      zh: "QINLONG&CHENJIE实验动画工作室诞生于对突破动画叙事边界的共同热情。",
-      fr: "QINLONG&CHENJIE experiment animation est né d'une passion commune pour repousser les limites de la narration animée.",
+      en: "The experimental and visual artworks by Qin Long and Chen Jie are not confined to animation, experimental video, or photography. Rooted in their shared passion, they continuously push the boundaries of visual storytelling.\n",
+      zh: "秦龙和陈洁的实验和视觉艺术作品不仅局限于动画、实验影像或摄影。源于他们共同的热情，他们不断突破视觉叙事的边界。",
+      fr: "Les œuvres artistiques expérimentales et visuelles de Qin Long et Chen Jie ne se limitent pas à l'animation, à la vidéo expérimentale ou à la photographie. Enracinés dans leur passion commune, ils repoussent continuellement les limites de la narration visuelle.",
     },
     storyP2: {
-      en: "We explore experimental techniques, blending traditional craftsmanship with cutting-edge technology to create works that challenge and inspire.",
-      zh: "我们探索实验性技术，将传统工艺与前沿科技相融合，创造出挑战常规、启发灵感的作品。",
-      fr: "Nous explorons des techniques expérimentales, mêlant artisanat traditionnel et technologie de pointe pour créer des œuvres qui défient et inspirent.",
+      en: "They explore experimental techniques, integrating traditional craftsmanship with cutting-edge technology to create works that challenge and inspire.",
+      zh: "他们探索实验性技术，将传统工艺与前沿科技相融合，创造出具有挑战性且启发灵感的作品。",
+      fr: "Ils explorent des techniques expérimentales, intégrant l'artisanat traditionnel aux technologies de pointe pour créer des œuvres qui interpellent et inspirent.",
     },
   },
 
