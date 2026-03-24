@@ -29,7 +29,7 @@ const Index = () => {
             
             className="w-full h-full object-cover"
           >
-            <source src="https://my-video-bucket2026-1415009653.cos.ap-guangzhou.myqcloud.com/yugao.mp4" type="video/mp4" />
+            <source src="https://my-video-bucket2026-1415009653.cos.ap-guangzhou.myqcloud.com/%E9%A2%84%E5%91%8A15s.mp4" type="video/mp4" />
           </video>
         </div>
         <div className="absolute top-[75%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full px-4 flex justify-center">
