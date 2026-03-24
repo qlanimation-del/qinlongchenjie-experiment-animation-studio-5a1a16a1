@@ -1,5 +1,5 @@
 import { useLanguage } from "@/i18n/LanguageContext";
-import { Youtube, Facebook, Instagram } from "lucide-react";
+import { Instagram } from "lucide-react";
 
 const VimeoIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -7,11 +7,16 @@ const VimeoIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
+const XiaohongshuIcon = ({ className }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.08 13.254h-2.14v-1.48h-1.2v1.48H10.6v-1.48H9.4v1.48H7.26v-1.2h1.08v-1.48H7.26v-1.2h1.08V9.894H7.26v-1.2H9.4v1.48h1.2v-1.48h2.14v1.48h1.2v-1.48h2.14v1.2h-1.08v1.48h1.08v1.2h-1.08v1.48h1.08v1.2zm-4.54-3.88h1.2v1.48h-1.2v-1.48zm-2.4 0h1.2v1.48H9.14v-1.48zm2.4-1.2H10.34v-1.48h1.2v1.48zm2.4 0h-1.2v-1.48h1.2v1.48zm-2.4 2.4h1.2v1.48h-1.2v-1.48zm-2.4 0h1.2v1.48H9.14v-1.48zm4.8 0h1.2v1.48h-1.2v-1.48zm0-2.4h1.2v1.48h-1.2v-1.48z"/>
+  </svg>
+);
+
 const socialLinks = [
-  { label: "Vimeo", url: "https://vimeo.com", icon: VimeoIcon },
-  { label: "YouTube", url: "https://youtube.com", icon: Youtube },
-  { label: "Facebook", url: "https://facebook.com", icon: Facebook },
-  { label: "Instagram", url: "https://instagram.com", icon: Instagram },
+  { label: "Vimeo", url: "https://vimeo.com/user19098354?fl=pp&fe=sh", icon: VimeoIcon },
+  { label: "Instagram", url: "https://www.instagram.com/rabbitvsbear?igsh=c3A5M3ZqZDNhaHVh&utm_source=qr", icon: Instagram },
+  { label: "小红书", url: "https://xhslink.com/m/3DRP9qkCo88", icon: XiaohongshuIcon },
 ];
 
 const Footer = () => {
