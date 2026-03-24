@@ -16,9 +16,9 @@ export interface BookInfo {
 export const drawingBook: BookInfo = {
   coverSrc: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&q=80",
   title: {
-    en: "Lines of Thought",
-    zh: "思维之线",
-    fr: "Lignes de Pensée",
+    en: "Publishing soon",
+    zh: "即将出版",
+    fr: "Publication prochaine",
   },
   author: { // 补充作者字段（保持结构统一）
     en: "",
@@ -26,9 +26,9 @@ export const drawingBook: BookInfo = {
     fr: "",
   },
   description: {
-    en: "A collection exploring the intersection of drawing, emotion, and spatial narrative.",
-    zh: "一本探索绘画、情感与空间叙事交汇点的作品集。",
-    fr: "Un recueil explorant l'intersection du dessin, de l'émotion et du récit spatial.",
+    en: "A Monograph on Virtual Reality Animated Interactive Experiences",
+    zh: "关于虚拟现实动画互动体验的专著",
+    fr: "Une monographie sur les expériences interactives animées en réalité virtuelle",
   },
   purchaseUrl: "https://example.com/book-drawing",
 };
