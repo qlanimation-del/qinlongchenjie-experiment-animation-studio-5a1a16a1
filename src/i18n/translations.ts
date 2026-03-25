@@ -34,8 +34,8 @@ export const translations = {
     title: { en: "What We Do", zh: "我们做什么", fr: "Ce Que Nous Faisons" },
     description: {
       en: "Rooted in our two‑person independent studio, we explore diverse moving image forms, including experimental animation, immersive and interactive video, video essays, and essay films. We blend handcrafted texture with digital technology, placing story and emotion at the heart of our creation, and guide students to explore further possibilities together.",
-      zh: "我们导演和制作各种形式的动画——短片、广告、音乐录影带和片头序列。我们的风格融合了手工的温暖与数字的精准，始终服务于故事本身。",
-      fr: "Nous réalisons et produisons des animations dans tous les formats — courts métrages, publicités, clips musicaux et génériques. Notre style allie la chaleur artisanale à la précision numérique, toujours au service de l'histoire.",
+      zh: "依托双人独立工作室，我们探索多元影像形式，涵盖实验动画、沉浸式影像与互动体验、视频论文、散文影像等。我们坚持手工质感与数字技术相融合，始终以故事与情感为创作核心，并带领学生一同探索更多可能。",
+      fr: "Fort de notre studio indépendant à deux personnes, nous explorons des formes variées d’images animées : animation expérimentale, vidéo immersive et interactive, essais vidéo, films d’essai, etc. Nous associons la qualité artisanale à la technologie numérique, plaçant toujours le récit et l’émotion au cœur de notre création, et accompagnons nos étudiants à explorer de nouvelles possibilités.",
     },
     viewWork: { en: "View Our Work", zh: "查看作品", fr: "Voir Nos Travaux" },
   },
