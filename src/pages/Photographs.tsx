@@ -74,9 +74,7 @@ const Photographs = () => {
   return (
     <Layout navVariant="light" className="bg-white">
       <section className="pt-10 sm:pt-14 pb-20">
-        {/* 还原你误删的外层布局容器 */}
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col lg:flex-row gap-10 lg:gap-12">
-          {/* Left sidebar - 还原aside标签 */}
           <aside className="lg:w-[200px] shrink-0 flex flex-col">
             <div>
               <h3 className="text-xs font-bold text-neutral-800 mb-2 tracking-wide uppercase">
