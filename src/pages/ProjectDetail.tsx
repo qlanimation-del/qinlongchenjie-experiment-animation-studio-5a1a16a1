@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef } from "react";
 import { ArrowLeft } from "lucide-react";
 import Layout from "@/components/Layout";
 import ParallaxHero from "@/components/ParallaxHero";
