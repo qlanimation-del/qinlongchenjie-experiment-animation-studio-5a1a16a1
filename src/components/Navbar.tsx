@@ -93,7 +93,7 @@ const Navbar = ({ className = "", variant = "dark" }: NavbarProps) => {
       >
         <div className="max-w-7xl mx-auto px-4 md:px-6 h-[72px] sm:h-[80px] md:h-[88px] flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2 md:gap-3 group">
-            <img src={logo} alt="Logo" className="h-11 sm:h-14 md:h-16 w-auto rounded object-contain" />
+            <img src={logo} alt="Logo" className="h-11 sm:h-14 md:h-16 w-auto rounded object-contain" fetchPriority="high" width="87" height="64" />
             <div className="flex flex-col gap-0.5" style={{ fontFamily: "'Montserrat', sans-serif" }}>
               <span className={cn("text-sm sm:text-base md:text-lg font-extrabold tracking-[0.02em] leading-none", textColor)}>
                 QinLong<span className={cn("font-normal", isLight ? "text-black/80" : "text-white/80")}>&</span>ChenJie
