@@ -7,10 +7,10 @@ import { useLanguage } from "@/i18n/LanguageContext";
 
 import whoWeAreImg from "@/assets/who-we-are.webp";
 import whatWeDoImg from "@/assets/what-we-do.webp";
-import annieAward from "@/assets/awards/annie-award.png";
-import baftaAward from "@/assets/awards/bafta-award.png";
-import vimeoAward from "@/assets/awards/vimeo-award.png";
-import mascotImg from "@/assets/awards/mascot.png";
+import annieAward from "@/assets/awards/annie-award.webp";
+import baftaAward from "@/assets/awards/bafta-award.webp";
+import vimeoAward from "@/assets/awards/vimeo-award.webp";
+import mascotImg from "@/assets/awards/mascot.webp";
 
 const Index = () => {
   const { t } = useLanguage();

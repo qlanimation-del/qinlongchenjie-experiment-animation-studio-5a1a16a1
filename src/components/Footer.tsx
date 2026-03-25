@@ -1,6 +1,6 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Instagram } from "lucide-react";
-import xiaohongshuIcon from "@/assets/xiaohongshu.png";
+import xiaohongshuIcon from "@/assets/xiaohongshu.webp";
 
 const VimeoIcon = ({ className }: { className?: string }) => (
   <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
