@@ -33,7 +33,7 @@ export const translations = {
     sectionLabel: { en: "WORK", zh: "作品", fr: "TRAVAUX" },
     title: { en: "What We Do", zh: "我们做什么", fr: "Ce Que Nous Faisons" },
     description: {
-      en: "We direct and produce animation across all formats — short films, commercials, music videos, and title sequences. Our style blends hand-crafted warmth with digital precision, always in service of the story.",
+      en: "Rooted in our two‑person independent studio, we explore diverse moving image forms, including experimental animation, immersive and interactive video, video essays, and essay films. We blend handcrafted texture with digital technology, placing story and emotion at the heart of our creation, and guide students to explore further possibilities together.",
       zh: "我们导演和制作各种形式的动画——短片、广告、音乐录影带和片头序列。我们的风格融合了手工的温暖与数字的精准，始终服务于故事本身。",
       fr: "Nous réalisons et produisons des animations dans tous les formats — courts métrages, publicités, clips musicaux et génériques. Notre style allie la chaleur artisanale à la précision numérique, toujours au service de l'histoire.",
     },
