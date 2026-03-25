@@ -13,16 +13,7 @@ const ProjectDetail = () => {
   const { t, locale } = useLanguage();
   const project = projects.find((p) => p.id === id);
   const contentRef = useRef<HTMLDivElement>(null);
-  const [showBackToTop] = useState(false); // kept for future use if needed
 
-  const handleScroll = useCallback(() => {
-    setShowBackToTop(window.scrollY > 400);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [handleScroll]);
 
   if (!project) {
     return (
