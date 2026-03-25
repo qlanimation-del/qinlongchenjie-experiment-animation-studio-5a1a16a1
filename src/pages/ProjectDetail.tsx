@@ -164,14 +164,6 @@ const ProjectDetail = () => {
         </div>
       </div>
 
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className={`fixed right-5 bottom-8 z-[9999] bg-muted/50 hover:bg-muted backdrop-blur-md p-3 rounded-full text-foreground transition-all duration-300
-          ${showBackToTop ? "opacity-100 visible" : "opacity-0 invisible pointer-events-none"}`}
-        aria-label="Back to top">
-        
-        <ChevronUp size={22} />
-      </button>
     </Layout>);
 
 };

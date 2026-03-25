@@ -18,6 +18,7 @@ const Layout = ({ children, fullBleed = false, navVariant = "dark", className }:
       <Navbar variant={navVariant} />
       <main className={`flex-1 ${fullBleed ? "" : "pt-[72px]"}`}>{children}</main>
       <Footer />
+      <BackToTop />
     </div>
   );
 };
