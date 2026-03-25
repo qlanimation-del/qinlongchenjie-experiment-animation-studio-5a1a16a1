@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useRef, useState, useEffect, useCallback } from "react";
-import { ArrowLeft, ChevronUp } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Layout from "@/components/Layout";
 import ParallaxHero from "@/components/ParallaxHero";
 import ProjectGallery from "@/components/ProjectGallery";
