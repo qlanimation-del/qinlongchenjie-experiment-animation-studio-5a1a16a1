@@ -99,7 +99,7 @@ const Index = () => {
             <AnimatedSection className="order-1 md:order-2">
               <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">{t("whatWeDo", "sectionLabel")}</p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">{t("whatWeDo", "title")}</h2>
-              <p className="text-muted-foreground leading-relaxed mb-8 text-base">
+              <p className="text-muted-foreground leading-relaxed mb-8 text-base text-justify">
                 {t("whatWeDo", "description")}
               </p>
               <Link
