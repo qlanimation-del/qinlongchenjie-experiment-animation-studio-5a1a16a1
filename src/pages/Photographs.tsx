@@ -80,8 +80,7 @@ const Photographs = () => {
               <h3 className="text-xs font-bold text-neutral-800 mb-2 tracking-wide uppercase">
                 {locale === "zh" ? "摄影理念" : locale === "fr" ? "Philosophie" : "Philosophy"}
               </h3>
-              {/* ✅ 这一行是正确的修复，保留即可 */}
-              <p 
+              <p
                 className="text-xs leading-relaxed text-neutral-500 max-w-[200px]"
                 dangerouslySetInnerHTML={{ __html: philosophy[locale] }}
               />

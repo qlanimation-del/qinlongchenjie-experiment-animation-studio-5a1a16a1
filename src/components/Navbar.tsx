@@ -36,21 +36,26 @@ const Navbar = ({ className = "", variant = "dark" }: NavbarProps) => {
   ];
 
   const handleScroll = useCallback(() => {
-    const currentY = window.scrollY;
-    const delta = currentY - lastScrollY.current;
+    if (ticking.current) return;
+    ticking.current = true;
+    requestAnimationFrame(() => {
+      const currentY = window.scrollY;
+      const delta = currentY - lastScrollY.current;
 
-    if (currentY < 10) {
-      hideProgress.current = 0;
-    } else if (delta > 0) {
-      hideProgress.current = Math.min(1, hideProgress.current + delta * 0.012);
-    } else if (currentY < SHOW_NAV_THRESHOLD) {
-      hideProgress.current = Math.max(0, hideProgress.current + delta * 0.012);
-    } else {
-      hideProgress.current = 1;
-    }
+      if (currentY < 10) {
+        hideProgress.current = 0;
+      } else if (delta > 0) {
+        hideProgress.current = Math.min(1, hideProgress.current + delta * 0.012);
+      } else if (currentY < SHOW_NAV_THRESHOLD) {
+        hideProgress.current = Math.max(0, hideProgress.current + delta * 0.012);
+      } else {
+        hideProgress.current = 1;
+      }
 
-    lastScrollY.current = currentY;
-    forceRender((p) => p + 1);
+      lastScrollY.current = currentY;
+      forceRender((p) => p + 1);
+      ticking.current = false;
+    });
   }, []);
 
   useEffect(() => {
