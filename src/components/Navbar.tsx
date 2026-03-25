@@ -22,6 +22,7 @@ const Navbar = ({ className = "", variant = "dark" }: NavbarProps) => {
 
   const lastScrollY = useRef(0);
   const hideProgress = useRef(0);
+  const ticking = useRef(false);
   const [, forceRender] = useState(0);
 
   const isLight = variant === "light";
