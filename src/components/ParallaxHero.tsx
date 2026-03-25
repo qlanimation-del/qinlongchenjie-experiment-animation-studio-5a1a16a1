@@ -93,22 +93,14 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
               transform: `translateY(${parallaxOffset}px) scale(${scale})`,
               zIndex: i,
               willChange: "transform",
-              // 可选：手机端加轻微内边距，保护核心内容不被裁
-              padding: isMobile ? '2% 0' : 0,
-              boxSizing: 'border-box'
             }}
           >
             {layer.src && (
               <img
                 src={layer.src}
                 alt={`Layer ${i + 1}`}
-                // 3. 保留object-cover保证占比，仅调整objectPosition控制裁剪区域
                 className="absolute inset-0 w-full h-full object-cover"
-                style={{ 
-                  // 关键：控制裁剪锚点，优先显示图片上部/中心
-                  objectPosition: isMobile ? 'center 15%' : 'center center',
-                  // 移除img的transform，避免和外层冲突
-                }}
+                style={{ objectPosition: isMobile ? 'center 15%' : 'center center' }}
                 loading={i === 0 ? "eager" : "lazy"}
                 decoding={i === 0 ? "auto" : "async"}
               />
