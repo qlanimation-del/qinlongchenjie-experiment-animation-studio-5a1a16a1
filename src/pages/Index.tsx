@@ -123,7 +123,7 @@ const Index = () => {
           {[
             { label: "Silver Award", icon: annieAward },
             { label: "Canadian Screen Award Qualifying", icon: vimeoAward },
-            { label: "BAFTA Nominee", icon: baftaAward },
+            { label: "Dold AWARD", icon: baftaAward },
           ].map((award) => (
             <div
               key={award.label}
