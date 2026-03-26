@@ -4,13 +4,20 @@ import { ParallaxLayer } from "@/data/projects";
 
 const useIsMobile = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
   useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
+    const check = () => {
+      const width = window.innerWidth;
+      setIsMobile(width < 768);
+      setIsTablet(width >= 768 && width < 1024);
+    };
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
   }, []);
-  return isMobile;
+
+  return { isMobile, isTablet };
 };
 
 interface ParallaxHeroProps {
@@ -24,7 +31,7 @@ interface ParallaxHeroProps {
 }
 
 const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScrollDown }: ParallaxHeroProps) => {
-  const isMobile = useIsMobile();
+  const { isMobile, isTablet } = useIsMobile();
   const [scrollY, setScrollY] = useState(0);
   const rafRef = useRef<number>(0);
 
@@ -60,16 +67,16 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
       {effectiveLayers.map((layer, i) => {
         const parallaxOffset = isMobile
           ? (i === 0 ? scrollY * 0.2 : i === 1 ? 0 : -scrollY * 0.2)
-          : (i === 0 ? scrollY * 0.4 : i === 1 ? 0 : -scrollY * 0.6);
+          : isTablet
+            ? (i === 0 ? scrollY * 0.3 : i === 1 ? 0 : -scrollY * 0.4)
+            : (i === 0 ? scrollY * 0.4 : i === 1 ? 0 : -scrollY * 0.6);
 
-        const baseScale = isMobile ? 1.25 : 1.35;
+        const baseScale = isMobile ? 1.25 : isTablet ? 1.3 : 1.35;
         const scale = (layer as any).scaleBase
-          ? ((layer as any).scaleBase + (isMobile ? -0.15 : 0))
+          ? ((layer as any).scaleBase + (isMobile ? -0.15 : isTablet ? -0.05 : 0))
           : (baseScale - i * 0.03);
         
         const isVignette = (layer as any).overlay === "vignette";
-
-        // 中景判断
         const isMid = layer.src.includes('parallax-mid');
 
         if (isVignette) {
@@ -88,8 +95,12 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
           );
         }
 
-        // 手机端中景额外向下移动 60px
-        const extraY = isMobile && isMid ? 60 : 0;
+        // 平板端中景偏移自然过渡，不跳变
+        const extraY = isMobile
+          ? (isMid ? 60 : 0)
+          : isTablet
+            ? (isMid ? 20 : 0)
+            : 0;
 
         return (
           <div
@@ -107,9 +118,24 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
                 alt={`Layer ${i + 1}`}
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{
-                  objectPosition: isMobile ? 'center 15%' : 'center 15%',
-                          transform: isMobile ? 'scale(1.1)' : 'scale(1)',
-
+                  objectPosition: isMobile ? 'center 15%' : isTablet ? 'center 12%' : 'center 15%',
+                  transform: (() => {
+                    if (i === 0) {
+                      // 底层背景
+                      return isMobile 
+                        ? 'scale(0.85) translateY(20px)'
+                        : isTablet
+                          ? 'scale(0.95) translateY(0px)'
+                          : 'scale(1) translateY(-40px)';
+                    } else {
+                      // 中景 / 前景
+                      return isMobile 
+                        ? 'scale(1.3) translateY(20px)'
+                        : isTablet
+                          ? 'scale(1.15) translateY(0px)'
+                          : 'scale(1) translateY(-30px)';
+                    }
+                  })(),
                 }}
                 loading={i === 0 ? "eager" : "lazy"}
                 decoding={i === 0 ? "auto" : "async"}
@@ -119,7 +145,6 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
         );
       })}
 
-      {/* Type label */}
       <div
         className="absolute bottom-44 left-1/2 z-[7] pointer-events-none"
         style={{
