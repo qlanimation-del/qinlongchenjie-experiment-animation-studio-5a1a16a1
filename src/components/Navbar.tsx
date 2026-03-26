@@ -23,7 +23,7 @@ const Navbar = ({ className = "", variant = "dark" }: NavbarProps) => {
   const lastScrollY = useRef(0);
   const hideProgress = useRef(0);
   const ticking = useRef(false);
-  const [, forceRender] = useState(0);
+  const navRef = useRef<HTMLElement>(null);
 
   const isLight = variant === "light";
 
@@ -53,7 +53,12 @@ const Navbar = ({ className = "", variant = "dark" }: NavbarProps) => {
       }
 
       lastScrollY.current = currentY;
-      forceRender((p) => p + 1);
+
+      // Direct DOM update — no React re-render
+      if (navRef.current) {
+        navRef.current.style.transform = `translateY(-${hideProgress.current * 100}%)`;
+      }
+
       ticking.current = false;
     });
   }, []);
@@ -84,6 +89,7 @@ const Navbar = ({ className = "", variant = "dark" }: NavbarProps) => {
   return (
     <>
       <nav
+        ref={navRef}
         className={`fixed top-0 left-0 right-0 z-[9999] pt-[env(safe-area-inset-top)] ${className}`}
         style={{
           height: "72px",
