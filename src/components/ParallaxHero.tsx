@@ -23,62 +23,99 @@ interface ParallaxHeroProps {
   onScrollDown: () => void;
 }
 
-const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScrollDown }: ParallaxHeroProps) => {
+const ParallaxHero = ({
+  layers,
+  singleImage,
+  title,
+  type,
+  year,
+  glowColor,
+  onScrollDown,
+}: ParallaxHeroProps) => {
   const isMobile = useIsMobile();
-  const [scrollY, setScrollY] = useState(0);
-  const rafRef = useRef<number>(0);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef(0);
 
-  const handleScroll = useCallback(() => {
-    rafRef.current = requestAnimationFrame(() => {
-      setScrollY(window.scrollY);
+  // 🔥 核心修复：不使用 state，直接 DOM 操作，永不重渲染
+  const updateParallax = useCallback(() => {
+    const scrollY = window.scrollY;
+    const container = containerRef.current;
+    if (!container) return;
+
+    // 所有视差层统一更新
+    const items = container.querySelectorAll<HTMLElement>("[data-parallax]");
+    const titleEl = container.querySelector<HTMLElement>("[data-title]");
+    const arrowEl = container.querySelector<HTMLElement>("[data-arrow]");
+
+    items.forEach((el) => {
+      const speed = parseFloat(el.dataset.speed || "0");
+      const move = scrollY * speed;
+      // ✅ translate3d 硬件加速，绝对不卡
+      el.style.transform = `translate3d(0, ${move}px, 0)`;
     });
+
+    // 标题渐变 + 位移
+    if (titleEl) {
+      const opacity = Math.max(0, 1 - scrollY / 400);
+      const y = scrollY * 0.3;
+      titleEl.style.opacity = String(opacity);
+      titleEl.style.transform = `translate3d(-50%, ${y}px, 0)`;
+    }
+
+    // 箭头透明度
+    if (arrowEl) {
+      arrowEl.style.opacity = Math.max(0, 1 - scrollY / 400).toString();
+    }
   }, []);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    const onScroll = () => {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(updateParallax);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    updateParallax(); // 初始化
+
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", onScroll);
       cancelAnimationFrame(rafRef.current);
     };
-  }, [handleScroll]);
+  }, [updateParallax]);
 
-  const effectiveLayers: (ParallaxLayer & { overlay?: string; scaleBase?: number })[] = layers && layers.length > 0
-    ? layers
-    : singleImage
+  // 自动生成视差图层（保持你原来的逻辑）
+  const effectiveLayers =
+    layers && layers.length > 0
+      ? layers
+      : singleImage
       ? [
-          { src: singleImage, speed: 0.1, scaleBase: 1.35 },
-          { src: singleImage, speed: 0.25, overlay: "bg-black/30", scaleBase: 1.3 },
-          { src: "", speed: 0.4, overlay: "vignette", scaleBase: 1.25 },
+          { src: singleImage, speed: 0.4 },
+          { src: singleImage, speed: 0, overlay: "bg-black/30" },
+          { src: "", speed: -0.6, overlay: "vignette" },
         ]
       : [];
 
-  const titleOpacity = Math.max(0, 1 - scrollY / 400);
-  const titleTranslateY = scrollY * 0.3;
-
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black">
+    <div ref={containerRef} className="relative w-full h-screen overflow-hidden bg-black">
       {effectiveLayers.map((layer, i) => {
-        const parallaxOffset = isMobile
-          ? (i === 0 ? scrollY * 0.2 : i === 1 ? 0 : -scrollY * 0.2)
-          : (i === 0 ? scrollY * 0.4 : i === 1 ? 0 : -scrollY * 0.6);
+        const speed = isMobile
+          ? i === 0
+            ? 0.2
+            : i === 1
+            ? 0
+            : -0.2
+          : layer.speed ?? 0;
 
-        const baseScale = isMobile ? 1.25 : 1.35;
-        const scale = (layer as any).scaleBase
-          ? ((layer as any).scaleBase + (isMobile ? -0.15 : 0))
-          : (baseScale - i * 0.03);
-        
-        const isVignette = (layer as any).overlay === "vignette";
+        const isVignette = layer.overlay === "vignette";
 
         if (isVignette) {
           return (
             <div
               key={i}
-              className="absolute inset-0 w-full h-full pointer-events-none"
-              style={{
-                transform: `translateY(${parallaxOffset}px)`,
-                zIndex: i + 1,
-                willChange: "transform",
-              }}
+              data-parallax
+              data-speed={speed}
+              className="absolute inset-0 pointer-events-none"
+              style={{ transform: "translate3d(0,0,0)", zIndex: i + 1 }}
             >
               <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
             </div>
@@ -88,48 +125,51 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
         return (
           <div
             key={i}
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            style={{
-              transform: `translateY(${parallaxOffset}px) scale(${scale})`,
-              zIndex: i,
-              willChange: "transform",
-            }}
+            data-parallax
+            data-speed={speed}
+            className="absolute inset-0 pointer-events-none"
+            style={{ transform: "translate3d(0,0,0)", zIndex: i }}
           >
             {layer.src && (
               <img
                 src={layer.src}
-                alt={`Layer ${i + 1}`}
+                alt=""
                 className="absolute inset-0 w-full h-full object-cover"
-                style={{ objectPosition: isMobile ? 'center 15%' : 'center center' }}
-                loading={i === 0 ? "eager" : "lazy"}
-                decoding={i === 0 ? "auto" : "async"}
+                style={{
+                  objectPosition: isMobile ? "center 15%" : "center",
+                  transform: isMobile ? "scale(1.25)" : "scale(1.35)",
+                }}
+                loading="eager"
               />
+            )}
+            {layer.overlay && layer.overlay !== "vignette" && (
+              <div className={`absolute inset-0 ${layer.overlay}`} />
             )}
           </div>
         );
       })}
 
-      {/* Type label */}
+      {/* 标题 */}
       <div
+        data-title
         className="absolute bottom-44 left-1/2 z-[7] pointer-events-none"
-        style={{
-          opacity: titleOpacity,
-          transform: `translateX(-50%) translateY(${titleTranslateY}px)`,
-          willChange: "transform, opacity",
-        }}
+        style={{ transform: "translate3d(-50%,0,0)", opacity: 1 }}
       >
-        <span className="tracking-[0.35em] uppercase text-base sm:text-lg md:text-xl text-white font-medium drop-shadow-lg">{type}</span>
+        <span className="tracking-[0.35em] uppercase text-base sm:text-lg md:text-xl text-white font-medium drop-shadow-lg">
+          {type}
+        </span>
       </div>
 
+      {/* 箭头 */}
       <div
+        data-arrow
         className="absolute bottom-14 sm:bottom-8 left-0 right-0 z-[20] flex justify-center pointer-events-none"
-        style={{ opacity: titleOpacity }}
+        style={{ opacity: 1 }}
       >
         <button
-          className="animate-bounce touch-manipulation pointer-events-auto"
           onClick={onScrollDown}
-          aria-label="Scroll to content"
-          type="button"
+          aria-label="Scroll"
+          className="animate-bounce pointer-events-auto"
         >
           <ChevronDown className="text-white/50" size={48} />
         </button>
