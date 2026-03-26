@@ -108,6 +108,8 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
                 className="absolute inset-0 w-full h-full object-cover"
                 style={{
                   objectPosition: isMobile ? 'center 15%' : 'center 15%',
+                          transform: isMobile ? 'scale(1.1)' : 'scale(1)',
+
                 }}
                 loading={i === 0 ? "eager" : "lazy"}
                 decoding={i === 0 ? "auto" : "async"}
