@@ -49,7 +49,7 @@ const ParallaxHero = ({
 
     items.forEach((el) => {
       const speed = parseFloat(el.dataset.speed || "0");
-      const move = scrollY * speed;
+      const move = scrollY * speed * -1;
       // ✅ translate3d 硬件加速，绝对不卡
       el.style.transform = `translate3d(0, ${move}px, 0)`;
     });
@@ -131,16 +131,22 @@ const ParallaxHero = ({
             style={{ transform: "translate3d(0,0,0)", zIndex: i }}
           >
             {layer.src && (
-              <img
-                src={layer.src}
-                alt=""
-                className="absolute inset-0 w-full h-full object-cover"
-                style={{
-                  objectPosition: isMobile ? "center 15%" : "center",
-                  transform: isMobile ? "scale(1.25)" : "scale(1.35)",
-                }}
-                loading="eager"
-              />
+           <img
+  src={layer.src}
+  alt=""
+  className="absolute inset-0 w-full h-full object-cover"
+  style={{
+    objectPosition: isMobile ? "center 15%" : "center",
+    transform: isMobile ? "scale(1.25)" : "scale(1.35)",
+    // 👇 只对中景生效
+    ...(layer.src.includes('parallax-mid') && {
+      objectFit: "contain",
+      transform: "scale(1.6)", // 👈 自己调大小！1.15=放大15%
+      objectPosition: "center center",
+    }),
+  }}
+  loading="eager"
+/>
             )}
             {layer.overlay && layer.overlay !== "vignette" && (
               <div className={`absolute inset-0 ${layer.overlay}`} />
