@@ -23,15 +23,20 @@ interface ParallaxHeroProps {
   onScrollDown: () => void;
 }
 
+const LERP_FACTOR = 0.08;
+const LERP_THRESHOLD = 0.5;
+
 const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScrollDown }: ParallaxHeroProps) => {
   const isMobile = useIsMobile();
-  const rafRef = useRef<number>(0);
   const layerRefs = useRef<(HTMLDivElement | null)[]>([]);
   const titleRef = useRef<HTMLDivElement>(null);
   const chevronRef = useRef<HTMLDivElement>(null);
   const isMobileRef = useRef(isMobile);
+  const targetY = useRef(0);
+  const currentY = useRef(0);
+  const rafId = useRef(0);
+  const isRunning = useRef(false);
 
-  // Keep mobile ref in sync without triggering scroll recalc
   useEffect(() => {
     isMobileRef.current = isMobile;
   }, [isMobile]);
@@ -46,11 +51,9 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
         ]
       : [];
 
-  const updatePositions = useCallback(() => {
-    const scrollY = window.scrollY;
+  const updateDOM = useCallback((scrollY: number) => {
     const mobile = isMobileRef.current;
 
-    // Update layers
     effectiveLayers.forEach((layer, i) => {
       const el = layerRefs.current[i];
       if (!el) return;
@@ -72,7 +75,6 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
       }
     });
 
-    // Update title
     if (titleRef.current) {
       const opacity = Math.max(0, 1 - scrollY / 400);
       const translateY = scrollY * 0.3;
@@ -80,28 +82,50 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
       titleRef.current.style.transform = `translateX(-50%) translate3d(0, ${translateY}px, 0)`;
     }
 
-    // Update chevron
     if (chevronRef.current) {
       const opacity = Math.max(0, 1 - scrollY / 400);
       chevronRef.current.style.opacity = String(opacity);
     }
   }, [effectiveLayers]);
 
+  const animate = useCallback(() => {
+    const diff = targetY.current - currentY.current;
+    if (Math.abs(diff) < LERP_THRESHOLD) {
+      currentY.current = targetY.current;
+      updateDOM(currentY.current);
+      isRunning.current = false;
+      return;
+    }
+    currentY.current += diff * LERP_FACTOR;
+    updateDOM(currentY.current);
+    rafId.current = requestAnimationFrame(animate);
+  }, [updateDOM]);
+
+  const startLoop = useCallback(() => {
+    if (!isRunning.current) {
+      isRunning.current = true;
+      rafId.current = requestAnimationFrame(animate);
+    }
+  }, [animate]);
+
   useEffect(() => {
     const handleScroll = () => {
-      cancelAnimationFrame(rafRef.current);
-      rafRef.current = requestAnimationFrame(updatePositions);
+      targetY.current = window.scrollY;
+      startLoop();
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    // Initial position
-    updatePositions();
+    // Initial position (no lerp needed)
+    currentY.current = window.scrollY;
+    targetY.current = window.scrollY;
+    updateDOM(currentY.current);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      cancelAnimationFrame(rafRef.current);
+      cancelAnimationFrame(rafId.current);
+      isRunning.current = false;
     };
-  }, [updatePositions]);
+  }, [startLoop, updateDOM]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden bg-black">
@@ -117,6 +141,7 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
               style={{
                 zIndex: i + 1,
                 willChange: "transform",
+                backfaceVisibility: "hidden",
               }}
             >
               <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
@@ -138,6 +163,8 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
               transform: `translate3d(0, 0, 0) scale(${scale})`,
               zIndex: i,
               willChange: "transform",
+              backfaceVisibility: "hidden",
+              contain: "paint",
             }}
           >
             {layer.src && (
@@ -145,8 +172,11 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
                 src={layer.src}
                 alt={`Layer ${i + 1}`}
                 className="absolute inset-0 w-full h-full object-cover"
-                style={{ objectPosition: isMobile ? 'center 15%' : 'center center' }}
-                loading={i === 0 ? "eager" : "lazy"}
+                style={{
+                  objectPosition: isMobile ? 'center 15%' : 'center center',
+                  backfaceVisibility: "hidden",
+                }}
+                loading="eager"
                 decoding={i === 0 ? "auto" : "async"}
                 fetchPriority={i === 0 ? "high" : undefined}
               />
