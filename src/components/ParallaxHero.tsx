@@ -69,6 +69,9 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
         
         const isVignette = (layer as any).overlay === "vignette";
 
+        // 中景判断
+        const isMid = layer.src.includes('parallax-mid');
+
         if (isVignette) {
           return (
             <div
@@ -85,27 +88,32 @@ const ParallaxHero = ({ layers, singleImage, title, type, year, glowColor, onScr
           );
         }
 
+        // 手机端中景额外向下移动 60px
+        const extraY = isMobile && isMid ? 60 : 0;
+
         return (
           <div
             key={i}
             className="absolute inset-0 w-full h-full pointer-events-none"
             style={{
-              transform: `translateY(${parallaxOffset}px) scale(${scale})`,
+              transform: `translateY(${parallaxOffset + extraY}px) scale(${scale})`,
               zIndex: i,
               willChange: "transform",
             }}
           >
             {layer.src && (
-            <img
-  src={layer.src}
-  alt={`Layer ${i + 1}`}
-  className="absolute inset-0 w-full h-full object-cover"
-  style={{ objectPosition: isMobile ? 'center 35%' : 'center 15%' }}
-  loading={i === 0 ? "eager" : "lazy"}
-  decoding={i === 0 ? "auto" : "async"}
-/>
-              )}
-            </div>
+              <img
+                src={layer.src}
+                alt={`Layer ${i + 1}`}
+                className="absolute inset-0 w-full h-full object-cover"
+                style={{
+                  objectPosition: isMobile ? 'center 15%' : 'center 15%',
+                }}
+                loading={i === 0 ? "eager" : "lazy"}
+                decoding={i === 0 ? "auto" : "async"}
+              />
+            )}
+          </div>
         );
       })}
 
