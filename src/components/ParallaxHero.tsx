@@ -196,7 +196,7 @@ const ParallaxHero = ({
       </div>
 
       {/* 向下按钮 */}
-      <div className="absolute bottom-14 left-1/2 z-[20]">
+      <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-[20]">
         <button onClick={onScrollDown} className="animate-bounce text-white/50">
           <ChevronDown size={48} />
         </button>
