@@ -144,7 +144,7 @@ const ParallaxHero = ({
               ? 'scale(0.85) translateY(10px)'   // 手机 - 背景
               : isTablet
                 ? 'scale(0.95) translateY(0px)'  // 平板 - 背景
-                : 'scale(1) translateY(-20px)';  // 电脑 - 背景
+                : 'scale(1) translateY(-40px)';  // 电脑 - 背景
           }
 
           // --------------------
