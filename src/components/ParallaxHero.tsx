@@ -192,7 +192,7 @@ const ParallaxHero = ({
           transform: `translateX(-50%) translateY(${titleTranslateY}px)`,
         }}
       >
-        <span className="tracking-[0.35em] uppercase text-white drop-shadow-lg">{type}</span>
+        <span className="tracking-[0.35em] uppercase text-white drop-shadow-lg text-center">{type}</span>
       </div>
 
       {/* 向下按钮 */}
