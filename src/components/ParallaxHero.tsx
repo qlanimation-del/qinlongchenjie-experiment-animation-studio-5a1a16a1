@@ -192,11 +192,11 @@ const ParallaxHero = ({
           transform: `translateX(-50%) translateY(${titleTranslateY}px)`,
         }}
       >
-        <span className="tracking-[0.35em] uppercase text-white drop-shadow-lg">{type}</span>
+        <span className="tracking-[0.35em] uppercase text-white drop-shadow-lg text-center">{type}</span>
       </div>
 
       {/* 向下按钮 */}
-      <div className="absolute bottom-14 left-1/2 z-[20]">
+      <div className="absolute bottom-14 left-1/2 -translate-x-1/2 z-[20]">
         <button onClick={onScrollDown} className="animate-bounce text-white/50">
           <ChevronDown size={48} />
         </button>
