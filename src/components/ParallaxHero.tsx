@@ -151,7 +151,7 @@ const ParallaxHero = ({
           // 中景 i=1 + 前景 i=2
           // --------------------
           return isMobile
-            ? 'scale(1.5) translateY(40px)'     // 手机 - 中景 + 前景
+            ? 'scale(1.3) translateY(30px)'     // 手机 - 中景 + 前景
             : isTablet
               ? 'scale(1.5) translateY(30px)'   // 平板 - 中景 + 前景
               : 'scale(1) translateY(-50px)';   // 电脑 - 中景 + 前景
