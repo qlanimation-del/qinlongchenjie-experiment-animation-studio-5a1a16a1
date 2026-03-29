@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useRef } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface LightboxImage {
@@ -12,9 +12,13 @@ interface ImageLightboxProps {
   onClose: () => void;
   onPrev: () => void;
   onNext: () => void;
+  onGoTo: (index: number) => void;
 }
 
-const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext }: ImageLightboxProps) => {
+const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext, onGoTo }: ImageLightboxProps) => {
+  const thumbContainerRef = useRef<HTMLDivElement>(null);
+  const activeThumbRef = useRef<HTMLButtonElement>(null);
+
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === "Escape") onClose();
     if (e.key === "ArrowLeft") onPrev();
@@ -30,9 +34,13 @@ const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext }: ImageL
     };
   }, [handleKeyDown]);
 
+  useEffect(() => {
+    activeThumbRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+  }, [currentIndex]);
+
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center"
       onClick={onClose}
     >
       <button
@@ -59,17 +67,45 @@ const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext }: ImageL
         <ChevronRight size={36} />
       </button>
 
+      {/* Main image */}
       <div
-        className="max-w-[90vw] max-h-[90vh] flex items-center justify-center"
+        className="flex-1 flex items-center justify-center px-4 pb-2 max-w-[90vw]"
         onClick={(e) => e.stopPropagation()}
       >
         <img
           src={images[currentIndex].src}
           alt={images[currentIndex].alt}
-          className="max-w-full max-h-[85vh] object-contain rounded-lg"
+          className="max-w-full max-h-[70vh] object-contain rounded-lg"
         />
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
-          {currentIndex + 1} / {images.length}
+      </div>
+
+      {/* Thumbnail strip */}
+      <div
+        ref={thumbContainerRef}
+        className="w-full px-4 pb-4 pt-2 flex items-center justify-start gap-2 overflow-x-auto scrollbar-hide"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex gap-2 mx-auto">
+          {images.map((image, index) => (
+            <button
+              key={index}
+              ref={index === currentIndex ? activeThumbRef : null}
+              onClick={() => onGoTo(index)}
+              className={`flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 rounded overflow-hidden transition-all duration-200 ${
+                index === currentIndex
+                  ? "ring-2 ring-white opacity-100"
+                  : "opacity-50 hover:opacity-80"
+              }`}
+              aria-label={`Go to image ${index + 1}`}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </button>
+          ))}
         </div>
       </div>
     </div>
