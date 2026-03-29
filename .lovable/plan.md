@@ -1,38 +1,29 @@
 
 
-## Add Thumbnail Strip to ImageLightbox
+## Fix: Lightbox mobile fullscreen + BackToTop conflict
 
-### Overview
-Add a horizontally scrollable thumbnail strip at the bottom of the lightbox overlay. The active thumbnail is highlighted; clicking any thumbnail jumps to that image. Works well on both desktop and mobile.
+### Problems
+1. Lightbox doesn't fill the screen on mobile — bottom area leaks through (safe area / padding issues)
+2. BackToTop button (z-9999) appears on top of the lightbox (z-50), causing interaction conflict
 
-### Changes — `src/components/ImageLightbox.tsx`
+### Changes
 
-1. **Add `onGoTo` callback prop** — accepts an index, passed from `ProjectGallery` via `setLightboxIndex`.
+**1. `src/components/ImageLightbox.tsx`**
+- Use `dvh` (dynamic viewport height) to ensure true fullscreen on mobile: `h-[100dvh]` alongside `inset-0`
+- Add safe-area padding: `pb-[env(safe-area-inset-bottom)]` to the thumbnail strip so it doesn't get cut off by phone notch/home bar
+- Increase z-index to `z-[10000]` to sit above BackToTop's `z-[9999]`
 
-2. **Reduce main image max-height** from `85vh` to `70vh` (desktop) / keep flexible on mobile to make room for thumbnails.
+**2. `src/components/BackToTop.tsx`**
+- Hide when lightbox is open: check `document.body.style.overflow === 'hidden'` (already set by lightbox) — simpler approach: just ensure z-index is below lightbox. Since lightbox will be `z-[10000]`, BackToTop at `z-[9999]` will naturally be hidden behind the lightbox overlay.
 
-3. **Add thumbnail strip** below the main image area:
-   - Horizontal scrollable container (`overflow-x-auto`, `flex`, `gap-2`) pinned to bottom.
-   - Each thumbnail: `w-14 h-14 sm:w-16 sm:h-16` with `object-cover`, `rounded`, `cursor-pointer`.
-   - Active thumbnail: `ring-2 ring-white opacity-100`; inactive: `opacity-50 hover:opacity-80`.
-   - Auto-scroll active thumbnail into view using a `ref` + `scrollIntoView`.
-   - Hide scrollbar with `scrollbar-hide` utility.
+Actually, the real issue is BackToTop has `z-[9999]` while lightbox has `z-50`. Fix: raise lightbox to `z-[10000]`.
 
-4. **Move the counter** (`1 / N`) above the thumbnail strip or remove it (thumbnails make it redundant).
+### Summary of edits
 
-### Changes — `src/components/ProjectGallery.tsx`
+| File | Change |
+|------|--------|
+| `ImageLightbox.tsx` line 43 | `z-50` → `z-[10000]`, add `h-[100dvh]` |
+| `ImageLightbox.tsx` line 85 | Add `pb-[env(safe-area-inset-bottom)]` to thumbnail strip |
 
-5. **Pass `onGoTo`** prop to `ImageLightbox`:
-   ```
-   onGoTo={(i) => setLightboxIndex(i)}
-   ```
-
-### Mobile considerations
-- Thumbnails use smaller size on mobile (`w-14 h-14`) with touch-friendly horizontal scroll.
-- Main image area shrinks slightly to accommodate the strip without overlap.
-- `pb-24` padding on the container ensures thumbnails don't overlap navigation.
-
-### Technical details
-- Add `useRef` + `useEffect` to scroll active thumbnail into view on index change.
-- Add CSS utility `.scrollbar-hide` in `index.css` if not already present (`::-webkit-scrollbar { display: none }`).
+Two lines changed, no functional or design impact beyond fixing these bugs.
 
