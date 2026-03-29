@@ -56,6 +56,7 @@ const ProjectGallery = ({ projectId, thumbnail, customImages }: ProjectGalleryPr
           onClose={() => setLightboxIndex(null)}
           onPrev={() => setLightboxIndex((lightboxIndex - 1 + images.length) % images.length)}
           onNext={() => setLightboxIndex((lightboxIndex + 1) % images.length)}
+          onGoTo={(i) => setLightboxIndex(i)}
         />
       )}
     </>
