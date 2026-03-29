@@ -40,7 +40,7 @@ const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext, onGoTo }
 
   return (
     <div
-      className="fixed inset-0 z-50 bg-black/95 flex flex-col items-center justify-center"
+      className="fixed inset-0 z-[10000] bg-black/95 flex flex-col items-center justify-center h-[100dvh]"
       onClick={onClose}
     >
       <button
