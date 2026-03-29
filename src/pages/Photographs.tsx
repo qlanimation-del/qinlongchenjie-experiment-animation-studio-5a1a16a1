@@ -173,6 +173,7 @@ const Photographs = () => {
           onClose={() => setLightboxIndex(null)}
           onPrev={() => setLightboxIndex((lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length)}
           onNext={() => setLightboxIndex((lightboxIndex + 1) % lightboxImages.length)}
+          onGoTo={(i) => setLightboxIndex(i)}
         />
       )}
     </Layout>
