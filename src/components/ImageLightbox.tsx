@@ -82,7 +82,7 @@ const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext, onGoTo }
       {/* Thumbnail strip */}
       <div
         ref={thumbContainerRef}
-        className="w-full px-4 pb-4 pt-2 flex items-center justify-start gap-2 overflow-x-auto scrollbar-hide"
+        className="w-full px-4 pb-4 pt-2 pb-[env(safe-area-inset-bottom)] flex items-center justify-start gap-2 overflow-x-auto scrollbar-hide"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex gap-2 mx-auto">
