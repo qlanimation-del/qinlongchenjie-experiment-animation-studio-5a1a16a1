@@ -52,6 +52,14 @@ import d3 from "@/assets/gallery/dreamscape-3.webp";
 import d4 from "@/assets/gallery/dreamscape-4.webp";
 import d5 from "@/assets/gallery/dreamscape-5.webp";
 import d6 from "@/assets/gallery/dreamscape-6.webp";
+import d7 from "@/assets/gallery/dreamscape-7.webp";
+import d8 from "@/assets/gallery/dreamscape-8.webp";
+import d9 from "@/assets/gallery/dreamscape-9.webp";
+import d10 from "@/assets/gallery/dreamscape-10.webp";
+import d11 from "@/assets/gallery/dreamscape-11.webp";
+import d12 from "@/assets/gallery/dreamscape-12.webp";
+import d13 from "@/assets/gallery/dreamscape-13.webp";
+import d14 from "@/assets/gallery/dreamscape-14.webp";
 import s1 from "@/assets/gallery/shadows-1.webp";
 import s2 from "@/assets/gallery/shadows-2.webp";
 import s3 from "@/assets/gallery/shadows-3.webp";
@@ -753,6 +761,15 @@ pourtant il est toujours empli de croyance.`,
       { src: d4, alt: "Life's Track gallery 4" },
       { src: d5, alt: "Life's Track gallery 5" },
       { src: d6, alt: "Life's Track gallery 6" },
+      { src: d7, alt: "Life's Track gallery 7" },
+      { src: d8, alt: "Life's Track gallery 8" },
+      { src: d9, alt: "Life's Track gallery 9" },
+      { src: d10, alt: "Life's Track gallery 10" },
+      { src: d11, alt: "Life's Track gallery 11" },
+      { src: d12, alt: "Life's Track gallery 12" },
+      { src: d13, alt: "Life's Track gallery 13" },
+      { src: d14, alt: "Life's Track gallery 14" },
+     
     ],
   },
 ];
