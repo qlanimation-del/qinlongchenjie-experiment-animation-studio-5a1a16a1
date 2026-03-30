@@ -19,18 +19,33 @@ const Index = () => {
     <Layout fullBleed>
       {/* Hero */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        
+        {/* 视频 + 加载动画 */}
         <div className="absolute inset-0">
-         <video
-  autoPlay
-  loop
-  muted
-  playsInline
-  preload="metadata"
-  className="w-full h-full object-cover"
->
-  <source src="/videos/hero-bg.mp4" type="video/mp4" />
-</video>
+          {/* 加载动画 */}
+          <div id="video-loader" className="absolute inset-0 flex items-center justify-center bg-black/20 z-10">
+            <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+          </div>
+
+          {/* 视频 */}
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+            onLoadedData={(e) => {
+              const video = e.target as HTMLVideoElement;
+              video.style.opacity = "1";
+              const loader = document.getElementById("video-loader");
+              if (loader) loader.remove();
+            }}
+          >
+            <source src="/videos/hero-bg.mp4" type="video/mp4" />
+          </video>
         </div>
+
         <div className="absolute top-[75%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full px-4 flex justify-center">
           <Button
             asChild
@@ -112,48 +127,48 @@ const Index = () => {
         </div>
       </section>
 
-     {/* Awards */}
-<section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
-  <div className="max-w-6xl mx-auto">
-    <AnimatedSection>
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
-        {/* Award badges */}
-        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-14 flex-1">
-          {[
-            { label: "Silver Award", icon: annieAward },
-            { label: "Canadian Screen Award Qualifying", icon: vimeoAward },
-            { label: "Dold AWARD", icon: baftaAward },
-          ].map((award) => (
-            <div
-              key={award.label}
-              className="flex flex-col items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
-            >
-              <img
-                src={award.icon}
-                alt={award.label}
-                className="w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] lg:w-[180px] lg:h-[180px] object-contain"
-                loading="lazy"
-              />
-              <span className="text-[10px] sm:text-xs font-medium tracking-wider text-black uppercase text-center max-w-[100px] sm:max-w-none">
-                {award.label}
-              </span>
-            </div>
-          ))}
-        </div>
+      {/* Awards */}
+      <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <AnimatedSection>
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+              {/* Award badges */}
+              <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-14 flex-1">
+                {[
+                  { label: "Silver Award", icon: annieAward },
+                  { label: "Canadian Screen Award Qualifying", icon: vimeoAward },
+                  { label: "Dold AWARD", icon: baftaAward },
+                ].map((award) => (
+                  <div
+                    key={award.label}
+                    className="flex flex-col items-center gap-2 opacity-70 hover:opacity-100 transition-opacity"
+                  >
+                    <img
+                      src={award.icon}
+                      alt={award.label}
+                      className="w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] lg:w-[180px] lg:h-[180px] object-contain"
+                      loading="lazy"
+                    />
+                    <span className="text-[10px] sm:text-xs font-medium tracking-wider text-black uppercase text-center max-w-[100px] sm:max-w-none">
+                      {award.label}
+                    </span>
+                  </div>
+                ))}
+              </div>
 
-        {/* Mascot / animated character */}
-        <div className="shrink-0 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[300px] h-[180px] sm:h-[220px] relative">
-          <img
-            src={mascotImg}
-            alt="Studio mascot"
-            className="w-full h-full object-contain"
-            loading="lazy"
-          />
+              {/* Mascot / animated character */}
+              <div className="shrink-0 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[300px] h-[180px] sm:h-[220px] relative">
+                <img
+                  src={mascotImg}
+                  alt="Studio mascot"
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </AnimatedSection>
         </div>
-      </div>
-    </AnimatedSection>
-  </div>
-</section>
+      </section>
     </Layout>
   );
 };
