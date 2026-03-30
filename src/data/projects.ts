@@ -526,9 +526,9 @@ pourtant il est toujours empli de croyance.`,
     thumbnail: projectGafa,
     videoUrl: "https://player.vimeo.com/video/860598489?h=bcb862d10f",
     description: {
-      en: "A dynamic logo animation created for the GAFA (Gobelins, l'école de l'image) Animation Major. The design captures the spirit of animation education through fluid motion and bold typography.",
-      zh: "为GAFA（高布兰动画学院）动画专业创作的动态标志动画。设计通过流畅的运动和大胆的字体捕捉动画教育的精神。",
-      fr: "Une animation de logo dynamique créée pour la filière Animation de GAFA (Gobelins, l'école de l'image). Le design capture l'esprit de l'enseignement de l'animation à travers un mouvement fluide et une typographie audacieuse.",
+      en: "A dynamic logo animation created for the GAFA (Guangzhou Academy of Fine Arts) Animation Major. The design captures the spirit of animation education through fluid motion and bold typography.",
+      zh: "为GAFA（广州美术学院）动画专业创作的动态标志动画。设计通过流畅的运动和大胆的字体捕捉动画教育的精神。",
+      fr: "Une animation de logo dynamique créée pour la filière Animation de GAFA (Guangzhou Academy of Fine Arts). Le design capture l'esprit de l'enseignement de l'animation à travers un mouvement fluide et une typographie audacieuse.",
     },
     credits: {
       en: ["Director: QinLong", "Animation: QinLong", "Design: QinLong"],
