@@ -22,14 +22,23 @@ const Index = () => {
         
         {/* 视频 + 加载动画 */}
         <div className="absolute inset-0">
-          {/* 加载动画：三个小白点跳动（你选的这款） */}
-          <div id="video-loader" className="absolute inset-0 flex items-center justify-center bg-black/20 z-10">
-            <div className="flex gap-2">
-              <div className="w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-              <div className="w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"></div>
-              <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
-            </div>
-          </div>
+         {/* 专业级加载动画：大弹跳 + 运动拖影 + 舒适间距 */}
+<div id="video-loader" className="absolute inset-0 flex items-center justify-center bg-black/20 z-10">
+  <div className="flex gap-5">
+    <div className="relative h-10">
+      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full animate-[bounce_1.4s_infinite] [animation-delay:-0.4s]"></div>
+      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full blur-sm animate-[bounce_1.4s_infinite] [animation-delay:-0.4s] opacity-50"></div>
+    </div>
+    <div className="relative h-10">
+      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full animate-[bounce_1.4s_infinite] [animation-delay:-0.2s]"></div>
+      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full blur-sm animate-[bounce_1.4s_infinite] [animation-delay:-0.2s] opacity-50"></div>
+    </div>
+    <div className="relative h-10">
+      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full animate-[bounce_1.4s_infinite]"></div>
+      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full blur-sm animate-[bounce_1.4s_infinite] opacity-50"></div>
+    </div>
+  </div>
+</div>
 
           {/* 视频 */}
           <video
