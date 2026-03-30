@@ -1,6 +1,0 @@
-name = "qinlongchenjie-experiment-animation-studio"
-compatibility_date = "2026-03-21"
-
-[pages]
-build_output_dir = "dist"  # 90%的前端项目用这个，没错！
-build_command = "npm run build"  # 核心命令，完全正确！
