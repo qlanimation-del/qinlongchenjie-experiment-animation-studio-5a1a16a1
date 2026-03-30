@@ -9,7 +9,8 @@ const BackToTop = () => {
     if (!ticking.current) {
       ticking.current = true;
       requestAnimationFrame(() => {
-        setVisible(window.scrollY > 400);
+        const lightboxOpen = document.body.style.overflow === "hidden";
+        setVisible(window.scrollY > 400 && !lightboxOpen);
         ticking.current = false;
       });
     }
@@ -17,7 +18,19 @@ const BackToTop = () => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // Hide when lightbox opens (sets body overflow to hidden)
+    const observer = new MutationObserver(() => {
+      if (document.body.style.overflow === "hidden") {
+        setVisible(false);
+      }
+    });
+    observer.observe(document.body, { attributes: true, attributeFilter: ["style"] });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
   }, [handleScroll]);
 
   return (
