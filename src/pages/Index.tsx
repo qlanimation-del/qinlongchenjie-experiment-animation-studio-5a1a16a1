@@ -131,7 +131,7 @@ const Index = () => {
               <img
                 src={award.icon}
                 alt={award.label}
-                className="w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] md:w-[180px] md:h-[180px] object-contain"
+                className="w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] lg:w-[180px] lg:h-[180px] object-contain"
                 loading="lazy"
               />
               <span className="text-[10px] sm:text-xs font-medium tracking-wider text-black uppercase text-center max-w-[100px] sm:max-w-none">
