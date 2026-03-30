@@ -20,17 +20,16 @@ const Index = () => {
       {/* Hero */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            
-            className="w-full h-full object-cover"
-          >
-            <source src="/videos/hero-bg.mp4" type="video/mp4" />
-          </video>
+         <video
+  autoPlay
+  loop
+  muted
+  playsInline
+  preload="metadata"
+  className="w-full h-full object-cover"
+>
+  <source src="/videos/hero-bg.mp4" type="video/mp4" />
+</video>
         </div>
         <div className="absolute top-[75%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full px-4 flex justify-center">
           <Button
