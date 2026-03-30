@@ -5,6 +5,9 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // 👇 就加了这一行！解决 CSS 丢失！
+  base: "/",
+
   server: {
     host: "::",
     port: 8080,
