@@ -26,16 +26,16 @@ const Index = () => {
 <div id="video-loader" className="absolute inset-0 flex items-center justify-center bg-black/20 z-10">
   <div className="flex gap-6">
     <div className="relative h-10">
-      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full animate-[bounce_1.8ss_infinite] [animation-delay:-0.4s]"></div>
-      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full blur-sm animate-[bounce_1.8ss_infinite] [animation-delay:-0.4s] opacity-50"></div>
+      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full animate-[bounce_1.8s_infinite] [animation-delay:-0.4s]"></div>
+      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full blur-sm animate-[bounce_1.8s_infinite] [animation-delay:-0.4s] opacity-50"></div>
     </div>
     <div className="relative h-10">
-      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full animate-[bounce_1.8ss_infinite] [animation-delay:-0.2s]"></div>
-      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full blur-sm animate-[bounce_1.8ss_infinite] [animation-delay:-0.2s] opacity-50"></div>
+      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full animate-[bounce_1.8s_infinite] [animation-delay:-0.2s]"></div>
+      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full blur-sm animate-[bounce_1.8s_infinite] [animation-delay:-0.2s] opacity-50"></div>
     </div>
     <div className="relative h-10">
-      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full animate-[bounce_1.8ss_infinite]"></div>
-      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full blur-sm animate-[bounce_1.8ss_infinite] opacity-50"></div>
+      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full animate-[bounce_1.8s_infinite]"></div>
+      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full blur-sm animate-[bounce_1.8s_infinite] opacity-50"></div>
     </div>
   </div>
 </div>
