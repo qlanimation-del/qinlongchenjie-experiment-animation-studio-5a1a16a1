@@ -576,7 +576,7 @@ pourtant il est toujours empli de croyance.`,
       fr: ["2022", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0Prix second et troisième, Concours de Design d'Innovation de Marque Chine 2022"],
     },
     glowColor: "#B388FF",
-    client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
+    client: { en: "Commercial", zh: "商业项目", fr: "Projet commercial" },
     crew: { en: "QinLong", zh: "秦龙", fr: "QinLong" },
     parallaxLayers: [
       { src: cloudParallaxBg, speed: 0.1 },
