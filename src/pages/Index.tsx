@@ -142,7 +142,7 @@ const Index = () => {
         </div>
 
         {/* Mascot / animated character */}
-        <div className="shrink-0 w-full max-w-[220px] sm:max-w-[280px] md:max-w-[300px] h-[180px] sm:h-[220px] relative">
+        <div className="shrink-0 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[300px] h-[180px] sm:h-[220px] relative">
           <img
             src={mascotImg}
             alt="Studio mascot"
