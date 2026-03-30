@@ -22,9 +22,13 @@ const Index = () => {
         
         {/* 视频 + 加载动画 */}
         <div className="absolute inset-0">
-          {/* 加载动画 */}
+          {/* 加载动画：三个小白点跳动（你选的这款） */}
           <div id="video-loader" className="absolute inset-0 flex items-center justify-center bg-black/20 z-10">
-            <div className="w-10 h-10 border-4 border-white/30 border-t-white rounded-full animate-spin"></div>
+            <div className="flex gap-2">
+              <div className="w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+              <div className="w-2 h-2 bg-white rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+              <div className="w-2 h-2 bg-white rounded-full animate-bounce"></div>
+            </div>
           </div>
 
           {/* 视频 */}
