@@ -116,9 +116,9 @@ const Index = () => {
 <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
   <div className="max-w-6xl mx-auto">
     <AnimatedSection>
-      <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
         {/* Award badges */}
-        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-14 flex-1">
+        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-14 flex-1">
           {[
             { label: "Silver Award", icon: annieAward },
             { label: "Canadian Screen Award Qualifying", icon: vimeoAward },
@@ -131,7 +131,7 @@ const Index = () => {
               <img
                 src={award.icon}
                 alt={award.label}
-                className="w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] md:w-[180px] md:h-[180px] object-contain"
+                className="w-[100px] h-[100px] sm:w-[150px] sm:h-[150px] lg:w-[180px] lg:h-[180px] object-contain"
                 loading="lazy"
               />
               <span className="text-[10px] sm:text-xs font-medium tracking-wider text-black uppercase text-center max-w-[100px] sm:max-w-none">
@@ -142,7 +142,7 @@ const Index = () => {
         </div>
 
         {/* Mascot / animated character */}
-        <div className="shrink-0 w-full max-w-[220px] sm:max-w-[280px] md:max-w-[300px] h-[180px] sm:h-[220px] relative">
+        <div className="shrink-0 w-full max-w-[220px] sm:max-w-[280px] lg:max-w-[300px] h-[180px] sm:h-[220px] relative">
           <img
             src={mascotImg}
             alt="Studio mascot"
