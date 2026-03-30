@@ -9,7 +9,8 @@ const BackToTop = () => {
     if (!ticking.current) {
       ticking.current = true;
       requestAnimationFrame(() => {
-        setVisible(window.scrollY > 400);
+        const lightboxOpen = document.body.style.overflow === "hidden";
+        setVisible(window.scrollY > 400 && !lightboxOpen);
         ticking.current = false;
       });
     }
