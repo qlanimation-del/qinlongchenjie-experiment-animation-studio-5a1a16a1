@@ -116,7 +116,7 @@ const Index = () => {
 <section className="py-12 sm:py-16 px-4 sm:px-6 bg-white">
   <div className="max-w-6xl mx-auto">
     <AnimatedSection>
-      <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+      <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
         {/* Award badges */}
         <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 md:gap-14 flex-1">
           {[
