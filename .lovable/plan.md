@@ -1,21 +1,29 @@
 
 
-## Fix: Awards section tablet layout
+## Fix: Build failure — missing `axios` dependency
 
 ### Problem
-At 768px (tablet/`md` breakpoint), `md:flex-row` activates — awards and mascot sit side-by-side. But the award icons jump to `sm` size (150px) while the mascot takes 280px, creating an oversized white area with poor proportions compared to desktop or mobile.
+The build fails with `Could not resolve entry module "axios"`. The `vite.config.ts` defines a `manualChunks` vendor bundle including `axios`, but `axios` is not installed in the project.
 
 ### Solution
-Shift the horizontal layout trigger from `md` (768px) to `lg` (1024px), so tablets use the stacked mobile layout. Also scale down award icons and mascot at `md` to create a smoother transition.
+Remove `axios` (and any other unused libraries like `lodash`, `zustand`) from the `manualChunks` config in `vite.config.ts`.
 
-### Changes — `src/pages/Index.tsx`
+### Change — `vite.config.ts`
 
-| Line | Current | New |
-|------|---------|-----|
-| 119 | `md:flex-row` | `lg:flex-row` |
-| 121 | `md:gap-14` | `lg:gap-14` |
-| 134 | `md:w-[180px] md:h-[180px]` | `lg:w-[180px] lg:h-[180px]` |
-| 145 | `md:max-w-[300px]` | `lg:max-w-[300px]` |
+Replace the `manualChunks` section:
 
-This makes the awards section stack vertically on both mobile and tablet, only going horizontal on desktop (≥1024px), keeping the white area compact on all screen sizes.
+```ts
+// Before
+manualChunks: {
+  react: ["react", "react-dom"],
+  vendor: ["lodash", "axios", "zustand"],
+},
+
+// After
+manualChunks: {
+  react: ["react", "react-dom"],
+},
+```
+
+One line changed. No functionality affected — these libraries weren't used in the project.
 
