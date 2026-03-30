@@ -16,8 +16,6 @@ interface ImageLightboxProps {
 }
 
 const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext, onGoTo }: ImageLightboxProps) => {
-  const thumbContainerRef = useRef<HTMLDivElement>(null);
-  const activeThumbRef = useRef<HTMLButtonElement>(null);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === "Escape") onClose();
