@@ -22,23 +22,9 @@ const Index = () => {
         
         {/* 视频 + 加载动画 */}
         <div className="absolute inset-0">
-         {/* 专业加载动画：轻快弹跳 + 运动拖影 + 不拖沓 */}
-<div id="video-loader" className="absolute inset-0 flex items-center justify-center bg-black/20 z-10">
-  <div className="flex gap-6">
-    <div className="relative h-10">
-      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full animate-[bounce_0.9s_infinite] [animation-delay:-0.3s]"></div>
-      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full blur-sm animate-[bounce_0.9s_infinite] [animation-delay:-0.3s] opacity-50"></div>
-    </div>
-    <div className="relative h-10">
-      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full animate-[bounce_0.9s_infinite] [animation-delay:-0.15s]"></div>
-      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full blur-sm animate-[bounce_0.9s_infinite] [animation-delay:-0.15s] opacity-50"></div>
-    </div>
-    <div className="relative h-10">
-      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full animate-[bounce_0.9s_infinite]"></div>
-      <div className="absolute bottom-0 w-3 h-3 bg-white rounded-full blur-sm animate-[bounce_0.9s_infinite] opacity-50"></div>
-    </div>
-  </div>
-</div>
+         <div id="video-loader" className="absolute inset-0 flex items-center justify-center bg-black/30 z-10">
+           <div className="w-10 h-10 border-2 border-white/20 border-t-white rounded-full animate-spin" />
+         </div>
 
           {/* 视频 */}
           <video
