@@ -57,8 +57,6 @@ export default defineConfig(({ mode }) => ({
         manualChunks: {
           // 把 React 相关单独打包，长期缓存
           react: ["react", "react-dom"],
-          // 其他大库单独分包
-          vendor: ["lodash", "axios", "zustand"],
         },
       },
     },
