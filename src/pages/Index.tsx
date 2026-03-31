@@ -135,11 +135,12 @@ const Index = () => {
               <img
                 src={whoWeAreImg}
                 alt="Studio"
-                className="rounded-lg w-full max-w-md object-cover aspect-[4/3]"
+                className="rounded-lg w-full max-w-md object-cover aspect-[4/3] will-change-auto"
                 loading="lazy"
                 decoding="async"
                 width={448}
                 height={336}
+                fetchPriority="low"
               />
             </AnimatedSection>
           </div>
