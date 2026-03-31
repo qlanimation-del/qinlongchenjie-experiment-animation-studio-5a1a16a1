@@ -1,52 +1,42 @@
 
 
-## Fix: Build failure + Loading animation upgrade
+## Upgrade: Video loader with percentage progress
 
-### Problem 1: Build failure (publishing blocked)
-`vite.config.ts` line 61 references `lodash`, `axios`, `zustand` in `manualChunks`, but none are installed. Rollup fails trying to resolve them.
+### Current state
+A small 40px spinning ring — functional but underwhelming.
 
-### Problem 2: Loading animation not modern enough
-Current bouncing dots feel dated and slow. Replace with a minimal, modern CSS spinner — a thin rotating ring that feels fast and premium.
-
----
+### New design
+A centered circular progress indicator with percentage text:
+- **Larger ring** (80px) with a gradient stroke effect using CSS `conic-gradient`
+- **Percentage counter** in the center that counts from 0% to 100%
+- Smooth pulse glow animation on the ring
+- When video loads, percentage jumps to 100% then fades out
 
 ### Changes
 
-**1. `vite.config.ts` — Fix build**
-
-Remove the `vendor` chunk line (line 61):
-
-```ts
-// Before
-manualChunks: {
-  react: ["react", "react-dom"],
-  vendor: ["lodash", "axios", "zustand"],
-},
-
-// After
-manualChunks: {
-  react: ["react", "react-dom"],
-},
-```
-
-**2. `src/pages/Index.tsx` — Modern loading animation**
-
-Replace the bouncing dots block (lines 25-41) with a single thin spinning ring:
+**`src/pages/Index.tsx`** — Replace the simple spinner (lines 25-27) with a React state-driven loader component:
 
 ```tsx
-<div id="video-loader" className="absolute inset-0 flex items-center justify-center bg-black/30 z-10">
-  <div className="w-10 h-10 border-2 border-white/20 border-t-white rounded-full animate-spin" />
-</div>
+// Inside the hero section, replace the loader div with:
+// - useState for progress (0-100)
+// - useEffect with setInterval to simulate progress (fast at start, slows near 90%, jumps to 100% on video load)
+// - Circular progress ring using SVG (stroke-dasharray/dashoffset)
+// - Percentage text in center
+// - Fade-out animation when complete
 ```
 
-This is a minimal spinning ring — thin border, partially transparent, smooth rotation. Looks modern, loads instantly, and conveys speed rather than "waiting".
+The loader will be a `<div>` containing:
+1. An SVG circle (80px) with animated `stroke-dashoffset` driven by progress state
+2. A glowing outer ring effect via `box-shadow` animation
+3. Centered percentage text (`{progress}%`) with `tabular-nums` font
+4. On `onLoadedData`, set progress to 100 → after 300ms delay, fade out and remove
 
----
+**`src/index.css`** — Add a subtle pulse-glow keyframe for the ring's outer glow.
 
 ### Summary
 
 | File | Change |
 |------|--------|
-| `vite.config.ts` | Remove unused `vendor` chunk → fixes build/publish |
-| `src/pages/Index.tsx` | Replace bouncing dots with spinning ring loader |
+| `src/pages/Index.tsx` | Replace spinner with SVG circular progress + percentage |
+| `src/index.css` | Add glow pulse keyframe |
 
