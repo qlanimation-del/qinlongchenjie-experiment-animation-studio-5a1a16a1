@@ -15,6 +15,37 @@ import mascotImg from "@/assets/awards/mascot.webp";
 
 const Index = () => {
   const { t } = useLanguage();
+  const [progress, setProgress] = useState(0);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [loaderVisible, setLoaderVisible] = useState(true);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const handleVideoLoaded = useCallback((e: React.SyntheticEvent<HTMLVideoElement>) => {
+    const video = e.target as HTMLVideoElement;
+    setVideoLoaded(true);
+    setProgress(100);
+    setTimeout(() => {
+      video.style.opacity = "1";
+      setLoaderVisible(false);
+    }, 400);
+  }, []);
+
+  useEffect(() => {
+    if (videoLoaded) return;
+    intervalRef.current = setInterval(() => {
+      setProgress((prev) => {
+        if (prev < 60) return prev + 2;
+        if (prev < 85) return prev + 0.8;
+        if (prev < 95) return prev + 0.2;
+        return prev;
+      });
+    }, 50);
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, [videoLoaded]);
+
+  const radius = 36;
+  const circumference = 2 * Math.PI * radius;
+  const dashOffset = circumference - (progress / 100) * circumference;
 
   return (
     <Layout fullBleed>
@@ -23,9 +54,34 @@ const Index = () => {
         
         {/* 视频 + 加载动画 */}
         <div className="absolute inset-0">
-         <div id="video-loader" className="absolute inset-0 flex items-center justify-center bg-black/30 z-10">
-           <div className="w-10 h-10 border-2 border-white/20 border-t-white rounded-full animate-spin" />
-         </div>
+          {loaderVisible && (
+            <div className={`absolute inset-0 flex items-center justify-center bg-black/40 z-10 transition-opacity duration-500 ${progress >= 100 ? 'opacity-0' : 'opacity-100'}`}>
+              <div className="relative flex items-center justify-center loader-glow-pulse">
+                <svg width="80" height="80" viewBox="0 0 80 80" className="transform -rotate-90">
+                  <circle cx="40" cy="40" r={radius} fill="none" stroke="white" strokeOpacity="0.08" strokeWidth="2.5" />
+                  <circle
+                    cx="40" cy="40" r={radius}
+                    fill="none"
+                    stroke="url(#loaderGradient)"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeDasharray={circumference}
+                    strokeDashoffset={dashOffset}
+                    style={{ transition: 'stroke-dashoffset 0.15s ease-out' }}
+                  />
+                  <defs>
+                    <linearGradient id="loaderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="white" stopOpacity="1" />
+                      <stop offset="100%" stopColor="white" stopOpacity="0.3" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <span className="absolute text-white text-sm font-light tabular-nums tracking-wider">
+                  {Math.round(progress)}%
+                </span>
+              </div>
+            </div>
+          )}
 
           {/* 视频 */}
           <video
@@ -35,12 +91,7 @@ const Index = () => {
             playsInline
             preload="metadata"
             className="w-full h-full object-cover opacity-0 transition-opacity duration-1000"
-            onLoadedData={(e) => {
-              const video = e.target as HTMLVideoElement;
-              video.style.opacity = "1";
-              const loader = document.getElementById("video-loader");
-              if (loader) loader.remove();
-            }}
+            onLoadedData={handleVideoLoaded}
           >
             <source src="/videos/hero-bg.mp4" type="video/mp4" />
           </video>

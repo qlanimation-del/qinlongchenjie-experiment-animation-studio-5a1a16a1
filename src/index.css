@@ -151,4 +151,17 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  .loader-glow-pulse {
+    animation: loaderGlow 2s ease-in-out infinite;
+  }
+
+  @keyframes loaderGlow {
+    0%, 100% {
+      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.15));
+    }
+    50% {
+      filter: drop-shadow(0 0 16px rgba(255, 255, 255, 0.35));
+    }
+  }
 }
