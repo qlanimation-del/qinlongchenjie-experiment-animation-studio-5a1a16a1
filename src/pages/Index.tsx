@@ -89,7 +89,7 @@ const Index = () => {
             loop
             muted
             playsInline
-            preload="metadata"
+            preload="auto"
             className="w-full h-full object-cover opacity-0 transition-opacity duration-1000"
             onLoadedData={handleVideoLoaded}
           >
