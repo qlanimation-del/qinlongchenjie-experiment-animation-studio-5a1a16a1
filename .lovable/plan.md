@@ -1,37 +1,19 @@
 
 
-## Plan: Hero placeholder image + Work skeleton cards
+## Fix: Eliminate black flash before hero poster image
 
-### 1. Hero: Show uploaded image as backdrop while video loads
+### Problem
+The poster image is loaded as a regular `<img>` tag. Even with `fetchPriority="high"`, there's a brief moment where the black background shows before the image renders — defeating the purpose of the poster.
 
-**File: `src/pages/Index.tsx`**
+### Solution
+Add the poster image as an **inline CSS background** on the container `<div>`, so it starts rendering immediately as the DOM paints, while keeping the `<img>` tag for full quality. Also add a preload link in `index.html` for the poster image.
 
-- Copy `user-uploads://Still01_1.webp` to `src/assets/hero-poster.webp`
-- Import the image and render it as an `<img>` behind the video, covering the full hero area
-- Remove the `bg-black/40` from the loader overlay (the image itself provides the backdrop)
-- When video finishes loading (`onLoadedData`), the video fades in via `opacity-0 → opacity-100` (already implemented with `transition-opacity duration-1000`), naturally covering the poster image
+### Changes
 
-The poster image loads almost instantly (static image vs video), so users see meaningful content immediately instead of a black screen.
+**`src/pages/Index.tsx`**
+- On the outer `<div className="absolute inset-0">` (line 57), add an inline `style` with `backgroundImage` pointing to the imported poster, plus `backgroundSize: 'cover'` and `backgroundPosition: 'center'` — this ensures the container itself has the image as its background paint, visible from the very first frame
+- Keep the `<img>` tag as-is for sharp rendering once loaded
 
-### 2. Work page: Skeleton placeholders for project cards
-
-**File: `src/pages/Work.tsx`**
-
-- Add a `useState` for image loaded state per card
-- Show each card container immediately with its correct grid span and a skeleton placeholder (dark gray with a subtle shimmer animation)
-- When the thumbnail `<img>` fires `onLoad`, fade in the image over the skeleton
-- Remove the current `opacity-0 translate-y-8` entrance animation (which hides cards entirely until intersection) — instead, show the skeleton frame right away so users see the grid structure
-
-**File: `src/index.css`**
-
-- Add a `skeleton-shimmer` keyframe animation: a left-to-right gradient sweep on the placeholder background
-
-### Summary
-
-| File | Change |
-|------|--------|
-| `src/assets/hero-poster.webp` | Copy uploaded image |
-| `src/pages/Index.tsx` | Add poster image behind video as loading backdrop |
-| `src/pages/Work.tsx` | Skeleton placeholders visible immediately, images fade in on load |
-| `src/index.css` | Add shimmer animation keyframe |
+**`index.html`**
+- Add `<link rel="preload" as="image" href="/src/assets/hero-poster.webp">` in `<head>` to start fetching the poster even before JS bundles execute
 
