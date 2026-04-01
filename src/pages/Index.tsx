@@ -54,7 +54,7 @@ const Index = () => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         
         {/* 视频 + 加载动画 */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0" style={{ backgroundImage: `url(${heroPosterImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
           {/* Poster backdrop — visible instantly while video loads */}
           <img
             src={heroPosterImg}
