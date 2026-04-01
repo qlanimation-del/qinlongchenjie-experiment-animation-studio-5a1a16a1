@@ -1,39 +1,47 @@
 // Work page – grid masonry layout
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { projects } from "@/data/projects";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Locale } from "@/i18n/translations";
 
 // Pinterest-style staggered heights via grid row spans
 const cardSpan: Record<string, number> = {
-  "dreamscape":      4,   // medium
-  "shadows-within":  7,   // very tall
-  "fizzy-pop":       5,   // medium-tall
-  "resonance":       4,   // medium
-  "tiny-worlds":     6,   // tall
-  "between-us":      5,   // medium-tall
-  "beyond-orbit":    4,   // medium
-  "entering-cloud":  5,   // medium-tall
-  "gafa-logo":       5,   // medium-tall
+  "dreamscape":      4,
+  "shadows-within":  7,
+  "fizzy-pop":       5,
+  "resonance":       4,
+  "tiny-worlds":     6,
+  "between-us":      5,
+  "beyond-orbit":    4,
+  "entering-cloud":  5,
+  "gafa-logo":       5,
 };
 
 function ProjectCard({ project, index, locale }: {project: typeof projects[0]; index: number; locale: Locale}) {
-  const { ref, isVisible } = useScrollAnimation(0.1);
+  const [imgLoaded, setImgLoaded] = useState(false);
   const span = cardSpan[project.id] || 3;
 
   return (
     <div
-      ref={ref}
-      style={{ gridRow: `span ${span}`, transitionDelay: `${index * 80}ms` }}
-      className={`transition-all duration-500 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+      style={{ gridRow: `span ${span}` }}
+      className="relative">
       
+      {/* Skeleton shimmer – visible until image loads */}
+      {!imgLoaded && (
+        <div className="absolute inset-0 rounded-lg bg-muted skeleton-shimmer" />
+      )}
+
       <Link to={`/work/${project.id}`} className="group block relative overflow-hidden rounded-lg h-full">
         <img
           src={project.thumbnail}
           alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-400 group-hover:scale-105" />
+          className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+          loading="lazy"
+          decoding="async"
+          onLoad={() => setImgLoaded(true)}
+        />
         
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-250 flex items-center justify-center">
           <div className="text-center px-4">

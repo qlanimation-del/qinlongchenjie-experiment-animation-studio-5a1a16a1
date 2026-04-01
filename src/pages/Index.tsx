@@ -55,8 +55,16 @@ const Index = () => {
         
         {/* 视频 + 加载动画 */}
         <div className="absolute inset-0">
+          {/* Poster backdrop — visible instantly while video loads */}
+          <img
+            src={heroPosterImg}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            fetchPriority="high"
+          />
+
           {loaderVisible && (
-            <div className={`absolute inset-0 flex items-center justify-center bg-black/40 z-10 transition-opacity duration-500 ${progress >= 100 ? 'opacity-0' : 'opacity-100'}`}>
+            <div className={`absolute inset-0 flex items-center justify-center bg-black/30 z-10 transition-opacity duration-500 ${progress >= 100 ? 'opacity-0' : 'opacity-100'}`}>
               <div className="relative flex items-center justify-center loader-glow-pulse">
                 <svg width="80" height="80" viewBox="0 0 80 80" className="transform -rotate-90">
                   <circle cx="40" cy="40" r={radius} fill="none" stroke="white" strokeOpacity="0.08" strokeWidth="2.5" />
