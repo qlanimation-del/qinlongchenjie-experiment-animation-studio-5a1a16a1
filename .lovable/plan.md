@@ -1,42 +1,37 @@
 
 
-## Upgrade: Video loader with percentage progress
+## Plan: Hero placeholder image + Work skeleton cards
 
-### Current state
-A small 40px spinning ring — functional but underwhelming.
+### 1. Hero: Show uploaded image as backdrop while video loads
 
-### New design
-A centered circular progress indicator with percentage text:
-- **Larger ring** (80px) with a gradient stroke effect using CSS `conic-gradient`
-- **Percentage counter** in the center that counts from 0% to 100%
-- Smooth pulse glow animation on the ring
-- When video loads, percentage jumps to 100% then fades out
+**File: `src/pages/Index.tsx`**
 
-### Changes
+- Copy `user-uploads://Still01_1.webp` to `src/assets/hero-poster.webp`
+- Import the image and render it as an `<img>` behind the video, covering the full hero area
+- Remove the `bg-black/40` from the loader overlay (the image itself provides the backdrop)
+- When video finishes loading (`onLoadedData`), the video fades in via `opacity-0 → opacity-100` (already implemented with `transition-opacity duration-1000`), naturally covering the poster image
 
-**`src/pages/Index.tsx`** — Replace the simple spinner (lines 25-27) with a React state-driven loader component:
+The poster image loads almost instantly (static image vs video), so users see meaningful content immediately instead of a black screen.
 
-```tsx
-// Inside the hero section, replace the loader div with:
-// - useState for progress (0-100)
-// - useEffect with setInterval to simulate progress (fast at start, slows near 90%, jumps to 100% on video load)
-// - Circular progress ring using SVG (stroke-dasharray/dashoffset)
-// - Percentage text in center
-// - Fade-out animation when complete
-```
+### 2. Work page: Skeleton placeholders for project cards
 
-The loader will be a `<div>` containing:
-1. An SVG circle (80px) with animated `stroke-dashoffset` driven by progress state
-2. A glowing outer ring effect via `box-shadow` animation
-3. Centered percentage text (`{progress}%`) with `tabular-nums` font
-4. On `onLoadedData`, set progress to 100 → after 300ms delay, fade out and remove
+**File: `src/pages/Work.tsx`**
 
-**`src/index.css`** — Add a subtle pulse-glow keyframe for the ring's outer glow.
+- Add a `useState` for image loaded state per card
+- Show each card container immediately with its correct grid span and a skeleton placeholder (dark gray with a subtle shimmer animation)
+- When the thumbnail `<img>` fires `onLoad`, fade in the image over the skeleton
+- Remove the current `opacity-0 translate-y-8` entrance animation (which hides cards entirely until intersection) — instead, show the skeleton frame right away so users see the grid structure
+
+**File: `src/index.css`**
+
+- Add a `skeleton-shimmer` keyframe animation: a left-to-right gradient sweep on the placeholder background
 
 ### Summary
 
 | File | Change |
 |------|--------|
-| `src/pages/Index.tsx` | Replace spinner with SVG circular progress + percentage |
-| `src/index.css` | Add glow pulse keyframe |
+| `src/assets/hero-poster.webp` | Copy uploaded image |
+| `src/pages/Index.tsx` | Add poster image behind video as loading backdrop |
+| `src/pages/Work.tsx` | Skeleton placeholders visible immediately, images fade in on load |
+| `src/index.css` | Add shimmer animation keyframe |
 
