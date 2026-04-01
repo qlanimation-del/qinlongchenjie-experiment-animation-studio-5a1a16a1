@@ -6,6 +6,7 @@ import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 
+import heroPosterImg from "@/assets/hero-poster.webp";
 import whoWeAreImg from "@/assets/who-we-are.webp";
 import whatWeDoImg from "@/assets/what-we-do.webp";
 import annieAward from "@/assets/awards/annie-award.webp";
