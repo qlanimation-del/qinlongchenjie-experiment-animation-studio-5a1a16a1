@@ -99,7 +99,7 @@ const Index = () => {
             muted
             playsInline
             preload="auto"
-            className="w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+            className="absolute inset-0 z-[5] w-full h-full object-cover opacity-0 transition-opacity duration-1000"
             onLoadedData={handleVideoLoaded}
           >
             <source src="/videos/hero-bg.mp4" type="video/mp4" />
