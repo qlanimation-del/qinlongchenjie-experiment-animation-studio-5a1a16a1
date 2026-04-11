@@ -1,5 +1,6 @@
 import { useLanguage } from "@/i18n/LanguageContext";
 import { Instagram } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import xiaohongshuIcon from "@/assets/xiaohongshu.webp";
 
 const VimeoIcon = ({ className }: { className?: string }) => (
@@ -20,10 +21,20 @@ const socialLinks = [
 
 const Footer = () => {
   const { t } = useLanguage();
+  const { ref, isVisible } = useScrollAnimation(0.3);
 
   return (
     <footer className="bg-background py-12">
       <div className="max-w-7xl mx-auto px-6">
+        {/* Animated separator line */}
+        <div ref={ref} className="flex justify-center mb-10">
+          <div
+            className={`h-px w-24 bg-muted-foreground/30 transition-transform duration-700 ease-out origin-center ${
+              isVisible ? "scale-x-100" : "scale-x-0"
+            }`}
+          />
+        </div>
+
         <div className="flex items-center justify-center gap-12 mb-8">
           {socialLinks.map((link) => (
             <a
