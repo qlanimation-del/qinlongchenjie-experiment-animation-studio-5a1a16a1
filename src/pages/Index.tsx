@@ -134,7 +134,7 @@ const Index = () => {
         <div className="max-w-6xl mx-auto">
           <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">{t("whoWeAre", "sectionLabel")}</p>
           <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-            <AnimatedSection>
+            <AnimatedSection variant="reveal">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">{t("whoWeAre", "title")}</h2>
               <p className="text-muted-foreground leading-relaxed text-base">
                 {t("whoWeAre", "description")}
@@ -171,7 +171,7 @@ const Index = () => {
                 height={336}
               />
             </AnimatedSection>
-            <AnimatedSection className="order-1 md:order-2">
+            <AnimatedSection variant="reveal" className="order-1 md:order-2">
               <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-4">{t("whatWeDo", "sectionLabel")}</p>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">{t("whatWeDo", "title")}</h2>
               <p className="text-muted-foreground leading-relaxed mb-8 text-base text-justify">
