@@ -15,6 +15,37 @@ interface NavbarProps {
 
 const SHOW_NAV_THRESHOLD = 400;
 
+/** Magnetic link wrapper for desktop nav */
+const MagneticLink = ({ children, to, className }: { children: React.ReactNode; to: string; className: string }) => {
+  const ref = useRef<HTMLAnchorElement>(null);
+
+  const onMove = useCallback((e: React.MouseEvent) => {
+    const el = ref.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const dx = (e.clientX - (rect.left + rect.width / 2)) * 0.25;
+    const dy = (e.clientY - (rect.top + rect.height / 2)) * 0.25;
+    el.style.transform = `translate(${dx}px, ${dy}px)`;
+  }, []);
+
+  const onLeave = useCallback(() => {
+    const el = ref.current;
+    if (el) el.style.transform = "translate(0,0)";
+  }, []);
+
+  return (
+    <Link
+      ref={ref}
+      to={to}
+      className={cn(className, "transition-transform duration-200 ease-out")}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+    >
+      {children}
+    </Link>
+  );
+};
+
 const Navbar = ({ className = "", variant = "dark" }: NavbarProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
@@ -107,20 +138,20 @@ const Navbar = ({ className = "", variant = "dark" }: NavbarProps) => {
             </div>
           </Link>
 
-          {/* Desktop nav */}
+          {/* Desktop nav — magnetic links */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (
-              <Link
+              <MagneticLink
                 key={link.to}
                 to={link.to}
                 className={cn(
-                  "text-sm font-medium tracking-widest transition-colors",
+                  "text-sm font-medium tracking-widest",
                   hoverText,
                   location.pathname === link.to ? textActive : textMuted
                 )}
               >
                 {link.label}
-              </Link>
+              </MagneticLink>
             ))}
             <LanguageSwitcher variant={variant} />
           </div>
