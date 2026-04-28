@@ -20,6 +20,11 @@ const Index = () => {
   const [progress, setProgress] = useState(0);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [loaderVisible, setLoaderVisible] = useState(true);
+  // Defer mounting <source> tags until after first paint, so video doesn't
+  // compete with the poster + critical JS for bandwidth on first load.
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  // Skip video entirely on save-data / very slow networks — show poster only.
+  const [skipVideo, setSkipVideo] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const handleVideoLoaded = useCallback((e: React.SyntheticEvent<HTMLVideoElement>) => {
@@ -32,8 +37,31 @@ const Index = () => {
     }, 400);
   }, []);
 
+  // Detect slow networks / data-saver mode → skip video entirely
   useEffect(() => {
-    if (videoLoaded) return;
+    const conn = (navigator as any).connection;
+    if (conn) {
+      const slow = conn.saveData === true ||
+        conn.effectiveType === "slow-2g" ||
+        conn.effectiveType === "2g" ||
+        conn.effectiveType === "3g";
+      if (slow) {
+        setSkipVideo(true);
+        setLoaderVisible(false);
+        return;
+      }
+    }
+    // Defer video source attachment until browser is idle (after first paint)
+    const ric = (window as any).requestIdleCallback as ((cb: () => void, opts?: { timeout: number }) => number) | undefined;
+    if (ric) {
+      ric(() => setShouldLoadVideo(true), { timeout: 1500 });
+    } else {
+      setTimeout(() => setShouldLoadVideo(true), 200);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (videoLoaded || skipVideo) return;
     intervalRef.current = setInterval(() => {
       setProgress((prev) => {
         if (prev < 60) return prev + 2;
@@ -43,7 +71,7 @@ const Index = () => {
       });
     }, 50);
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, [videoLoaded]);
+  }, [videoLoaded, skipVideo]);
 
   const radius = 36;
   const circumference = 2 * Math.PI * radius;
