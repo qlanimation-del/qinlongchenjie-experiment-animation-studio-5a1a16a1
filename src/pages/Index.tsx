@@ -6,7 +6,8 @@ import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 
-import heroPosterImg from "@/assets/hero-poster.webp";
+// Use stable public-path assets so preload + cache headers match
+const heroPosterImg = "/hero-poster.webp";
 import whoWeAreImg from "@/assets/who-we-are.webp";
 import whatWeDoImg from "@/assets/what-we-do.webp";
 import annieAward from "@/assets/awards/annie-award.webp";
@@ -19,6 +20,11 @@ const Index = () => {
   const [progress, setProgress] = useState(0);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [loaderVisible, setLoaderVisible] = useState(true);
+  // Defer mounting <source> tags until after first paint, so video doesn't
+  // compete with the poster + critical JS for bandwidth on first load.
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  // Skip video entirely on save-data / very slow networks — show poster only.
+  const [skipVideo, setSkipVideo] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const handleVideoLoaded = useCallback((e: React.SyntheticEvent<HTMLVideoElement>) => {
@@ -31,8 +37,31 @@ const Index = () => {
     }, 400);
   }, []);
 
+  // Detect slow networks / data-saver mode → skip video entirely
   useEffect(() => {
-    if (videoLoaded) return;
+    const conn = (navigator as any).connection;
+    if (conn) {
+      const slow = conn.saveData === true ||
+        conn.effectiveType === "slow-2g" ||
+        conn.effectiveType === "2g" ||
+        conn.effectiveType === "3g";
+      if (slow) {
+        setSkipVideo(true);
+        setLoaderVisible(false);
+        return;
+      }
+    }
+    // Defer video source attachment until browser is idle (after first paint)
+    const ric = (window as any).requestIdleCallback as ((cb: () => void, opts?: { timeout: number }) => number) | undefined;
+    if (ric) {
+      ric(() => setShouldLoadVideo(true), { timeout: 1500 });
+    } else {
+      setTimeout(() => setShouldLoadVideo(true), 200);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (videoLoaded || skipVideo) return;
     intervalRef.current = setInterval(() => {
       setProgress((prev) => {
         if (prev < 60) return prev + 2;
@@ -42,7 +71,7 @@ const Index = () => {
       });
     }, 50);
     return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
-  }, [videoLoaded]);
+  }, [videoLoaded, skipVideo]);
 
   const radius = 36;
   const circumference = 2 * Math.PI * radius;
@@ -92,18 +121,26 @@ const Index = () => {
             </div>
           )}
 
-          {/* 视频 */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 z-[5] w-full h-full object-cover opacity-0 transition-opacity duration-1000"
-            onLoadedData={handleVideoLoaded}
-          >
-            <source src="/videos/hero-bg.mp4" type="video/mp4" />
-          </video>
+          {/* 视频 — only mounted after first paint to avoid blocking critical resources */}
+          {!skipVideo && (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              poster={heroPosterImg}
+              className="absolute inset-0 z-[5] w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+              onLoadedData={handleVideoLoaded}
+            >
+              {shouldLoadVideo && (
+                <>
+                  <source src="/videos/hero-bg.webm" type="video/webm" />
+                  <source src="/videos/hero-bg.mp4" type="video/mp4" />
+                </>
+              )}
+            </video>
+          )}
         </div>
 
         <div className="absolute top-[75%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full px-4 flex justify-center">
