@@ -121,18 +121,26 @@ const Index = () => {
             </div>
           )}
 
-          {/* 视频 */}
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            className="absolute inset-0 z-[5] w-full h-full object-cover opacity-0 transition-opacity duration-1000"
-            onLoadedData={handleVideoLoaded}
-          >
-            <source src="/videos/hero-bg.mp4" type="video/mp4" />
-          </video>
+          {/* 视频 — only mounted after first paint to avoid blocking critical resources */}
+          {!skipVideo && (
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+              poster={heroPosterImg}
+              className="absolute inset-0 z-[5] w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+              onLoadedData={handleVideoLoaded}
+            >
+              {shouldLoadVideo && (
+                <>
+                  <source src="/videos/hero-bg.webm" type="video/webm" />
+                  <source src="/videos/hero-bg.mp4" type="video/mp4" />
+                </>
+              )}
+            </video>
+          )}
         </div>
 
         <div className="absolute top-[75%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-full px-4 flex justify-center">
