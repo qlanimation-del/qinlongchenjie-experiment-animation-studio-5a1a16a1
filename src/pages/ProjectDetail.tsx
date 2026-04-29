@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import Layout from "@/components/Layout";
 import ParallaxHero from "@/components/ParallaxHero";
 import ProjectGallery from "@/components/ProjectGallery";
+import WorkCaption from "@/components/WorkCaption";
 import { projects } from "@/data/projects";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n/LanguageContext";
