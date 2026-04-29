@@ -121,6 +121,14 @@ export interface GalleryImage {
   alt: string;
 }
 
+export interface PressItem {
+  year: string;
+  author?: string;
+  title: string;
+  publication?: string;
+  url?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -137,6 +145,16 @@ export interface Project {
   client?: Record<Locale, string>;
   crew?: Record<Locale, string>;
   galleryImages?: GalleryImage[];
+  // Museum-style caption fields (all optional)
+  medium?: Record<Locale, string>;
+  duration?: string;
+  edition?: Record<Locale, string>;
+  commissionedBy?: Record<Locale, string>;
+  courtesy?: Record<Locale, string>;
+  screenings?: Record<Locale, string[]>;
+  press?: PressItem[];
+  // Category for Works filter
+  category?: "animation" | "video-essay" | "experimental" | "installation" | "commission";
 }
 
 export const projects: Project[] = [
