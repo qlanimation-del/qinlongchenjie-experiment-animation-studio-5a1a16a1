@@ -17,7 +17,7 @@ import vimeoAward from "@/assets/awards/vimeo-award.webp";
 import mascotImg from "@/assets/awards/mascot.webp";
 
 const Index = () => {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [progress, setProgress] = useState(0);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [loaderVisible, setLoaderVisible] = useState(true);
