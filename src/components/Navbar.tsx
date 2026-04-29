@@ -62,6 +62,8 @@ const Navbar = ({ className = "", variant = "dark" }: NavbarProps) => {
     { label: t("nav", "work"), to: "/work" },
     { label: t("nav", "drawing"), to: "/drawing" },
     { label: t("nav", "photographs"), to: "/photographs" },
+    { label: t("nav", "texts"), to: "/texts" },
+    { label: t("nav", "news"), to: "/news" },
     { label: t("nav", "team"), to: "/team" },
     { label: t("nav", "contact"), to: "/contact" },
   ];
