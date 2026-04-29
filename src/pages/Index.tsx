@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { newsItems } from "@/data/news";
 
 // Use stable public-path assets so preload + cache headers match
 const heroPosterImg = "/hero-poster.webp";
@@ -16,7 +17,7 @@ import vimeoAward from "@/assets/awards/vimeo-award.webp";
 import mascotImg from "@/assets/awards/mascot.webp";
 
 const Index = () => {
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
   const [progress, setProgress] = useState(0);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [loaderVisible, setLoaderVisible] = useState(true);
@@ -164,6 +165,37 @@ const Index = () => {
         >
           <ChevronDown size={32} />
         </a>
+      </section>
+
+      {/* Upcoming — minimal single-line announcement strip (contemporary art convention) */}
+      <section className="border-y border-white/5 py-4 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-6">
+          <span className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground/70 shrink-0">
+            {t("upcoming", "label")}
+          </span>
+          {newsItems.length > 0 ? (() => {
+            const now = new Date();
+            const todayKey = `${now.getFullYear()}.${String(now.getMonth() + 1).padStart(2, "0")}`;
+            const next = [...newsItems]
+              .filter((n) => n.date >= todayKey)
+              .sort((a, b) => a.date.localeCompare(b.date))[0];
+            if (!next) {
+              return <span className="text-sm text-muted-foreground italic">{t("upcoming", "empty")}</span>;
+            }
+            return (
+              <Link to="/news" className="group flex flex-wrap items-baseline gap-x-3 gap-y-1 text-sm hover:text-foreground transition-colors">
+                <span className="text-foreground font-medium tabular-nums">{next.date}</span>
+                <span className="text-muted-foreground uppercase tracking-wider text-xs">{next.kind[locale]}</span>
+                <span className="text-foreground/90 group-hover:underline underline-offset-4">{next.title[locale]}</span>
+                <span className="text-muted-foreground">— {next.venue[locale]}</span>
+              </Link>
+            );
+          })() : (
+            <Link to="/news" className="text-sm text-muted-foreground italic hover:text-foreground transition-colors">
+              {t("upcoming", "empty")}
+            </Link>
+          )}
+        </div>
       </section>
 
       {/* Who We Are */}

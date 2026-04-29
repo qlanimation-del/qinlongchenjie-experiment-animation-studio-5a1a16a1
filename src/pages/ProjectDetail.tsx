@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import Layout from "@/components/Layout";
 import ParallaxHero from "@/components/ParallaxHero";
 import ProjectGallery from "@/components/ProjectGallery";
+import WorkCaption from "@/components/WorkCaption";
 import { projects } from "@/data/projects";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -66,12 +67,14 @@ const ProjectDetail = () => {
               <span>{t("projectDetail", "backToWork")}</span>
             </Link>
 
-            <p
+            {/* Museum-style caption block */}
+            <WorkCaption project={project} />
+
+            <div
               className="mb-12 text-muted-foreground leading-relaxed text-base sm:text-lg text-justify whitespace-pre-line"
               style={{ textIndent: "2em", lineHeight: 1.85 }}>
-              
-               <div dangerouslySetInnerHTML={{ __html: project.description[locale] }} />
-</p>
+              <div dangerouslySetInnerHTML={{ __html: project.description[locale] }} />
+            </div>
 
             {/* Video Embed(s) */}
             {(() => {
@@ -142,6 +145,44 @@ const ProjectDetail = () => {
                       </li>);
 
                 })}
+                </ul>
+              </div> :
+            null}
+
+            {project.screenings?.[locale]?.length ?
+            <div className="mb-10 sm:mb-16">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("caption", "screenings")}</h2>
+                <ul className="space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
+                  {project.screenings[locale].map((item, i) => {
+                    const isYear = /^\d{4}$/.test(item.trim());
+                    return (
+                      <li key={i} className={isYear ? "font-bold text-foreground text-sm sm:text-base mt-4 first:mt-0" : ""}>
+                        {item}
+                      </li>);
+                  })}
+                </ul>
+              </div> :
+            null}
+
+            {project.press?.length ?
+            <div className="mb-10 sm:mb-16">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("caption", "press")}</h2>
+                <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
+                  {project.press.map((item, i) => (
+                    <li key={i} className="leading-relaxed">
+                      <span className="text-foreground font-medium">{item.year}</span>
+                      {item.author ? <> · {item.author}</> : null}
+                      {" · "}
+                      {item.url ? (
+                        <a href={item.url} target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-foreground transition-colors">
+                          {item.title}
+                        </a>
+                      ) : (
+                        <span>{item.title}</span>
+                      )}
+                      {item.publication ? <span className="italic">, {item.publication}</span> : null}
+                    </li>
+                  ))}
                 </ul>
               </div> :
             null}

@@ -121,6 +121,14 @@ export interface GalleryImage {
   alt: string;
 }
 
+export interface PressItem {
+  year: string;
+  author?: string;
+  title: string;
+  publication?: string;
+  url?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
@@ -137,6 +145,16 @@ export interface Project {
   client?: Record<Locale, string>;
   crew?: Record<Locale, string>;
   galleryImages?: GalleryImage[];
+  // Museum-style caption fields (all optional)
+  medium?: Record<Locale, string>;
+  duration?: string;
+  edition?: Record<Locale, string>;
+  commissionedBy?: Record<Locale, string>;
+  courtesy?: Record<Locale, string>;
+  screenings?: Record<Locale, string[]>;
+  press?: PressItem[];
+  // Category for Works filter
+  category?: "animation" | "video-essay" | "experimental" | "installation" | "commission";
 }
 
 export const projects: Project[] = [
@@ -162,6 +180,15 @@ export const projects: Project[] = [
       fr: ["2027", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0", "2028", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0"],
     },
     glowColor: "#AA88FF",
+    category: "animation",
+    medium: {
+      en: "Single-channel video, color, sound",
+      zh: "单频影像，彩色，有声",
+      fr: "Vidéo monocanal, couleur, son",
+    },
+    duration: "TBA",
+    edition: { en: "Edition of 5 + 2 AP", zh: "限量 5 版 + 2 AP", fr: "Édition de 5 + 2 EA" },
+    courtesy: { en: "Courtesy the artists", zh: "图片由艺术家提供", fr: "Courtoisie des artistes" },
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
     crew: { en: "QinLong, ChenJie", zh: "秦龙、陈洁", fr: "QinLong, ChenJie" },
     parallaxLayers: [
@@ -421,6 +448,14 @@ pourtant il est toujours empli de croyance.`,
       fr: ["2025", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0", "\u00A0\u00A0\u00A0\u00A0\u00A0\u00A0⦿\u00A0\u00A0"],
     },
     glowColor: "#E8A87C",
+    category: "video-essay",
+    medium: {
+      en: "Single-channel video essay, color, sound",
+      zh: "单频影像散文，彩色，有声",
+      fr: "Essai vidéo monocanal, couleur, son",
+    },
+    duration: "12'34\"",
+    courtesy: { en: "Courtesy the artist", zh: "图片由艺术家提供", fr: "Courtoisie de l'artiste" },
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
     crew: { en: "Chen Jie", zh: "陈洁", fr: "Chen Jie" },
     parallaxLayers: [
@@ -439,6 +474,7 @@ pourtant il est toujours empli de croyance.`,
   },
   {
     id: "tiny-worlds",
+    category: "experimental",
     title: "IN-BETWEEN",
     type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
     year: "2023-2024",
@@ -520,6 +556,7 @@ pourtant il est toujours empli de croyance.`,
   },
   {
     id: "gafa-logo",
+    category: "commission",
     title: "GAFA Animation Major",
     type: { en: "COMMERCIAL", zh: "商业项目", fr: "COMMERCIAL" },
     year: "2023",
@@ -554,6 +591,7 @@ pourtant il est toujours empli de croyance.`,
   },
   {
     id: "entering-cloud",
+    category: "commission",
     title: "Entering the Cloud",
     type: { en: "COMMERCIAL", zh: "商业项目", fr: "COMMERCIAL" },
     year: "2022",
@@ -594,6 +632,7 @@ pourtant il est toujours empli de croyance.`,
   },
   {
     id: "resonance",
+    category: "commission",
     title: "Naturally Yours",
     type: { en: "Commercial", zh: "商业广告", fr: "Publicité" },
     year: "2018",
@@ -634,6 +673,7 @@ pourtant il est toujours empli de croyance.`,
   },
   {
     id: "fizzy-pop",
+    category: "animation",
     title: "YEAR OF FATE",
     type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
     year: "2014",
@@ -672,6 +712,7 @@ pourtant il est toujours empli de croyance.`,
   },
   {
     id: "shadows-within",
+    category: "animation",
     title: "INTROSPECTION",
     type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
     year: "2013",
@@ -711,6 +752,7 @@ pourtant il est toujours empli de croyance.`,
   },
   {
     id: "dreamscape",
+    category: "animation",
     title: "Life's TRACk",
     type: { en: "Short Film", zh: "短片", fr: "Court métrage" },
     year: "2011",
