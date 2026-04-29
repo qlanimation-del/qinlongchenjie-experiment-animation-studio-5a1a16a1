@@ -1,145 +1,158 @@
 
-## 为什么首页视频每次都要重新加载
+# 当代艺术语境下的专业化升级方案
 
-通过抓取真实网络请求确认了根本原因：
-
-```
-GET /videos/hero-bg.mp4
-cache-control: no-cache, no-store, must-revalidate, max-age=0
-```
-
-视频文件目前的响应头是 **完全禁止缓存**，所以浏览器每次访问首页都必须重新下载 3.7MB 的视频，永远不会用本地副本。
-
-注意：`public/_headers` 中已经写了 1 年强缓存，但它只在 **发布到 Cloudflare Pages 之后** 才会生效。当前你看到的预览域名 `lovableproject.com` 是开发沙盒，不读取 `_headers`。
-
-也就是说：**发布后的正式站点已经会有 1 年缓存，预览站本来就会每次重下，这是正常的。**
-
-但即便如此，"第一次访问"的体验还可以做得更快、更专业。下面是完整提速方案。
+目标：把网站从 motion studio 语言，重塑为符合**当代艺术家 / 实验影像工作室**专业标准的语言。参考标准：e-flux、LUX、Hito Steyerl、Cao Fei、陆扬工作室官网。
 
 ---
 
-## 优化目标
+## 阶段 A：语言与信息架构（最关键，0 性能成本）
 
-1. 第一次访问：视频文件尽量小，下载更快
-2. 第二次访问：直接命中浏览器缓存，秒开
-3. 视频未就绪时：海报图立即显示，零黑屏
-4. 视频不阻塞首屏内容渲染
-5. 移动网络/弱网用户体验也专业
+### A1. 重写导航与文案
+- `Work` → `Works` 或 `Index`
+- `NOW PLAYING / OUR WORK` (Hero CTA) → `Selected Works, 2019–2025 ↗`
+- `Team` → 拆为 `Qinlong` 和 `Chenjie` 两个独立 artist 页（或合并为 `Artists`）
+- 新增 `Texts`（评论 / 访谈 / 自撰文章）
+- 新增 `News`（Upcoming screenings / exhibitions）
+- `Contact` 增加分类入口（General / Press / Screening / Representation）
 
----
-
-## 方案
-
-### 1. 压缩 / 替换 hero 视频本身（收益最大）
-
-当前 `hero-bg.mp4` 约 **3.7MB**，对 Hero 背景循环视频偏大。专业站点常见做法：
-
-- 目标体积：**800KB ~ 1.5MB**
-- 分辨率：1280×720（背景循环视频不需要 1080p）
-- 编码：H.264 + AAC（兼容性最好）
-- 同时输出一份 **WebM (VP9/AV1)**，体积比 MP4 再小约 30–50%
-- 时长尽量控制在 8–12 秒循环
-- 去掉音轨（反正是 muted）
-
-新结构：
-
-```
-public/videos/
-  hero-bg.mp4    ~ 1.2MB  (兼容 fallback)
-  hero-bg.webm   ~ 700KB  (现代浏览器优先)
-```
-
-`<video>` 内同时挂两个 source：
+### A2. 项目数据结构升级（`src/data/projects.ts`）
+为每个作品增加美术馆级 caption 字段，全部支持三语：
 
 ```text
-<source src="/videos/hero-bg.webm" type="video/webm" />
-<source src="/videos/hero-bg.mp4"  type="video/mp4"  />
+medium:        Single-channel video, color, sound
+duration:      12'34"
+edition:       Edition of 5 + 2 AP
+commissionedBy: ___
+courtesy:      Courtesy the artist
+exhibitions:   [{year, title, venue, city}]
+screenings:    [{year, festival, city}]
+press:         [{year, author, title, publication, url}]
 ```
 
-浏览器会自动选最合适的。
-
-> 这一步需要你提供新的视频文件（或同意我用现有文件转码后再上传）。如果你愿意，我可以在实施时直接用 ffmpeg 在沙盒里压一份。
-
-### 2. 修改 `<video>` 加载策略，避免抢占首屏
-
-文件：`src/pages/Index.tsx`
-
-- `preload="auto"` 改为 `preload="metadata"`
-  - 只先取元数据，浏览器 idle 后再下完整视频
-- 给 `<video>` 加原生 `poster={heroPosterImg}` 属性
-  - 这是浏览器层面的 fallback，比 React 状态还早
-- 视频元素延迟到首屏渲染后再挂载 source
-  - 用 `requestIdleCallback` 或 `setTimeout(…, 0)`
-  - 用户先看到海报 + 标题 + 按钮，视频在后台拉取
-- 移动端可选：检测 `navigator.connection.saveData` 或 `effectiveType === '2g'/'3g'`，弱网用户直接不加载视频，只显示海报
-
-### 3. 修正 `index.html` 预加载优先级
-
-文件：`index.html`
-
-- `hero-poster.webp` 保持 `preload as="image" fetchpriority="high"`
-- **移除或降级** `<link rel="preload" as="video" href="/videos/hero-bg.mp4">`
-  - 原因：preload 会让视频和海报、JS 抢带宽，反而拖慢首屏
-  - 视频真正想"提前预热"应该用更轻的策略，例如让 `<video preload="metadata">` 自然触发
-- `/src/assets/hero-poster.webp` 这种开发路径在构建后会变成 `/assets/hero-poster-[hash].webp`，preload 路径需要改成构建友好的方式（通过 `<link>` 在 Layout 中动态注入，或者把 poster 放到 `public/` 下用稳定路径）
-
-### 4. 把 hero-poster 放到 `public/` 下，使用稳定路径
-
-文件：
-
-- 把 `src/assets/hero-poster.webp` 复制到 `public/hero-poster.webp`
-- `index.html` preload 改为 `/hero-poster.webp`
-- `src/pages/Index.tsx` 引用改为 `/hero-poster.webp`
-
-好处：
-
-- 预加载路径在开发和生产环境一致
-- 享受 `public/_headers` 中 `*.webp` 的 1 年强缓存
-- 浏览器可以在 HTML 还没解析 JS 的时候就开始下载
-
-### 5. 给视频也享受 immutable 缓存
-
-文件：`public/_headers`
-
-- 当前已有 `/videos/*  Cache-Control: max-age=31536000, immutable` ✓ 已经配置好
-- 部署后会生效，回头客直接用本地缓存，**几乎 0 流量秒开**
-- 建议视频文件名加版本号或 hash：`hero-bg-v2.mp4`，将来更新视频时缓存能正确失效
-
-### 6. 用 Service Worker 缓存视频（可选，进阶）
-
-如果你希望连"换网络/换设备"的用户都能更快，可以用一个简单的 Service Worker 把 hero 视频持久缓存。但这增加了复杂度，不是必须，建议先做完 1-5 再考虑。
+### A3. 项目详情页重构
+顶部视差大图保留，但下方加入**美术馆作品标签区块**（caption block），统一灰白排版、无特效，作为"作品档案"。下方再接 description / gallery。底部加：
+- Exhibitions
+- Screenings
+- Awards
+- Press
 
 ---
 
-## 涉及文件汇总
+## 阶段 B：Artist Pages（CV 页）
 
-| 文件 | 改动 |
-|---|---|
-| `public/hero-poster.webp` | 新增（从 src/assets 复制） |
-| `public/videos/hero-bg.webm` | 新增（建议补一个 WebM 版本） |
-| `public/videos/hero-bg.mp4` | 替换为压缩后的小体积版本 |
-| `index.html` | 调整 preload：海报高优先级、视频不预加载 |
-| `src/pages/Index.tsx` | poster 属性 + preload="metadata" + 延迟挂载 source + 弱网检测 |
-| `src/assets/hero-poster.webp` | 可移除（已迁移到 public） |
+把现有 Team 页拆/重构为两位艺术家各自的 CV 页：
+
+```text
+/artists/qinlong
+/artists/chenjie
+```
+
+每页结构：
+- Portrait + Short Bio (3 行)
+- Long Biography (1–2 段)
+- CV（按年份倒序，分组）：
+  - Solo Exhibitions
+  - Group Exhibitions
+  - Screenings & Festivals
+  - Awards & Grants
+  - Residencies
+  - Publications
+  - Teaching
+- Download CV (PDF) 按钮
+- Contact / Representation
+
+排版：左侧年份列、右侧条目列，无背景色，纯文字，参考 e-flux 艺术家页。
 
 ---
 
-## 实施前需要确认两个问题
+## 阶段 C：视觉系统克制化（让作品做主角）
 
-1. **视频压缩**：是否同意我用 ffmpeg 自动把现有 `hero-bg.mp4` 压缩到 1.2MB 左右、并额外输出一份 WebM？还是你希望自己提供更高品质的源文件再压？
-2. **弱网用户策略**：弱网（2G/3G/saveData 模式）用户是否直接 **只显示海报、不加载视频**？还是仍然加载？
+不是要推翻现有视觉，而是**为艺术语境做一套并行的"克制模式"**：
 
-确认后我直接进入实施。
+### C1. Works 列表页第二种视图
+增加 `Grid / Index` 切换：
+- `Grid`：保留现在的 Pinterest masonry（视觉优先）
+- `Index`：纯文字目录视图，按年份倒序，每行显示 `年份 · 标题 · 媒介 · 时长`，hover 时右侧出现小缩略图。这是策展人最爱的视图。
+
+### C2. 悬停效果分级
+- Works 列表保留霓虹 hover（你的辨识度）
+- 但在 Index 视图、CV 页、Texts 页**不使用霓虹**，只用 underline + 灰度过渡
+
+### C3. 新增筛选器
+顶部加轻量筛选 chips：
+`All · Animation · Video Essay · Experimental Video · Installation · Commission`
+
+### C4. Caption block 排版规范
+统一一个 `<WorkCaption />` 组件，用于详情页和未来的 PDF 导出，保持字号、行距、缩进一致。
 
 ---
 
-## 预期效果
+## 阶段 D：Texts / News / Press
 
-| 场景 | 现在 | 优化后 |
-|---|---|---|
-| 首次访问（正式站） | 3.7MB 视频，1.5–3 秒才开始播放 | 700KB-1.2MB 视频，0.5–1 秒开始播放 |
-| 二次访问（正式站） | 仍然 3.7MB 重下（如果未发布）/ 已缓存 | 0 字节，立即播放 |
-| 预览域名（开发） | 每次都重下（沙盒不读 _headers） | 同样会重下，但因为视频更小，体感更快 |
-| 首屏视觉 | 海报立即显示、无黑屏 | 海报立即显示、无黑屏，且 JS/字体不再被视频拖慢 |
-| 弱网用户 | 强行下 3.7MB | 仅显示海报，不浪费流量 |
+### D1. 新建 `/texts` 页
+列出文章 / 访谈 / 评论，每篇有：
+- 标题
+- 作者
+- 出处 / 年份
+- 外链或站内长文页
 
+### D2. 新建 `/news` 页
+时间线形式列出 Upcoming + Past：
+```
+2026.05    Screening    Festival Name, City
+2026.03    Exhibition   Venue Name, City
+```
+
+### D3. 首页加入 "Upcoming" 模块
+在 Hero 下方加一个极简单行公告区：`Upcoming: ___ at ___, May 2026 →`，链接到 News 页。这是当代艺术官网的标志性元素。
+
+---
+
+## 阶段 E：Contact 专业化
+
+`/contact` 重构为分类入口：
+
+```
+General        hello@...
+Press          press@...
+Screenings     screenings@...  (or general)
+Representation (gallery info or "currently not represented")
+Studio         City, Country
+```
+
+未来如果接 Lovable Cloud，再升级为表单 + 后台 inquiry 管理。
+
+---
+
+## 实施顺序建议
+
+| 阶段 | 内容 | 优先级 | 工作量 |
+|---|---|---|---|
+| A | 文案 + 项目数据结构 + 详情页 caption | P0 | 中 |
+| B | Artist CV 页 | P0 | 中 |
+| C | Index 视图 + 筛选器 + 视觉克制化 | P1 | 中 |
+| D | Texts / News / 首页 Upcoming | P1 | 中小 |
+| E | Contact 分类化 | P2 | 小 |
+
+---
+
+## 本轮我建议先做的最小可见升级（一次实施）
+
+1. **文案重塑**：Work→Works，Hero CTA 改为 `Selected Works, 2019–2025`
+2. **项目数据结构升级**：加 medium / duration / edition / exhibitions / screenings / press 字段（先填 1–2 个示范作品，其余留空）
+3. **项目详情页 caption block**：新增 `<WorkCaption />` 美术馆作品标签组件
+4. **Works 页加筛选 chips + Index 文字目录视图切换**
+5. **首页加 "Upcoming" 极简单行公告区**（即使暂时为空也保留结构）
+
+阶段 B（Artist CV 页）和 D（Texts / News）建议作为下一轮，因为需要你提供真实 CV 内容和文章列表。
+
+---
+
+## 需要你确认的几点
+
+1. 是否同意把导航 `Work` 改为 `Works`、`Team` 改为 `Artists`（拆成两位艺术家独立页）？
+2. 项目详情页是否加入美术馆级 caption block（medium / duration / edition / commissioned by / courtesy）？
+3. Works 页是否加入 `Grid / Index` 双视图切换 + 类型筛选 chips？
+4. 是否本轮就新建 `/texts` 和 `/news` 空架子页，方便后续填内容？
+
+回复确认后我就进入实施。
