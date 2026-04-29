@@ -67,12 +67,14 @@ const ProjectDetail = () => {
               <span>{t("projectDetail", "backToWork")}</span>
             </Link>
 
-            <p
+            {/* Museum-style caption block */}
+            <WorkCaption project={project} />
+
+            <div
               className="mb-12 text-muted-foreground leading-relaxed text-base sm:text-lg text-justify whitespace-pre-line"
               style={{ textIndent: "2em", lineHeight: 1.85 }}>
-              
-               <div dangerouslySetInnerHTML={{ __html: project.description[locale] }} />
-</p>
+              <div dangerouslySetInnerHTML={{ __html: project.description[locale] }} />
+            </div>
 
             {/* Video Embed(s) */}
             {(() => {
