@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
 import AnimatedSection from "@/components/AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
+import { newsItems } from "@/data/news";
 
 // Use stable public-path assets so preload + cache headers match
 const heroPosterImg = "/hero-poster.webp";
