@@ -3,18 +3,60 @@ export type Locale = "en" | "zh" | "fr";
 export const translations = {
   // Navbar
   nav: {
-    work: { en: "WORK", zh: "作品", fr: "TRAVAUX" },
+    work: { en: "WORKS", zh: "作品", fr: "ŒUVRES" },
     drawing: { en: "DRAWING", zh: "绘画", fr: "DESSIN" },
     photographs: { en: "PHOTOGRAPHS", zh: "摄影", fr: "PHOTOGRAPHIES" },
-    team: { en: "TEAM", zh: "团队", fr: "ÉQUIPE" },
+    team: { en: "ARTISTS", zh: "艺术家", fr: "ARTISTES" },
+    texts: { en: "TEXTS", zh: "文论", fr: "TEXTES" },
+    news: { en: "NEWS", zh: "动态", fr: "ACTUALITÉS" },
     contact: { en: "CONTACT", zh: "联系", fr: "CONTACT" },
     studioSubtitle: { en: "experiment animation studio", zh: "实验动画工作室", fr: "studio d'animation expérimentale" },
   },
 
   // Hero
   hero: {
-    nowPlaying: { en: "Now Playing", zh: "正在播放", fr: "En lecture" },
-    ourWork: { en: "Our Work", zh: "我们的作品", fr: "Nos Travaux" },
+    nowPlaying: { en: "Selected Works", zh: "精选作品", fr: "Œuvres choisies" },
+    ourWork: { en: "2019 – 2025", zh: "2019 – 2025", fr: "2019 – 2025" },
+  },
+
+  // Upcoming banner (homepage)
+  upcoming: {
+    label: { en: "Upcoming", zh: "近期", fr: "À venir" },
+    empty: { en: "Programme to be announced soon.", zh: "近期项目即将公布。", fr: "Programme bientôt annoncé." },
+  },
+
+  // Works page (list view)
+  works: {
+    viewGrid: { en: "Grid", zh: "网格", fr: "Grille" },
+    viewIndex: { en: "Index", zh: "目录", fr: "Index" },
+    filterAll: { en: "All", zh: "全部", fr: "Tout" },
+  },
+
+  // Work caption block (museum-style)
+  caption: {
+    medium: { en: "Medium", zh: "媒介", fr: "Médium" },
+    duration: { en: "Duration", zh: "时长", fr: "Durée" },
+    edition: { en: "Edition", zh: "版次", fr: "Édition" },
+    commissionedBy: { en: "Commissioned by", zh: "委约方", fr: "Commande de" },
+    courtesy: { en: "Courtesy", zh: "鸣谢", fr: "Courtoisie" },
+    screenings: { en: "Screenings", zh: "放映", fr: "Projections" },
+    press: { en: "Press", zh: "评论与报道", fr: "Presse" },
+  },
+
+  // Texts page
+  texts: {
+    title: { en: "Texts", zh: "文论", fr: "Textes" },
+    subtitle: { en: "Essays, interviews, and writings.", zh: "评论、访谈与自撰文章。", fr: "Essais, entretiens et écrits." },
+    empty: { en: "Texts will be published here soon.", zh: "文章即将于此发布。", fr: "Les textes seront publiés ici prochainement." },
+  },
+
+  // News page
+  news: {
+    title: { en: "News", zh: "动态", fr: "Actualités" },
+    subtitle: { en: "Upcoming and past screenings, exhibitions, and events.", zh: "近期与过往放映、展览与活动。", fr: "Projections, expositions et événements à venir et passés." },
+    empty: { en: "Announcements coming soon.", zh: "动态即将更新。", fr: "Annonces à venir." },
+    upcoming: { en: "Upcoming", zh: "近期", fr: "À venir" },
+    past: { en: "Past", zh: "过往", fr: "Passé" },
   },
 
   // Index - Who We Are
