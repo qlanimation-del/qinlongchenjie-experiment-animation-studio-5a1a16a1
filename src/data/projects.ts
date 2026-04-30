@@ -182,9 +182,9 @@ export const projects: Project[] = [
     glowColor: "#AA88FF",
     category: "animation",
     medium: {
-      en: "Single-channel video, color, sound",
-      zh: "单频影像，彩色，有声",
-      fr: "Vidéo monocanal, couleur, son",
+      en: "3D Single-channel animation, color, sound",
+      zh: "3D 单频动画影像，彩色，有声",
+      fr: "Animation 3D monocanal, couleur, son",
     },
     duration: "TBA",
     edition: { en: "Edition of 5 + 2 AP", zh: "限量 5 版 + 2 AP", fr: "Édition de 5 + 2 EA" },
