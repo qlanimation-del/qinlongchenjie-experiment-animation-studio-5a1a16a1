@@ -8,7 +8,7 @@ import Index from "./pages/Index";
 const Work = lazy(() => import("./pages/Work"));
 const Drawing = lazy(() => import("./pages/Drawing"));
 const Photographs = lazy(() => import("./pages/Photographs"));
-const Team = lazy(() => import("./pages/Team"));
+const Artists = lazy(() => import("./pages/Artists"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Texts = lazy(() => import("./pages/Texts"));
 const News = lazy(() => import("./pages/News"));
@@ -28,7 +28,8 @@ const App = () => (
             <Route path="/work/:id" element={<ProjectDetail />} />
             <Route path="/drawing" element={<Drawing />} />
             <Route path="/photographs" element={<Photographs />} />
-            <Route path="/team" element={<Team />} />
+            <Route path="/artists" element={<Artists />} />
+            <Route path="/team" element={<Artists />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/texts" element={<Texts />} />
             <Route path="/news" element={<News />} />
