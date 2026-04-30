@@ -586,6 +586,7 @@ pourtant il est toujours empli de croyance.`,
       zh: "动态图形,彩色,有声",
       fr: "Motion design, couleur, son",
     },
+    duration: "1'35\"",
     commissionedBy: {
       en: "Commissioned by Guangzhou Academy of Fine Arts",
       zh: "广州美术学院委托创作",
