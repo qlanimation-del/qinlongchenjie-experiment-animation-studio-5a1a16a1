@@ -44,8 +44,7 @@ const Index = () => {
     if (conn) {
       const slow = conn.saveData === true ||
         conn.effectiveType === "slow-2g" ||
-        conn.effectiveType === "2g" ||
-        conn.effectiveType === "3g";
+        conn.effectiveType === "2g";
       if (slow) {
         setSkipVideo(true);
         setLoaderVisible(false);
@@ -55,9 +54,9 @@ const Index = () => {
     // Defer video source attachment until browser is idle (after first paint)
     const ric = (window as any).requestIdleCallback as ((cb: () => void, opts?: { timeout: number }) => number) | undefined;
     if (ric) {
-      ric(() => setShouldLoadVideo(true), { timeout: 1500 });
+      ric(() => setShouldLoadVideo(true), { timeout: 500 });
     } else {
-      setTimeout(() => setShouldLoadVideo(true), 200);
+      setTimeout(() => setShouldLoadVideo(true), 100);
     }
   }, []);
 
@@ -129,7 +128,7 @@ const Index = () => {
               loop
               muted
               playsInline
-              preload="metadata"
+              preload="auto"
               poster={heroPosterImg}
               className="absolute inset-0 z-[5] w-full h-full object-cover opacity-0 transition-opacity duration-1000"
               onLoadedData={handleVideoLoaded}
