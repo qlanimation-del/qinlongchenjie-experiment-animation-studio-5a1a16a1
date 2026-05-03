@@ -26,6 +26,8 @@ const Index = () => {
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   // Skip video entirely on save-data / very slow networks — show poster only.
   const [skipVideo, setSkipVideo] = useState(false);
+  // 桌面/平板加载高清 mp4，手机加载更小的 webm
+  const [isMobile, setIsMobile] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const handleVideoLoaded = useCallback((e: React.SyntheticEvent<HTMLVideoElement>) => {
@@ -40,6 +42,7 @@ const Index = () => {
 
   // Detect slow networks / data-saver mode → skip video entirely
   useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
     const conn = (navigator as any).connection;
     if (conn) {
       const slow = conn.saveData === true ||
@@ -134,10 +137,11 @@ const Index = () => {
               onLoadedData={handleVideoLoaded}
             >
               {shouldLoadVideo && (
-                <>
+                isMobile ? (
                   <source src="/videos/hero-bg.webm" type="video/webm" />
+                ) : (
                   <source src="/videos/hero-bg.mp4" type="video/mp4" />
-                </>
+                )
               )}
             </video>
           )}
