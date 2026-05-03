@@ -194,8 +194,8 @@ export const projects: Project[] = [
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
     crew: { en: "QinLong, ChenJie", zh: "秦龙、陈洁", fr: "QinLong, ChenJie" },
     parallaxLayers: [
-      { src: dustHeroBg, speed: 0.15, scaleBase: 1.05 },
-      { src: dustHeroText, speed: 0.05, scaleBase: 1 },
+      { src: dustHeroBg, speed: 0.15 },
+      { src: dustHeroText, speed: 0.05 },
     ],
     galleryImages: [{ src: b1, alt: "Dust gallery 1" }],
   },
