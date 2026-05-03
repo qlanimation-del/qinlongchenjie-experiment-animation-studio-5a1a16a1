@@ -4,8 +4,6 @@ import project3 from "@/assets/project-3.webp";
 import project4 from "@/assets/project-4.webp";
 import project5 from "@/assets/project-5.webp";
 import project6 from "@/assets/project-6.webp";
-import dustHeroBg from "@/assets/dust-hero-bg.webp";
-import dustHeroText from "@/assets/dust-hero-text.webp";
 import project7 from "@/assets/project-7.webp";
 import projectCloud from "@/assets/project-cloud.webp";
 import projectGafa from "@/assets/project-gafa.webp";
@@ -194,8 +192,9 @@ export const projects: Project[] = [
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
     crew: { en: "QinLong, ChenJie", zh: "秦龙、陈洁", fr: "QinLong, ChenJie" },
     parallaxLayers: [
-      { src: dustHeroBg, speed: 0.15 },
-      { src: dustHeroText, speed: 0.05 },
+      { src: dustParallaxBg, speed: 0.1 },
+      { src: dustParallaxMid, speed: 0.25 },
+      { src: dustParallaxTop, speed: 0.4 },
     ],
     galleryImages: [{ src: b1, alt: "Dust gallery 1" }],
   },
