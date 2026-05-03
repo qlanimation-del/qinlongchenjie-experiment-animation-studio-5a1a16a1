@@ -196,7 +196,14 @@ export const projects: Project[] = [
       { src: dustParallaxMid, speed: 0.25 },
       { src: dustParallaxTop, speed: 0.4 },
     ],
-    galleryImages: [{ src: b1, alt: "Dust gallery 1" }],
+    galleryImages: [
+      { src: b1, alt: "Dust gallery 1" },
+      { src: b2, alt: "Dust gallery 2" },
+      { src: b3, alt: "Dust gallery 3" },
+      { src: b4, alt: "Dust gallery 4" },
+      { src: b5, alt: "Dust gallery 5" },
+      { src: b6, alt: "Dust gallery 6" },
+    ],
   },
   {
     id: "between-us",
