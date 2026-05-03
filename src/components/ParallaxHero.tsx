@@ -181,10 +181,10 @@ const ParallaxHero = ({
       {/* Bottom title — transform driven by ref, not React state */}
       <div
         ref={titleRef}
-        className="absolute bottom-44 left-1/2 z-[7] pointer-events-none"
+        className="absolute bottom-44 left-1/2 z-[7] pointer-events-none w-full px-6 text-center"
         style={{ willChange: "transform, opacity", transform: "translate3d(-50%, 0, 0)" }}
       >
-        <span className="tracking-[0.35em] uppercase text-white drop-shadow-lg text-center">{type}</span>
+        <span className="tracking-[0.35em] uppercase text-white drop-shadow-lg inline-block pl-[0.35em]">{type}</span>
       </div>
 
       {/* Down chevron */}
