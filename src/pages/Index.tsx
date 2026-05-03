@@ -42,6 +42,7 @@ const Index = () => {
 
   // Detect slow networks / data-saver mode → skip video entirely
   useEffect(() => {
+    setIsMobile(window.innerWidth < 768);
     const conn = (navigator as any).connection;
     if (conn) {
       const slow = conn.saveData === true ||
