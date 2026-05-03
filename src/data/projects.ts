@@ -191,11 +191,7 @@ export const projects: Project[] = [
     courtesy: { en: "Courtesy the artists", zh: "图片由艺术家提供", fr: "Courtoisie des artistes" },
     client: { en: "Personal Project", zh: "个人项目", fr: "Projet personnel" },
     crew: { en: "QinLong, ChenJie", zh: "秦龙、陈洁", fr: "QinLong, ChenJie" },
-    parallaxLayers: [
-      { src: dustParallaxBg, speed: 0.1 },
-      { src: dustParallaxMid, speed: 0.25 },
-      { src: dustParallaxTop, speed: 0.4 },
-    ],
+    parallaxLayers: [],
     galleryImages: [{ src: b1, alt: "Dust gallery 1" }],
   },
   {
