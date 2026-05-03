@@ -137,10 +137,11 @@ const Index = () => {
               onLoadedData={handleVideoLoaded}
             >
               {shouldLoadVideo && (
-                <>
+                isMobile ? (
                   <source src="/videos/hero-bg.webm" type="video/webm" />
+                ) : (
                   <source src="/videos/hero-bg.mp4" type="video/mp4" />
-                </>
+                )
               )}
             </video>
           )}
