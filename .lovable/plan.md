@@ -1,18 +1,18 @@
-## Fix: Desktop homepage video not playing
+# 首页 Hero 视频按设备分流
 
-**Root cause**: `src/pages/Index.tsx` treats `effectiveType === "3g"` as "slow" and sets `skipVideo=true`, which prevents the `<video>` element from rendering at all. Many desktop broadband connections report `"3g"` via the Network Information API, so the video never appears.
+## 目标
+- 桌面 + 平板（视口宽度 ≥ 768px）：加载 `/videos/hero-bg.mp4`（最清晰）
+- 手机（< 768px）：加载 `/videos/hero-bg.webm`（更省流）
 
-### Changes to `src/pages/Index.tsx`
+## 修改文件
+`src/pages/Index.tsx`
 
-1. **Network detection** — remove the `"3g"` check; only skip video on data-saver or 2G:
-   ```ts
-   const slow = conn.saveData === true ||
-     conn.effectiveType === "slow-2g" ||
-     conn.effectiveType === "2g";
-   ```
+## 实现步骤
 
-2. **Faster mount** — reduce `requestIdleCallback` timeout from `1500` → `500`, and the fallback `setTimeout` from `200` → `100`.
+1. 新增 state：`const [isMobile, setIsMobile] = useState(false);`
+2. 在已有"慢网络检测" `useEffect` 内一次性判断 `window.innerWidth < 768`，写入 `isMobile`。只判断一次，不监听 resize，避免视频中途重载。
+3. 替换 `<video>` 内的 `<source>` 标签：根据 `isMobile` 输出单一 source，桌面/平板用 mp4，手机用 webm。
+4. 检查 `index.html` 是否有 `<link rel="preload" as="video">` 指向 hero 视频；如有则移除或保留，由运行时根据设备决定加载。
 
-3. **Preload** — change `<video preload="metadata">` → `preload="auto"` so the browser fetches enough data for autoplay immediately.
-
-No other files affected.
+## 兜底
+若某档视频文件加载失败，浏览器会显示 poster（已有 `/hero-poster.webp`），不会出现黑屏。
