@@ -26,6 +26,8 @@ const Index = () => {
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   // Skip video entirely on save-data / very slow networks — show poster only.
   const [skipVideo, setSkipVideo] = useState(false);
+  // 桌面/平板加载高清 mp4，手机加载更小的 webm
+  const [isMobile, setIsMobile] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const handleVideoLoaded = useCallback((e: React.SyntheticEvent<HTMLVideoElement>) => {
