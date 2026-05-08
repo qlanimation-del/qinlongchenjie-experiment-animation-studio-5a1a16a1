@@ -196,7 +196,14 @@ export const projects: Project[] = [
       { src: dustParallaxMid, speed: 0.25 },
       { src: dustParallaxTop, speed: 0.4 },
     ],
-    galleryImages: [{ src: b1, alt: "Dust gallery 1" }],
+    galleryImages: [
+      { src: "/projects/beyond-orbit/beyond-1.webp", alt: "Dust gallery 1" },
+      { src: "/projects/beyond-orbit/beyond-2.webp", alt: "Dust gallery 2" },
+      { src: "/projects/beyond-orbit/beyond-3.webp", alt: "Dust gallery 3" },
+      { src: "/projects/beyond-orbit/beyond-4.webp", alt: "Dust gallery 4" },
+      { src: "/projects/beyond-orbit/beyond-5.webp", alt: "Dust gallery 5" },
+      { src: "/projects/beyond-orbit/beyond-6.webp", alt: "Dust gallery 6" },
+    ],
   },
   {
     id: "between-us",
