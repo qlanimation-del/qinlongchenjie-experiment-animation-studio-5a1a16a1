@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import { projects, type Project } from "@/data/projects";
@@ -34,21 +34,71 @@ const CATEGORY_LABELS: Record<CategoryFilter, Record<Locale, string>> = {
 function ProjectCard({ project, locale }: { project: Project; locale: Locale }) {
   const [imgLoaded, setImgLoaded] = useState(false);
   const span = cardSpan[project.id] || 3;
+  const tiltRef = useRef<HTMLAnchorElement | null>(null);
+  const rafRef = useRef<number | null>(null);
+
+  const handleMove = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
+    const el = tiltRef.current;
+    if (!el) return;
+    if (window.matchMedia("(hover: none)").matches) return;
+    const rect = el.getBoundingClientRect();
+    const px = (e.clientX - rect.left) / rect.width;
+    const py = (e.clientY - rect.top) / rect.height;
+    const rx = (0.5 - py) * 6;
+    const ry = (px - 0.5) * 6;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      el.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      el.style.setProperty("--mx", `${px * 100}%`);
+      el.style.setProperty("--my", `${py * 100}%`);
+    });
+  }, []);
+
+  const handleEnter = useCallback(() => {
+    const el = tiltRef.current;
+    if (!el) return;
+    el.style.willChange = "transform";
+    el.style.transition = "transform 0.15s ease-out";
+  }, []);
+
+  const handleLeave = useCallback(() => {
+    const el = tiltRef.current;
+    if (!el) return;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    el.style.transition = "transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
+    el.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";
+    setTimeout(() => { if (el) el.style.willChange = "auto"; }, 600);
+  }, []);
 
   return (
-    <div style={{ gridRow: `span ${span}` }} className="relative">
+    <div style={{ gridRow: `span ${span}`, perspective: "1000px" }} className="relative">
       {!imgLoaded && (
         <div className="absolute inset-0 rounded-lg bg-muted skeleton-shimmer" />
       )}
 
-      <Link to={`/work/${project.id}`} className="group block relative overflow-hidden rounded-lg h-full">
+      <Link
+        ref={tiltRef}
+        to={`/work/${project.id}`}
+        onMouseMove={handleMove}
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
+        className="group block relative overflow-hidden rounded-lg h-full [transform-style:preserve-3d]"
+      >
         <img
           src={project.thumbnail}
           alt={project.title}
-          className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-105 ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
+          className={`w-full h-full object-cover transition-all duration-700 group-hover:scale-[1.02] ${imgLoaded ? 'opacity-100' : 'opacity-0'}`}
           loading="lazy"
           decoding="async"
           onLoad={() => setImgLoaded(true)}
+        />
+
+        {/* Specular shine — follows cursor */}
+        <div
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none mix-blend-soft-light"
+          style={{
+            background: "radial-gradient(circle at var(--mx, 50%) var(--my, 50%), rgba(255,255,255,0.35), transparent 45%)",
+          }}
         />
 
         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/60 transition-all duration-250 flex items-center justify-center">
