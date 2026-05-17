@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
 import ImageLightbox from "@/components/ImageLightbox";
 import { drawings } from "@/data/drawings";
 import { drawingBook } from "@/data/books";
@@ -71,6 +72,11 @@ const Drawing = () => {
 
   return (
     <Layout navVariant="light" className="bg-white">
+      <SEO
+        title="Drawing — QINLONG&CHENJIE"
+        description="Drawing collections by QINLONG&CHENJIE — direct conversations between thought and surface."
+        path="/drawing"
+      />
       <section className="pt-10 sm:pt-14 pb-20">
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col lg:flex-row gap-10 lg:gap-12">
           {/* Left sidebar */}

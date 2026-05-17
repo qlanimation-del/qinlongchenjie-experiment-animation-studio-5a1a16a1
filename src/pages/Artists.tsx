@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
 import AnimatedSection from "@/components/AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { artists, type CVSection } from "@/data/artists";
@@ -42,6 +43,11 @@ const Artists = () => {
 
   return (
     <Layout>
+      <SEO
+        title="Artists — QINLONG&CHENJIE"
+        description="About Qinlong (animator) and Chenjie (video essay) — independent experimental animation studio."
+        path="/artists"
+      />
       <section className="py-16 sm:py-24 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 sm:mb-16 text-center">

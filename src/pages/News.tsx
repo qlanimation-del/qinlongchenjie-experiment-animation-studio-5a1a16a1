@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
 import AnimatedSection from "@/components/AnimatedSection";
 import { newsItems } from "@/data/news";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -32,6 +33,11 @@ const News = () => {
 
   return (
     <Layout>
+      <SEO
+        title="News — QINLONG&CHENJIE"
+        description="Studio updates, upcoming screenings, exhibitions, and announcements from QINLONG&CHENJIE."
+        path="/news"
+      />
       <section className="pt-12 sm:pt-16 pb-24 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <AnimatedSection variant="reveal">
