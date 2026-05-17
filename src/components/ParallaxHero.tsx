@@ -41,10 +41,13 @@ const ParallaxHero = ({
   onScrollDown,
 }: ParallaxHeroProps) => {
   const { isMobile, isTablet } = useIsMobile();
+  const is3D = !isMobile && !isTablet;
 
   // Refs for layers + title — DOM-direct transforms, no React re-render on scroll.
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const layerRefs = useRef<(HTMLDivElement | null)[]>([]);
   const titleRef = useRef<HTMLDivElement | null>(null);
+  const mouseRef = useRef({ x: 0, y: 0, tx: 0, ty: 0 });
 
   // Layer data (unchanged)
   const effectiveLayers: (ParallaxLayer & { overlay?: string; scaleBase?: number })[] = layers && layers.length > 0
@@ -73,12 +76,35 @@ const ParallaxHero = ({
     return 0;
   });
 
-  // Single rAF-driven scroll handler — writes transforms to refs directly.
+  // Per-layer Z depth for 3D parallax (desktop only)
+  const layerZ = (i: number) => {
+    if (!is3D) return 0;
+    if (i === 0) return -100;
+    if (i === 1) return 0;
+    return 80;
+  };
+  // Mouse parallax strength per layer (px)
+  const mouseStrength = (i: number) => {
+    if (!is3D) return 0;
+    if (i === 0) return 8;
+    if (i === 1) return 16;
+    return 24;
+  };
+
+  // Single rAF-driven scroll + mouse handler — writes transforms to refs directly.
   useEffect(() => {
     let ticking = false;
+    let reduced = false;
+    if (typeof window !== "undefined") {
+      reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    }
 
     const update = () => {
       const scrollY = window.scrollY;
+      const m = mouseRef.current;
+      // Ease mouse towards target
+      m.x += (m.tx - m.x) * 0.08;
+      m.y += (m.ty - m.y) * 0.08;
 
       // Layers
       for (let i = 0; i < effectiveLayers.length; i++) {
@@ -92,36 +118,78 @@ const ParallaxHero = ({
         })();
 
         const y = parallaxOffset + extraYs[i];
-        // translate3d forces GPU compositor layer for smoother desktop scrolling
-        el.style.transform = `translate3d(0, ${y}px, 0) scale(${baseScales[i]})`;
+        const z = layerZ(i);
+        const ms = mouseStrength(i);
+        const mx = m.x * ms;
+        const my = m.y * ms * 0.7;
+        el.style.transform = `translate3d(${mx}px, ${y + my}px, ${z}px) scale(${baseScales[i]})`;
       }
 
       // Title
       if (titleRef.current) {
         const titleOpacity = Math.max(0, 1 - scrollY / 400);
         const titleTranslateY = scrollY * 0.3;
+        const z = is3D ? 120 : 0;
+        const mx = is3D ? m.x * 30 : 0;
         titleRef.current.style.opacity = String(titleOpacity);
-        titleRef.current.style.transform = `translate3d(-50%, ${titleTranslateY}px, 0)`;
+        titleRef.current.style.transform = `translate3d(calc(-50% + ${mx}px), ${titleTranslateY}px, ${z}px)`;
+      }
+
+      // Container subtle push-back on scroll
+      if (containerRef.current && is3D) {
+        const pushZ = -Math.min(scrollY * 0.15, 80);
+        containerRef.current.style.transform = `translateZ(${pushZ}px)`;
       }
 
       ticking = false;
     };
 
-    const onScroll = () => {
+    const schedule = () => {
       if (!ticking) {
         ticking = true;
         requestAnimationFrame(update);
       }
     };
 
+    const onMouse = (e: MouseEvent) => {
+      if (!is3D || reduced) return;
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      mouseRef.current.tx = (e.clientX / w) * 2 - 1;
+      mouseRef.current.ty = (e.clientY / h) * 2 - 1;
+      schedule();
+    };
+
+    // Continuous easing loop while mouse target != current (lightweight)
+    let raf = 0;
+    const loop = () => {
+      const m = mouseRef.current;
+      if (Math.abs(m.tx - m.x) > 0.001 || Math.abs(m.ty - m.y) > 0.001) {
+        update();
+      }
+      raf = requestAnimationFrame(loop);
+    };
+
     // Initial paint so transforms are correct before first scroll
     update();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, [isMobile, isTablet, effectiveLayers.length, baseScales.join(","), extraYs.join(",")]);
+    window.addEventListener("scroll", schedule, { passive: true });
+    if (is3D && !reduced) {
+      window.addEventListener("mousemove", onMouse, { passive: true });
+      raf = requestAnimationFrame(loop);
+    }
+    return () => {
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("mousemove", onMouse);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [isMobile, isTablet, is3D, effectiveLayers.length, baseScales.join(","), extraYs.join(",")]);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden bg-black">
+    <div
+      ref={containerRef}
+      className="relative w-full h-screen overflow-hidden bg-black"
+      style={is3D ? { perspective: "1200px", transformStyle: "preserve-3d" } : undefined}
+    >
       {effectiveLayers.map((layer, i) => {
         const isVignette = (layer as any).overlay === "vignette";
 
@@ -149,7 +217,7 @@ const ParallaxHero = ({
               className="absolute inset-0 w-full h-full pointer-events-none"
               style={{ zIndex: i + 1, willChange: "transform" }}
             >
-              <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/60" />
+              <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/75" />
             </div>
           );
         }
