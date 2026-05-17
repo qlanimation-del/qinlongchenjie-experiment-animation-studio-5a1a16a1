@@ -76,10 +76,6 @@ const ParallaxHero = ({
     return 0;
   });
 
-  // Single rAF-driven scroll handler — writes transforms to refs directly.
-  useEffect(() => {
-    let ticking = false;
-
   // Per-layer Z depth for 3D parallax (desktop only)
   const layerZ = (i: number) => {
     if (!is3D) return 0;
