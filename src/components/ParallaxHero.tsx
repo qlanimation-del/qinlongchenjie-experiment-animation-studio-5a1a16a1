@@ -76,20 +76,31 @@ const ParallaxHero = ({
     return 0;
   });
 
-  // Per-layer Z depth for 3D parallax (desktop only)
-  const layerZ = (i: number) => {
-    if (!is3D) return 0;
-    if (i === 0) return -100;
-    if (i === 1) return 0;
-    return 80;
+  // ===== 3D 景深可配置参数 =====
+  // 调整这里即可微调"绚 ↔ 克制"的平衡
+  const DEPTH_CONFIG = {
+    // 各层 Z 轴深度（px）：负值=远景后退，正值=前景突出
+    layerZ:        [-70, 0, 50],   // 原 [-100, 0, 80] → 收敛 30%，更克制
+    // 鼠标视差强度（px）：值越大越绚，越小越克制
+    mouseStrength: [5, 11, 17],    // 原 [8, 16, 24] → 收敛 ~30%
+    // 标题层鼠标视差（px）
+    titleMouseX:   20,             // 原 30
+    // 标题层 Z 深度（px）
+    titleZ:        90,             // 原 120
+    // 滚动推远最大距离（px）
+    scrollPushMax: 60,             // 原 80
+    // 滚动推远速度系数
+    scrollPushRate: 0.12,          // 原 0.15
+    // 鼠标缓动系数（越小越柔顺，越大越跟手）
+    mouseEase:     0.06,           // 原 0.08
+    // 鼠标 Y 相对 X 的衰减（垂直视差更克制）
+    mouseYRatio:   0.6,            // 原 0.7
   };
-  // Mouse parallax strength per layer (px)
-  const mouseStrength = (i: number) => {
-    if (!is3D) return 0;
-    if (i === 0) return 8;
-    if (i === 1) return 16;
-    return 24;
-  };
+
+  const layerZ = (i: number) =>
+    is3D ? (DEPTH_CONFIG.layerZ[Math.min(i, 2)] ?? 0) : 0;
+  const mouseStrength = (i: number) =>
+    is3D ? (DEPTH_CONFIG.mouseStrength[Math.min(i, 2)] ?? 0) : 0;
 
   // Single rAF-driven scroll + mouse handler — writes transforms to refs directly.
   useEffect(() => {
@@ -103,8 +114,8 @@ const ParallaxHero = ({
       const scrollY = window.scrollY;
       const m = mouseRef.current;
       // Ease mouse towards target
-      m.x += (m.tx - m.x) * 0.08;
-      m.y += (m.ty - m.y) * 0.08;
+      m.x += (m.tx - m.x) * DEPTH_CONFIG.mouseEase;
+      m.y += (m.ty - m.y) * DEPTH_CONFIG.mouseEase;
 
       // Layers
       for (let i = 0; i < effectiveLayers.length; i++) {
@@ -121,7 +132,7 @@ const ParallaxHero = ({
         const z = layerZ(i);
         const ms = mouseStrength(i);
         const mx = m.x * ms;
-        const my = m.y * ms * 0.7;
+        const my = m.y * ms * DEPTH_CONFIG.mouseYRatio;
         el.style.transform = `translate3d(${mx}px, ${y + my}px, ${z}px) scale(${baseScales[i]})`;
       }
 
@@ -129,15 +140,15 @@ const ParallaxHero = ({
       if (titleRef.current) {
         const titleOpacity = Math.max(0, 1 - scrollY / 400);
         const titleTranslateY = scrollY * 0.3;
-        const z = is3D ? 120 : 0;
-        const mx = is3D ? m.x * 30 : 0;
+        const z = is3D ? DEPTH_CONFIG.titleZ : 0;
+        const mx = is3D ? m.x * DEPTH_CONFIG.titleMouseX : 0;
         titleRef.current.style.opacity = String(titleOpacity);
         titleRef.current.style.transform = `translate3d(calc(-50% + ${mx}px), ${titleTranslateY}px, ${z}px)`;
       }
 
       // Container subtle push-back on scroll
       if (containerRef.current && is3D) {
-        const pushZ = -Math.min(scrollY * 0.15, 80);
+        const pushZ = -Math.min(scrollY * DEPTH_CONFIG.scrollPushRate, DEPTH_CONFIG.scrollPushMax);
         containerRef.current.style.transform = `translateZ(${pushZ}px)`;
       }
 
