@@ -41,10 +41,13 @@ const ParallaxHero = ({
   onScrollDown,
 }: ParallaxHeroProps) => {
   const { isMobile, isTablet } = useIsMobile();
+  const is3D = !isMobile && !isTablet;
 
   // Refs for layers + title — DOM-direct transforms, no React re-render on scroll.
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const layerRefs = useRef<(HTMLDivElement | null)[]>([]);
   const titleRef = useRef<HTMLDivElement | null>(null);
+  const mouseRef = useRef({ x: 0, y: 0, tx: 0, ty: 0 });
 
   // Layer data (unchanged)
   const effectiveLayers: (ParallaxLayer & { overlay?: string; scaleBase?: number })[] = layers && layers.length > 0
