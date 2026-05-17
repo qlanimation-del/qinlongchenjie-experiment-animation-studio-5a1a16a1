@@ -114,8 +114,8 @@ const ParallaxHero = ({
       const scrollY = window.scrollY;
       const m = mouseRef.current;
       // Ease mouse towards target
-      m.x += (m.tx - m.x) * 0.08;
-      m.y += (m.ty - m.y) * 0.08;
+      m.x += (m.tx - m.x) * DEPTH_CONFIG.mouseEase;
+      m.y += (m.ty - m.y) * DEPTH_CONFIG.mouseEase;
 
       // Layers
       for (let i = 0; i < effectiveLayers.length; i++) {
@@ -132,7 +132,7 @@ const ParallaxHero = ({
         const z = layerZ(i);
         const ms = mouseStrength(i);
         const mx = m.x * ms;
-        const my = m.y * ms * 0.7;
+        const my = m.y * ms * DEPTH_CONFIG.mouseYRatio;
         el.style.transform = `translate3d(${mx}px, ${y + my}px, ${z}px) scale(${baseScales[i]})`;
       }
 
@@ -140,15 +140,15 @@ const ParallaxHero = ({
       if (titleRef.current) {
         const titleOpacity = Math.max(0, 1 - scrollY / 400);
         const titleTranslateY = scrollY * 0.3;
-        const z = is3D ? 120 : 0;
-        const mx = is3D ? m.x * 30 : 0;
+        const z = is3D ? DEPTH_CONFIG.titleZ : 0;
+        const mx = is3D ? m.x * DEPTH_CONFIG.titleMouseX : 0;
         titleRef.current.style.opacity = String(titleOpacity);
         titleRef.current.style.transform = `translate3d(calc(-50% + ${mx}px), ${titleTranslateY}px, ${z}px)`;
       }
 
       // Container subtle push-back on scroll
       if (containerRef.current && is3D) {
-        const pushZ = -Math.min(scrollY * 0.15, 80);
+        const pushZ = -Math.min(scrollY * DEPTH_CONFIG.scrollPushRate, DEPTH_CONFIG.scrollPushMax);
         containerRef.current.style.transform = `translateZ(${pushZ}px)`;
       }
 
