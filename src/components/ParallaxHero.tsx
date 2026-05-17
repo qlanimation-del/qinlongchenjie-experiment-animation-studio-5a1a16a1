@@ -76,20 +76,31 @@ const ParallaxHero = ({
     return 0;
   });
 
-  // Per-layer Z depth for 3D parallax (desktop only)
-  const layerZ = (i: number) => {
-    if (!is3D) return 0;
-    if (i === 0) return -100;
-    if (i === 1) return 0;
-    return 80;
+  // ===== 3D 景深可配置参数 =====
+  // 调整这里即可微调"绚 ↔ 克制"的平衡
+  const DEPTH_CONFIG = {
+    // 各层 Z 轴深度（px）：负值=远景后退，正值=前景突出
+    layerZ:        [-70, 0, 50],   // 原 [-100, 0, 80] → 收敛 30%，更克制
+    // 鼠标视差强度（px）：值越大越绚，越小越克制
+    mouseStrength: [5, 11, 17],    // 原 [8, 16, 24] → 收敛 ~30%
+    // 标题层鼠标视差（px）
+    titleMouseX:   20,             // 原 30
+    // 标题层 Z 深度（px）
+    titleZ:        90,             // 原 120
+    // 滚动推远最大距离（px）
+    scrollPushMax: 60,             // 原 80
+    // 滚动推远速度系数
+    scrollPushRate: 0.12,          // 原 0.15
+    // 鼠标缓动系数（越小越柔顺，越大越跟手）
+    mouseEase:     0.06,           // 原 0.08
+    // 鼠标 Y 相对 X 的衰减（垂直视差更克制）
+    mouseYRatio:   0.6,            // 原 0.7
   };
-  // Mouse parallax strength per layer (px)
-  const mouseStrength = (i: number) => {
-    if (!is3D) return 0;
-    if (i === 0) return 8;
-    if (i === 1) return 16;
-    return 24;
-  };
+
+  const layerZ = (i: number) =>
+    is3D ? (DEPTH_CONFIG.layerZ[Math.min(i, 2)] ?? 0) : 0;
+  const mouseStrength = (i: number) =>
+    is3D ? (DEPTH_CONFIG.mouseStrength[Math.min(i, 2)] ?? 0) : 0;
 
   // Single rAF-driven scroll + mouse handler — writes transforms to refs directly.
   useEffect(() => {
