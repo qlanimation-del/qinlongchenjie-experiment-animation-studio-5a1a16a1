@@ -1,5 +1,6 @@
 import { useState, useMemo } from "react";
 import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
 import ImageLightbox from "@/components/ImageLightbox";
 import { photographs } from "@/data/photographs";
 import { photographyBook } from "@/data/books";
@@ -73,6 +74,11 @@ const Photographs = () => {
 
   return (
     <Layout navVariant="light" className="bg-white">
+      <SEO
+        title="Photographs — QINLONG&CHENJIE"
+        description="Photographic series by QINLONG&CHENJIE exploring the image apparatus and crowdsourced spectatorship."
+        path="/photographs"
+      />
       <section className="pt-10 sm:pt-14 pb-20">
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col lg:flex-row gap-10 lg:gap-12">
           <aside className="lg:w-[200px] shrink-0 flex flex-col">

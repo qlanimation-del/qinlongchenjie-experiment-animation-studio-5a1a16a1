@@ -1,4 +1,5 @@
 import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
 import AnimatedSection from "@/components/AnimatedSection";
 import { textItems } from "@/data/texts";
 import { useLanguage } from "@/i18n/LanguageContext";
@@ -8,6 +9,11 @@ const Texts = () => {
 
   return (
     <Layout>
+      <SEO
+        title="Texts — QINLONG&CHENJIE"
+        description="Long-form essays and writing from QINLONG&CHENJIE studio on animation, image-making, and visual culture."
+        path="/texts"
+      />
       <section className="pt-12 sm:pt-16 pb-24 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto">
           <AnimatedSection variant="reveal">

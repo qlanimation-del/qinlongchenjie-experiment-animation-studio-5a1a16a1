@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
+import SEO from "@/components/SEO";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
@@ -82,6 +83,11 @@ const Index = () => {
 
   return (
     <Layout fullBleed>
+      <SEO
+        title="QINLONG&CHENJIE — Experimental Animation Studio"
+        description="Independent experimental animation studio by Qinlong and Chenjie. Selected animation, video essays, drawings, and photography 2019–2025."
+        path="/"
+      />
       {/* Hero */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         

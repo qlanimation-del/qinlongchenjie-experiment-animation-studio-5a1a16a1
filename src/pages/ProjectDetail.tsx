@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { useRef } from "react";
 import { ArrowLeft } from "lucide-react";
 import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
 import ParallaxHero from "@/components/ParallaxHero";
 import ProjectGallery from "@/components/ProjectGallery";
 import WorkCaption from "@/components/WorkCaption";
@@ -42,6 +43,29 @@ const ProjectDetail = () => {
 
   return (
     <Layout fullBleed>
+      <SEO
+        title={`${project.title} — ${project.type[locale]}`}
+        description={(project.description[locale] || "")
+          .replace(/<[^>]+>/g, " ")
+          .replace(/\s+/g, " ")
+          .trim()
+          .slice(0, 160)}
+        path={`/work/${project.id}`}
+        type="article"
+        image={typeof project.thumbnail === "string" ? project.thumbnail : undefined}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "CreativeWork",
+          name: project.title,
+          datePublished: project.year,
+          genre: project.type[locale],
+          url: `https://qinlong-chenjie.lovable.app/work/${project.id}`,
+          author: {
+            "@type": "Organization",
+            name: "QINLONG&CHENJIE",
+          },
+        }}
+      />
       <div className="relative w-full h-screen overflow-hidden" style={{ marginBottom: '-4rem' }}>
         <ParallaxHero
           layers={project.parallaxLayers}

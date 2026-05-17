@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
 import AnimatedSection from "@/components/AnimatedSection";
 import { useLanguage } from "@/i18n/LanguageContext";
 import { toast } from "sonner";
@@ -36,6 +37,11 @@ const Contact = () => {
 
   return (
     <Layout>
+      <SEO
+        title="Contact — QINLONG&CHENJIE"
+        description="Get in touch with QINLONG&CHENJIE studio for collaborations, commissions, and inquiries."
+        path="/contact"
+      />
       <section className="pt-16 sm:pt-24 pb-16 px-4 sm:px-6">
         <div className="max-w-[1100px] mx-auto">
           <div className="grid md:grid-cols-[1.2fr_0.8fr] gap-10 md:gap-16">

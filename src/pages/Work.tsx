@@ -1,6 +1,7 @@
 import { useState, useMemo, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
 import { projects, type Project } from "@/data/projects";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Locale } from "@/i18n/translations";
@@ -172,6 +173,11 @@ const Work = () => {
 
   return (
     <Layout>
+      <SEO
+        title="Selected Works 2019–2025"
+        description="Selected animation projects and video essays by QINLONG&CHENJIE studio, 2019–2025."
+        path="/work"
+      />
       <section className="pt-10 sm:pt-14 pb-16 px-4 md:px-8">
         <div className="max-w-[1200px] mx-auto">
           {/* Toolbar: filter chips + view toggle */}
