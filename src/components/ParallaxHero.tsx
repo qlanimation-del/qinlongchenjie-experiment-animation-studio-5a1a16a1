@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronDown } from "lucide-react";
+import Letters3D from "@/components/Letters3D";
 import { ParallaxLayer } from "@/data/projects";
 
 // Device detection
@@ -263,7 +264,14 @@ const ParallaxHero = ({
         className="absolute bottom-44 left-1/2 z-[7] pointer-events-none w-full px-6 text-center"
         style={{ willChange: "transform, opacity", transform: "translate3d(-50%, 0, 0)" }}
       >
-        <span className="tracking-[0.35em] uppercase text-white drop-shadow-lg inline-block pl-[0.35em]">{type}</span>
+        <Letters3D
+          key={type}
+          text={type}
+          className="tracking-[0.35em] uppercase text-white drop-shadow-lg pl-[0.35em]"
+          delay={150}
+          stagger={45}
+          depth={220}
+        />
       </div>
 
       {/* Down chevron */}
