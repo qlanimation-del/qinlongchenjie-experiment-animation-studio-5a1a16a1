@@ -12,7 +12,6 @@ interface Letters3DProps {
   depth?: number;
   /** Run animation only once on mount (default true) */
   once?: boolean;
-  as?: keyof JSX.IntrinsicElements;
 }
 
 /**
