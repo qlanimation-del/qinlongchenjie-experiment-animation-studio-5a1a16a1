@@ -63,8 +63,8 @@ const Letters3D = ({
   const chars = Array.from(text);
 
   return (
-    <Tag
-      ref={rootRef as React.Ref<HTMLElement>}
+    <span
+      ref={rootRef as React.Ref<HTMLSpanElement>}
       className={cn("inline-block [transform-style:preserve-3d]", className)}
       style={{ perspective: "800px" }}
       aria-label={text}
@@ -85,7 +85,7 @@ const Letters3D = ({
           {ch === " " ? "\u00A0" : ch}
         </span>
       ))}
-    </Tag>
+    </span>
   );
 };
 
