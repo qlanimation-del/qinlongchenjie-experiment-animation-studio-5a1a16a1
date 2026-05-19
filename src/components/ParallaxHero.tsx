@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { ChevronDown } from "lucide-react";
+import Letters3D from "@/components/Letters3D";
 import { ParallaxLayer } from "@/data/projects";
 
 // Device detection
