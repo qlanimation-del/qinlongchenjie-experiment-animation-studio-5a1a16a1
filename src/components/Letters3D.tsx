@@ -26,7 +26,6 @@ const Letters3D = ({
   stagger = 40,
   depth = 200,
   once = true,
-  as: Tag = "span",
 }: Letters3DProps) => {
   const rootRef = useRef<HTMLElement | null>(null);
 
