@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
+import Letters3D from "@/components/Letters3D";
 import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
@@ -163,7 +164,13 @@ const Index = () => {
             <Link to="/work" className="flex items-center gap-3 sm:gap-4">
               <span className="font-light tracking-wider">{t("hero", "nowPlaying")}</span>
               <span className="w-px h-4 sm:h-5 bg-white/30" />
-              <span className="font-semibold tracking-wide">{t("hero", "ourWork")}</span>
+              <Letters3D
+                text={t("hero", "ourWork")}
+                className="font-semibold tracking-wide"
+                delay={200}
+                stagger={35}
+                depth={180}
+              />
             </Link>
           </Button>
         </div>
