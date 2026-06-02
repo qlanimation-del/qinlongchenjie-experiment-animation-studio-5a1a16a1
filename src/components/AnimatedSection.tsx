@@ -31,8 +31,8 @@ const AnimatedSection = ({ children, className = "", threshold, variant = "fade"
         "opacity 700ms cubic-bezier(0.22,1,0.36,1), transform 900ms cubic-bezier(0.22,1,0.36,1)",
       opacity: isVisible ? 1 : 0,
       transform: isVisible
-        ? "perspective(1400px) rotateX(0deg) translate3d(0,0,0)"
-        : "perspective(1400px) rotateX(8deg) translate3d(0,28px,-40px)",
+        ? "perspective(1000px) rotateX(0deg) translate3d(0,0,0)"
+        : "perspective(1000px) rotateX(16deg) translate3d(0,40px,-80px)",
     };
   } else {
     animClass = cn(
