@@ -1,5 +1,6 @@
 import { ReactNode, CSSProperties } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { usePerfMode } from "@/hooks/usePerfMode";
 import { cn } from "@/lib/utils";
 
 interface AnimatedSectionProps {
@@ -11,13 +12,17 @@ interface AnimatedSectionProps {
 
 const AnimatedSection = ({ children, className = "", threshold, variant = "fade" }: AnimatedSectionProps) => {
   const { ref, isVisible } = useScrollAnimation(threshold);
+  const degraded = usePerfMode();
 
   let animClass = "";
   let style: CSSProperties | undefined;
 
-  if (variant === "reveal") {
+  // When perf is degraded, flip3d auto-falls back to a plain fade.
+  const effectiveVariant = variant === "flip3d" && degraded ? "fade" : variant;
+
+  if (effectiveVariant === "reveal") {
     animClass = cn("clip-reveal", isVisible && "clip-reveal--visible");
-  } else if (variant === "flip3d") {
+  } else if (effectiveVariant === "flip3d") {
     animClass = "will-change-transform";
     style = {
       transformStyle: "preserve-3d",
