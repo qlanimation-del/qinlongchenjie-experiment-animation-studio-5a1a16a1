@@ -93,13 +93,17 @@ const ProjectDetail = () => {
             </Link>
 
             {/* Museum-style caption block */}
-            <WorkCaption project={project} />
+            <AnimatedSection variant="flip3d">
+              <WorkCaption project={project} />
+            </AnimatedSection>
 
-            <div
-              className="mb-12 text-muted-foreground leading-relaxed text-base sm:text-lg text-justify whitespace-pre-line"
-              style={{ textIndent: "2em", lineHeight: 1.85 }}>
-              <div dangerouslySetInnerHTML={{ __html: project.description[locale] }} />
-            </div>
+            <AnimatedSection variant="flip3d">
+              <div
+                className="mb-12 text-muted-foreground leading-relaxed text-base sm:text-lg text-justify whitespace-pre-line"
+                style={{ textIndent: "2em", lineHeight: 1.85 }}>
+                <div dangerouslySetInnerHTML={{ __html: project.description[locale] }} />
+              </div>
+            </AnimatedSection>
 
             {/* Video Embed(s) */}
             {(() => {
@@ -109,46 +113,48 @@ const ProjectDetail = () => {
                 const aspect = videoAspects[i];
                 const isVertical = aspect === "9/16";
                 return (
-                  <div key={i} className="mb-12">
-                    <div
-                      className={`mx-auto rounded-lg overflow-hidden ${isVertical ? 'max-w-[65%] sm:max-w-[50%]' : 'w-full bg-black/20'}`}
-                      style={{ aspectRatio: aspect || "16/9" }}>
-                      
-                      <iframe
-                        title={`${project.title} ${i + 1}`}
-                        src={url}
-                        width="100%"
-                        height="100%"
-                        frameBorder="0"
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
-                        allowFullScreen
-                        loading="lazy" />
-                      
+                  <AnimatedSection key={i} variant="flip3d">
+                    <div className="mb-12">
+                      <div
+                        className={`mx-auto rounded-lg overflow-hidden ${isVertical ? 'max-w-[65%] sm:max-w-[50%]' : 'w-full bg-black/20'}`}
+                        style={{ aspectRatio: aspect || "16/9" }}>
+                        <iframe
+                          title={`${project.title} ${i + 1}`}
+                          src={url}
+                          width="100%"
+                          height="100%"
+                          frameBorder="0"
+                          referrerPolicy="strict-origin-when-cross-origin"
+                          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share"
+                          allowFullScreen
+                          loading="lazy" />
+                      </div>
                     </div>
-                  </div>);
-
+                  </AnimatedSection>);
               });
             })()}
 
             {/* Metadata Grid — always visible */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12 bg-white/5 rounded-lg p-4 sm:p-6">
-              <div className="text-left">
-                <span className="block text-xs uppercase tracking-widest text-muted-foreground/60 mb-1">{t("projectDetail", "year")}</span>
-                <span className="text-sm font-medium text-foreground">{project.year}</span>
+            <AnimatedSection variant="flip3d">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mb-12 bg-white/5 rounded-lg p-4 sm:p-6">
+                <div className="text-left">
+                  <span className="block text-xs uppercase tracking-widest text-muted-foreground/60 mb-1">{t("projectDetail", "year")}</span>
+                  <span className="text-sm font-medium text-foreground">{project.year}</span>
+                </div>
+                <div className="text-left sm:text-center border-t sm:border-t-0 border-white/10 pt-3 sm:pt-0">
+                  <span className="block text-xs uppercase tracking-widest text-muted-foreground/60 mb-1">{t("projectDetail", "crew")}</span>
+                  <span className="text-sm font-medium text-foreground">{project.crew?.[locale] || "—"}</span>
+                </div>
+                <div className="text-left sm:text-right border-t sm:border-t-0 border-white/10 pt-3 sm:pt-0">
+                  <span className="block text-xs uppercase tracking-widest text-muted-foreground/60 mb-1">{t("projectDetail", "client")}</span>
+                  <span className="text-sm font-medium text-foreground">{project.client?.[locale] || "—"}</span>
+                </div>
               </div>
-              <div className="text-left sm:text-center border-t sm:border-t-0 border-white/10 pt-3 sm:pt-0">
-                <span className="block text-xs uppercase tracking-widest text-muted-foreground/60 mb-1">{t("projectDetail", "crew")}</span>
-                <span className="text-sm font-medium text-foreground">{project.crew?.[locale] || "—"}</span>
-              </div>
-              <div className="text-left sm:text-right border-t sm:border-t-0 border-white/10 pt-3 sm:pt-0">
-                <span className="block text-xs uppercase tracking-widest text-muted-foreground/60 mb-1">{t("projectDetail", "client")}</span>
-                <span className="text-sm font-medium text-foreground">{project.client?.[locale] || "—"}</span>
-              </div>
-            </div>
+            </AnimatedSection>
 
             {project.credits[locale].length > 0 &&
-            <div className="mb-10 sm:mb-16">
+            <AnimatedSection variant="flip3d">
+              <div className="mb-10 sm:mb-16">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("projectDetail", "credits")}</h2>
                 <ul className="space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
                   {project.credits[locale].map((credit, i) =>
@@ -156,10 +162,12 @@ const ProjectDetail = () => {
                 )}
                 </ul>
               </div>
+            </AnimatedSection>
             }
 
             {project.exhibitions?.[locale]?.length ?
-            <div className="mb-10 sm:mb-16">
+            <AnimatedSection variant="flip3d">
+              <div className="mb-10 sm:mb-16">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("projectDetail", "exhibitions")}</h2>
                 <ul className="space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
                   {project.exhibitions[locale].map((item, i) => {
@@ -168,14 +176,15 @@ const ProjectDetail = () => {
                     <li key={i} className={isYear ? "font-bold text-foreground text-sm sm:text-base mt-4 first:mt-0" : ""}>
                         {item}
                       </li>);
-
                 })}
                 </ul>
-              </div> :
+              </div>
+            </AnimatedSection> :
             null}
 
             {project.screenings?.[locale]?.length ?
-            <div className="mb-10 sm:mb-16">
+            <AnimatedSection variant="flip3d">
+              <div className="mb-10 sm:mb-16">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("caption", "screenings")}</h2>
                 <ul className="space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
                   {project.screenings[locale].map((item, i) => {
@@ -186,11 +195,13 @@ const ProjectDetail = () => {
                       </li>);
                   })}
                 </ul>
-              </div> :
+              </div>
+            </AnimatedSection> :
             null}
 
             {project.press?.length ?
-            <div className="mb-10 sm:mb-16">
+            <AnimatedSection variant="flip3d">
+              <div className="mb-10 sm:mb-16">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("caption", "press")}</h2>
                 <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
                   {project.press.map((item, i) => (
@@ -209,13 +220,17 @@ const ProjectDetail = () => {
                     </li>
                   ))}
                 </ul>
-              </div> :
+              </div>
+            </AnimatedSection> :
             null}
 
-            <ProjectGallery
-              projectId={project.id}
-              thumbnail={project.thumbnail}
-              customImages={galleryImages} />
+            <AnimatedSection variant="flip3d">
+              <ProjectGallery
+                projectId={project.id}
+                thumbnail={project.thumbnail}
+                customImages={galleryImages} />
+            </AnimatedSection>
+
             
           </div>
         </div>
