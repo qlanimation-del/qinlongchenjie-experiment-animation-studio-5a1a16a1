@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import ParallaxHero from "@/components/ParallaxHero";
+import AnimatedSection from "@/components/AnimatedSection";
 import ProjectGallery from "@/components/ProjectGallery";
 import WorkCaption from "@/components/WorkCaption";
 import { projects } from "@/data/projects";
