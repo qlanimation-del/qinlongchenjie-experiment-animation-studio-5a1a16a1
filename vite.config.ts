@@ -55,8 +55,7 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: {
-          // 把 React 相关单独打包，长期缓存
-          react: ["react", "react-dom"],
+          react: ["react", "react-dom", "react/jsx-runtime"],
         },
       },
     },
