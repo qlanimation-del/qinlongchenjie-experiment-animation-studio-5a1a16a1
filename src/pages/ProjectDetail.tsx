@@ -116,7 +116,7 @@ const ProjectDetail = () => {
                   <AnimatedSection key={i} variant="flip3d">
                     <div className="mb-12">
                       <div
-                        className={`mx-auto rounded-lg overflow-hidden ${isVertical ? 'max-w-[65%] sm:max-w-[50%]' : 'w-full bg-black/20'}`}
+                        className={`video-frame mx-auto rounded-lg overflow-hidden ${isVertical ? 'max-w-[65%] sm:max-w-[50%]' : 'w-full bg-black/20'}`}
                         style={{ aspectRatio: aspect || "16/9" }}>
                         <iframe
                           title={`${project.title} ${i + 1}`}
