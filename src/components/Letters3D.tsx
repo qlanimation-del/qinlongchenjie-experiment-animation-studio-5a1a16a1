@@ -12,6 +12,8 @@ interface Letters3DProps {
   depth?: number;
   /** Run animation only once on mount (default true) */
   once?: boolean;
+  /** Subtle looping letter-spacing breathe after entrance */
+  breathe?: boolean;
 }
 
 /**
@@ -26,6 +28,7 @@ const Letters3D = ({
   stagger = 40,
   depth = 200,
   once = true,
+  breathe = false,
 }: Letters3DProps) => {
   const rootRef = useRef<HTMLElement | null>(null);
 
