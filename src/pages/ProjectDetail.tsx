@@ -99,7 +99,7 @@ const ProjectDetail = () => {
 
             <AnimatedSection variant="flip3d">
               <div
-                className="mb-12 text-muted-foreground leading-relaxed text-base sm:text-lg text-justify whitespace-pre-line"
+                className="mb-12 text-muted-foreground leading-relaxed text-base sm:text-lg text-justify whitespace-pre-line drop-cap"
                 style={{ textIndent: "2em", lineHeight: 1.85 }}>
                 <div dangerouslySetInnerHTML={{ __html: project.description[locale] }} />
               </div>
