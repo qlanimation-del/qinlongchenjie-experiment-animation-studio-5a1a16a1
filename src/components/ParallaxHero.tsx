@@ -272,6 +272,7 @@ const ParallaxHero = ({
           stagger={45}
           depth={220}
         />
+        <span key={`sweep-${type}`} className="sweep-line" aria-hidden="true" />
       </div>
 
       {/* Down chevron */}
