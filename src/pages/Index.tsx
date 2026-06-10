@@ -159,7 +159,12 @@ const Index = () => {
             asChild
             variant="outline"
             size="lg"
-            className="bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md rounded-full px-6 py-3 text-sm sm:px-8 sm:py-4 sm:text-base md:px-16 md:py-6 md:text-xl h-auto shadow-lg shadow-black/10"
+            className="spotlight-follow bg-white/10 border-white/20 text-white hover:bg-white/20 backdrop-blur-md rounded-full px-6 py-3 text-sm sm:px-8 sm:py-4 sm:text-base md:px-16 md:py-6 md:text-xl h-auto shadow-lg shadow-black/10"
+            onMouseMove={(e: React.MouseEvent<HTMLButtonElement>) => {
+              const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
+              (e.currentTarget as HTMLElement).style.setProperty("--mx", `${e.clientX - r.left}px`);
+              (e.currentTarget as HTMLElement).style.setProperty("--my", `${e.clientY - r.top}px`);
+            }}
           >
             <Link to="/work" className="flex items-center gap-3 sm:gap-4">
               <span className="font-light tracking-wider">{t("hero", "nowPlaying")}</span>
@@ -170,16 +175,19 @@ const Index = () => {
                 delay={200}
                 stagger={35}
                 depth={180}
+                breathe
               />
             </Link>
           </Button>
         </div>
+        {/* Scroll cue — vertical line + label */}
         <a
           href="#who-we-are"
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 text-white/50 hover:text-white transition-colors animate-bounce"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-3 text-white/50 hover:text-white transition-colors"
           aria-label="Scroll down"
         >
-          <ChevronDown size={32} />
+          <span className="block w-px h-10 bg-white/40 origin-top animate-[scrollLine_2.4s_ease-in-out_infinite]" />
+          <span className="scroll-indicator">SCROLL</span>
         </a>
       </section>
 
