@@ -169,7 +169,7 @@ const ProjectDetail = () => {
             <AnimatedSection variant="flip3d">
               <div className="mb-10 sm:mb-16">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("projectDetail", "exhibitions")}</h2>
-                <ul className="space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
+                <ul className="list-bar space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
                   {project.exhibitions[locale].map((item, i) => {
                   const isYear = /^\d{4}$/.test(item.trim());
                   return (
