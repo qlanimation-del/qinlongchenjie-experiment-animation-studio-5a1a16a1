@@ -66,7 +66,7 @@ const Letters3D = ({
   return (
     <span
       ref={rootRef as React.Ref<HTMLSpanElement>}
-      className={cn("inline-block [transform-style:preserve-3d]", className)}
+      className={cn("inline-block [transform-style:preserve-3d]", breathe && "letters-breathe", className)}
       style={{ perspective: "800px" }}
       aria-label={text}
     >
