@@ -101,7 +101,7 @@ const ProjectDetail = () => {
               <div
                 className="mb-12 text-muted-foreground leading-relaxed text-base sm:text-lg text-justify whitespace-pre-line"
                 style={{ textIndent: "2em", lineHeight: 1.85 }}>
-                <div className="drop-cap" dangerouslySetInnerHTML={{ __html: project.description[locale] }} />
+                <div dangerouslySetInnerHTML={{ __html: project.description[locale] }} />
               </div>
             </AnimatedSection>
 
@@ -116,7 +116,7 @@ const ProjectDetail = () => {
                   <AnimatedSection key={i} variant="flip3d">
                     <div className="mb-12">
                       <div
-                        className={`video-frame mx-auto rounded-lg overflow-hidden ${isVertical ? 'max-w-[65%] sm:max-w-[50%]' : 'w-full bg-black/20'}`}
+                        className={`mx-auto rounded-lg overflow-hidden ${isVertical ? 'max-w-[65%] sm:max-w-[50%]' : 'w-full bg-black/20'}`}
                         style={{ aspectRatio: aspect || "16/9" }}>
                         <iframe
                           title={`${project.title} ${i + 1}`}
@@ -156,7 +156,7 @@ const ProjectDetail = () => {
             <AnimatedSection variant="flip3d">
               <div className="mb-10 sm:mb-16">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("projectDetail", "credits")}</h2>
-                <ul className="list-bar space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
+                <ul className="space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
                   {project.credits[locale].map((credit, i) =>
                 <li key={i}>{credit}</li>
                 )}
@@ -169,7 +169,7 @@ const ProjectDetail = () => {
             <AnimatedSection variant="flip3d">
               <div className="mb-10 sm:mb-16">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("projectDetail", "exhibitions")}</h2>
-                <ul className="list-bar space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
+                <ul className="space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
                   {project.exhibitions[locale].map((item, i) => {
                   const isYear = /^\d{4}$/.test(item.trim());
                   return (
@@ -186,7 +186,7 @@ const ProjectDetail = () => {
             <AnimatedSection variant="flip3d">
               <div className="mb-10 sm:mb-16">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("caption", "screenings")}</h2>
-                <ul className="list-bar space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
+                <ul className="space-y-1 sm:space-y-2 text-muted-foreground text-sm sm:text-base">
                   {project.screenings[locale].map((item, i) => {
                     const isYear = /^\d{4}$/.test(item.trim());
                     return (
@@ -203,7 +203,7 @@ const ProjectDetail = () => {
             <AnimatedSection variant="flip3d">
               <div className="mb-10 sm:mb-16">
                 <h2 className="text-lg sm:text-xl md:text-2xl font-semibold mb-4 sm:mb-6">{t("caption", "press")}</h2>
-                <ul className="list-bar space-y-2 text-muted-foreground text-sm sm:text-base">
+                <ul className="space-y-2 text-muted-foreground text-sm sm:text-base">
                   {project.press.map((item, i) => (
                     <li key={i} className="leading-relaxed">
                       <span className="text-foreground font-medium">{item.year}</span>

@@ -12,8 +12,6 @@ interface Letters3DProps {
   depth?: number;
   /** Run animation only once on mount (default true) */
   once?: boolean;
-  /** Subtle looping letter-spacing breathe after entrance */
-  breathe?: boolean;
 }
 
 /**
@@ -28,7 +26,6 @@ const Letters3D = ({
   stagger = 40,
   depth = 200,
   once = true,
-  breathe = false,
 }: Letters3DProps) => {
   const rootRef = useRef<HTMLElement | null>(null);
 
@@ -66,7 +63,7 @@ const Letters3D = ({
   return (
     <span
       ref={rootRef as React.Ref<HTMLSpanElement>}
-      className={cn("inline-block [transform-style:preserve-3d]", breathe && "letters-breathe", className)}
+      className={cn("inline-block [transform-style:preserve-3d]", className)}
       style={{ perspective: "800px" }}
       aria-label={text}
     >

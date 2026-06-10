@@ -1,110 +1,64 @@
-## 目标
-为 **首页 Hero / Work 列表 / 项目详情页** 增加更"高级艺术感"的微交互与质感层，不引入大型库，不影响 LCP，不破坏现有暗色极简体系（Montserrat、灰阶、霓虹悬浮色）。
+# Project 详情页 ParallaxHero — 3D 景深视差升级
 
-所有动效复用现有 `usePerfMode`（FPS 监控）—— 低帧时自动退化为静态/纯淡入。
+给 `/work/:id` 详情页顶部的 ParallaxHero 增加真正的 **Z 轴景深感**，让多层视差不只是 Y 轴上下错位，而是有真实的"前/中/后景空间分离"，像立体画册一样。
 
----
+## 设计目标
 
-## 1. 全局质感层（一次性接入）
+- **真 3D 透视**：建立 `perspective` 透视容器，三层图分别处于不同的 `translateZ` 深度
+- **鼠标视差**：桌面端鼠标移动时，前景/中景/远景以不同力度反向偏移（前景走得多、远景几乎不动），增强空间感
+- **滚动景深**：滚动时除了现有的 Y 偏移，叠加细微的 `scale + translateZ` 推拉，让整个 hero 像被"推远"
+- **晕影遮罩**：远景叠加一层径向 vignette，强化纵深焦点
+- **不破坏现有视差**：保留当前 `scrollY * speed` 的 Y 偏移逻辑
+- **手机/平板降级**：移动端只保留 Y 视差和 vignette，跳过 perspective + mouse parallax，保证 60fps
 
-**1.1 静态噪点 / 颗粒层**
-- 在 `Layout` 之上叠加 fixed、`pointer-events-none`、`mix-blend-overlay`、`opacity-[0.04]` 的噪点纹理（一张 ~6KB 的 SVG/WebP，平铺）。
-- 让暗背景拥有胶片/纸张般的质感（艺术感的关键），几乎零成本。
-- `prefers-reduced-motion` 或 perf degraded → 隐藏。
+## 实现方案
 
-**1.2 字体 OpenType 优化**
-- 全局 `font-feature-settings: "ss01","cv11","liga","calt"; font-variant-numeric: tabular-nums lining-nums;`
-- Montserrat 自带 ss01/cv11，开启后字形更精致；零运行时成本。
+只改一个文件：`src/components/ParallaxHero.tsx`。
 
-**1.3 选区颜色**
-- `::selection { background: hsl(var(--foreground)/0.15); color: hsl(var(--foreground)); }` —— 细节决定高级感。
+### 1. 容器加透视
+最外层 `<div>` 加 `perspective: 1200px` + `transform-style: preserve-3d`。
 
----
+### 2. 三层 Z 深度
+按现有 layer 顺序赋予不同 `translateZ`：
+- Layer 0 (背景图): `translateZ(-100px)` — 最远
+- Layer 1 (中景图): `translateZ(0)` — 中性
+- Layer 2 (vignette): `translateZ(80px)` — 最前
 
-## 2. 首页 Hero 增强
+为补偿 translateZ 引起的视觉缩放，配合微调 `scale`。
 
-**2.1 大标题 / Letters3D 字距呼吸**
-- 进场后给 `Letters3D` 容器加 `letter-spacing` 8s 缓慢循环呼吸 (0.32em ↔ 0.36em)，配合 `text-shadow` 极淡光晕。
-- 仅 CSS 关键帧，GPU 友好。
+### 3. 鼠标视差（桌面 only）
+```text
+mouseMove → (mx, my) ∈ [-1, 1]
+layer 0: translate(mx * 8px, my * 6px)   // 远景小幅
+layer 1: translate(mx * 16px, my * 12px) // 中景中幅
+layer 2: translate(mx * 24px, my * 18px) // 前景/vignette 大幅
+```
+用 rAF 节流，DOM ref 直写 transform，鼠标离开后 0.8s ease 回中。
 
-**2.2 Hero CTA 玻璃按钮**
-- 现有 frosted glass 基础上叠加：
-  - 鼠标跟随的高光 (`radial-gradient(circle at var(--mx) var(--my), white/12%, transparent 40%)`)
-  - 边框流光：`background-clip:padding-box` + 双层 `::before` conic-gradient 旋转 6s（仅 desktop）。
+### 4. 滚动景深推拉
+现有 scroll 处理函数中，整个 hero 容器再叠加 `transform: translateZ(${-scrollY * 0.3}px)`，营造往内推的感觉。
 
-**2.3 滚动指示器 chevron**
-- 改为细线 + 旁注的"SCROLL"竖排字母，更有展览图录感。
+### 5. Vignette 强化
+现有 vignette 层增大对比度（`from-black/60 via-transparent to-black/80`），让焦点更聚焦中央。
 
-**2.4 Upcoming 单行公告**
-- 入场 `clip-reveal` + 左侧细线扫光（200ms scaleX）。
+### 6. 标题层
+标题层加 `translateZ(120px)`，确保始终漂浮在最前。
 
----
+## 性能与降级
 
-## 3. Work 列表页增强
+- 整个 3D 增强只在 `!isMobile && !isTablet` 时启用
+- `prefers-reduced-motion: reduce` 自动跳过 mouse parallax
+- 所有 transform 走 GPU 合成层（已有 `will-change: transform`）
+- 不增加 DOM 节点、不引入依赖、不影响首屏
 
-**3.1 卡片胶片质感**
-- 现有 3D tilt + specular shine 基础上：
-  - 加 `inset` 极淡内描边 `box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06)`。
-  - hover 时叠加一层 `mix-blend-overlay` 的颗粒，呼应全局噪点。
-
-**3.2 进场瀑布**
-- 卡片按 grid 顺序 `IntersectionObserver` 触发 60ms stagger 的淡入上移（已有 useScrollAnimation 可复用）。
-
-**3.3 筛选切换微动效**
-- 切换分类时，对网格做 `FLIP` 风格 200ms opacity 淡出 → 重排 → 淡入；不用 framer-motion，纯 CSS + 短 timeout。
-
-**3.4 Index 视图行高亮**
-- 鼠标 hover 行时，年份数字 `font-variation`/`letter-spacing` 微扩；底部线条左→右 scaleX 入场（已有动画语言一致）。
-
----
-
-## 4. 项目详情页增强
-
-**4.1 章节进入：保留现有 flip3d，叠加副效果**
-- 在每个 `AnimatedSection` 上加一层左侧细线 (`h-px w-12 → w-24`) 在 reveal 时 scaleX 展开，类似展览说明牌的引导线。
-- 不增加 JS 成本，纯条件 class。
-
-**4.2 文字段落首字母装饰**
-- `description` 段落首字母自动放大（CSS `::first-letter`，serif fallback `Cormorant`/系统衬线），形成编辑设计感。可通过 prop 关闭。
-
-**4.3 视频块画框**
-- 视频外层加 1px 暗描边 + 4px 外发光 (`box-shadow`)，hover 时发光过渡到项目 `glowColor`（霓虹色），呼应 Work 卡片悬浮色系。
-
-**4.4 Credits / Exhibitions 列表**
-- 每行左侧加竖向细线 `border-l border-white/10`，hover 行 `border-l-foreground/60` + 文本 `translateX(4px)`。
-
-**4.5 ParallaxHero 标题**
-- 在 `type` 字母组下方加一个 1px 细线（width 0 → 80px）入场扫开；与 4.1 引导线统一语言。
-
----
-
-## 5. 性能策略（硬约束）
-
-- 不引入 framer-motion / three.js / lottie。
-- 所有新动效只用 `transform / opacity / clip-path / filter` 中的轻量值；避免动 `box-shadow` 的大模糊半径（除按需 hover）。
-- 噪点纹理：单张 ≤6KB，base64 内联或 `public/textures/grain.webp`，1x 平铺。
-- 接入 `usePerfMode`：degraded 时 → 隐藏噪点层、停用边框流光、Letters3D 呼吸退化为静态。
-- 移动端：禁用边框 conic 流光、跟随光晕；保留淡入和细线。
-- 不动 Hero `<video>`、不动 LCP 路径、不改 vite manualChunks。
-
----
-
-## 6. 技术清单（实现顺序）
+## 技术细节
 
 ```text
-1) src/index.css           噪点 utility + ::selection + font-feature-settings + 字距呼吸 keyframes
-2) public/textures/grain.webp  （6KB 噪点贴图）
-3) src/components/Layout.tsx   叠加 GrainOverlay（degrade-aware）
-4) src/components/Letters3D.tsx 可选 breathe 模式
-5) src/pages/Index.tsx     Hero CTA 光晕 + chevron 重塑 + Upcoming 扫光
-6) src/pages/Work.tsx      ProjectCard 内描边/颗粒 + 筛选 FLIP 过渡 + IndexRow hover
-7) src/pages/ProjectDetail.tsx  Section 引导线 + 段落首字母 + 视频画框 + Credits 列表 hover
-8) src/components/ParallaxHero.tsx  type 下扫线
+.hero (perspective: 1200px, preserve-3d, mouse listener)
+  ├─ Layer 0  translateZ(-100px) + parallaxY + mouseY*0.3
+  ├─ Layer 1  translateZ(0)      + parallaxY + mouseY*0.6
+  ├─ Vignette translateZ(80px)   + mouseY*1.0
+  └─ Title    translateZ(120px)
 ```
 
-预计变更 ≤8 个文件，新增 ~120 行 CSS / ~80 行 TSX。对 bundle 体积影响 <2KB（gzip），无新依赖。
-
----
-
-## 我会等你确认后再实现
-如有偏好（比如：只做首页、不要噪点、不要首字母大写装饰），告诉我，我会按需裁剪。
+修改约 +50 行，集中在 ParallaxHero.tsx 的 effect 和 JSX style 中。无新文件、无依赖。
