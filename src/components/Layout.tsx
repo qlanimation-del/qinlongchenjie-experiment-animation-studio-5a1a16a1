@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import BackToTop from "./BackToTop";
 import type { NavVariant } from "./Navbar";
 import { cn } from "@/lib/utils";
+import { usePerfMode } from "@/hooks/usePerfMode";
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,6 +18,9 @@ const Layout = ({ children, fullBleed = false, navVariant = "dark", className }:
   const location = useLocation();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const glowRef = useRef<HTMLDivElement>(null);
+  const degraded = usePerfMode();
+  // Light pages (drawing/photographs) skip the grain to keep paper-clean look
+  const isLight = navVariant === "light";
 
   // Page transition on route change
   useEffect(() => {
@@ -51,6 +55,10 @@ const Layout = ({ children, fullBleed = false, navVariant = "dark", className }:
         className="cursor-glow pointer-events-none fixed inset-0 z-[9998] opacity-0 transition-opacity duration-300 hidden lg:block"
         aria-hidden="true"
       />
+      {/* Grain / film-paper texture — degrades & opts out on light pages */}
+      {!degraded && !isLight && (
+        <div className="grain-overlay hidden md:block" aria-hidden="true" />
+      )}
       <Navbar variant={navVariant} />
       <main
         className={cn(

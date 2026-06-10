@@ -83,7 +83,7 @@ function ProjectCard({ project, locale }: { project: Project; locale: Locale }) 
         onMouseMove={handleMove}
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
-        className="group block relative overflow-hidden rounded-lg h-full [transform-style:preserve-3d]"
+        className="card-inset-border group block relative overflow-hidden rounded-lg h-full [transform-style:preserve-3d]"
       >
         <img
           src={project.thumbnail}
@@ -147,6 +147,16 @@ const Work = () => {
   const { t, locale } = useLanguage();
   const [view, setView] = useState<ViewMode>("grid");
   const [filter, setFilter] = useState<CategoryFilter>("all");
+  const [fadeOut, setFadeOut] = useState(false);
+
+  const changeFilter = (cat: CategoryFilter) => {
+    if (cat === filter) return;
+    setFadeOut(true);
+    window.setTimeout(() => {
+      setFilter(cat);
+      setFadeOut(false);
+    }, 180);
+  };
 
   // Build the filter list dynamically from categories actually present in data.
   const availableCategories = useMemo<CategoryFilter[]>(() => {
@@ -186,7 +196,7 @@ const Work = () => {
               {availableCategories.map((cat) => (
                 <button
                   key={cat}
-                  onClick={() => setFilter(cat)}
+                  onClick={() => changeFilter(cat)}
                   className={cn(
                     "text-xs uppercase tracking-wider px-3 py-1.5 rounded-full border transition-colors",
                     filter === cat
@@ -217,7 +227,7 @@ const Work = () => {
 
           {view === "grid" ? (
             <div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
+              className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 grid-fade", fadeOut && "is-out")}
               style={{ gridAutoRows: '60px' }}
             >
               {filtered.map((project) => (
@@ -225,7 +235,7 @@ const Work = () => {
               ))}
             </div>
           ) : (
-            <div className="border-t border-white/10">
+            <div className={cn("border-t border-white/10 grid-fade", fadeOut && "is-out")}>
               {indexList.map((project) => (
                 <IndexRow key={project.id} project={project} locale={locale} />
               ))}
