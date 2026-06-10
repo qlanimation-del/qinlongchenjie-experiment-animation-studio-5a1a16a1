@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import BackToTop from "./BackToTop";
 import type { NavVariant } from "./Navbar";
 import { cn } from "@/lib/utils";
+import { usePerfMode } from "@/hooks/usePerfMode";
 
 interface LayoutProps {
   children: ReactNode;
