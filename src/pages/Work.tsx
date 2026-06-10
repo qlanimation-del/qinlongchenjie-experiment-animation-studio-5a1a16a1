@@ -147,6 +147,16 @@ const Work = () => {
   const { t, locale } = useLanguage();
   const [view, setView] = useState<ViewMode>("grid");
   const [filter, setFilter] = useState<CategoryFilter>("all");
+  const [fadeOut, setFadeOut] = useState(false);
+
+  const changeFilter = (cat: CategoryFilter) => {
+    if (cat === filter) return;
+    setFadeOut(true);
+    window.setTimeout(() => {
+      setFilter(cat);
+      setFadeOut(false);
+    }, 180);
+  };
 
   // Build the filter list dynamically from categories actually present in data.
   const availableCategories = useMemo<CategoryFilter[]>(() => {
