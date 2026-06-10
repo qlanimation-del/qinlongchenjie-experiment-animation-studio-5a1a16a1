@@ -18,6 +18,9 @@ const Layout = ({ children, fullBleed = false, navVariant = "dark", className }:
   const location = useLocation();
   const [isTransitioning, setIsTransitioning] = useState(false);
   const glowRef = useRef<HTMLDivElement>(null);
+  const degraded = usePerfMode();
+  // Light pages (drawing/photographs) skip the grain to keep paper-clean look
+  const isLight = navVariant === "light";
 
   // Page transition on route change
   useEffect(() => {
