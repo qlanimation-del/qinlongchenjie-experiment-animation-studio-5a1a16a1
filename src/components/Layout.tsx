@@ -55,6 +55,10 @@ const Layout = ({ children, fullBleed = false, navVariant = "dark", className }:
         className="cursor-glow pointer-events-none fixed inset-0 z-[9998] opacity-0 transition-opacity duration-300 hidden lg:block"
         aria-hidden="true"
       />
+      {/* Grain / film-paper texture — degrades & opts out on light pages */}
+      {!degraded && !isLight && (
+        <div className="grain-overlay hidden md:block" aria-hidden="true" />
+      )}
       <Navbar variant={navVariant} />
       <main
         className={cn(
