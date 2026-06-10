@@ -196,7 +196,7 @@ const Work = () => {
               {availableCategories.map((cat) => (
                 <button
                   key={cat}
-                  onClick={() => setFilter(cat)}
+                  onClick={() => changeFilter(cat)}
                   className={cn(
                     "text-xs uppercase tracking-wider px-3 py-1.5 rounded-full border transition-colors",
                     filter === cat
