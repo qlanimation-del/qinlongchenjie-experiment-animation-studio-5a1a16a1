@@ -83,7 +83,7 @@ function ProjectCard({ project, locale }: { project: Project; locale: Locale }) 
         onMouseMove={handleMove}
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
-        className="group block relative overflow-hidden rounded-lg h-full [transform-style:preserve-3d]"
+        className="card-inset-border group block relative overflow-hidden rounded-lg h-full [transform-style:preserve-3d]"
       >
         <img
           src={project.thumbnail}
