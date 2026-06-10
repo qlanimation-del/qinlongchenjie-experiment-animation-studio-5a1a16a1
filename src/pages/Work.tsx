@@ -227,7 +227,7 @@ const Work = () => {
 
           {view === "grid" ? (
             <div
-              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5"
+              className={cn("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 grid-fade", fadeOut && "is-out")}
               style={{ gridAutoRows: '60px' }}
             >
               {filtered.map((project) => (
@@ -235,7 +235,7 @@ const Work = () => {
               ))}
             </div>
           ) : (
-            <div className="border-t border-white/10">
+            <div className={cn("border-t border-white/10 grid-fade", fadeOut && "is-out")}>
               {indexList.map((project) => (
                 <IndexRow key={project.id} project={project} locale={locale} />
               ))}
