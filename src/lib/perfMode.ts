@@ -18,14 +18,17 @@ const LOW_FRAMES_TO_DEGRADE = 120; // ~2s of sustained slow frames before fallba
 const SAMPLE_WINDOW = 120;         // log avg fps every ~2s (dev visibility)
 const WARMUP_FRAMES = 90;          // ignore first ~1.5s while page settles
 
+let totalFrames = 0;
+
 const tick = (now: number) => {
   if (lastFrame) {
     const delta = now - lastFrame;
     const fps = 1000 / delta;
     accumFps += fps;
     sampledFrames += 1;
+    totalFrames += 1;
 
-    if (fps < FPS_THRESHOLD) {
+    if (fps < FPS_THRESHOLD && totalFrames > WARMUP_FRAMES) {
       lowFrames += 1;
       if (!degraded && lowFrames >= LOW_FRAMES_TO_DEGRADE) {
         degraded = true;
