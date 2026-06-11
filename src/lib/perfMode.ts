@@ -67,6 +67,7 @@ const stop = () => {
   lowFrames = 0;
   sampledFrames = 0;
   accumFps = 0;
+  totalFrames = 0;
 };
 
 export const subscribePerfMode = (l: Listener): (() => void) => {
