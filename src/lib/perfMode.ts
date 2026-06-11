@@ -13,9 +13,10 @@ let lowFrames = 0;
 let sampledFrames = 0;
 let accumFps = 0;
 
-const FPS_THRESHOLD = 45;          // below this counts as a "slow" frame
-const LOW_FRAMES_TO_DEGRADE = 30;  // ~0.5s of slow frames at 60fps target
+const FPS_THRESHOLD = 24;          // only treat truly stuttery frames as slow
+const LOW_FRAMES_TO_DEGRADE = 120; // ~2s of sustained slow frames before fallback
 const SAMPLE_WINDOW = 120;         // log avg fps every ~2s (dev visibility)
+const WARMUP_FRAMES = 90;          // ignore first ~1.5s while page settles
 
 const tick = (now: number) => {
   if (lastFrame) {
