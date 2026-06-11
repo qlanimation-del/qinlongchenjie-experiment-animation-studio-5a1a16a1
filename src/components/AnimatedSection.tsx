@@ -35,10 +35,26 @@ const AnimatedSection = ({ children, className = "", threshold, variant = "fade"
         : "perspective(900px) rotateX(24deg) rotateY(-6deg) translate3d(0,56px,-140px)",
     };
   } else {
-    animClass = cn(
-      "transition-all duration-700",
-      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-    );
+    // Default fade now carries a subtle 3D tilt so every page (incl. mobile) feels layered.
+    // Degrades to flat fade when perf monitor reports drops.
+    if (degraded) {
+      animClass = cn(
+        "transition-all duration-700",
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+      );
+    } else {
+      animClass = "will-change-transform";
+      style = {
+        transformStyle: "preserve-3d",
+        transformOrigin: "center top",
+        transition:
+          "opacity 700ms cubic-bezier(0.22,1,0.36,1), transform 900ms cubic-bezier(0.22,1,0.36,1)",
+        opacity: isVisible ? 1 : 0,
+        transform: isVisible
+          ? "perspective(1000px) rotateX(0deg) translate3d(0,0,0)"
+          : "perspective(1000px) rotateX(10deg) translate3d(0,32px,-60px)",
+      };
+    }
   }
 
   return (
