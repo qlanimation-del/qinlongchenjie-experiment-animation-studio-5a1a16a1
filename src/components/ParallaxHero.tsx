@@ -151,8 +151,10 @@ const ParallaxHero = ({
       }
 
       // Container subtle push-back on scroll
-      if (containerRef.current && is3D) {
-        const pushZ = -Math.min(scrollY * DEPTH_CONFIG.scrollPushRate, DEPTH_CONFIG.scrollPushMax);
+      if (containerRef.current) {
+        const rate = isMobile ? 0.08 : DEPTH_CONFIG.scrollPushRate;
+        const max  = isMobile ? 30 : DEPTH_CONFIG.scrollPushMax;
+        const pushZ = -Math.min(scrollY * rate, max);
         containerRef.current.style.transform = `translateZ(${pushZ}px)`;
       }
 
