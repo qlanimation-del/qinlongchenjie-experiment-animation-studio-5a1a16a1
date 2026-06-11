@@ -169,7 +169,7 @@ const ParallaxHero = ({
     };
 
     const onMouse = (e: MouseEvent) => {
-      if (!is3D || reduced) return;
+      if (isMobile || isTablet || reduced) return;
       const w = window.innerWidth;
       const h = window.innerHeight;
       mouseRef.current.tx = (e.clientX / w) * 2 - 1;
@@ -190,7 +190,7 @@ const ParallaxHero = ({
     // Initial paint so transforms are correct before first scroll
     update();
     window.addEventListener("scroll", schedule, { passive: true });
-    if (is3D && !reduced) {
+    if (!isMobile && !isTablet && !reduced) {
       window.addEventListener("mousemove", onMouse, { passive: true });
       raf = requestAnimationFrame(loop);
     }
@@ -199,13 +199,13 @@ const ParallaxHero = ({
       window.removeEventListener("mousemove", onMouse);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, [isMobile, isTablet, is3D, effectiveLayers.length, baseScales.join(","), extraYs.join(",")]);
+  }, [isMobile, isTablet, effectiveLayers.length, baseScales.join(","), extraYs.join(",")]);
 
   return (
     <div
       ref={containerRef}
       className="relative w-full h-screen overflow-hidden bg-black"
-      style={is3D ? { perspective: "1200px", transformStyle: "preserve-3d" } : undefined}
+      style={{ perspective: isMobile ? "900px" : "1200px", transformStyle: "preserve-3d" }}
     >
       {effectiveLayers.map((layer, i) => {
         const isVignette = (layer as any).overlay === "vignette";
