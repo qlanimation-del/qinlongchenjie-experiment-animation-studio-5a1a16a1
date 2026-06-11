@@ -48,11 +48,11 @@ const AnimatedSection = ({ children, className = "", threshold, variant = "fade"
         transformStyle: "preserve-3d",
         transformOrigin: "center top",
         transition:
-          "opacity 700ms cubic-bezier(0.22,1,0.36,1), transform 900ms cubic-bezier(0.22,1,0.36,1)",
+          "opacity 800ms cubic-bezier(0.22,1,0.36,1), transform 1100ms cubic-bezier(0.22,1,0.36,1)",
         opacity: isVisible ? 1 : 0,
         transform: isVisible
-          ? "perspective(1000px) rotateX(0deg) translate3d(0,0,0)"
-          : "perspective(1000px) rotateX(10deg) translate3d(0,32px,-60px)",
+          ? "perspective(800px) rotateX(0deg) rotateY(0deg) translate3d(0,0,0)"
+          : "perspective(800px) rotateX(28deg) rotateY(-5deg) translate3d(0,70px,-160px)",
       };
     }
   }
