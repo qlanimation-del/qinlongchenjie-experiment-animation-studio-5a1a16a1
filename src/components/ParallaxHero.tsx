@@ -97,10 +97,14 @@ const ParallaxHero = ({
     mouseYRatio:   0.6,            // 原 0.7
   };
 
-  const layerZ = (i: number) =>
-    is3D ? (DEPTH_CONFIG.layerZ[Math.min(i, 2)] ?? 0) : 0;
-  const mouseStrength = (i: number) =>
-    is3D ? (DEPTH_CONFIG.mouseStrength[Math.min(i, 2)] ?? 0) : 0;
+  const layerZ = (i: number) => {
+    const val = DEPTH_CONFIG.layerZ[Math.min(i, 2)] ?? 0;
+    return isMobile ? val * 0.5 : val;
+  };
+  const mouseStrength = (i: number) => {
+    if (isMobile || isTablet) return 0;
+    return DEPTH_CONFIG.mouseStrength[Math.min(i, 2)] ?? 0;
+  };
 
   // Single rAF-driven scroll + mouse handler — writes transforms to refs directly.
   useEffect(() => {
