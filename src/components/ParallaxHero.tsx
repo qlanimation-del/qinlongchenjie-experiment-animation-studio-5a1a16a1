@@ -42,7 +42,6 @@ const ParallaxHero = ({
   onScrollDown,
 }: ParallaxHeroProps) => {
   const { isMobile, isTablet } = useIsMobile();
-  const is3D = !isMobile && !isTablet;
 
   // Refs for layers + title — DOM-direct transforms, no React re-render on scroll.
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -98,10 +97,14 @@ const ParallaxHero = ({
     mouseYRatio:   0.6,            // 原 0.7
   };
 
-  const layerZ = (i: number) =>
-    is3D ? (DEPTH_CONFIG.layerZ[Math.min(i, 2)] ?? 0) : 0;
-  const mouseStrength = (i: number) =>
-    is3D ? (DEPTH_CONFIG.mouseStrength[Math.min(i, 2)] ?? 0) : 0;
+  const layerZ = (i: number) => {
+    const val = DEPTH_CONFIG.layerZ[Math.min(i, 2)] ?? 0;
+    return isMobile ? val * 0.5 : val;
+  };
+  const mouseStrength = (i: number) => {
+    if (isMobile || isTablet) return 0;
+    return DEPTH_CONFIG.mouseStrength[Math.min(i, 2)] ?? 0;
+  };
 
   // Single rAF-driven scroll + mouse handler — writes transforms to refs directly.
   useEffect(() => {
@@ -141,15 +144,17 @@ const ParallaxHero = ({
       if (titleRef.current) {
         const titleOpacity = Math.max(0, 1 - scrollY / 400);
         const titleTranslateY = scrollY * 0.3;
-        const z = is3D ? DEPTH_CONFIG.titleZ : 0;
-        const mx = is3D ? m.x * DEPTH_CONFIG.titleMouseX : 0;
+        const z = isMobile ? DEPTH_CONFIG.titleZ * 0.5 : DEPTH_CONFIG.titleZ;
+        const mx = (isMobile || isTablet) ? 0 : m.x * DEPTH_CONFIG.titleMouseX;
         titleRef.current.style.opacity = String(titleOpacity);
         titleRef.current.style.transform = `translate3d(calc(-50% + ${mx}px), ${titleTranslateY}px, ${z}px)`;
       }
 
       // Container subtle push-back on scroll
-      if (containerRef.current && is3D) {
-        const pushZ = -Math.min(scrollY * DEPTH_CONFIG.scrollPushRate, DEPTH_CONFIG.scrollPushMax);
+      if (containerRef.current) {
+        const rate = isMobile ? 0.08 : DEPTH_CONFIG.scrollPushRate;
+        const max  = isMobile ? 30 : DEPTH_CONFIG.scrollPushMax;
+        const pushZ = -Math.min(scrollY * rate, max);
         containerRef.current.style.transform = `translateZ(${pushZ}px)`;
       }
 
@@ -164,7 +169,7 @@ const ParallaxHero = ({
     };
 
     const onMouse = (e: MouseEvent) => {
-      if (!is3D || reduced) return;
+      if (isMobile || isTablet || reduced) return;
       const w = window.innerWidth;
       const h = window.innerHeight;
       mouseRef.current.tx = (e.clientX / w) * 2 - 1;
@@ -185,7 +190,7 @@ const ParallaxHero = ({
     // Initial paint so transforms are correct before first scroll
     update();
     window.addEventListener("scroll", schedule, { passive: true });
-    if (is3D && !reduced) {
+    if (!isMobile && !isTablet && !reduced) {
       window.addEventListener("mousemove", onMouse, { passive: true });
       raf = requestAnimationFrame(loop);
     }
@@ -194,13 +199,13 @@ const ParallaxHero = ({
       window.removeEventListener("mousemove", onMouse);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, [isMobile, isTablet, is3D, effectiveLayers.length, baseScales.join(","), extraYs.join(",")]);
+  }, [isMobile, isTablet, effectiveLayers.length, baseScales.join(","), extraYs.join(",")]);
 
   return (
     <div
       ref={containerRef}
       className="relative w-full h-screen overflow-hidden bg-black"
-      style={is3D ? { perspective: "1200px", transformStyle: "preserve-3d" } : undefined}
+      style={{ perspective: isMobile ? "900px" : "1200px", transformStyle: "preserve-3d" }}
     >
       {effectiveLayers.map((layer, i) => {
         const isVignette = (layer as any).overlay === "vignette";
