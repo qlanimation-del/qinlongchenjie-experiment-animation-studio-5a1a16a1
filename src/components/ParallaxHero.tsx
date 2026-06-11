@@ -144,8 +144,8 @@ const ParallaxHero = ({
       if (titleRef.current) {
         const titleOpacity = Math.max(0, 1 - scrollY / 400);
         const titleTranslateY = scrollY * 0.3;
-        const z = is3D ? DEPTH_CONFIG.titleZ : 0;
-        const mx = is3D ? m.x * DEPTH_CONFIG.titleMouseX : 0;
+        const z = isMobile ? DEPTH_CONFIG.titleZ * 0.5 : DEPTH_CONFIG.titleZ;
+        const mx = (isMobile || isTablet) ? 0 : m.x * DEPTH_CONFIG.titleMouseX;
         titleRef.current.style.opacity = String(titleOpacity);
         titleRef.current.style.transform = `translate3d(calc(-50% + ${mx}px), ${titleTranslateY}px, ${z}px)`;
       }
