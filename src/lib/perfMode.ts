@@ -13,9 +13,12 @@ let lowFrames = 0;
 let sampledFrames = 0;
 let accumFps = 0;
 
-const FPS_THRESHOLD = 45;          // below this counts as a "slow" frame
-const LOW_FRAMES_TO_DEGRADE = 30;  // ~0.5s of slow frames at 60fps target
+const FPS_THRESHOLD = 24;          // only treat truly stuttery frames as slow
+const LOW_FRAMES_TO_DEGRADE = 120; // ~2s of sustained slow frames before fallback
 const SAMPLE_WINDOW = 120;         // log avg fps every ~2s (dev visibility)
+const WARMUP_FRAMES = 90;          // ignore first ~1.5s while page settles
+
+let totalFrames = 0;
 
 const tick = (now: number) => {
   if (lastFrame) {
@@ -23,8 +26,9 @@ const tick = (now: number) => {
     const fps = 1000 / delta;
     accumFps += fps;
     sampledFrames += 1;
+    totalFrames += 1;
 
-    if (fps < FPS_THRESHOLD) {
+    if (fps < FPS_THRESHOLD && totalFrames > WARMUP_FRAMES) {
       lowFrames += 1;
       if (!degraded && lowFrames >= LOW_FRAMES_TO_DEGRADE) {
         degraded = true;
@@ -63,6 +67,7 @@ const stop = () => {
   lowFrames = 0;
   sampledFrames = 0;
   accumFps = 0;
+  totalFrames = 0;
 };
 
 export const subscribePerfMode = (l: Listener): (() => void) => {
