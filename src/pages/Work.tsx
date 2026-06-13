@@ -1,10 +1,11 @@
-import { useState, useMemo, useRef, useCallback } from "react";
+import { useState, useMemo, useRef, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { projects, type Project } from "@/data/projects";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Locale } from "@/i18n/translations";
+import { useDeviceTilt } from "@/hooks/useDeviceTilt";
 import { cn } from "@/lib/utils";
 
 // Pinterest-style staggered heights via grid row spans
@@ -37,6 +38,18 @@ function ProjectCard({ project, locale }: { project: Project; locale: Locale }) 
   const span = cardSpan[project.id] || 3;
   const tiltRef = useRef<HTMLAnchorElement | null>(null);
   const rafRef = useRef<number | null>(null);
+  const gyro = useDeviceTilt(30);
+
+  // Apply gyroscope tilt on touch devices (no hover); skip if mouse is driving the card.
+  useEffect(() => {
+    const el = tiltRef.current;
+    if (!el) return;
+    if (!window.matchMedia("(hover: none)").matches) return;
+    const rx = (-gyro.y * 8).toFixed(2);
+    const ry = (gyro.x * 10).toFixed(2);
+    el.style.transition = "transform 250ms ease-out";
+    el.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+  }, [gyro.x, gyro.y]);
 
   const handleMove = useCallback((e: React.MouseEvent<HTMLAnchorElement>) => {
     const el = tiltRef.current;

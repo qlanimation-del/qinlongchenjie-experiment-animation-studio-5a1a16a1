@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ImageLightbox from "./ImageLightbox";
+import Tilt3D from "./Tilt3D";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 
@@ -33,16 +34,18 @@ const ProjectGallery = ({ projectId, thumbnail, customImages }: ProjectGalleryPr
             return (
               <div
                 key={index}
-                className="mb-4 break-inside-avoid rounded-xl overflow-hidden cursor-pointer hover:-translate-y-1 transition-transform duration-300"
+                className="mb-4 break-inside-avoid cursor-pointer"
                 onClick={() => setLightboxIndex(index)}
               >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className={`w-full ${aspect} object-cover`}
-                  loading="lazy"
-                  decoding="async"
-                />
+                <Tilt3D maxRotate={9} depth={40} className="rounded-xl overflow-hidden">
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className={`w-full ${aspect} object-cover`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </Tilt3D>
               </div>
             );
           })}
