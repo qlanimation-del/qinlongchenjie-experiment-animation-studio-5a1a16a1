@@ -34,14 +34,18 @@ const Tilt3D = ({
   const degraded = usePerfMode();
   const ref = useRef<HTMLDivElement>(null);
   const [mouse, setMouse] = useState<{ x: number; y: number } | null>(null);
+  const [scroll, setScroll] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [isTouch, setIsTouch] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    setIsTouch(window.matchMedia("(pointer: coarse)").matches);
+  }, []);
+
+  // Desktop: mouse tracking
+  useEffect(() => {
     const el = ref.current;
-    if (!el) return;
-    const isTouch =
-      typeof window !== "undefined" &&
-      window.matchMedia("(pointer: coarse)").matches;
-    if (isTouch) return;
+    if (!el || isTouch) return;
 
     let raf = 0;
     let pending: { x: number; y: number } | null = null;
@@ -67,11 +71,45 @@ const Tilt3D = ({
       el.removeEventListener("mouseleave", onLeave);
       if (raf) cancelAnimationFrame(raf);
     };
-  }, []);
+  }, [isTouch]);
 
-  // Mouse wins when present; otherwise gyroscope on mobile
-  const x = mouse ? mouse.x : tilt.x;
-  const y = mouse ? mouse.y : tilt.y;
+  // Mobile: scroll-position-driven tilt (distance from viewport center)
+  useEffect(() => {
+    const el = ref.current;
+    if (!el || !isTouch) return;
+
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight || 1;
+      const vw = window.innerWidth || 1;
+      const cy = r.top + r.height / 2;
+      const cx = r.left + r.width / 2;
+      // Normalize: -1 at top of viewport, +1 at bottom
+      const y = Math.max(-1, Math.min(1, (cy - vh / 2) / (vh / 2)));
+      const x = Math.max(-1, Math.min(1, (cx - vw / 2) / (vw / 2)));
+      setScroll({ x, y });
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [isTouch]);
+
+  // Priority: mouse > gyroscope (if active) > scroll fallback
+  const gyroActive = Math.abs(tilt.x) + Math.abs(tilt.y) > 0.01;
+  let x = 0, y = 0;
+  if (mouse) { x = mouse.x; y = mouse.y; }
+  else if (isTouch && gyroActive) { x = tilt.x; y = tilt.y; }
+  else if (isTouch) { x = scroll.x * 0.6; y = scroll.y; }
 
   if (degraded) {
     return <div className={className}>{children}</div>;
