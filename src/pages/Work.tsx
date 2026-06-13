@@ -1,10 +1,11 @@
-import { useState, useMemo, useRef, useCallback } from "react";
+import { useState, useMemo, useRef, useCallback, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
 import SEO from "@/components/SEO";
 import { projects, type Project } from "@/data/projects";
 import { useLanguage } from "@/i18n/LanguageContext";
 import type { Locale } from "@/i18n/translations";
+import { useDeviceTilt } from "@/hooks/useDeviceTilt";
 import { cn } from "@/lib/utils";
 
 // Pinterest-style staggered heights via grid row spans
