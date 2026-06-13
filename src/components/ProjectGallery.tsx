@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ImageLightbox from "./ImageLightbox";
+import Tilt3D from "./Tilt3D";
 import { useLanguage } from "@/i18n/LanguageContext";
 
 
