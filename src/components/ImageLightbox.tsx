@@ -82,8 +82,10 @@ const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext }: ImageL
 
   return createPortal(
     <div
+      data-lightbox-root="true"
       className="fixed z-[10000] bg-black select-none touch-none"
       style={{
+        position: "fixed",
         top: 0,
         right: 0,
         bottom: 0,
@@ -92,6 +94,8 @@ const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext }: ImageL
         height: "100dvh",
         minHeight: "100vh",
         isolation: "isolate",
+        overscrollBehavior: "none",
+        transform: "none",
       }}
       onClick={onClose}
       onTouchStart={onTouchStart}
