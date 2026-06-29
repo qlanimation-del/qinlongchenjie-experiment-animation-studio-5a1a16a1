@@ -1,5 +1,5 @@
-import { useEffect, useCallback } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useCallback, useState, useRef } from "react";
+import { X, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 
 interface LightboxImage {
   src: string;
@@ -16,6 +16,9 @@ interface ImageLightboxProps {
 }
 
 const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext }: ImageLightboxProps) => {
+  const [loaded, setLoaded] = useState(false);
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === "Escape") onClose();
     if (e.key === "ArrowLeft") onPrev();
@@ -31,45 +34,101 @@ const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext }: ImageL
     };
   }, [handleKeyDown]);
 
+  // Reset loading state on index change
+  useEffect(() => {
+    setLoaded(false);
+  }, [currentIndex]);
+
+  // Preload neighbours for smoother nav
+  useEffect(() => {
+    const preload = (i: number) => {
+      const img = new Image();
+      img.src = images[(i + images.length) % images.length].src;
+    };
+    preload(currentIndex + 1);
+    preload(currentIndex - 1);
+  }, [currentIndex, images]);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY };
+  };
+  const onTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStart.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStart.current.x;
+    const dy = t.clientY - touchStart.current.y;
+    const absX = Math.abs(dx);
+    const absY = Math.abs(dy);
+    if (absX > 50 && absX > absY) {
+      if (dx < 0) onNext(); else onPrev();
+    } else if (dy > 100 && absY > absX) {
+      onClose();
+    }
+    touchStart.current = null;
+  };
+
   return (
     <div
-      className="fixed inset-0 z-[10000] bg-black/95 flex items-center justify-center h-[100dvh]"
+      className="fixed inset-0 z-[10000] bg-black w-screen h-[100dvh] select-none"
       onClick={onClose}
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
     >
+      {/* Image fills the entire viewport */}
+      <img
+        src={images[currentIndex].src}
+        alt={images[currentIndex].alt}
+        onLoad={() => setLoaded(true)}
+        onClick={(e) => e.stopPropagation()}
+        className={`absolute inset-0 w-full h-full object-contain transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`}
+        draggable={false}
+      />
+
+      {/* Loading spinner */}
+      {!loaded && (
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <Loader2 className="text-white/70 animate-spin" size={40} />
+        </div>
+      )}
+
+      {/* Close */}
       <button
         onClick={(e) => { e.stopPropagation(); onClose(); }}
-        className="absolute top-20 right-4 sm:top-24 sm:right-6 text-white/70 hover:text-white z-10 transition-colors p-2"
+        className="absolute top-[max(1rem,env(safe-area-inset-top))] right-4 sm:top-6 sm:right-6 w-11 h-11 flex items-center justify-center rounded-full bg-black/40 backdrop-blur text-white/90 hover:text-white hover:bg-black/60 transition-colors z-10"
         aria-label="Close"
       >
-        <X size={28} />
+        <X size={24} />
       </button>
 
-      <button
-        onClick={(e) => { e.stopPropagation(); onPrev(); }}
-        className="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-10 transition-colors p-2"
-        aria-label="Previous image"
-      >
-        <ChevronLeft size={36} />
-      </button>
+      {/* Prev */}
+      {images.length > 1 && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onPrev(); }}
+          className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-black/40 backdrop-blur text-white/90 hover:text-white hover:bg-black/60 transition-colors z-10"
+          aria-label="Previous image"
+        >
+          <ChevronLeft size={28} />
+        </button>
+      )}
 
-      <button
-        onClick={(e) => { e.stopPropagation(); onNext(); }}
-        className="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 text-white/70 hover:text-white z-10 transition-colors p-2"
-        aria-label="Next image"
-      >
-        <ChevronRight size={36} />
-      </button>
+      {/* Next */}
+      {images.length > 1 && (
+        <button
+          onClick={(e) => { e.stopPropagation(); onNext(); }}
+          className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-full bg-black/40 backdrop-blur text-white/90 hover:text-white hover:bg-black/60 transition-colors z-10"
+          aria-label="Next image"
+        >
+          <ChevronRight size={28} />
+        </button>
+      )}
 
-      <div
-        className="flex items-center justify-center px-4 max-w-[90vw] max-h-[85vh]"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <img
-          src={images[currentIndex].src}
-          alt={images[currentIndex].alt}
-          className="max-w-full max-h-[85vh] object-contain rounded-lg"
-        />
-      </div>
+      {/* Counter */}
+      {images.length > 1 && (
+        <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 -translate-x-1/2 text-xs sm:text-sm text-white/80 tabular-nums px-3 py-1.5 rounded-full bg-black/40 backdrop-blur z-10 pointer-events-none">
+          {currentIndex + 1} / {images.length}
+        </div>
+      )}
     </div>
   );
 };
