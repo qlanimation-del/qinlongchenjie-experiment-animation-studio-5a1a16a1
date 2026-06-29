@@ -1,4 +1,5 @@
 import { useEffect, useCallback, useState, useRef } from "react";
+import { createPortal } from "react-dom";
 import { X, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 
 interface LightboxImage {
@@ -17,6 +18,7 @@ interface ImageLightboxProps {
 
 const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext }: ImageLightboxProps) => {
   const [loaded, setLoaded] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const touchStart = useRef<{ x: number; y: number } | null>(null);
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -26,10 +28,18 @@ const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext }: ImageL
   }, [onClose, onPrev, onNext]);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
     window.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.body.style.overflow = "";
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [handleKeyDown]);
@@ -68,9 +78,25 @@ const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext }: ImageL
     touchStart.current = null;
   };
 
-  return (
+  if (!mounted || !images.length) return null;
+
+  return createPortal(
     <div
-      className="fixed inset-0 z-[10000] bg-black w-screen h-[100dvh] select-none"
+      data-lightbox-root="true"
+      className="fixed z-[10000] bg-black select-none touch-none"
+      style={{
+        position: "fixed",
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        width: "100vw",
+        height: "100dvh",
+        minHeight: "100vh",
+        isolation: "isolate",
+        overscrollBehavior: "none",
+        transform: "none",
+      }}
       onClick={onClose}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
@@ -129,7 +155,8 @@ const ImageLightbox = ({ images, currentIndex, onClose, onPrev, onNext }: ImageL
           {currentIndex + 1} / {images.length}
         </div>
       )}
-    </div>
+    </div>,
+    document.body
   );
 };
 
