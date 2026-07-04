@@ -6,6 +6,8 @@ import { componentTagger } from "lovable-tagger";
 import viteCompression from "vite-plugin-compression";
 // 图片优化插件
 import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
+// MCP server bundler (emits supabase/functions/mcp)
+import { mcpPlugin } from "@lovable.dev/mcp-js/stacks/supabase/vite";
 
 export default defineConfig(({ mode }) => ({
   base: "/", // 必须保留，解决 CSS 路径
@@ -17,6 +19,7 @@ export default defineConfig(({ mode }) => ({
   // 生产环境才开压缩和图片优化
   plugins: [
     react(),
+    mcpPlugin(),
     mode === "development" && componentTagger(),
     // 1. Gzip 压缩（兼容所有浏览器）
     mode === "production" && viteCompression({
