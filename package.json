@@ -16,6 +16,7 @@
     "deploy": "npm run build && wrangler deploy --skip-project-setup"
   },
   "dependencies": {
+    "@lovable.dev/mcp-js": "^0.20.0",
     "@radix-ui/react-slot": "^1.2.3",
     "@radix-ui/react-toast": "^1.2.14",
     "@radix-ui/react-tooltip": "^1.2.7",
@@ -35,7 +36,8 @@
     "tailwindcss-animate": "^1.0.7",
     "terser": "^5.46.1",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-image-optimizer": "^2.0.3"
+    "vite-plugin-image-optimizer": "^2.0.3",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
