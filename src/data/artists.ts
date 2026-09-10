@@ -40,26 +40,7 @@ const emptySections = (): CVSection[] => [
   {
     key: "screenings",
     label: { en: "Screenings & Festivals", zh: "放映与电影节", fr: "Projections & Festivals" },
-    entries: [
-      {
-        year: "2026",
-        title: {
-          en: "Nature & Culture Poetry Film Festival",
-          zh: "第六届自然与人文诗歌电影节",
-          fr: "Nature & Culture Poetry Film Festival",
-        },
-        venue: {
-          en: "Official Selection",
-          zh: "入选",
-          fr: "Sélection officielle",
-        },
-        city: {
-          en: "Copenhagen, Denmark",
-          zh: "丹麦哥本哈根",
-          fr: "Copenhague, Danemark",
-        },
-      },
-    ],
+    entries: [],
   },
   {
     key: "awards",
