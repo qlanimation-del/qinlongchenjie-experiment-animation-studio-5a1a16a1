@@ -106,6 +106,7 @@ import dustAdd6 from "@/assets/gallery/dust-gallery-add-6.jpg.asset.json";
 import dustAdd7 from "@/assets/gallery/dust-gallery-add-7.jpg.asset.json";
 import dustAdd8 from "@/assets/gallery/dust-gallery-add-8.jpg.asset.json";
 import dustAdd9 from "@/assets/gallery/dust-gallery-add-9.jpg.asset.json";
+import dustAdd10 from "@/assets/gallery/dust-gallery-add-10.jpg.asset.json";
 import cl1 from "@/assets/gallery/cloud-1.webp";
 import cl2 from "@/assets/gallery/cloud-2.webp";
 import cl3 from "@/assets/gallery/cloud-3.webp";
@@ -217,6 +218,7 @@ export const projects: Project[] = [
       { src: dustAdd7.url, alt: "DUST scene design 7" },
       { src: dustAdd8.url, alt: "DUST scene design 8" },
       { src: dustAdd9.url, alt: "DUST scene design 9" },
+      { src: dustAdd10.url, alt: "DUST scene design 10" },
       { src: b1, alt: "Beyond gallery 1" },
       { src: b2, alt: "Beyond gallery 2" },
       { src: b3, alt: "Beyond gallery 3" },
