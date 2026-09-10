@@ -198,6 +198,7 @@ export const projects: Project[] = [
       { src: dustParallaxTop, speed: 0.4 },
     ],
     galleryImages: [
+      { src: dustGalleryPoster.url, alt: "DUST poster" },
       { src: b1, alt: "Beyond gallery 1" },
       { src: b2, alt: "Beyond gallery 2" },
       { src: b3, alt: "Beyond gallery 3" },
