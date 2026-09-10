@@ -96,6 +96,7 @@ import bw3 from "@/assets/gallery/between-3.webp";
 import bw4 from "@/assets/gallery/between-4.webp";
 import bw5 from "@/assets/gallery/between-5.webp";
 import bw6 from "@/assets/gallery/between-6.webp";
+import dustGalleryPoster from "@/assets/gallery/dust-gallery-poster.jpg.asset.json";
 import cl1 from "@/assets/gallery/cloud-1.webp";
 import cl2 from "@/assets/gallery/cloud-2.webp";
 import cl3 from "@/assets/gallery/cloud-3.webp";
