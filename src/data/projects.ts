@@ -96,6 +96,7 @@ import bw3 from "@/assets/gallery/between-3.webp";
 import bw4 from "@/assets/gallery/between-4.webp";
 import bw5 from "@/assets/gallery/between-5.webp";
 import bw6 from "@/assets/gallery/between-6.webp";
+import dustGalleryPoster from "@/assets/gallery/dust-gallery-poster.jpg.asset.json";
 import cl1 from "@/assets/gallery/cloud-1.webp";
 import cl2 from "@/assets/gallery/cloud-2.webp";
 import cl3 from "@/assets/gallery/cloud-3.webp";
@@ -197,6 +198,7 @@ export const projects: Project[] = [
       { src: dustParallaxTop, speed: 0.4 },
     ],
     galleryImages: [
+      { src: dustGalleryPoster.url, alt: "DUST poster" },
       { src: b1, alt: "Beyond gallery 1" },
       { src: b2, alt: "Beyond gallery 2" },
       { src: b3, alt: "Beyond gallery 3" },
