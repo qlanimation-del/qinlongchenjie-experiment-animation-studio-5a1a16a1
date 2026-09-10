@@ -97,6 +97,15 @@ import bw4 from "@/assets/gallery/between-4.webp";
 import bw5 from "@/assets/gallery/between-5.webp";
 import bw6 from "@/assets/gallery/between-6.webp";
 import dustGalleryPoster from "@/assets/gallery/dust-gallery-poster.jpg.asset.json";
+import dustAdd1 from "@/assets/gallery/dust-gallery-add-1.jpg.asset.json";
+import dustAdd2 from "@/assets/gallery/dust-gallery-add-2.jpg.asset.json";
+import dustAdd3 from "@/assets/gallery/dust-gallery-add-3.jpg.asset.json";
+import dustAdd4 from "@/assets/gallery/dust-gallery-add-4.jpg.asset.json";
+import dustAdd5 from "@/assets/gallery/dust-gallery-add-5.jpg.asset.json";
+import dustAdd6 from "@/assets/gallery/dust-gallery-add-6.jpg.asset.json";
+import dustAdd7 from "@/assets/gallery/dust-gallery-add-7.jpg.asset.json";
+import dustAdd8 from "@/assets/gallery/dust-gallery-add-8.jpg.asset.json";
+import dustAdd9 from "@/assets/gallery/dust-gallery-add-9.jpg.asset.json";
 import cl1 from "@/assets/gallery/cloud-1.webp";
 import cl2 from "@/assets/gallery/cloud-2.webp";
 import cl3 from "@/assets/gallery/cloud-3.webp";
@@ -199,6 +208,15 @@ export const projects: Project[] = [
     ],
     galleryImages: [
       { src: dustGalleryPoster.url, alt: "DUST poster" },
+      { src: dustAdd1.url, alt: "DUST scene design 1" },
+      { src: dustAdd2.url, alt: "DUST scene design 2" },
+      { src: dustAdd3.url, alt: "DUST scene design 3" },
+      { src: dustAdd4.url, alt: "DUST scene design 4" },
+      { src: dustAdd5.url, alt: "DUST scene design 5" },
+      { src: dustAdd6.url, alt: "DUST scene design 6" },
+      { src: dustAdd7.url, alt: "DUST scene design 7" },
+      { src: dustAdd8.url, alt: "DUST scene design 8" },
+      { src: dustAdd9.url, alt: "DUST scene design 9" },
       { src: b1, alt: "Beyond gallery 1" },
       { src: b2, alt: "Beyond gallery 2" },
       { src: b3, alt: "Beyond gallery 3" },
