@@ -143,6 +143,8 @@ export interface ParallaxLayer {
 export interface GalleryImage {
   src: string;
   alt: string;
+  width?: number;
+  height?: number;
 }
 
 export interface PressItem {
@@ -238,6 +240,13 @@ export const projects: Project[] = [
       { src: dustAdd14.url, alt: "DUST scene design 14" },
       { src: dustAdd15.url, alt: "DUST scene design 15" },
       { src: dustAdd16.url, alt: "DUST scene design 16" },
+      { src: dustAdd17.url, alt: "DUST scene design 17", width: 1854, height: 1280 },
+      { src: dustAdd18.url, alt: "DUST scene design 18", width: 1839, height: 1280 },
+      { src: dustAdd19.url, alt: "DUST scene design 19", width: 1847, height: 1280 },
+      { src: dustAdd20.url, alt: "DUST scene design 20", width: 1854, height: 1280 },
+      { src: dustAdd21.url, alt: "DUST scene design 21", width: 1878, height: 1280 },
+      { src: dustAdd22.url, alt: "DUST scene design 22", width: 1874, height: 1280 },
+      { src: dustAdd23.url, alt: "DUST scene design 23", width: 1866, height: 1280 },
       { src: b1, alt: "Beyond gallery 1" },
       { src: b2, alt: "Beyond gallery 2" },
       { src: b3, alt: "Beyond gallery 3" },
