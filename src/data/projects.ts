@@ -113,6 +113,13 @@ import dustAdd13 from "@/assets/gallery/dust-gallery-add-13.jpg.asset.json";
 import dustAdd14 from "@/assets/gallery/dust-gallery-add-14.jpg.asset.json";
 import dustAdd15 from "@/assets/gallery/dust-gallery-add-15.jpg.asset.json";
 import dustAdd16 from "@/assets/gallery/dust-gallery-add-16.jpg.asset.json";
+import dustAdd17 from "@/assets/gallery/dust-gallery-add-17.jpg.asset.json";
+import dustAdd18 from "@/assets/gallery/dust-gallery-add-18.jpg.asset.json";
+import dustAdd19 from "@/assets/gallery/dust-gallery-add-19.jpg.asset.json";
+import dustAdd20 from "@/assets/gallery/dust-gallery-add-20.jpg.asset.json";
+import dustAdd21 from "@/assets/gallery/dust-gallery-add-21.jpg.asset.json";
+import dustAdd22 from "@/assets/gallery/dust-gallery-add-22.jpg.asset.json";
+import dustAdd23 from "@/assets/gallery/dust-gallery-add-23.jpg.asset.json";
 import cl1 from "@/assets/gallery/cloud-1.webp";
 import cl2 from "@/assets/gallery/cloud-2.webp";
 import cl3 from "@/assets/gallery/cloud-3.webp";
@@ -136,6 +143,8 @@ export interface ParallaxLayer {
 export interface GalleryImage {
   src: string;
   alt: string;
+  width?: number;
+  height?: number;
 }
 
 export interface PressItem {
@@ -231,6 +240,13 @@ export const projects: Project[] = [
       { src: dustAdd14.url, alt: "DUST scene design 14" },
       { src: dustAdd15.url, alt: "DUST scene design 15" },
       { src: dustAdd16.url, alt: "DUST scene design 16" },
+      { src: dustAdd17.url, alt: "DUST scene design 17", width: 1854, height: 1280 },
+      { src: dustAdd18.url, alt: "DUST scene design 18", width: 1839, height: 1280 },
+      { src: dustAdd19.url, alt: "DUST scene design 19", width: 1847, height: 1280 },
+      { src: dustAdd20.url, alt: "DUST scene design 20", width: 1854, height: 1280 },
+      { src: dustAdd21.url, alt: "DUST scene design 21", width: 1878, height: 1280 },
+      { src: dustAdd22.url, alt: "DUST scene design 22", width: 1874, height: 1280 },
+      { src: dustAdd23.url, alt: "DUST scene design 23", width: 1866, height: 1280 },
       { src: b1, alt: "Beyond gallery 1" },
       { src: b2, alt: "Beyond gallery 2" },
       { src: b3, alt: "Beyond gallery 3" },
