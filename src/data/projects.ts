@@ -107,6 +107,12 @@ import dustAdd7 from "@/assets/gallery/dust-gallery-add-7.jpg.asset.json";
 import dustAdd8 from "@/assets/gallery/dust-gallery-add-8.jpg.asset.json";
 import dustAdd9 from "@/assets/gallery/dust-gallery-add-9.jpg.asset.json";
 import dustAdd10 from "@/assets/gallery/dust-gallery-add-10.jpg.asset.json";
+import dustAdd11 from "@/assets/gallery/dust-gallery-add-11.jpg.asset.json";
+import dustAdd12 from "@/assets/gallery/dust-gallery-add-12.jpg.asset.json";
+import dustAdd13 from "@/assets/gallery/dust-gallery-add-13.jpg.asset.json";
+import dustAdd14 from "@/assets/gallery/dust-gallery-add-14.jpg.asset.json";
+import dustAdd15 from "@/assets/gallery/dust-gallery-add-15.jpg.asset.json";
+import dustAdd16 from "@/assets/gallery/dust-gallery-add-16.jpg.asset.json";
 import cl1 from "@/assets/gallery/cloud-1.webp";
 import cl2 from "@/assets/gallery/cloud-2.webp";
 import cl3 from "@/assets/gallery/cloud-3.webp";
@@ -219,6 +225,12 @@ export const projects: Project[] = [
       { src: dustAdd8.url, alt: "DUST scene design 8" },
       { src: dustAdd9.url, alt: "DUST scene design 9" },
       { src: dustAdd10.url, alt: "DUST scene design 10" },
+      { src: dustAdd11.url, alt: "DUST scene design 11" },
+      { src: dustAdd12.url, alt: "DUST scene design 12" },
+      { src: dustAdd13.url, alt: "DUST scene design 13" },
+      { src: dustAdd14.url, alt: "DUST scene design 14" },
+      { src: dustAdd15.url, alt: "DUST scene design 15" },
+      { src: dustAdd16.url, alt: "DUST scene design 16" },
       { src: b1, alt: "Beyond gallery 1" },
       { src: b2, alt: "Beyond gallery 2" },
       { src: b3, alt: "Beyond gallery 3" },
