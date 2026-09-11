@@ -120,6 +120,13 @@ import dustAdd20 from "@/assets/gallery/dust-gallery-add-20.jpg.asset.json";
 import dustAdd21 from "@/assets/gallery/dust-gallery-add-21.jpg.asset.json";
 import dustAdd22 from "@/assets/gallery/dust-gallery-add-22.jpg.asset.json";
 import dustAdd23 from "@/assets/gallery/dust-gallery-add-23.jpg.asset.json";
+import dustAdd24 from "@/assets/gallery/dust-gallery-add-24.jpg.asset.json";
+import dustAdd25 from "@/assets/gallery/dust-gallery-add-25.jpg.asset.json";
+import dustAdd26 from "@/assets/gallery/dust-gallery-add-26.jpg.asset.json";
+import dustAdd27 from "@/assets/gallery/dust-gallery-add-27.jpg.asset.json";
+import dustAdd28 from "@/assets/gallery/dust-gallery-add-28.jpg.asset.json";
+import dustAdd29 from "@/assets/gallery/dust-gallery-add-29.jpg.asset.json";
+import dustAdd30 from "@/assets/gallery/dust-gallery-add-30.jpg.asset.json";
 import cl1 from "@/assets/gallery/cloud-1.webp";
 import cl2 from "@/assets/gallery/cloud-2.webp";
 import cl3 from "@/assets/gallery/cloud-3.webp";
@@ -247,6 +254,13 @@ export const projects: Project[] = [
       { src: dustAdd21.url, alt: "DUST scene design 21", width: 1878, height: 1280 },
       { src: dustAdd22.url, alt: "DUST scene design 22", width: 1874, height: 1280 },
       { src: dustAdd23.url, alt: "DUST scene design 23", width: 1866, height: 1280 },
+      { src: dustAdd24.url, alt: "DUST scene design 24", width: 1841, height: 1280 },
+      { src: dustAdd25.url, alt: "DUST scene design 25", width: 1838, height: 1280 },
+      { src: dustAdd26.url, alt: "DUST scene design 26", width: 1852, height: 1280 },
+      { src: dustAdd27.url, alt: "DUST scene design 27", width: 1835, height: 1280 },
+      { src: dustAdd28.url, alt: "DUST scene design 28", width: 1885, height: 1280 },
+      { src: dustAdd29.url, alt: "DUST scene design 29", width: 1865, height: 1280 },
+      { src: dustAdd30.url, alt: "DUST scene design 30", width: 1872, height: 1280 },
       { src: b1, alt: "Beyond gallery 1" },
       { src: b2, alt: "Beyond gallery 2" },
       { src: b3, alt: "Beyond gallery 3" },
