@@ -28,7 +28,7 @@ const Index = () => {
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   // Skip video entirely on save-data / very slow networks — show poster only.
   const [skipVideo, setSkipVideo] = useState(false);
-  // 桌面/平板加载高清 mp4，手机加载更小的 webm
+  // Mobile uses a baseline H.264 encode for reliable playback in WeChat WebView.
   const [isMobile, setIsMobile] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -42,15 +42,11 @@ const Index = () => {
     }, 400);
   }, []);
 
-  // 微信内置浏览器等环境对 WebM 支持不稳定，先检测真实解码能力
-  const [supportsWebm, setSupportsWebm] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
 
   // Detect slow networks / data-saver mode → skip video entirely
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
-    const probe = document.createElement("video");
-    setSupportsWebm(!!(probe.canPlayType('video/webm; codecs="vp9"') || probe.canPlayType("video/webm")));
     const conn = (navigator as any).connection;
     if (conn) {
       const slow = conn.saveData === true ||
@@ -171,22 +167,18 @@ const Index = () => {
               onLoadedData={handleVideoLoaded}
               onCanPlay={handleVideoLoaded}
               onPlaying={handleVideoLoaded}
-              onStalled={() => videoRef.current?.load()}
+               onStalled={() => {
+                 setProgress(100);
+                 setLoaderVisible(false);
+               }}
               onError={() => { setVideoLoaded(true); setProgress(100); setLoaderVisible(false); }}
             >
-              {shouldLoadVideo && (
-                isMobile && supportsWebm ? (
-                  <>
-                    <source src="/videos/hero-bg.webm" type="video/webm" />
-                    <source src="/videos/hero-bg.mp4" type="video/mp4" />
-                  </>
-                ) : (
-                  <>
-                    <source src="/videos/hero-bg.mp4" type="video/mp4" />
-                    <source src="/videos/hero-bg.webm" type="video/webm" />
-                  </>
-                )
-              )}
+               {shouldLoadVideo && isMobile && (
+                 <source src="/videos/hero-mobile-v3.mp4" type="video/mp4" />
+               )}
+               {shouldLoadVideo && !isMobile && (
+                 <source src="/videos/hero-bg.mp4" type="video/mp4" />
+               )}
             </video>
           )}
         </div>
