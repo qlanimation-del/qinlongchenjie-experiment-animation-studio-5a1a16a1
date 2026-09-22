@@ -150,6 +150,7 @@ const Index = () => {
           {/* 视频 — only mounted after first paint to avoid blocking critical resources */}
           {!skipVideo && (
             <video
+              ref={videoRef}
               autoPlay
               loop
               muted
@@ -159,10 +160,12 @@ const Index = () => {
               className="absolute inset-0 z-[5] w-full h-full object-cover opacity-0 transition-opacity duration-1000"
               onLoadedData={handleVideoLoaded}
               onCanPlay={handleVideoLoaded}
+              onPlaying={handleVideoLoaded}
+              onStalled={() => videoRef.current?.load()}
               onError={() => { setVideoLoaded(true); setProgress(100); setLoaderVisible(false); }}
             >
               {shouldLoadVideo && (
-                isMobile ? (
+                isMobile && supportsWebm ? (
                   <>
                     <source src="/videos/hero-bg.webm" type="video/webm" />
                     <source src="/videos/hero-bg.mp4" type="video/mp4" />
