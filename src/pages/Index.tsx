@@ -42,9 +42,15 @@ const Index = () => {
     }, 400);
   }, []);
 
+  // 微信内置浏览器等环境对 WebM 支持不稳定，先检测真实解码能力
+  const [supportsWebm, setSupportsWebm] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
   // Detect slow networks / data-saver mode → skip video entirely
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
+    const probe = document.createElement("video");
+    setSupportsWebm(!!(probe.canPlayType('video/webm; codecs="vp9"') || probe.canPlayType("video/webm")));
     const conn = (navigator as any).connection;
     if (conn) {
       const slow = conn.saveData === true ||
@@ -71,9 +77,19 @@ const Index = () => {
     const t = setTimeout(() => {
       setProgress(100);
       setLoaderVisible(false);
-    }, 8000);
+    }, 5000);
     return () => clearTimeout(t);
   }, [videoLoaded, skipVideo]);
+
+  // 微信 WebView 等环境下，自动播放策略可能不触发加载，主动 load + play
+  useEffect(() => {
+    if (!shouldLoadVideo || skipVideo) return;
+    const v = videoRef.current;
+    if (!v) return;
+    v.load();
+    const p = v.play();
+    if (p) p.catch(() => {});
+  }, [shouldLoadVideo, skipVideo]);
 
   useEffect(() => {
     if (videoLoaded || skipVideo) return;
@@ -144,6 +160,7 @@ const Index = () => {
           {/* 视频 — only mounted after first paint to avoid blocking critical resources */}
           {!skipVideo && (
             <video
+              ref={videoRef}
               autoPlay
               loop
               muted
@@ -153,10 +170,12 @@ const Index = () => {
               className="absolute inset-0 z-[5] w-full h-full object-cover opacity-0 transition-opacity duration-1000"
               onLoadedData={handleVideoLoaded}
               onCanPlay={handleVideoLoaded}
+              onPlaying={handleVideoLoaded}
+              onStalled={() => videoRef.current?.load()}
               onError={() => { setVideoLoaded(true); setProgress(100); setLoaderVisible(false); }}
             >
               {shouldLoadVideo && (
-                isMobile ? (
+                isMobile && supportsWebm ? (
                   <>
                     <source src="/videos/hero-bg.webm" type="video/webm" />
                     <source src="/videos/hero-bg.mp4" type="video/mp4" />
