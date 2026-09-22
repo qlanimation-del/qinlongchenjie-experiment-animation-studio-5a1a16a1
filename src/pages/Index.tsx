@@ -81,6 +81,16 @@ const Index = () => {
     return () => clearTimeout(t);
   }, [videoLoaded, skipVideo]);
 
+  // 微信 WebView 等环境下，自动播放策略可能不触发加载，主动 load + play
+  useEffect(() => {
+    if (!shouldLoadVideo || skipVideo) return;
+    const v = videoRef.current;
+    if (!v) return;
+    v.load();
+    const p = v.play();
+    if (p) p.catch(() => {});
+  }, [shouldLoadVideo, skipVideo]);
+
   useEffect(() => {
     if (videoLoaded || skipVideo) return;
     intervalRef.current = setInterval(() => {
