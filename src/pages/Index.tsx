@@ -65,6 +65,16 @@ const Index = () => {
     }
   }, []);
 
+  // Safety net: never let the loader stick forever
+  useEffect(() => {
+    if (videoLoaded || skipVideo) return;
+    const t = setTimeout(() => {
+      setProgress(100);
+      setLoaderVisible(false);
+    }, 8000);
+    return () => clearTimeout(t);
+  }, [videoLoaded, skipVideo]);
+
   useEffect(() => {
     if (videoLoaded || skipVideo) return;
     intervalRef.current = setInterval(() => {
