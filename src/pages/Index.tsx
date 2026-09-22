@@ -42,9 +42,15 @@ const Index = () => {
     }, 400);
   }, []);
 
+  // 微信内置浏览器等环境对 WebM 支持不稳定，先检测真实解码能力
+  const [supportsWebm, setSupportsWebm] = useState(false);
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
   // Detect slow networks / data-saver mode → skip video entirely
   useEffect(() => {
     setIsMobile(window.innerWidth < 768);
+    const probe = document.createElement("video");
+    setSupportsWebm(!!(probe.canPlayType('video/webm; codecs="vp9"') || probe.canPlayType("video/webm")));
     const conn = (navigator as any).connection;
     if (conn) {
       const slow = conn.saveData === true ||
@@ -71,7 +77,7 @@ const Index = () => {
     const t = setTimeout(() => {
       setProgress(100);
       setLoaderVisible(false);
-    }, 8000);
+    }, 5000);
     return () => clearTimeout(t);
   }, [videoLoaded, skipVideo]);
 
