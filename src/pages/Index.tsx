@@ -11,6 +11,12 @@ import { newsItems } from "@/data/news";
 
 // Use stable public-path assets so preload + cache headers match
 const heroPosterImg = "/hero-poster.webp";
+const weChatVideoAttributes = {
+  "webkit-playsinline": "true",
+  "x5-playsinline": "true",
+  "x5-video-player-type": "h5",
+  "x5-video-player-fullscreen": "false",
+} as React.HTMLAttributes<HTMLVideoElement>;
 import whoWeAreImg from "@/assets/who-we-are.webp";
 import whatWeDoImg from "@/assets/what-we-do.webp";
 import annieAward from "@/assets/awards/annie-award.webp";
@@ -23,6 +29,7 @@ const Index = () => {
   const [progress, setProgress] = useState(0);
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [loaderVisible, setLoaderVisible] = useState(true);
+  const [showPlayButton, setShowPlayButton] = useState(false);
   // Defer mounting <source> tags until after first paint, so video doesn't
   // compete with the poster + critical JS for bandwidth on first load.
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
@@ -32,9 +39,10 @@ const Index = () => {
   const [isMobile, setIsMobile] = useState(false);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const handleVideoLoaded = useCallback((e: React.SyntheticEvent<HTMLVideoElement>) => {
+  const handleVideoPlaying = useCallback((e: React.SyntheticEvent<HTMLVideoElement>) => {
     const video = e.target as HTMLVideoElement;
     setVideoLoaded(true);
+    setShowPlayButton(false);
     setProgress(100);
     setTimeout(() => {
       video.style.opacity = "1";
@@ -43,6 +51,17 @@ const Index = () => {
   }, []);
 
   const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  const attemptVideoPlayback = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    video.muted = true;
+    video.defaultMuted = true;
+    const playback = video.play();
+    if (playback) {
+      playback.catch(() => setShowPlayButton(true));
+    }
+  }, []);
 
   // Detect slow networks / data-saver mode → skip video entirely
   useEffect(() => {
@@ -73,19 +92,42 @@ const Index = () => {
     const t = setTimeout(() => {
       setProgress(100);
       setLoaderVisible(false);
+      setShowPlayButton(true);
     }, 5000);
     return () => clearTimeout(t);
   }, [videoLoaded, skipVideo]);
 
-  // 微信 WebView 等环境下，自动播放策略可能不触发加载，主动 load + play
+  // WeChat grants media playback from its bridge-ready callback. Calling play
+  // only after React's idle-loaded source is attached can miss that window.
   useEffect(() => {
     if (!shouldLoadVideo || skipVideo) return;
     const v = videoRef.current;
     if (!v) return;
     v.load();
-    const p = v.play();
-    if (p) p.catch(() => {});
-  }, [shouldLoadVideo, skipVideo]);
+
+    const startFromWeChatBridge = () => {
+      const bridge = (window as any).WeixinJSBridge;
+      if (bridge?.invoke) {
+        bridge.invoke("getNetworkType", {}, attemptVideoPlayback);
+      } else {
+        attemptVideoPlayback();
+      }
+    };
+
+    document.addEventListener("WeixinJSBridgeReady", startFromWeChatBridge);
+    document.addEventListener("touchstart", attemptVideoPlayback, { once: true });
+    startFromWeChatBridge();
+
+    const fallbackTimer = window.setTimeout(() => {
+      if (v.paused) setShowPlayButton(true);
+    }, 2500);
+
+    return () => {
+      document.removeEventListener("WeixinJSBridgeReady", startFromWeChatBridge);
+      document.removeEventListener("touchstart", attemptVideoPlayback);
+      window.clearTimeout(fallbackTimer);
+    };
+  }, [attemptVideoPlayback, shouldLoadVideo, skipVideo]);
 
   useEffect(() => {
     if (videoLoaded || skipVideo) return;
@@ -153,6 +195,21 @@ const Index = () => {
             </div>
           )}
 
+          {showPlayButton && !videoLoaded && (
+            <div className="absolute inset-0 z-20 flex items-center justify-center">
+              <Button
+                type="button"
+                variant="outline"
+                size="icon"
+                className="h-16 w-16 rounded-full border-white/40 bg-black/30 text-white backdrop-blur-md hover:bg-black/50 hover:text-white"
+                onClick={attemptVideoPlayback}
+                aria-label="Play background video"
+              >
+                <span className="ml-1 text-2xl" aria-hidden="true">▶</span>
+              </Button>
+            </div>
+          )}
+
           {/* 视频 — only mounted after first paint to avoid blocking critical resources */}
           {!skipVideo && (
             <video
@@ -161,17 +218,21 @@ const Index = () => {
               loop
               muted
               playsInline
+              {...weChatVideoAttributes}
               preload="auto"
               poster={heroPosterImg}
               className="absolute inset-0 z-[5] w-full h-full object-cover opacity-0 transition-opacity duration-1000"
-              onLoadedData={handleVideoLoaded}
-              onCanPlay={handleVideoLoaded}
-              onPlaying={handleVideoLoaded}
+              onLoadedData={attemptVideoPlayback}
+              onCanPlay={attemptVideoPlayback}
+              onPlaying={handleVideoPlaying}
+              onTimeUpdate={(event) => {
+                if (event.currentTarget.currentTime > 0.05) handleVideoPlaying(event);
+              }}
                onStalled={() => {
-                 setProgress(100);
                  setLoaderVisible(false);
+                  setShowPlayButton(true);
                }}
-              onError={() => { setVideoLoaded(true); setProgress(100); setLoaderVisible(false); }}
+              onError={() => { setProgress(100); setLoaderVisible(false); setShowPlayButton(false); }}
             >
                {shouldLoadVideo && isMobile && (
                  <source src="/videos/hero-mobile-v3.mp4" type="video/mp4" />
