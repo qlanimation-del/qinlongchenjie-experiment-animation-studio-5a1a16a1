@@ -11,6 +11,12 @@ import { newsItems } from "@/data/news";
 
 // Use stable public-path assets so preload + cache headers match
 const heroPosterImg = "/hero-poster.webp";
+const weChatVideoAttributes = {
+  "webkit-playsinline": "true",
+  "x5-playsinline": "true",
+  "x5-video-player-type": "h5",
+  "x5-video-player-fullscreen": "false",
+} as React.HTMLAttributes<HTMLVideoElement>;
 import whoWeAreImg from "@/assets/who-we-are.webp";
 import whatWeDoImg from "@/assets/what-we-do.webp";
 import annieAward from "@/assets/awards/annie-award.webp";
@@ -86,6 +92,7 @@ const Index = () => {
     const t = setTimeout(() => {
       setProgress(100);
       setLoaderVisible(false);
+      setShowPlayButton(true);
     }, 5000);
     return () => clearTimeout(t);
   }, [videoLoaded, skipVideo]);
@@ -96,10 +103,6 @@ const Index = () => {
     if (!shouldLoadVideo || skipVideo) return;
     const v = videoRef.current;
     if (!v) return;
-    v.setAttribute("webkit-playsinline", "true");
-    v.setAttribute("x5-playsinline", "true");
-    v.setAttribute("x5-video-player-type", "h5-page");
-    v.setAttribute("x5-video-player-fullscreen", "false");
     v.load();
 
     const startFromWeChatBridge = () => {
@@ -112,6 +115,7 @@ const Index = () => {
     };
 
     document.addEventListener("WeixinJSBridgeReady", startFromWeChatBridge);
+    document.addEventListener("touchstart", attemptVideoPlayback, { once: true });
     startFromWeChatBridge();
 
     const fallbackTimer = window.setTimeout(() => {
@@ -120,6 +124,7 @@ const Index = () => {
 
     return () => {
       document.removeEventListener("WeixinJSBridgeReady", startFromWeChatBridge);
+      document.removeEventListener("touchstart", attemptVideoPlayback);
       window.clearTimeout(fallbackTimer);
     };
   }, [attemptVideoPlayback, shouldLoadVideo, skipVideo]);
@@ -213,6 +218,7 @@ const Index = () => {
               loop
               muted
               playsInline
+              {...weChatVideoAttributes}
               preload="auto"
               poster={heroPosterImg}
               className="absolute inset-0 z-[5] w-full h-full object-cover opacity-0 transition-opacity duration-1000"
